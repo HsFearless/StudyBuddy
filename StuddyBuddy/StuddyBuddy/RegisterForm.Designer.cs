@@ -1,6 +1,6 @@
 ﻿namespace StuddyBuddy
 {
-    partial class Form1
+    partial class RegisterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelFilthyLiar = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // labelFilthyLiar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(313, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "hey";
+            this.labelFilthyLiar.AutoSize = true;
+            this.labelFilthyLiar.Location = new System.Drawing.Point(452, 170);
+            this.labelFilthyLiar.Name = "labelFilthyLiar";
+            this.labelFilthyLiar.Size = new System.Drawing.Size(140, 17);
+            this.labelFilthyLiar.TabIndex = 0;
+            this.labelFilthyLiar.Text = "You will register here";
             // 
-            // Form1
+            // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.labelFilthyLiar);
+            this.Name = "RegisterForm";
+            this.Text = "Register";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -55,7 +55,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelFilthyLiar;
     }
 }
-
