@@ -20,7 +20,10 @@ namespace StuddyBuddy
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hi");
-        }
+            var profile = new UserProfileForm();
+            this.Hide();
+            profile.ShowDialog();
+            this.Visible = true;        }
 
         private void LinkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
