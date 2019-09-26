@@ -36,6 +36,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.linkLabelRegister = new System.Windows.Forms.LinkLabel();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.groupLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,12 +119,24 @@
             this.linkLabelRegister.Text = "register";
             this.linkLabelRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelRegister_LinkClicked);
             // 
+            // buttonExit
+            // 
+            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.Location = new System.Drawing.Point(12, 262);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(312, 164);
+            this.buttonExit.TabIndex = 3;
+            this.buttonExit.Text = "exit(only for dev)";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.ButtonExit_Click);
+            // 
             // loginForm
             // 
             this.AcceptButton = this.buttonLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.linkLabelRegister);
             this.Controls.Add(this.groupLogin);
             this.Controls.Add(this.label1);
@@ -146,6 +159,7 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.TextBox textPassword;
         private System.Windows.Forms.LinkLabel linkLabelRegister;
+        private System.Windows.Forms.Button buttonExit;
     }
 }
 

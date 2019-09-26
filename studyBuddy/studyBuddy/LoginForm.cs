@@ -32,5 +32,15 @@ namespace studyBuddy
             registerForm.ShowDialog();
             this.Visible = true;
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

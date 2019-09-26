@@ -35,10 +35,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.textPassword2 = new System.Windows.Forms.TextBox();
             this.labelPassword2 = new System.Windows.Forms.Label();
-            this.textBox666 = new System.Windows.Forms.TextBox();
-            this.label666 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonSubmit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -103,11 +100,22 @@
             this.labelPassword2.TabIndex = 6;
             this.labelPassword2.Text = "password :";
             // 
+            // buttonSubmit
+            // 
+            this.buttonSubmit.Location = new System.Drawing.Point(363, 235);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
+            this.buttonSubmit.TabIndex = 8;
+            this.buttonSubmit.Text = "submit";
+            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.ButtonSubmit_Click);
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.textPassword2);
             this.Controls.Add(this.labelPassword2);
             this.Controls.Add(this.textPassword);
@@ -131,5 +139,6 @@
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textPassword2;
         private System.Windows.Forms.Label labelPassword2;
+        private System.Windows.Forms.Button buttonSubmit;
     }
 }
