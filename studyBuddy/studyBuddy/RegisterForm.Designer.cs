@@ -35,8 +35,8 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.textPassword2 = new System.Windows.Forms.TextBox();
             this.labelPassword2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.textBox666 = new System.Windows.Forms.TextBox();
+            this.label666 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -101,31 +101,31 @@
             this.labelPassword2.TabIndex = 6;
             this.labelPassword2.Text = "password :";
             // 
-            // textBox1
+            // textBox666
             // 
-            this.textBox1.Location = new System.Drawing.Point(330, 202);
-            this.textBox1.MaxLength = 33;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '◙';
-            this.textBox1.Size = new System.Drawing.Size(167, 22);
-            this.textBox1.TabIndex = 9;
+            this.textBox666.Location = new System.Drawing.Point(330, 202);
+            this.textBox666.MaxLength = 33;
+            this.textBox666.Name = "textBox666";
+            this.textBox666.PasswordChar = '◙';
+            this.textBox666.Size = new System.Drawing.Size(167, 22);
+            this.textBox666.TabIndex = 9;
             // 
-            // label2
+            // label666
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(185, 201);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "password :";
+            this.label666.AutoSize = true;
+            this.label666.Location = new System.Drawing.Point(185, 201);
+            this.label666.Name = "label666";
+            this.label666.Size = new System.Drawing.Size(76, 17);
+            this.label666.TabIndex = 8;
+            this.label666.Text = "password :";
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox666);
+            this.Controls.Add(this.label666);
             this.Controls.Add(this.textPassword2);
             this.Controls.Add(this.labelPassword2);
             this.Controls.Add(this.textPassword);
@@ -149,7 +149,7 @@
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textPassword2;
         private System.Windows.Forms.Label labelPassword2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox666;
+        private System.Windows.Forms.Label label666;
     }
 }
