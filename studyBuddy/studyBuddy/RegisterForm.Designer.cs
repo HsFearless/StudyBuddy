@@ -35,6 +35,8 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.textPassword2 = new System.Windows.Forms.TextBox();
             this.labelPassword2 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -99,11 +101,30 @@
             this.labelPassword2.TabIndex = 6;
             this.labelPassword2.Text = "password :";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(185, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "username :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(330, 204);
+            this.textBox1.MaxLength = 24;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(167, 22);
+            this.textBox1.TabIndex = 8;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textPassword2);
             this.Controls.Add(this.labelPassword2);
             this.Controls.Add(this.textPassword);
@@ -127,5 +148,7 @@
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textPassword2;
         private System.Windows.Forms.Label labelPassword2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
