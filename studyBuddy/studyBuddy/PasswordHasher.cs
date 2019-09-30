@@ -11,9 +11,9 @@ namespace studyBuddy
         private int saltLength;
         private System.Security.Cryptography.RNGCryptoServiceProvider RNG;
 
-        public PasswordHasher(int saltLength=10)
+        public PasswordHasher(int saltLength=12)
         {
-            this.saltLength = (saltLength > 3) ? saltLength : 10;
+            this.saltLength = (saltLength > 3) ? saltLength : 12;
             RNG = new System.Security.Cryptography.RNGCryptoServiceProvider();
         }
 
@@ -27,9 +27,12 @@ namespace studyBuddy
         public string hash(string pass, byte[] salt)
         {
             //var salt = newSalt();
-            var derived = new System.Security.Cryptography.Rfc2898DeriveBytes(pass, salt, 1000);
-            return $"{Convert.ToBase64String(derived.GetBytes(20))}\n" +
-                $"{Convert.ToBase64String(salt)}";
+            var derived = new System.Security.Cryptography.Rfc2898DeriveBytes(pass, salt, 30000);
+            //100 000 takes about 3 sec
+            var derived64 = Convert.ToBase64String(derived.GetBytes(39));
+            var salt64 = Convert.ToBase64String(salt);
+            return $"{derived64} (len: {derived64.Length})\n" +
+                $"{salt64} (len: {salt64.Length})";
 
         }
     }

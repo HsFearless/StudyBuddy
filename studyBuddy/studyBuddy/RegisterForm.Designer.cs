@@ -36,6 +36,8 @@
             this.textPassword2 = new System.Windows.Forms.TextBox();
             this.labelPassword2 = new System.Windows.Forms.Label();
             this.buttonSubmit = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelTest = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -110,11 +112,31 @@
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.ButtonSubmit_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "label2";
+            // 
+            // labelTest
+            // 
+            this.labelTest.AutoSize = true;
+            this.labelTest.Location = new System.Drawing.Point(47, 300);
+            this.labelTest.Name = "labelTest";
+            this.labelTest.Size = new System.Drawing.Size(66, 17);
+            this.labelTest.TabIndex = 10;
+            this.labelTest.Text = "labelTest";
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelTest);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.textPassword2);
             this.Controls.Add(this.labelPassword2);
@@ -140,5 +162,7 @@
         private System.Windows.Forms.TextBox textPassword2;
         private System.Windows.Forms.Label labelPassword2;
         private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelTest;
     }
 }

@@ -23,12 +23,14 @@ namespace studyBuddy
         private void ButtonSubmit_Click(object sender, EventArgs e)
         {
             var salt = passwordHasher.newSalt();
-            string res1 = passwordHasher.hash("pass", salt);
+            string res1 = passwordHasher.hash("password", salt);
             string saltas = Convert.ToBase64String(salt);
             salt = Convert.FromBase64String(saltas);
-            string res2 = passwordHasher.hash("pass", salt);
-            MessageBox.Show($"{res1}\n\n" +
-                $"po converTo64 ir convertFrom64 ar sutapo? - {(res1.Equals(res2) ? "taip" : "ne")}");
+            string res2 = passwordHasher.hash("password", salt);
+            /*MessageBox.Show($"{res1}\n\n" +
+                $"po converTo64 ir convertFrom64 ar sutapo? - {(res1.Equals(res2) ? "taip" : "ne")}");*/
+            labelTest.Text = $"{res1}\n\n" +
+                $"po converTo64 ir convertFrom64 ar sutapo? - {(res1.Equals(res2) ? "taip" : "ne")}";
 
             //MessageBox.Show(passwordHasher.newSalt());
         }
