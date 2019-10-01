@@ -14,7 +14,6 @@ C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.exe
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.pdb
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csprojAssemblyReference.cache
-C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.Component1.resources
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumForm.resources
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.createProblemForm.resources
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.Properties.Resources.resources
@@ -54,3 +53,9 @@ C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\De
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CoreCompileInputs.cache
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.exe
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.pdb
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Data.dll
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Google.Protobuf.dll
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Renci.SshNet.dll
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Data.xml
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CopyComplete
