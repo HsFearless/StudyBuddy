@@ -32,7 +32,8 @@ namespace studyBuddy
             labelTest.Text = $"{res1}\n\n" +
                 $"po converTo64 ir convertFrom64 ar sutapo? - {(res1.Equals(res2) ? "taip" : "ne")}";
             var mysql = new MysqlHandler();
-            MessageBox.Show(mysql.messageToOutterWorld);
+            mysql.testSelectAllUsers();
+            MessageBox.Show(mysql.messageToOutterWorld + mysql.lastError);
 
             //MessageBox.Show(passwordHasher.newSalt());
         }
