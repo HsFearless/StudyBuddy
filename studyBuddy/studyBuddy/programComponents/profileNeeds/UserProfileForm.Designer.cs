@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.leftToolBar = new System.Windows.Forms.TableLayoutPanel();
-            this.toolBarProfileButton = new System.Windows.Forms.Button();
-            this.toolBarForumButton = new System.Windows.Forms.Button();
-            this.toolBarFindBuddyButton = new System.Windows.Forms.Button();
-            this.toolBarHelpButton = new System.Windows.Forms.Button();
-            this.toolBarSettingsButton = new System.Windows.Forms.Button();
             this.toolBarExitButton = new System.Windows.Forms.Button();
+            this.toolBarSettingsButton = new System.Windows.Forms.Button();
+            this.toolBarHelpButton = new System.Windows.Forms.Button();
+            this.toolBarFindBuddyButton = new System.Windows.Forms.Button();
+            this.toolBarForumButton = new System.Windows.Forms.Button();
+            this.toolBarProfileButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
             this.leftToolBar.SuspendLayout();
             this.SuspendLayout();
@@ -65,38 +65,27 @@
             this.leftToolBar.Size = new System.Drawing.Size(91, 471);
             this.leftToolBar.TabIndex = 0;
             // 
-            // toolBarProfileButton
+            // toolBarExitButton
             // 
-            this.toolBarProfileButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarProfileButton.Location = new System.Drawing.Point(0, 0);
-            this.toolBarProfileButton.Margin = new System.Windows.Forms.Padding(0);
-            this.toolBarProfileButton.Name = "toolBarProfileButton";
-            this.toolBarProfileButton.Size = new System.Drawing.Size(91, 70);
-            this.toolBarProfileButton.TabIndex = 0;
-            this.toolBarProfileButton.Text = "Profile";
-            this.toolBarProfileButton.UseVisualStyleBackColor = true;
+            this.toolBarExitButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolBarExitButton.Location = new System.Drawing.Point(0, 397);
+            this.toolBarExitButton.Margin = new System.Windows.Forms.Padding(0);
+            this.toolBarExitButton.Name = "toolBarExitButton";
+            this.toolBarExitButton.Size = new System.Drawing.Size(91, 74);
+            this.toolBarExitButton.TabIndex = 6;
+            this.toolBarExitButton.Text = "Exit";
+            this.toolBarExitButton.UseVisualStyleBackColor = true;
             // 
-            // toolBarForumButton
+            // toolBarSettingsButton
             // 
-            this.toolBarForumButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarForumButton.Location = new System.Drawing.Point(0, 70);
-            this.toolBarForumButton.Margin = new System.Windows.Forms.Padding(0);
-            this.toolBarForumButton.Name = "toolBarForumButton";
-            this.toolBarForumButton.Size = new System.Drawing.Size(91, 70);
-            this.toolBarForumButton.TabIndex = 1;
-            this.toolBarForumButton.Text = "Forum";
-            this.toolBarForumButton.UseVisualStyleBackColor = true;
-            // 
-            // toolBarFindBuddyButton
-            // 
-            this.toolBarFindBuddyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarFindBuddyButton.Location = new System.Drawing.Point(0, 140);
-            this.toolBarFindBuddyButton.Margin = new System.Windows.Forms.Padding(0);
-            this.toolBarFindBuddyButton.Name = "toolBarFindBuddyButton";
-            this.toolBarFindBuddyButton.Size = new System.Drawing.Size(91, 70);
-            this.toolBarFindBuddyButton.TabIndex = 2;
-            this.toolBarFindBuddyButton.Text = "Study Buddy";
-            this.toolBarFindBuddyButton.UseVisualStyleBackColor = true;
+            this.toolBarSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolBarSettingsButton.Location = new System.Drawing.Point(0, 327);
+            this.toolBarSettingsButton.Margin = new System.Windows.Forms.Padding(0);
+            this.toolBarSettingsButton.Name = "toolBarSettingsButton";
+            this.toolBarSettingsButton.Size = new System.Drawing.Size(91, 70);
+            this.toolBarSettingsButton.TabIndex = 5;
+            this.toolBarSettingsButton.Text = "Settings";
+            this.toolBarSettingsButton.UseVisualStyleBackColor = true;
             // 
             // toolBarHelpButton
             // 
@@ -110,27 +99,39 @@
             this.toolBarHelpButton.UseVisualStyleBackColor = true;
             this.toolBarHelpButton.Click += new System.EventHandler(this.Button5_Click);
             // 
-            // toolBarSettingsButton
+            // toolBarFindBuddyButton
             // 
-            this.toolBarSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarSettingsButton.Location = new System.Drawing.Point(0, 327);
-            this.toolBarSettingsButton.Margin = new System.Windows.Forms.Padding(0);
-            this.toolBarSettingsButton.Name = "toolBarSettingsButton";
-            this.toolBarSettingsButton.Size = new System.Drawing.Size(91, 70);
-            this.toolBarSettingsButton.TabIndex = 5;
-            this.toolBarSettingsButton.Text = "Settings";
-            this.toolBarSettingsButton.UseVisualStyleBackColor = true;
+            this.toolBarFindBuddyButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolBarFindBuddyButton.Location = new System.Drawing.Point(0, 140);
+            this.toolBarFindBuddyButton.Margin = new System.Windows.Forms.Padding(0);
+            this.toolBarFindBuddyButton.Name = "toolBarFindBuddyButton";
+            this.toolBarFindBuddyButton.Size = new System.Drawing.Size(91, 70);
+            this.toolBarFindBuddyButton.TabIndex = 2;
+            this.toolBarFindBuddyButton.Text = "Study Buddy";
+            this.toolBarFindBuddyButton.UseVisualStyleBackColor = true;
             // 
-            // toolBarExitButton
+            // toolBarForumButton
             // 
-            this.toolBarExitButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarExitButton.Location = new System.Drawing.Point(0, 397);
-            this.toolBarExitButton.Margin = new System.Windows.Forms.Padding(0);
-            this.toolBarExitButton.Name = "toolBarExitButton";
-            this.toolBarExitButton.Size = new System.Drawing.Size(91, 74);
-            this.toolBarExitButton.TabIndex = 6;
-            this.toolBarExitButton.Text = "Exit";
-            this.toolBarExitButton.UseVisualStyleBackColor = true;
+            this.toolBarForumButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolBarForumButton.Location = new System.Drawing.Point(0, 70);
+            this.toolBarForumButton.Margin = new System.Windows.Forms.Padding(0);
+            this.toolBarForumButton.Name = "toolBarForumButton";
+            this.toolBarForumButton.Size = new System.Drawing.Size(91, 70);
+            this.toolBarForumButton.TabIndex = 1;
+            this.toolBarForumButton.Text = "Forum";
+            this.toolBarForumButton.UseVisualStyleBackColor = true;
+            this.toolBarForumButton.Click += new System.EventHandler(this.ToolBarForumButton_Click);
+            // 
+            // toolBarProfileButton
+            // 
+            this.toolBarProfileButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolBarProfileButton.Location = new System.Drawing.Point(0, 0);
+            this.toolBarProfileButton.Margin = new System.Windows.Forms.Padding(0);
+            this.toolBarProfileButton.Name = "toolBarProfileButton";
+            this.toolBarProfileButton.Size = new System.Drawing.Size(91, 70);
+            this.toolBarProfileButton.TabIndex = 0;
+            this.toolBarProfileButton.Text = "Profile";
+            this.toolBarProfileButton.UseVisualStyleBackColor = true;
             // 
             // logoLabel
             // 

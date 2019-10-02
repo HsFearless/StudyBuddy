@@ -37,5 +37,15 @@ namespace studyBuddy
 
             //MessageBox.Show(passwordHasher.newSalt());
         }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using studyBuddy.forumNeeds;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,5 +32,14 @@ namespace studyBuddy
         {
 
         }
+
+        private void ToolBarForumButton_Click(object sender, EventArgs e)
+        {
+            var profile = new forumForm();
+            this.Hide();
+            profile.ShowDialog();
+            this.Visible = true;
+        }
     }
-}
+    }
+//}
