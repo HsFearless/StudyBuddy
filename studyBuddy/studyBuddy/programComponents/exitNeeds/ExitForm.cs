@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddy
+namespace studyBuddy.programComponents.exitNeeds
 {
-    public partial class UserProfileForm : Form
+    public partial class exitForm : Form
     {
-        public UserProfileForm()
+        public exitForm()
         {
             InitializeComponent();
-        }
-
-        private void Labeltest_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -22,12 +22,13 @@ namespace studyBuddy
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
             var user = textUsername.Text;
-            var salt = dataFetcher.getSalt(user);
-            if (user.Length > 0) {
+            if (user.Length > 0)
+            {
+                var salt = dataFetcher.getSalt(user);
                 MessageBox.Show($"Hi, your salt is: {((salt.Length > 0) ? salt : "wtf idk")}");
             }
             MessageBox.Show("Hi");
-            var profile = new UserProfileForm();
+            var profile = new userProfileForm();
             this.Hide();
             profile.ShowDialog();
             this.Visible = true;        }

@@ -48,50 +48,80 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dataNeeds\DataFetcher.cs" />
-    <Compile Include="forumNeeds\BadForum.cs">
+    <Compile Include="programComponents\exitNeeds\ExitForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forumNeeds\BadForum.Designer.cs">
-      <DependentUpon>BadForum.cs</DependentUpon>
+    <Compile Include="programComponents\exitNeeds\ExitForm.Designer.cs">
+      <DependentUpon>ExitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="forumNeeds\BadForumThread.cs">
+    <Compile Include="programComponents\forumNeeds\BadForumThread.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forumNeeds\BadForumThread.Designer.cs">
+    <Compile Include="programComponents\forumNeeds\BadForumThread.Designer.cs">
       <DependentUpon>BadForumThread.cs</DependentUpon>
     </Compile>
-    <Compile Include="loginNeeds\LoginForm.cs">
+    <Compile Include="programComponents\forumNeeds\ForumForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="loginNeeds\LoginForm.Designer.cs">
+    <Compile Include="programComponents\forumNeeds\ForumForm.Designer.cs">
+      <DependentUpon>ForumForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="programComponents\helpNeeds\HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="programComponents\helpNeeds\HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="programComponents\loginNeeds\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="programComponents\loginNeeds\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="dataNeeds\MysqlHandler.cs" />
-    <Compile Include="loginNeeds\PasswordHasher.cs" />
+    <Compile Include="programComponents\loginNeeds\PasswordHasher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="loginNeeds\RegisterForm.cs">
+    <Compile Include="programComponents\loginNeeds\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="loginNeeds\RegisterForm.Designer.cs">
+    <Compile Include="programComponents\loginNeeds\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="forumNeeds\roundButton.cs">
+    <Compile Include="programComponents\forumNeeds\roundButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="profileNeeds\UserProfileForm.cs">
+    <Compile Include="programComponents\profileNeeds\UserProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="profileNeeds\UserProfileForm.Designer.cs">
+    <Compile Include="programComponents\profileNeeds\UserProfileForm.Designer.cs">
       <DependentUpon>UserProfileForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="forumNeeds\BadForum.resx">
-      <DependentUpon>BadForum.cs</DependentUpon>
+    <Compile Include="programComponents\settingsNeeds\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="programComponents\settingsNeeds\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="programComponents\studyBuddyNeeds\studuBuddyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="programComponents\studyBuddyNeeds\studuBuddyForm.Designer.cs">
+      <DependentUpon>studuBuddyForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="programComponents\exitNeeds\ExitForm.resx">
+      <DependentUpon>ExitForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forumNeeds\BadForumThread.resx">
+    <EmbeddedResource Include="programComponents\forumNeeds\BadForumThread.resx">
       <DependentUpon>BadForumThread.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="loginNeeds\LoginForm.resx">
+    <EmbeddedResource Include="programComponents\forumNeeds\ForumForm.resx">
+      <DependentUpon>ForumForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="programComponents\helpNeeds\HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="programComponents\loginNeeds\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -104,11 +134,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="loginNeeds\RegisterForm.resx">
+    <EmbeddedResource Include="programComponents\loginNeeds\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="profileNeeds\UserProfileForm.resx">
+    <EmbeddedResource Include="programComponents\profileNeeds\UserProfileForm.resx">
       <DependentUpon>UserProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="programComponents\settingsNeeds\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="programComponents\studyBuddyNeeds\studuBuddyForm.resx">
+      <DependentUpon>studuBuddyForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -129,5 +165,6 @@
   <ItemGroup>
     <None Include="Resources\expandArrow_20px.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
