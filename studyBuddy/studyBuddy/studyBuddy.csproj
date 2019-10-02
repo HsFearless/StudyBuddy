@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataNeeds\InputValidator.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />
     <Compile Include="programComponents\exitNeeds\ExitForm.cs">
       <SubType>Form</SubType>

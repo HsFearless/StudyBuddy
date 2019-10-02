@@ -31,7 +31,9 @@ namespace studyBuddy
             var profile = new userProfileForm();
             this.Hide();
             profile.ShowDialog();
-            this.Visible = true;        }
+            //this.Visible = true;
+            Application.Exit();
+        }
 
         private void LinkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
