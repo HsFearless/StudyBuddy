@@ -38,7 +38,7 @@ namespace studyBuddy
             var profile = new forumForm();
             this.Hide();
             profile.ShowDialog();
-            this.Visible = true;
+            Application.Exit();
         }
     }
     }
