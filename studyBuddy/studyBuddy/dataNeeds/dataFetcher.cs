@@ -19,6 +19,15 @@ namespace studyBuddy.dataNeeds
             return row[0];
         }
 
+        public string getSalt(System.Net.Mail.MailAddress mail)
+        {
+            string[] row = source.selectOneRow("salt FROM " + MysqlHandler.tblUsers +
+                $" WHERE email = '{mail.Address}' ;");
+            if (row.Length == 0)
+                return "";
+            return row[0];
+        }
+
         public int getKarma(string username)
         {
             return 84845;
