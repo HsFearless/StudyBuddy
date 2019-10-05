@@ -150,6 +150,7 @@
             this.Controls.Add(this.leftToolBar);
             this.MinimumSize = new System.Drawing.Size(896, 504);
             this.Name = "settingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Study Buddy";
             this.leftToolBar.ResumeLayout(false);
             this.leftToolBar.PerformLayout();

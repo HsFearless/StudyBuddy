@@ -10,11 +10,29 @@ using System.Windows.Forms;
 
 namespace studyBuddy.studyBuddyNeeds
 {
-    public partial class studuBuddyForm : Form
+    public partial class studyBuddyForm : Form
     {
-        public studuBuddyForm()
+        public studyBuddyForm()
         {
             InitializeComponent();
+        }
+
+        private void ToolBarProfileButton_Click(object sender, EventArgs e)
+        {
+            var profile = new userProfileForm();
+            this.Hide();
+            profile.ShowDialog();
+            Application.Exit();
+        }
+
+        private void StudyBuddyIwantToLearnLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StudyBuddyFindBuddyButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

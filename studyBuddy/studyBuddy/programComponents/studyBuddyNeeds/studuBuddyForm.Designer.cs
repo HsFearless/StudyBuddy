@@ -1,6 +1,6 @@
 ﻿namespace studyBuddy.studyBuddyNeeds
 {
-    partial class studuBuddyForm
+    partial class studyBuddyForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,12 @@
             this.toolBarForumButton = new System.Windows.Forms.Button();
             this.toolBarProfileButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
+            this.studyBuddyIwantToLearnLabel = new System.Windows.Forms.Label();
+            this.StudyBuddyIwantToLearnBox = new System.Windows.Forms.TextBox();
+            this.StudyBuddyFindBuddyButton = new System.Windows.Forms.Button();
+            this.StudyBuddySearchBuddyGroup = new System.Windows.Forms.GroupBox();
             this.leftToolBar.SuspendLayout();
+            this.StudyBuddySearchBuddyGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // leftToolBar
@@ -130,6 +135,7 @@
             this.toolBarProfileButton.TabIndex = 0;
             this.toolBarProfileButton.Text = "Profile";
             this.toolBarProfileButton.UseVisualStyleBackColor = true;
+            this.toolBarProfileButton.Click += new System.EventHandler(this.ToolBarProfileButton_Click);
             // 
             // logoLabel
             // 
@@ -142,17 +148,68 @@
             this.logoLabel.Text = "Logo\r\n";
             this.logoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // studuBuddyForm
+            // studyBuddyIwantToLearnLabel
+            // 
+            this.studyBuddyIwantToLearnLabel.AutoSize = true;
+            this.studyBuddyIwantToLearnLabel.Location = new System.Drawing.Point(37, 16);
+            this.studyBuddyIwantToLearnLabel.Name = "studyBuddyIwantToLearnLabel";
+            this.studyBuddyIwantToLearnLabel.Size = new System.Drawing.Size(161, 13);
+            this.studyBuddyIwantToLearnLabel.TabIndex = 3;
+            this.studyBuddyIwantToLearnLabel.Text = "I need someone to help me learn";
+            this.studyBuddyIwantToLearnLabel.Click += new System.EventHandler(this.StudyBuddyIwantToLearnLabel_Click);
+            // 
+            // StudyBuddyIwantToLearnBox
+            // 
+            this.StudyBuddyIwantToLearnBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "Kompiuterių architektūra (VU MIF)",
+            "Logika (VU BUS)",
+            "Matematika PS I/III (VU MIF)",
+            "Matematika PS II/III (VU MIF)",
+            "Matematinė logika (VU MIF)",
+            "Bendravimo psichologija (VU FSF)"});
+            this.StudyBuddyIwantToLearnBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.StudyBuddyIwantToLearnBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.StudyBuddyIwantToLearnBox.Location = new System.Drawing.Point(11, 36);
+            this.StudyBuddyIwantToLearnBox.Name = "StudyBuddyIwantToLearnBox";
+            this.StudyBuddyIwantToLearnBox.Size = new System.Drawing.Size(221, 20);
+            this.StudyBuddyIwantToLearnBox.TabIndex = 4;
+            // 
+            // StudyBuddyFindBuddyButton
+            // 
+            this.StudyBuddyFindBuddyButton.Location = new System.Drawing.Point(62, 62);
+            this.StudyBuddyFindBuddyButton.Name = "StudyBuddyFindBuddyButton";
+            this.StudyBuddyFindBuddyButton.Size = new System.Drawing.Size(123, 30);
+            this.StudyBuddyFindBuddyButton.TabIndex = 5;
+            this.StudyBuddyFindBuddyButton.Text = "Find a buddy!";
+            this.StudyBuddyFindBuddyButton.UseVisualStyleBackColor = true;
+            this.StudyBuddyFindBuddyButton.Click += new System.EventHandler(this.StudyBuddyFindBuddyButton_Click);
+            // 
+            // StudyBuddySearchBuddyGroup
+            // 
+            this.StudyBuddySearchBuddyGroup.Controls.Add(this.StudyBuddyFindBuddyButton);
+            this.StudyBuddySearchBuddyGroup.Controls.Add(this.StudyBuddyIwantToLearnBox);
+            this.StudyBuddySearchBuddyGroup.Controls.Add(this.studyBuddyIwantToLearnLabel);
+            this.StudyBuddySearchBuddyGroup.Location = new System.Drawing.Point(370, 137);
+            this.StudyBuddySearchBuddyGroup.Name = "StudyBuddySearchBuddyGroup";
+            this.StudyBuddySearchBuddyGroup.Size = new System.Drawing.Size(244, 106);
+            this.StudyBuddySearchBuddyGroup.TabIndex = 6;
+            this.StudyBuddySearchBuddyGroup.TabStop = false;
+            // 
+            // studyBuddyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 465);
+            this.Controls.Add(this.StudyBuddySearchBuddyGroup);
             this.Controls.Add(this.leftToolBar);
             this.MinimumSize = new System.Drawing.Size(896, 504);
-            this.Name = "studuBuddyForm";
+            this.Name = "studyBuddyForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Study Buddy";
             this.leftToolBar.ResumeLayout(false);
             this.leftToolBar.PerformLayout();
+            this.StudyBuddySearchBuddyGroup.ResumeLayout(false);
+            this.StudyBuddySearchBuddyGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -167,5 +224,9 @@
         private System.Windows.Forms.Button toolBarForumButton;
         private System.Windows.Forms.Button toolBarProfileButton;
         private System.Windows.Forms.Label logoLabel;
+        private System.Windows.Forms.Label studyBuddyIwantToLearnLabel;
+        private System.Windows.Forms.TextBox StudyBuddyIwantToLearnBox;
+        private System.Windows.Forms.Button StudyBuddyFindBuddyButton;
+        private System.Windows.Forms.GroupBox StudyBuddySearchBuddyGroup;
     }
 }

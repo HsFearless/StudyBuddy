@@ -43,7 +43,7 @@
             // textUsername
             // 
             this.textUsername.Location = new System.Drawing.Point(114, 40);
-            this.textUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textUsername.Margin = new System.Windows.Forms.Padding(2);
             this.textUsername.MaxLength = 24;
             this.textUsername.Name = "textUsername";
             this.textUsername.Size = new System.Drawing.Size(126, 20);
@@ -62,7 +62,7 @@
             // textPassword
             // 
             this.textPassword.Location = new System.Drawing.Point(114, 78);
-            this.textPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textPassword.MaxLength = 33;
             this.textPassword.Name = "textPassword";
             this.textPassword.PasswordChar = '◙';
@@ -82,7 +82,7 @@
             // textPassword2
             // 
             this.textPassword2.Location = new System.Drawing.Point(114, 115);
-            this.textPassword2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textPassword2.Margin = new System.Windows.Forms.Padding(2);
             this.textPassword2.MaxLength = 33;
             this.textPassword2.Name = "textPassword2";
             this.textPassword2.PasswordChar = '◙';
@@ -102,7 +102,7 @@
             // buttonSubmit
             // 
             this.buttonSubmit.Location = new System.Drawing.Point(87, 150);
-            this.buttonSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(56, 19);
             this.buttonSubmit.TabIndex = 8;
@@ -143,9 +143,10 @@
             this.ClientSize = new System.Drawing.Size(880, 465);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelTest);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(896, 504);
             this.Name = "RegisterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.Load += new System.EventHandler(this.RegisterForm_Load);
             this.groupBox1.ResumeLayout(false);
