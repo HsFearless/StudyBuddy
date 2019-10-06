@@ -13,7 +13,7 @@ namespace studyBuddy
 {
     public partial class loginForm : Form
     {
-        private DataFetcher dataFetcher = new DataFetcher();
+        private UserDataFetcher dataFetcher = new UserDataFetcher();
         public loginForm()
         {
             InitializeComponent();
@@ -22,20 +22,8 @@ namespace studyBuddy
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
             var user = textUsername.Text;
-            if (InputValidator.validateUsername(user) )
-            {
-                var salt = dataFetcher.getSalt(user);
-                MessageBox.Show($"Hi, your salt is: {((salt.Length > 0) ? salt : "wtf idk")}");
-            }
-            else if(InputValidator.errorNo != InputValidator.TOO_SHORT)
-            {
-                System.Net.Mail.MailAddress email;
-                if(InputValidator.validateEmail(user, out email))
-                {
-                    var salt = dataFetcher.getSalt(email);
-                    MessageBox.Show($"Hey, your salt is: {((salt.Length > 0) ? salt : "wtf idk")}");
-                }
-            }
+            /*if (Auth.) { 
+            }*/
             MessageBox.Show("Hi");
             var profile = new userProfileForm();
             this.Hide();

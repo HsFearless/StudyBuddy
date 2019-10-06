@@ -9,23 +9,18 @@ namespace studyBuddy.dataNeeds
 {
     abstract class InputValidator
     {
-        static public int errorNo { get; private set; } = 0;
-        static public readonly int OK = 0;
-        static public readonly int TOO_SHORT = 1;
-        static public readonly int TOO_LONG = 2;
-        static public readonly int INVALID_CHAR = 3;
-        static public readonly int INVALID_EMAIL = 4;
+        static public readonly Error error = new Error();
 
         static public bool validateUsername(string username)
         {
             if(username.Length < 4) //<=3
             {
-                errorNo = TOO_SHORT;
+                error.no = Error.TOO_SHORT;
                 return false;
             }
             if (username.Length > 24)
             {
-                errorNo = TOO_LONG;
+                error.no = Error.TOO_LONG;
                 return false;
             }
 
@@ -37,12 +32,12 @@ namespace studyBuddy.dataNeeds
             //a-z or A-Z or 0-9 or _
             if (regex.IsMatch(username))
             {
-                errorNo = INVALID_CHAR;
+                error.no = Error.INVALID_CHAR;
                 return false;
             }
 
 
-            errorNo = OK;
+            error.no = Error.OK;
             return true;
         }
 
@@ -51,15 +46,22 @@ namespace studyBuddy.dataNeeds
             try
             {
                 mail = new System.Net.Mail.MailAddress(email);
-                errorNo = OK;
+                error.no = Error.OK;
                 return true;
             }
             catch (FormatException)
             {
-                errorNo = INVALID_EMAIL;
+                error.no = Error.INVALID_EMAIL;
                 mail = null;
                 return false;
             }
+        }
+
+        static public bool validatePassword(UserDataFetcher UDF, string password)
+        {
+            if(UDF.isCorrectPassword(password))
+                return true;
+            return false;
         }
     }
 }

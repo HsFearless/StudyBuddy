@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataNeeds\Error.cs" />
     <Compile Include="dataNeeds\InputValidator.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />
     <Compile Include="programComponents\exitNeeds\ExitForm.cs">
@@ -80,6 +81,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="dataNeeds\MysqlHandler.cs" />
+    <Compile Include="programComponents\loginNeeds\Auth.cs" />
     <Compile Include="programComponents\loginNeeds\PasswordHasher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
