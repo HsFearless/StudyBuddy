@@ -19,7 +19,7 @@ using System.Data.SqlClient;
  * */
 
 using MySql.Data.MySqlClient;
-namespace studyBuddy
+namespace studyBuddy.dataNeeds
 {
     class MysqlHandler
     {

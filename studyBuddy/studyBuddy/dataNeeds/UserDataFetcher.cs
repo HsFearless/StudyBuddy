@@ -9,7 +9,7 @@ namespace studyBuddy.dataNeeds
     class UserDataFetcher
     {
         private MysqlHandler source = new MysqlHandler();
-        private int userId;
+        private int userId = 0;
         private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db
 
         public UserDataFetcher(int userId = 0)
@@ -23,7 +23,7 @@ namespace studyBuddy.dataNeeds
                 $" WHERE username = '{username}' ;");
             if (row.Length == 0)
                 return "";
-            userId = Convert.ToInt16(row[1]);
+            userId = Convert.ToInt32(row[1]);
             return row[0];
         }
 
@@ -33,7 +33,7 @@ namespace studyBuddy.dataNeeds
                 $" WHERE email = '{mail.Address}' ;");
             if (row.Length == 0)
                 return "";
-            userId = Convert.ToInt16(row[1]);
+            userId = Convert.ToInt32(row[1]);
             return row[0];
         }
 
@@ -49,6 +49,20 @@ namespace studyBuddy.dataNeeds
         public int getKarma(string username)
         {
             return 84845;
+        }
+
+        public int getId()
+        {
+            return userId;
+        }
+
+        public int getId(string username)
+        {
+            string[] row = source.selectOneRow("ID FROM " + MysqlHandler.tblUsers + 
+                $" WHERE username = '{username}';");
+            if (row.Length != 1)
+                return 0;
+            return Convert.ToInt32(row[0]);
         }
     }
 }

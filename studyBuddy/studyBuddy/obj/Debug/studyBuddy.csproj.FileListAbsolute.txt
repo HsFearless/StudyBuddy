@@ -20,8 +20,6 @@ C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CoreCompileInputs.cache
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.exe
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.pdb
-C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.loginForm.resources
-C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.RegisterForm.resources
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.UserProfileForm.resources
 C:\Users\Martynas\Source\Repos\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.exe.config
 C:\Users\Martynas\Source\Repos\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.exe
@@ -73,3 +71,5 @@ C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.settingsNeeds.settingsForm.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.studyBuddyNeeds.studyBuddyForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.studyBuddyNeeds.studyBuddyForm.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.loginForm.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.RegisterForm.resources

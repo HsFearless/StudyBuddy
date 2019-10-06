@@ -1,4 +1,4 @@
-﻿namespace studyBuddy
+﻿namespace studyBuddy.programComponents.loginNeeds
 {
     partial class loginForm
     {
@@ -79,8 +79,8 @@
             // 
             // linkLabelRegister
             // 
-            this.linkLabelRegister.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.linkLabelRegister.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabelRegister.AutoSize = true;
             this.linkLabelRegister.Location = new System.Drawing.Point(207, 102);
@@ -105,8 +105,8 @@
             // 
             // groupLogin
             // 
-            this.groupLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupLogin.Controls.Add(this.buttonLogin);
             this.groupLogin.Controls.Add(this.linkLabelRegister);

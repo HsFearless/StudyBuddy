@@ -16,6 +16,8 @@ namespace studyBuddy.programComponents.loginNeeds
 
             string salt;
 
+            if (!InputValidator.validatePassword(password))
+                return error.setErrorAndReturnFalse(Error.WRONG_PASSWORD);
             //is it username?
             if (InputValidator.validateUsername(username))
             {
@@ -58,14 +60,24 @@ namespace studyBuddy.programComponents.loginNeeds
 
             //and finally check it
 
-            if (InputValidator.validatePassword(UDF, password))
+            if (InputValidator.validatePasswordMatch(UDF, password))
             {
                 error.no = Error.OK;
                 //set log in timestamp
                 return true;
             }
 
+            error.no = Error.WRONG_PASSWORD;
             return false;
+        }//logIn
+
+        public static bool setLoggedIn(UserDataFetcher UDF) //# change to private
+        {
+            if (!InputValidator.validateId(UDF.getId()))
+                return error.setErrorAndReturnFalse(Error.USER_NOT_FOUND);
+            System.Windows.Forms.MessageBox.Show(DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString());
+            return true;
         }
-    }
-}
+
+    }//class
+}//namespace

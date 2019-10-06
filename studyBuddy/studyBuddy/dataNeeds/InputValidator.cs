@@ -57,11 +57,30 @@ namespace studyBuddy.dataNeeds
             }
         }
 
-        static public bool validatePassword(UserDataFetcher UDF, string password)
+        static public bool validatePassword(string pass)
+        {
+            if (pass == null)
+                return error.setErrorAndReturnFalse(Error.TOO_SHORT);
+            if (pass.Length < 8)
+                return error.setErrorAndReturnFalse(Error.TOO_SHORT);
+            if (pass.Length > 52)
+                return error.setErrorAndReturnFalse(Error.TOO_LONG);
+            error.no = Error.OK;
+            return true;
+        }
+
+        static internal bool validatePasswordMatch(UserDataFetcher UDF, string password)
         {
             if(UDF.isCorrectPassword(password))
                 return true;
             return false;
+        }
+
+        static public bool validateId(int id)
+        {
+            if (id <= 0)
+                return false;
+            return true;
         }
     }
 }

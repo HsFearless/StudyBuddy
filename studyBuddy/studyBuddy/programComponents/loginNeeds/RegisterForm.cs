@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddy
+namespace studyBuddy.programComponents.loginNeeds
 {
     public partial class RegisterForm : Form
     {
@@ -32,7 +32,7 @@ namespace studyBuddy
                 $"po converTo64 ir convertFrom64 ar sutapo? - {(res1.Equals(res2) ? "taip" : "ne")}" +
                 $"\n" +
                 $"{res1}\n{res2}";
-            var mysql = new MysqlHandler();
+            var mysql = new dataNeeds.MysqlHandler();
             mysql.testSelectAllUsers();
             MessageBox.Show(mysql.messageToOutterWorld + mysql.lastError);
 
