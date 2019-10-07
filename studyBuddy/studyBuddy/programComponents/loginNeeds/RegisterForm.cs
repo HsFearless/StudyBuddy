@@ -48,5 +48,10 @@ namespace studyBuddy.programComponents.loginNeeds
         {
 
         }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

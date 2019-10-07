@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="programComponents\forumNeeds\ProblemDiscussion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="programComponents\forumNeeds\ProblemDiscussion.Designer.cs">
+      <DependentUpon>ProblemDiscussion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="programComponents\forumNeeds\CreateProblem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="programComponents\forumNeeds\CreateProblem.Designer.cs">
+      <DependentUpon>CreateProblem.cs</DependentUpon>
+    </Compile>
     <Compile Include="dataNeeds\Error.cs" />
     <Compile Include="dataNeeds\InputValidator.cs" />
     <Compile Include="dataNeeds\UserDataFetcher.cs" />
@@ -55,12 +67,6 @@
     </Compile>
     <Compile Include="programComponents\exitNeeds\ExitForm.Designer.cs">
       <DependentUpon>ExitForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="programComponents\forumNeeds\BadForumThread.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="programComponents\forumNeeds\BadForumThread.Designer.cs">
-      <DependentUpon>BadForumThread.cs</DependentUpon>
     </Compile>
     <Compile Include="programComponents\forumNeeds\ForumForm.cs">
       <SubType>Form</SubType>
@@ -112,14 +118,17 @@
     <Compile Include="programComponents\studyBuddyNeeds\studuBuddyForm.Designer.cs">
       <DependentUpon>studuBuddyForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="programComponents\forumNeeds\CreateProblem.resx">
+      <DependentUpon>CreateProblem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="programComponents\exitNeeds\ExitForm.resx">
       <DependentUpon>ExitForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="programComponents\forumNeeds\BadForumThread.resx">
-      <DependentUpon>BadForumThread.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="programComponents\forumNeeds\ForumForm.resx">
       <DependentUpon>ForumForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="programComponents\forumNeeds\ProblemDiscussion.resx">
+      <DependentUpon>ProblemDiscussion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="programComponents\helpNeeds\HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>

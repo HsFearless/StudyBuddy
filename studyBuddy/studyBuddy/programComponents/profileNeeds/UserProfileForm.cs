@@ -36,7 +36,7 @@ namespace studyBuddy
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)
         {
-            var profile = new forumForm();
+            var profile = new ForumForm();
             this.Hide();
             profile.ShowDialog();
             Application.Exit();
