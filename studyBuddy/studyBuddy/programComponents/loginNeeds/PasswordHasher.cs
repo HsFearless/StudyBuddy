@@ -12,7 +12,7 @@ namespace studyBuddy
         private int salt64Length;
         private int derivedLength;
         private System.Security.Cryptography.RNGCryptoServiceProvider RNG;
-        public string salt { get; private set; }
+        private string salt;
 
         public PasswordHasher(int saltLength = 12, int derivedLength = 39)
         {
@@ -22,11 +22,18 @@ namespace studyBuddy
             salt64Length = Convert.ToBase64String(newSalt()).Length;
         }
 
-        public byte[] newSalt()
+        private byte[] newSalt()
         {
             var salt = new byte[saltLength];
             RNG.GetBytes(salt);
             return salt;
+        }
+
+        public string getLastUsedSaltAndForgetIt()
+        {
+            string temp = salt;
+            salt = "";
+            return temp;
         }
 
         public string hash(string pass, string saltASCII = null, bool saveUsedSalt = false)

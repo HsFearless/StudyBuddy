@@ -168,10 +168,24 @@ namespace studyBuddy.dataNeeds
                         toReturn[i] = result[i] + "";
                     //break after 1st iteration
                     result.Close();
+                    con.Close();
                     return toReturn;
                 }
             }
             return toReturn;
+        }
+
+        public bool insertInto(string sqlWithoutInsertInto)
+        {
+            prepareSql(ref sqlWithoutInsertInto);
+            string fullSql = "INSERT INTO";
+            fullSql += sqlWithoutInsertInto;
+            if (!openNewConnection())
+                return false;
+            cmdCon = new MySqlCommand(fullSql, this.con);
+            cmdCon.ExecuteNonQuery();
+            con.Close();
+            return true; //probably?
         }
 
 

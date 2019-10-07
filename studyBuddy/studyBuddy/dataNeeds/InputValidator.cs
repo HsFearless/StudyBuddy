@@ -9,6 +9,7 @@ namespace studyBuddy.dataNeeds
 {
     abstract class InputValidator
     {
+        //let us keep positive flow returns as true
         static public readonly Error error = new Error();
 
         static public bool validateUsername(string username)
@@ -24,7 +25,7 @@ namespace studyBuddy.dataNeeds
                 return false;
             }
 
-            Regex regex = new Regex(@"\W", RegexOptions.ECMAScript);
+            Regex regex = new Regex(@"\W", RegexOptions.ECMAScript); //^regex
             //ECMAScript to narrow \w match to [a-zA-Z0-9_]
             //look closely. It is \W there, not \w
             //therefore it is true if we find
@@ -57,7 +58,7 @@ namespace studyBuddy.dataNeeds
             }
         }
 
-        static public bool validatePassword(string pass)
+        static public bool validatePassword(string pass, string pass2 = null)
         {
             if (pass == null)
                 return error.setErrorAndReturnFalse(Error.TOO_SHORT);
@@ -65,15 +66,34 @@ namespace studyBuddy.dataNeeds
                 return error.setErrorAndReturnFalse(Error.TOO_SHORT);
             if (pass.Length > 52)
                 return error.setErrorAndReturnFalse(Error.TOO_LONG);
+            if (pass2 != null)
+            {
+                if (!pass.Equals(pass2))
+                    return error.setErrorAndReturnFalse(Error.PASSWORDS_NOT_MATCH);
+            }
             error.no = Error.OK;
             return true;
         }
 
-        static internal bool validatePasswordMatch(UserDataFetcher UDF, string password)
+        static internal bool checkPasswordMatch(UserDataFetcher UDF, string password)
         {
             if(UDF.isCorrectPassword(password))
                 return true;
             return false;
+        }
+
+        static public bool checkEmailNotTaken(UserDataFetcher UDF, System.Net.Mail.MailAddress mail)
+        {
+            if (UDF.isEmailTaken(mail))
+                return false;
+            return true;
+        }
+
+        static public bool checkUsernameNotTaken(UserDataFetcher UDF, string username)
+        {
+            if (UDF.isUsernameTaken(username))
+                return false;
+            return true;
         }
 
         static public bool validateId(int id)
@@ -82,5 +102,6 @@ namespace studyBuddy.dataNeeds
                 return false;
             return true;
         }
+
     }
 }

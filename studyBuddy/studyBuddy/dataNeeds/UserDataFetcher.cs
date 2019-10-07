@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds
 {
-    class UserDataFetcher
+    class UserDataFetcher : UserDataAbstract
     {
-        private MysqlHandler source = new MysqlHandler();
-        private int userId = 0;
+        
         private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db
 
-        public UserDataFetcher(int userId = 0)
-        {
-            this.userId = (this.userId <= 0) ? 0 : userId;
-        }
+        
 
         public string getSalt(string username)
         {
@@ -46,9 +42,27 @@ namespace studyBuddy.dataNeeds
             return true;
         }
 
+        internal bool isEmailTaken(System.Net.Mail.MailAddress mail)
+        {
+            string[] row = source.selectOneRow("id FROM " + MysqlHandler.tblUsers +
+                $" WHERE email = '{mail.Address}' ;");
+            if (row.Length == 0)
+                return false;
+            return true;
+        }
+
+        internal bool isUsernameTaken(string username)
+        {
+            string[] row = source.selectOneRow("id FROM " + MysqlHandler.tblUsers +
+                $" WHERE username = '{username}' ;");
+            if (row.Length == 0)
+                return false;
+            return true;
+        }
+
         public int getKarma(string username)
         {
-            return 84845;
+            return 999;
         }
 
         public int getId()

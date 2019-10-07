@@ -13,6 +13,7 @@ namespace studyBuddy.programComponents.loginNeeds
 {
     public partial class loginForm : Form
     {
+        private bool skipLogin = false;
         private UserDataFetcher dataFetcher = new UserDataFetcher();
         public loginForm()
         {
@@ -23,19 +24,25 @@ namespace studyBuddy.programComponents.loginNeeds
         {
             var user = textUsername.Text;
             var pass = textPassword.Text;
-            if (Auth.logIn(dataFetcher, user, pass))
+            if (skipLogin || Auth.logIn(dataFetcher, user, pass))
             {
-                MessageBox.Show("You are in");
+                MessageBox.Show("Hi\n" +
+                    "You are in");
                 Auth.setLoggedIn(dataFetcher);
+                this.Hide();
+                var profile = new userProfileForm();
+                profile.ShowDialog();
+                //this.Visible = true;
+                Application.Exit();
             }
             else
-                MessageBox.Show(Auth.error.no.ToString());
-            MessageBox.Show("Hi");
-            var profile = new userProfileForm();
-            this.Hide();
-            profile.ShowDialog();
-            //this.Visible = true;
-            Application.Exit();
+            {
+                MessageBox.Show("No hello for you.\n" +
+                    Auth.error.no.ToString() + $" {Auth.error.message()}");
+                var pressedButton = MessageBox.Show("Want to skip login next time?", "skip?", MessageBoxButtons.YesNoCancel);
+                if (pressedButton == DialogResult.Yes)
+                    skipLogin = true;
+            }
         }
 
         private void LinkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

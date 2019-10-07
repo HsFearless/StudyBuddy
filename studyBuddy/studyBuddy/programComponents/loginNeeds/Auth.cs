@@ -10,7 +10,7 @@ namespace studyBuddy.programComponents.loginNeeds
     abstract internal class Auth
     {
         private static PasswordHasher hasher = new PasswordHasher(saltLength:12, derivedLength:39); // not base64 length !!!
-        public static Error error = new Error();
+        public static Error error = new Error(Error.UNKNOWN);
         public static bool logIn(UserDataFetcher UDF, string username, string password)
         {
 
@@ -60,7 +60,7 @@ namespace studyBuddy.programComponents.loginNeeds
 
             //and finally check it
 
-            if (InputValidator.validatePasswordMatch(UDF, password))
+            if (InputValidator.checkPasswordMatch(UDF, password))
             {
                 error.no = Error.OK;
                 //set log in timestamp
@@ -76,6 +76,39 @@ namespace studyBuddy.programComponents.loginNeeds
             if (!InputValidator.validateId(UDF.getId()))
                 return error.setErrorAndReturnFalse(Error.USER_NOT_FOUND);
             System.Windows.Forms.MessageBox.Show(DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString());
+            return true;
+        }
+
+        public static bool register(UserDataFetcher UDF, string username, string email, string password, string passwordRepeat)
+        {
+            error.no = Error.OK;
+            //valid username password
+            if (!InputValidator.validateUsername(username))
+                return error.setErrorAndReturnFalse(InputValidator.error.no); //#trigger username
+            if (!InputValidator.validatePassword(password, passwordRepeat))
+                return error.setErrorAndReturnFalse(InputValidator.error.no); //#trigger pass
+
+            //valid email
+            System.Net.Mail.MailAddress mail;
+            if (!InputValidator.validateEmail(email, out mail))
+                return error.setErrorAndReturnFalse(Error.INVALID_EMAIL);
+
+            //taken email username
+            if (!InputValidator.checkEmailNotTaken(UDF, mail))
+                return error.setErrorAndReturnFalse(Error.EMAIL_TAKEN);
+            if (!InputValidator.checkUsernameNotTaken(UDF, username))
+                return error.setErrorAndReturnFalse(Error.USERNAME_TAKEN);
+
+            //hash and retrieve used salt
+            string hashedPass = hasher.hash(password, saveUsedSalt: true); //^named argument
+            string usedSalt = hasher.getLastUsedSaltAndForgetIt();
+
+            //push user
+            UserDataPusher.pushNewUser(username, mail, hashedPass, usedSalt);
+
+            //was it successful?
+            if (InputValidator.checkUsernameNotTaken(UDF, username))
+                return error.setErrorAndReturnFalse(Error.PUSH_ERROR);
             return true;
         }
 
