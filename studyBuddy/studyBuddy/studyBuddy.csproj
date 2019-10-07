@@ -61,7 +61,9 @@
     </Compile>
     <Compile Include="dataNeeds\Error.cs" />
     <Compile Include="dataNeeds\InputValidator.cs" />
+    <Compile Include="dataNeeds\UserDataAbstract.cs" />
     <Compile Include="dataNeeds\UserDataFetcher.cs" />
+    <Compile Include="dataNeeds\UserDataPusher.cs" />
     <Compile Include="programComponents\exitNeeds\ExitForm.cs">
       <SubType>Form</SubType>
     </Compile>

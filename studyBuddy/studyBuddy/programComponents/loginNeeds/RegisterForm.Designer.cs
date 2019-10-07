@@ -37,12 +37,14 @@
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.labelTest = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.textEmail = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textUsername
             // 
-            this.textUsername.Location = new System.Drawing.Point(152, 49);
+            this.textUsername.Location = new System.Drawing.Point(152, 30);
             this.textUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textUsername.MaxLength = 24;
             this.textUsername.Name = "textUsername";
@@ -52,7 +54,7 @@
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(7, 49);
+            this.labelUsername.Location = new System.Drawing.Point(4, 30);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(79, 17);
             this.labelUsername.TabIndex = 2;
@@ -60,18 +62,18 @@
             // 
             // textPassword
             // 
-            this.textPassword.Location = new System.Drawing.Point(152, 96);
+            this.textPassword.Location = new System.Drawing.Point(152, 108);
             this.textPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textPassword.MaxLength = 33;
             this.textPassword.Name = "textPassword";
             this.textPassword.PasswordChar = '◙';
             this.textPassword.Size = new System.Drawing.Size(167, 22);
-            this.textPassword.TabIndex = 5;
+            this.textPassword.TabIndex = 3;
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(7, 95);
+            this.labelPassword.Location = new System.Drawing.Point(7, 108);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(76, 17);
             this.labelPassword.TabIndex = 4;
@@ -79,18 +81,18 @@
             // 
             // textPassword2
             // 
-            this.textPassword2.Location = new System.Drawing.Point(152, 142);
+            this.textPassword2.Location = new System.Drawing.Point(152, 144);
             this.textPassword2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textPassword2.MaxLength = 33;
             this.textPassword2.Name = "textPassword2";
             this.textPassword2.PasswordChar = '◙';
             this.textPassword2.Size = new System.Drawing.Size(167, 22);
-            this.textPassword2.TabIndex = 7;
+            this.textPassword2.TabIndex = 4;
             // 
             // labelPassword2
             // 
             this.labelPassword2.AutoSize = true;
-            this.labelPassword2.Location = new System.Drawing.Point(7, 140);
+            this.labelPassword2.Location = new System.Drawing.Point(7, 147);
             this.labelPassword2.Name = "labelPassword2";
             this.labelPassword2.Size = new System.Drawing.Size(76, 17);
             this.labelPassword2.TabIndex = 6;
@@ -102,7 +104,7 @@
             this.buttonSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
-            this.buttonSubmit.TabIndex = 8;
+            this.buttonSubmit.TabIndex = 5;
             this.buttonSubmit.Text = "submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.ButtonSubmit_Click);
@@ -118,6 +120,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelEmail);
+            this.groupBox1.Controls.Add(this.textEmail);
             this.groupBox1.Controls.Add(this.buttonSubmit);
             this.groupBox1.Controls.Add(this.textPassword2);
             this.groupBox1.Controls.Add(this.labelPassword2);
@@ -133,7 +137,24 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create an account";
-            this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(4, 67);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(45, 17);
+            this.labelEmail.TabIndex = 10;
+            this.labelEmail.Text = "email:";
+            // 
+            // textEmail
+            // 
+            this.textEmail.Location = new System.Drawing.Point(152, 67);
+            this.textEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textEmail.MaxLength = 24;
+            this.textEmail.Name = "textEmail";
+            this.textEmail.Size = new System.Drawing.Size(167, 22);
+            this.textEmail.TabIndex = 2;
             // 
             // RegisterForm
             // 
@@ -165,5 +186,7 @@
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.Label labelTest;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.TextBox textEmail;
     }
 }
