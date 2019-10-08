@@ -37,9 +37,9 @@ namespace studyBuddy.programComponents.loginNeeds
             }
             else
             {
-                MessageBox.Show("No hello for you.\n" +
-                    Auth.error.no.ToString() + $" {Auth.error.message()}");
-                var pressedButton = MessageBox.Show("Want to skip login next time?", "skip?", MessageBoxButtons.YesNoCancel);
+                var pressedButton = MessageBox.Show("No hello for you.\n" +
+                    $" {Auth.error.message()}\n\n" +
+                    "Want to skip login next time?", "skip?", MessageBoxButtons.YesNoCancel);
                 if (pressedButton == DialogResult.Yes)
                     skipLogin = true;
             }
@@ -60,7 +60,7 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            textUsername.Text = UserDataFetcher.getLastUsedUsername();
         }
     }
 }

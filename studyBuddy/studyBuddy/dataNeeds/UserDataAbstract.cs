@@ -9,6 +9,7 @@ namespace studyBuddy.dataNeeds
     abstract class UserDataAbstract
     {
         internal protected static MysqlHandler staticSource = new MysqlHandler();
+        internal protected static FileHandler file = new FileHandler("sb.txt");
         internal protected MysqlHandler source = new MysqlHandler();
         internal protected int userId = 0;
 

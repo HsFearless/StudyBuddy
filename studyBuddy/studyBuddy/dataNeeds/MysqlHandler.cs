@@ -31,7 +31,7 @@ namespace studyBuddy.dataNeeds
         private int port;
         private MySqlConnection con;
         private MySqlCommand cmdCon;
-        public bool ready { get; private set; } = false;
+        public bool ready { get; private set; } = false;//^auto
         public string messageToOutterWorld = "";
         public string lastError = "";
         //private Data.MySqlClient a;

@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataNeeds\FileHandler.cs" />
+    <Compile Include="dataNeeds\Rows.cs" />
+    <Compile Include="extensions\LongExtensions.cs" />
     <Compile Include="programComponents\forumNeeds\ProblemDiscussion.cs">
       <SubType>Form</SubType>
     </Compile>

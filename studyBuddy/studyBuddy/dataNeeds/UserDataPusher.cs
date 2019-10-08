@@ -15,5 +15,10 @@ namespace studyBuddy.dataNeeds
                 "(username, email, password, salt) VALUES" +
                 $"('{user}', '{email.Address}', '{hashPass}', '{salt}') ;"); //you sure it safe not to check for " ' " in strings?
         }
+
+        static internal void pushToFile(string text)
+        {
+            file.write(text);
+        }
     }
 }

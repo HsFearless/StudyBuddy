@@ -14,7 +14,6 @@ C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.exe
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.pdb
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csprojAssemblyReference.cache
-C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.createProblemForm.resources
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.Properties.Resources.resources
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.GenerateResource.cache
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CoreCompileInputs.cache
@@ -98,3 +97,5 @@ D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\MySql.Data.xml
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CopyComplete
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.createProblem.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.ProblemDiscussion.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.CreateProblem.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.ProblemDiscussion.resources

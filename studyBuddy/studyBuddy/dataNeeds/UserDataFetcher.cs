@@ -78,5 +78,20 @@ namespace studyBuddy.dataNeeds
                 return 0;
             return Convert.ToInt32(row[0]);
         }
+
+        public static string getLastUsedUsername()
+        {
+            return file.read();
+        }
+
+        public long getCurrentUserTimeStamp()
+        {
+            return 0;//#
+        }
+
+        public static long getTimeStamp()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        }
     }
 }

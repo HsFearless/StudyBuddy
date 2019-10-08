@@ -38,7 +38,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 MessageBox.Show($"congratulations {textUsername.Text}");
             else
             {
-                MessageBox.Show($"error: {Auth.error.no}  {Auth.error.message()}");
+                MessageBox.Show($"error:  {Auth.error.message()}");
             }
             var mysql = new dataNeeds.MysqlHandler();
             mysql.testSelectAllUsers();
