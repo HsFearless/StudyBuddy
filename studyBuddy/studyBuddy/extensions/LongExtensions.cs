@@ -9,9 +9,9 @@ namespace studyBuddy.extensions
 {
     static class LongExtensions
     {
-        static public bool isTimeStampOlderThan(this long timeStamp, int hours)//^extension
+        static public bool IsTimeStampOlderThan(this long timeStamp, int hours)//^extension
         {
-            long now = UserDataFetcher.getTimeStamp();
+            long now = UserDataFetcher.GetTimeStamp();
             now = now - timeStamp;
             if (now <= 0)
                 return false;

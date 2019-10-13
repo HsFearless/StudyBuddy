@@ -36,10 +36,10 @@ namespace studyBuddy.dataNeeds
         public string lastError = "";
         //private Data.MySqlClient a;
 
-        private void initialize()
+        private void Initialize()
         {
-            connect();
-            openConnection();
+            Connect();
+            OpenConnection();
             messageToOutterWorld = con.State.ToString();
             ready = (con.State == System.Data.ConnectionState.Open) ? true : false;
         }
@@ -51,7 +51,7 @@ namespace studyBuddy.dataNeeds
             this.password = password;
             this.database = database;
             this.port = port;
-            initialize();
+            Initialize();
         }
         
         public MysqlHandler()
@@ -61,7 +61,7 @@ namespace studyBuddy.dataNeeds
             password = "rw0faFJV0H";
             database = "cDKryxhEGc";
             port = 3306;
-            initialize();
+            Initialize();
         }
 
         ~MysqlHandler()
@@ -71,7 +71,7 @@ namespace studyBuddy.dataNeeds
             con.Close();
         }
 
-        private void connect()
+        private void Connect()
         {
             string conArgs = $"server={this.host};port={this.port};database={this.database};" +
                 $"username={this.username};password={this.password};";
@@ -79,7 +79,7 @@ namespace studyBuddy.dataNeeds
             messageToOutterWorld = this.con.ToString();
         }
 
-        private bool openConnection()
+        private bool OpenConnection()
         {
             try
             {
@@ -107,26 +107,26 @@ namespace studyBuddy.dataNeeds
                 return false;
             }
         }
-        private bool openNewConnection()
+        private bool OpenNewConnection()
         {
             con.Close();
-            return openConnection();
+            return OpenConnection();
         }
 
-        private void prepareSql(ref string given)
+        private void PrepareSql(ref string given)
         {
             given = (given[0] == ' ') ? given : " " + given;
             given = (given[given.Length - 1] == ';') ? given : given + ";";
             return ;
         }
-        public List<string[]> select(string sqlWithoutSelect)
+        public List<string[]> Select(string sqlWithoutSelect)
         {
             //string[,] toReturn = new string[0,0];
             List<string[]> toReturn = new List<string[]>();
-            prepareSql(ref sqlWithoutSelect);
+            PrepareSql(ref sqlWithoutSelect);
             string fullSql = "SELECT";
             fullSql += sqlWithoutSelect;
-            if (openNewConnection())
+            if (OpenNewConnection())
             {
                 //try
                 //{
@@ -150,13 +150,13 @@ namespace studyBuddy.dataNeeds
             return toReturn;
         }
 
-        public string[] selectOneRow(string sqlWithoutSelect)
+        public string[] SelectOneRow(string sqlWithoutSelect)
         {
             string[] toReturn = new string[0];
-            prepareSql(ref sqlWithoutSelect);
+            PrepareSql(ref sqlWithoutSelect);
             string fullSql = "SELECT";
             fullSql += sqlWithoutSelect;
-            if(openNewConnection())
+            if(OpenNewConnection())
             {
                 cmdCon = new MySqlCommand(fullSql, this.con);
                 var result = cmdCon.ExecuteReader();
@@ -175,12 +175,12 @@ namespace studyBuddy.dataNeeds
             return toReturn;
         }
 
-        public bool insertInto(string sqlWithoutInsertInto)
+        public bool InsertInto(string sqlWithoutInsertInto)
         {
-            prepareSql(ref sqlWithoutInsertInto);
+            PrepareSql(ref sqlWithoutInsertInto);
             string fullSql = "INSERT INTO";
             fullSql += sqlWithoutInsertInto;
-            if (!openNewConnection())
+            if (!OpenNewConnection())
                 return false;
             cmdCon = new MySqlCommand(fullSql, this.con);
             cmdCon.ExecuteNonQuery();
@@ -190,9 +190,9 @@ namespace studyBuddy.dataNeeds
 
 
 
-        public void testSelectAllUsers()
+        public void TestSelectAllUsers()
         {
-            if (!openConnection())
+            if (!OpenConnection())
                 return;
 
             string aut = "";

@@ -57,13 +57,13 @@ namespace studyBuddy.dataNeeds
             this.no = no;
         }
 
-        public bool setErrorAndReturnFalse(code no)
+        public bool SetErrorAndReturnFalse(code no)
         {
             this.no = no;
             return false;
         }
 
-        public static string message(code no)
+        public static string Message(code no)
         {
             switch (no)
             {
@@ -96,7 +96,7 @@ namespace studyBuddy.dataNeeds
             }
         }
 
-        public string message()
+        public string Message()
         {
             //return message(this.no);
             return $"Error: {no}";

@@ -17,22 +17,22 @@ namespace studyBuddy.dataNeeds
             this.fileName = fileName;
             directory = @"C:\Users\Public\StuddyBuddy\";
             fullPath = System.IO.Path.Combine(directory, this.fileName);
-            checkPrepareDir();
+            CheckPrepareDir();
         }
 
-        public void write(string text)
+        public void Write(string text)
         {
             System.IO.File.WriteAllText(fullPath, text);
         }
 
-        public string read()
+        public string Read()
         {
             if (!System.IO.File.Exists(fullPath))
                 return "";
             return System.IO.File.ReadAllText(fullPath);
         }
 
-        private void checkPrepareDir()
+        private void CheckPrepareDir()
         {
             if (!System.IO.Directory.Exists(directory))
                 System.IO.Directory.CreateDirectory(directory);

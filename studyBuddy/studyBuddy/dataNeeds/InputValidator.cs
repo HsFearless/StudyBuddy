@@ -13,7 +13,7 @@ namespace studyBuddy.dataNeeds
         static public Error error = new Error(Error.code.UNKNOWN);
 
 
-        static public bool validateUsername(string username)
+        static public bool ValidateUsername(string username)
         {
             if(username.Length < 4) //<=3
             {
@@ -43,7 +43,7 @@ namespace studyBuddy.dataNeeds
             return true;
         }
 
-        static public bool validateEmail(string email, out System.Net.Mail.MailAddress mail)
+        static public bool ValidateEmail(string email, out System.Net.Mail.MailAddress mail)
         {
             try
             {
@@ -59,45 +59,45 @@ namespace studyBuddy.dataNeeds
             }
         }
 
-        static public bool validatePassword(string pass, string pass2 = null)
+        static public bool ValidatePassword(string pass, string pass2 = null)
         {
             if (pass == null)
-                return error.setErrorAndReturnFalse(Error.code.TOO_SHORT);
+                return error.SetErrorAndReturnFalse(Error.code.TOO_SHORT);
             if (pass.Length < 8)
-                return error.setErrorAndReturnFalse(Error.code.TOO_SHORT);
+                return error.SetErrorAndReturnFalse(Error.code.TOO_SHORT);
             if (pass.Length > 52)
-                return error.setErrorAndReturnFalse(Error.code.TOO_LONG);
+                return error.SetErrorAndReturnFalse(Error.code.TOO_LONG);
             if (pass2 != null)
             {
                 if (!pass.Equals(pass2))
-                    return error.setErrorAndReturnFalse(Error.code.PASSWORDS_NOT_MATCH);
+                    return error.SetErrorAndReturnFalse(Error.code.PASSWORDS_NOT_MATCH);
             }
             error.no = Error.code.OK;
             return true;
         }
 
-        static internal bool checkPasswordMatch(UserDataFetcher UDF, string password)
+        static internal bool CheckPasswordMatch(UserDataFetcher UDF, string password)
         {
-            if(UDF.isCorrectPassword(password))
+            if(UDF.IsCorrectPassword(password))
                 return true;
             return false;
         }
 
-        static public bool checkEmailNotTaken(UserDataFetcher UDF, System.Net.Mail.MailAddress mail)
+        static public bool CheckEmailNotTaken(UserDataFetcher UDF, System.Net.Mail.MailAddress mail)
         {
-            if (UDF.isEmailTaken(mail))
+            if (UDF.IsEmailTaken(mail))
                 return false;
             return true;
         }
 
-        static public bool checkUsernameNotTaken(UserDataFetcher UDF, string username)
+        static public bool CheckUsernameNotTaken(UserDataFetcher UDF, string username)
         {
-            if (UDF.isUsernameTaken(username))
+            if (UDF.IsUsernameTaken(username))
                 return false;
             return true;
         }
 
-        static public bool validateId(int id)
+        static public bool ValidateId(int id)
         {
             if (id <= 0)
                 return false;

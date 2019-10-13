@@ -11,14 +11,14 @@ namespace studyBuddy.dataNeeds
         //staticSource, userId from abstract class
         static internal void pushNewUser(string user, System.Net.Mail.MailAddress email, string hashPass, string salt)
         {
-            staticSource.insertInto(MysqlHandler.tblUsers +
+            staticSource.InsertInto(MysqlHandler.tblUsers +
                 "(username, email, password, salt) VALUES" +
                 $"('{user}', '{email.Address}', '{hashPass}', '{salt}') ;"); //you sure it safe not to check for " ' " in strings?
         }
 
         static internal void pushToFile(string text)
         {
-            file.write(text);
+            file.Write(text);
         }
     }
 }
