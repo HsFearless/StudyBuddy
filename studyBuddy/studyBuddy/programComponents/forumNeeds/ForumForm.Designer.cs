@@ -46,6 +46,8 @@
             this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sortBySubjectButton = new System.Windows.Forms.Button();
             this.addNewGroupBox = new System.Windows.Forms.GroupBox();
+            this.filterSubjectsComboBox = new System.Windows.Forms.ComboBox();
+            this.filterLabel = new System.Windows.Forms.Label();
             this.leftToolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.problemsGridView)).BeginInit();
             this.addNewGroupBox.SuspendLayout();
@@ -179,7 +181,7 @@
             // 
             // sortByNameButton
             // 
-            this.sortByNameButton.Location = new System.Drawing.Point(128, 87);
+            this.sortByNameButton.Location = new System.Drawing.Point(119, 67);
             this.sortByNameButton.Margin = new System.Windows.Forms.Padding(2);
             this.sortByNameButton.Name = "sortByNameButton";
             this.sortByNameButton.Size = new System.Drawing.Size(115, 32);
@@ -232,7 +234,7 @@
             // 
             // sortBySubjectButton
             // 
-            this.sortBySubjectButton.Location = new System.Drawing.Point(261, 87);
+            this.sortBySubjectButton.Location = new System.Drawing.Point(119, 25);
             this.sortBySubjectButton.Margin = new System.Windows.Forms.Padding(2);
             this.sortBySubjectButton.Name = "sortBySubjectButton";
             this.sortBySubjectButton.Size = new System.Drawing.Size(115, 32);
@@ -253,11 +255,31 @@
             this.addNewGroupBox.TabIndex = 15;
             this.addNewGroupBox.TabStop = false;
             // 
+            // filterSubjectsComboBox
+            // 
+            this.filterSubjectsComboBox.FormattingEnabled = true;
+            this.filterSubjectsComboBox.Location = new System.Drawing.Point(254, 41);
+            this.filterSubjectsComboBox.Name = "filterSubjectsComboBox";
+            this.filterSubjectsComboBox.Size = new System.Drawing.Size(115, 21);
+            this.filterSubjectsComboBox.TabIndex = 16;
+            this.filterSubjectsComboBox.SelectedIndexChanged += new System.EventHandler(this.FilterSubjectsComboBox_SelectedIndexChanged);
+            // 
+            // filterLabel
+            // 
+            this.filterLabel.AutoSize = true;
+            this.filterLabel.Location = new System.Drawing.Point(279, 25);
+            this.filterLabel.Name = "filterLabel";
+            this.filterLabel.Size = new System.Drawing.Size(71, 13);
+            this.filterLabel.TabIndex = 17;
+            this.filterLabel.Text = "Filter subjects";
+            // 
             // ForumForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 465);
+            this.Controls.Add(this.filterLabel);
+            this.Controls.Add(this.filterSubjectsComboBox);
             this.Controls.Add(this.addNewGroupBox);
             this.Controls.Add(this.sortBySubjectButton);
             this.Controls.Add(this.sortByNameButton);
@@ -274,6 +296,7 @@
             this.addNewGroupBox.ResumeLayout(false);
             this.addNewGroupBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -296,5 +319,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn problemsNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn subjectColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
+        private System.Windows.Forms.ComboBox filterSubjectsComboBox;
+        private System.Windows.Forms.Label filterLabel;
     }
 }
