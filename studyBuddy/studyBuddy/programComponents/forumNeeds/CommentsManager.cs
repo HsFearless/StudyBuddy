@@ -34,12 +34,29 @@ namespace studyBuddy
                 comment.Location = position;
                 panel.Controls.Add(comment);
                 commentsPosition++;
-                //File.Close();
             }
 
             return commentsPosition;
 
         }
+
+        public static int WriteComment(string commmentToShow, Panel panel, int commentsPosition)
+        {
+
+                Label comment = new Label();
+                comment.BackColor = Color.White;
+                comment.MinimumSize = new Size(765, 15);
+                comment.AutoSize = true;
+                comment.Text = commmentToShow;
+                Point position = new Point(commentsPosition, 30 * commentsPosition);
+                comment.Location = position;
+                panel.Controls.Add(comment);
+                commentsPosition++;
+
+            return commentsPosition;
+
+        }
+
 
         public static int LoadComments(string textFilesName, Panel panel, int commentsPosition)
         {

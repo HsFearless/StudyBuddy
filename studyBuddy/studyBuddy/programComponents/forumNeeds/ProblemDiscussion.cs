@@ -25,7 +25,14 @@ namespace studyBuddy
         {
             commentsPosition = CommentsManager.LoadComments(problemNameLabel.Text, commentsPanel, commentsPosition);
             //if(sw == null)
-            sw = new StreamWriter(problemNameLabel.Text + ".txt");
+            if (File.Exists(problemNameLabel.Text + ".txt") == false)
+            {
+                sw = new StreamWriter(problemNameLabel.Text + ".txt");
+            }
+            else
+            {
+                fileClosed = true;
+            }
         }
 
 
@@ -44,10 +51,12 @@ namespace studyBuddy
             }
             else
             {
-         
-                sw = new StreamWriter(problemNameLabel.Text + ".txt");
-                commentsPosition = CommentsManager.WriteComment(sw, addCommentTextBox.Text, commentsPanel, commentsPosition);
+                sw = File.AppendText(problemNameLabel.Text + ".txt");
+                sw.WriteLine(addCommentTextBox.Text);
+                //sw = new StreamWriter(problemNameLabel.Text + ".txt");
+                commentsPosition = CommentsManager.WriteComment(addCommentTextBox.Text, commentsPanel, commentsPosition);
                 fileClosed = true;
+                sw.Close();
             }
             addCommentTextBox.ResetText();
         }
