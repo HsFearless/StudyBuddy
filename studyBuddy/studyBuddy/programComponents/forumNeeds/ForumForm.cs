@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using studyBuddy.dataNeeds;
 
 namespace studyBuddy.forumNeeds
 {
@@ -15,6 +16,7 @@ namespace studyBuddy.forumNeeds
     {
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
+        private dataNeeds.misc.Subjects subjects = DataFetcher.GetSubjects();
 
         public ForumForm()
         {
@@ -27,6 +29,11 @@ namespace studyBuddy.forumNeeds
             CommentsManager.AddNewFile("Pitagoras.txt");
             problemsGridView.Rows.Add("Lietuviu", "Foreign language", "Kas tas yr, renesansas???");
             CommentsManager.AddNewFile("Lietuviu.txt");
+
+            foreach(var subject in subjects)
+            {
+                filterSubjectsComboBox.Items.Add(subject);
+            }
         }
 
         private void SortByNameButton_Click(object sender, EventArgs e)
@@ -94,7 +101,7 @@ namespace studyBuddy.forumNeeds
 
         private void FilterSubjectsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+           //filtruoti
         }
     }
 }

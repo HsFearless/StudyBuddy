@@ -53,6 +53,8 @@
     <Compile Include="dataNeeds\misc\Subjects.cs" />
     <Compile Include="dataNeeds\Rows.cs" />
     <Compile Include="extensions\LongExtensions.cs" />
+    <Compile Include="programComponents\exitNeeds\ComboBoxItem.cs" />
+    <Compile Include="programComponents\forumNeeds\Class1.cs" />
     <Compile Include="programComponents\forumNeeds\ForumContent.cs" />
     <Compile Include="programComponents\forumNeeds\ForumPost.cs" />
     <Compile Include="programComponents\forumNeeds\CommentsManager.cs" />
