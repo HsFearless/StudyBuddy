@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using studyBuddy.dataNeeds;
+using studyBuddy;
 
 namespace studyBuddyForm.forumNeeds
 {
