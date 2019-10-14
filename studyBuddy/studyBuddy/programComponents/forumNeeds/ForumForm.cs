@@ -1,4 +1,5 @@
-﻿using studyBuddy.studyBuddyNeeds;
+﻿using studyBuddy.programComponents.forumNeeds;
+using studyBuddy.studyBuddyNeeds;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace studyBuddy.forumNeeds
     {
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
+        private ForumContent forum;
 
         public ForumForm()
         {
