@@ -8,8 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using studyBuddy.dataNeeds;
-using studyBuddy;
 
 namespace studyBuddyForm.forumNeeds
 {
@@ -17,12 +15,10 @@ namespace studyBuddyForm.forumNeeds
     {
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
-        private studyBuddy.dataNeeds.misc.Subjects subjects = DataFetcher.GetSubjects();
 
         public ForumForm()
         {
             InitializeComponent();
-
         }
 
         private void ForumForm_Load(object sender, EventArgs e)
@@ -94,6 +90,11 @@ namespace studyBuddyForm.forumNeeds
             this.Hide();
             profile.ShowDialog();
             Application.Exit();
+        }
+
+        private void FilterSubjectsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

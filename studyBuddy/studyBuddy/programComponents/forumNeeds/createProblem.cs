@@ -36,5 +36,10 @@ namespace studyBuddyForm.forumNeeds
         {
 
         }
+
+        private void SubjectComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
