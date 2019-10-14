@@ -7,39 +7,80 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.programComponents.forumNeeds
 {
-    class ForumContent : IEnumerable<ForumPost>
+    class ForumContent : IEnumerable<ForumPost>//^IEnumerable
     {
-        class ForumPostEnumerator : IEnumerator<ForumPost>
+
+        public ForumPost[] post;
+
+        public void Add(ForumPost onePost)
         {
-            public ForumPost Current => throw new NotImplementedException();
-
-            object IEnumerator.Current => throw new NotImplementedException();
-
-            public void Dispose()
-            {
-                throw new NotImplementedException();
-            }
-
-            public bool MoveNext()
-            {
-                throw new NotImplementedException();
-            }
-
-            public void Reset()
-            {
-                throw new NotImplementedException();
-            }
+            post.Append<ForumPost>(onePost);
         }
-        protected ForumPost[] post;
+
+        public ForumContent(ForumPost[] posts=null)
+        {
+            if (posts == null)
+                post = new ForumPost[0];
+            else
+                post = posts;
+        }
 
         IEnumerator<ForumPost> IEnumerable<ForumPost>.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new ForumPostEnumerator(post);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
+            return new ForumPostEnumerator(post);
+        }
+
+
+    }
+
+     class ForumPostEnumerator : IEnumerator<ForumPost>//^IEnumerator
+     {
+        private ForumPost[] post;
+        private int length;
+        private int pos = -1;
+
+        public ForumPostEnumerator(ForumPost[] posts)
+        {
+            this.post = posts;
+            this.length = post.Length;
+        }
+
+        public ForumPost Current
+        {
+            get
+            {
+                return post[pos];
+            }
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return post[pos];
+            }
+        }
+
+        public void Dispose()
+        {
             throw new NotImplementedException();
         }
-    }
+
+        public bool MoveNext()
+        {
+            pos++;
+            return pos < length;
+        }
+
+        public void Reset()
+        {
+            pos = -1;
+        }
+     }
+
 }

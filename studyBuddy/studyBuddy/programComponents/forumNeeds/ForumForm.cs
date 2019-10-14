@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using studyBuddy.dataNeeds;
 
 namespace studyBuddy.forumNeeds
 {
@@ -14,10 +15,12 @@ namespace studyBuddy.forumNeeds
     {
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
+        private studyBuddy.dataNeeds.misc.Subjects subjects = DataFetcher.GetSubjects();
 
         public ForumForm()
         {
             InitializeComponent();
+
         }
 
         private void ForumForm_Load(object sender, EventArgs e)

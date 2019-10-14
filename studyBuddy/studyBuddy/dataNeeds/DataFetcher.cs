@@ -14,5 +14,13 @@ namespace studyBuddy.dataNeeds
                 MysqlHandler.tblSubjects);
             return subjects;
         }
+
+        public static misc.Subjects GetSubjects()
+        {
+            return misc.Subjects.GetInstance();
+        }
+
+        //public static GetForumContent
+
     }
 }

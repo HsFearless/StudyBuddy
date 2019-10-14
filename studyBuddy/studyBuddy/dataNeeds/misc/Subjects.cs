@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds.misc
 {
-    public sealed class Subjects //singleton
+    public sealed class Subjects : IEnumerable<Subjects.Subject>//singleton
     {
         public sealed class Subject : IComparable<Subject> //^comparable
         {
@@ -40,7 +41,7 @@ namespace studyBuddy.dataNeeds.misc
         }//nested class Subject end
 
         private static readonly Lazy<Subjects> lazy =
-            new Lazy<Subjects>(() => new Subjects()); //^geenerics
+            new Lazy<Subjects>(() => new Subjects()); //^generics
         private static Subject[] subjects;
 
         private Subjects()
@@ -48,13 +49,13 @@ namespace studyBuddy.dataNeeds.misc
             //do nothing//singleton after all
         }
 
-        public Subjects getInstance()
+        public static Subjects GetInstance()
         {
             Initialize();
             return lazy.Value;
         }
 
-        private void Initialize()
+        private static void Initialize()
         {
             if (subjects != null && subjects.Length != 0)
                 return; //not null and not 0 elements
@@ -70,10 +71,59 @@ namespace studyBuddy.dataNeeds.misc
                 subjects[i++] = new Subject(id,name);
             }
         }
+
+        public IEnumerator<Subject> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator<Subject> IEnumerable<Subject>.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
         public Subject this[int i] //^indexed
         {
             get { return subjects[i]; }
             set { subjects[i] = value; }
+        }
+    }
+
+
+    class SubjectsEnumerator : IEnumerator<Subjects.Subject>
+    {
+        private int pos = -1;
+        private Subjects.Subject[] subjects;
+        private int len;
+
+        public SubjectsEnumerator(Subjects.Subject[] subjects)
+        {
+            this.subjects = subjects;
+        }
+
+        public Subjects.Subject Current => subjects[pos];
+
+        object IEnumerator.Current => subjects[pos];
+
+        public void Dispose()//#
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool MoveNext()
+        {
+            pos++;
+            return pos < len;
+        }
+
+        public void Reset()
+        {
+            pos = -1;
         }
     }
 }
