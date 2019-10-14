@@ -1,4 +1,4 @@
-﻿namespace studyBuddyForm.programComponents.loginNeeds
+﻿namespace studyBuddy.programComponents.loginNeeds
 {
     partial class RegisterForm
     {

@@ -1,4 +1,4 @@
-﻿using studyBuddyForm.dataNeeds;
+﻿using studyBuddy.dataNeeds;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddyForm.programComponents.loginNeeds
+namespace studyBuddy.programComponents.loginNeeds
 {
     public partial class RegisterForm : Form
     {

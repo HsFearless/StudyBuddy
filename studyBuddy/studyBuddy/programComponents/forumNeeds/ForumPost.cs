@@ -12,7 +12,7 @@ namespace studyBuddy.programComponents.forumNeeds
         public string name;
         public string description;
         public int ownerId;
-        public string[] comments;
+        public string[] comments = null;
 
         public ForumPost(long id, string name="", string description = "", int ownerId=0)
         {

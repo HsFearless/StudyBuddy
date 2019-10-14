@@ -74,12 +74,12 @@ namespace studyBuddy.dataNeeds.misc
 
         public IEnumerator<Subject> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new SubjectsEnumerator(subjects);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new SubjectsEnumerator(subjects);
         }
 
         IEnumerator<Subject> IEnumerable<Subject>.GetEnumerator()
@@ -99,11 +99,12 @@ namespace studyBuddy.dataNeeds.misc
     {
         private int pos = -1;
         private Subjects.Subject[] subjects;
-        private int len;
+        private int len=0;
 
         public SubjectsEnumerator(Subjects.Subject[] subjects)
         {
             this.subjects = subjects;
+            this.len = subjects.Length;
         }
 
         public Subjects.Subject Current => subjects[pos];
@@ -112,7 +113,8 @@ namespace studyBuddy.dataNeeds.misc
 
         public void Dispose()//#
         {
-            throw new NotImplementedException();
+            return;
+            //throw new NotImplementedException();
         }
 
         public bool MoveNext()

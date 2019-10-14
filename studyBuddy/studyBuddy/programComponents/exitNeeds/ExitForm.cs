@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddyForm.programComponents.exitNeeds
+namespace studyBuddy.programComponents.exitNeeds
 {
     public partial class exitForm : Form
     {

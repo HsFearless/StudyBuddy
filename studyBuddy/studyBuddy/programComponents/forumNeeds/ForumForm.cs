@@ -1,4 +1,4 @@
-﻿using studyBuddyForm.studyBuddyNeeds;
+﻿using studyBuddy.studyBuddyNeeds;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddyForm.forumNeeds
+namespace studyBuddy.forumNeeds
 {
     public partial class ForumForm : Form
     {
