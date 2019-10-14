@@ -11,8 +11,6 @@ namespace studyBuddy.dataNeeds
         
         private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db //maybe long int?
 
-        
-
         public string GetSalt(string username)
         {
             string[] row = source.SelectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
