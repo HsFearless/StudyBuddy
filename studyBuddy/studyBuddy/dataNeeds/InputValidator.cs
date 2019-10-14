@@ -51,7 +51,7 @@ namespace studyBuddy.dataNeeds
                 error.no = Error.code.OK;
                 return true;
             }
-            catch (FormatException)
+            catch (Exception)
             {
                 error.no = Error.code.INVALID_EMAIL;
                 mail = null;

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds
 {
-    abstract class UserDataAbstract
+    abstract class UserDataAbstract : DataHandler
     {
-        internal protected static MysqlHandler staticSource = new MysqlHandler();
-        internal protected static FileHandler file = new FileHandler("sb.txt");
-        internal protected MysqlHandler source = new MysqlHandler();
+        
         internal protected int userId = 0;
 
         public UserDataAbstract(int userId = 0)

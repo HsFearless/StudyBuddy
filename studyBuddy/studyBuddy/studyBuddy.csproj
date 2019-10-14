@@ -47,9 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataNeeds\DataFetcher.cs" />
+    <Compile Include="dataNeeds\DataHandler.cs" />
     <Compile Include="dataNeeds\FileHandler.cs" />
+    <Compile Include="dataNeeds\Misc.cs" />
     <Compile Include="dataNeeds\Rows.cs" />
     <Compile Include="extensions\LongExtensions.cs" />
+    <Compile Include="programComponents\forumNeeds\ForumPost.cs" />
     <Compile Include="programComponents\forumNeeds\ProblemDiscussion.cs">
       <SubType>Form</SubType>
     </Compile>
