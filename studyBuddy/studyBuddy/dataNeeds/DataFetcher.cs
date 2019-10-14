@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds
 {
-    class DataFetcher : DataHandler
+    abstract class DataFetcher : DataHandler
     {
-        
+        public static List<string[]> GetSubjectsAsStringList()
+        {
+            var subjects = staticSource.Select("ID, name FROM " +
+                MysqlHandler.tblSubjects);
+            return subjects;
+        }
     }
 }

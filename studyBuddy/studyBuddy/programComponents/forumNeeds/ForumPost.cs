@@ -8,8 +8,8 @@ namespace studyBuddy.programComponents.forumNeeds
 {
     class ForumPost
     {
-        public long id { get; private set; }
-        public string name;
+        /*public long id { get; private set; }
+        public string name;*/
 
     }
 }

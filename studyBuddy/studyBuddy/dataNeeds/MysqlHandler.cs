@@ -24,6 +24,7 @@ namespace studyBuddy.dataNeeds
     class MysqlHandler
     {
         public static string tblUsers = "Users";
+        public static string tblSubjects = "Subjects";
         private string host;
         private string username;
         private string password;
