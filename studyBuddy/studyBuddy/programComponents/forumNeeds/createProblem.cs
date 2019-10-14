@@ -28,7 +28,7 @@ namespace studyBuddy.forumNeeds
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            forumForm.addNewProblem(problemsNameTextBox.Text, SubjectComboBox.Text, descriptionTextBox.Text);
+            //forumForm.addNewProblem(problemsNameTextBox.Text, SubjectComboBox.Text, descriptionTextBox.Text);
             CommentsManager.AddNewFile(problemsNameTextBox.Text + ".txt");
         }
     }
