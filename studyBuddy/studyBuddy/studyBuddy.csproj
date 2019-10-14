@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="programComponents\forumNeeds\CommentsManager.cs" />
     <Compile Include="programComponents\forumNeeds\ProblemDiscussion.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -29,6 +29,7 @@ namespace studyBuddy.forumNeeds
         {
             this.Hide();
             forumForm.addNewProblem(problemsNameTextBox.Text, SubjectComboBox.Text, descriptionTextBox.Text);
+            CommentsManager.AddNewFile(problemsNameTextBox.Text + ".txt");
         }
     }
 }
