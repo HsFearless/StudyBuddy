@@ -68,7 +68,7 @@ namespace studyBuddy.programComponents.forumNeeds
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            return;
         }
 
         public bool MoveNext()
