@@ -1,5 +1,5 @@
-﻿using studyBuddy.forumNeeds;
-using studyBuddy.studyBuddyNeeds;
+﻿using studyBuddyForm.forumNeeds;
+using studyBuddyForm.studyBuddyNeeds;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddy
+namespace studyBuddyForm
 {
     public partial class userProfileForm : Form
     {
@@ -44,7 +44,7 @@ namespace studyBuddy
 
         private void ToolBarFindBuddyButton_Click(object sender, EventArgs e)
         {
-            var profile = new studyBuddyForm();
+            var profile = new studyBuddyNeeds.studyBuddyForm();
             this.Hide();
             profile.ShowDialog();
             Application.Exit();

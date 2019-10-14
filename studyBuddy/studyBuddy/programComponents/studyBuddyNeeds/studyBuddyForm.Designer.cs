@@ -1,4 +1,4 @@
-﻿namespace studyBuddy.studyBuddyNeeds
+﻿namespace studyBuddyForm.studyBuddyNeeds
 {
     partial class studyBuddyForm
     {
@@ -124,6 +124,7 @@
             this.toolBarForumButton.TabIndex = 1;
             this.toolBarForumButton.Text = "Forum";
             this.toolBarForumButton.UseVisualStyleBackColor = true;
+            this.toolBarForumButton.Click += new System.EventHandler(this.ToolBarForumButton_Click);
             // 
             // toolBarProfileButton
             // 

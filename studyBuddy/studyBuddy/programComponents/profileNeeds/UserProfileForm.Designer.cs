@@ -1,4 +1,4 @@
-﻿namespace studyBuddy
+﻿namespace studyBuddyForm
 {
     partial class userProfileForm
     {
@@ -281,7 +281,7 @@
             // 
             // userProfileStudentReviewsBox
             // 
-            this.userProfileStudentReviewsBox.Location = new System.Drawing.Point(375, 254);
+            this.userProfileStudentReviewsBox.Location = new System.Drawing.Point(380, 254);
             this.userProfileStudentReviewsBox.Multiline = true;
             this.userProfileStudentReviewsBox.Name = "userProfileStudentReviewsBox";
             this.userProfileStudentReviewsBox.Size = new System.Drawing.Size(486, 199);

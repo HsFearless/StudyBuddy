@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddy.helpNeeds
+namespace studyBuddyForm.helpNeeds
 {
     public partial class helpForm : Form
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace studyBuddy.Properties
+namespace studyBuddyForm.Properties
 {
 
 

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddy
+namespace studyBuddyForm
 {
     class roundButton : Button
     {
