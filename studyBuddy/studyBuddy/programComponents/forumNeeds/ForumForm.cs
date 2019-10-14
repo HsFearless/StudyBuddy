@@ -1,4 +1,5 @@
-﻿using System;
+﻿using studyBuddyForm.studyBuddyNeeds;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using studyBuddy.dataNeeds;
 
-namespace studyBuddy.forumNeeds
+namespace studyBuddyForm.forumNeeds
 {
     public partial class ForumForm : Form
     {
@@ -76,6 +77,22 @@ namespace studyBuddy.forumNeeds
             problemDiscussion.problemNameLabel.Text = this.problemsGridView.CurrentRow.Cells[0].Value.ToString();
             problemDiscussion.problemDescriptionLabel.Text = this.problemsGridView.CurrentRow.Cells[2].Value.ToString();
             problemDiscussion.ShowDialog();
+        }
+
+        private void ToolBarProfileButton_Click(object sender, EventArgs e)
+        {
+            var profile = new userProfileForm();
+            this.Hide();
+            profile.ShowDialog();
+            Application.Exit();
+        }
+
+        private void ToolBarFindBuddyButton_Click(object sender, EventArgs e)
+        {
+            var profile = new studyBuddyNeeds.studyBuddyForm();
+            this.Hide();
+            profile.ShowDialog();
+            Application.Exit();
         }
     }
 }

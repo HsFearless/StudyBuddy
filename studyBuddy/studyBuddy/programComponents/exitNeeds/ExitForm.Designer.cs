@@ -1,4 +1,4 @@
-﻿namespace studyBuddy.programComponents.exitNeeds
+﻿namespace studyBuddyForm.programComponents.exitNeeds
 {
     partial class exitForm
     {

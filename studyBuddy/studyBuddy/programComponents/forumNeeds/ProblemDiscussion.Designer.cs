@@ -1,4 +1,4 @@
-﻿namespace studyBuddy
+﻿namespace studyBuddyForm
 {
     partial class ProblemDiscussion
     {

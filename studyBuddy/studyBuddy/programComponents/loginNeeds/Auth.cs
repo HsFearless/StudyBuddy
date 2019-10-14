@@ -1,4 +1,4 @@
-﻿using studyBuddy.dataNeeds;
+﻿using studyBuddyForm.dataNeeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using studyBuddy.extensions;
 
-namespace studyBuddy.programComponents.loginNeeds
+namespace studyBuddyForm.programComponents.loginNeeds
 {
     abstract internal class Auth
     {
