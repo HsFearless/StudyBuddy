@@ -53,6 +53,7 @@
     <Compile Include="dataNeeds\Misc.cs" />
     <Compile Include="dataNeeds\Rows.cs" />
     <Compile Include="extensions\LongExtensions.cs" />
+	 <Compile Include="programComponents\forumNeeds\CommentsManager.cs" />
     <Compile Include="programComponents\forumNeeds\ForumPost.cs" />
     <Compile Include="programComponents\forumNeeds\ProblemDiscussion.cs">
       <SubType>Form</SubType>

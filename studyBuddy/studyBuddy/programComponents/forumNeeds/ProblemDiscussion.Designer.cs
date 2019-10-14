@@ -122,6 +122,7 @@
             this.Controls.Add(this.problemNameLabel);
             this.Name = "ProblemDiscussion";
             this.Text = "Study Buddy";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProblemDiscussion_FormClosing);
             this.Load += new System.EventHandler(this.ProblemDiscussion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

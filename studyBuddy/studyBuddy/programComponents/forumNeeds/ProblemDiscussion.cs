@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,9 @@ namespace studyBuddy
 {
     public partial class ProblemDiscussion : Form
     {
+        int commentsPosition = 1;
+        public StreamWriter sw;
+        public bool fileClosed = false;
         public ProblemDiscussion()
         {
             InitializeComponent();
@@ -19,8 +23,12 @@ namespace studyBuddy
 
         private void ProblemDiscussion_Load(object sender, EventArgs e)
         {
-
+            commentsPosition = CommentsManager.LoadComments(problemNameLabel.Text, commentsPanel, commentsPosition);
+            //if(sw == null)
+            sw = new StreamWriter(problemNameLabel.Text + ".txt");
         }
+
+
 
         private void CommentsLabel_Click(object sender, EventArgs e)
         {
@@ -29,10 +37,27 @@ namespace studyBuddy
 
         private void AddCommentButton_Click(object sender, EventArgs e)
         {
-            Label comment = new Label();
-            //comment.BorderStyle = Border3DStyle;
-            comment.Text = addCommentTextBox.Text;
-            commentsPanel.Controls.Add(comment);
+            if (fileClosed == false)
+            {
+                commentsPosition = CommentsManager.WriteComment(sw, addCommentTextBox.Text, commentsPanel, commentsPosition);
+                fileClosed = true; 
+            }
+            else
+            {
+         
+                sw = new StreamWriter(problemNameLabel.Text + ".txt");
+                commentsPosition = CommentsManager.WriteComment(sw, addCommentTextBox.Text, commentsPanel, commentsPosition);
+                fileClosed = true;
+            }
+            addCommentTextBox.ResetText();
+        }
+
+        private void ProblemDiscussion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fileClosed == false)
+            {
+                sw.Close();
+            }
         }
     }
 }
