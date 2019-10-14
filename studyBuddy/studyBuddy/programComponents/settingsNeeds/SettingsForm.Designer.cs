@@ -1,4 +1,4 @@
-﻿namespace studyBuddyForm.settingsNeeds
+﻿namespace studyBuddy.settingsNeeds
 {
     partial class settingsForm
     {

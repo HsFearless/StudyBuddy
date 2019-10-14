@@ -1,10 +1,11 @@
-﻿using System;
+﻿using studyBuddy.dataNeeds;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace studyBuddyForm.dataNeeds
+namespace studyBuddy.dataNeeds
 {
     abstract class UserDataAbstract : DataHandler
     {

@@ -1,4 +1,4 @@
-﻿namespace studyBuddyForm.helpNeeds
+﻿namespace studyBuddy.helpNeeds
 {
     partial class helpForm
     {

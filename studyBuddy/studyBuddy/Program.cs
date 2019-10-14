@@ -1,11 +1,11 @@
-﻿using studyBuddyForm.forumNeeds;
+﻿using studyBuddy.forumNeeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddyForm
+namespace studyBuddy
 {
     static class Program
     {

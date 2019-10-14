@@ -1,5 +1,5 @@
-﻿using studyBuddyForm.forumNeeds;
-using studyBuddyForm.studyBuddyNeeds;
+﻿using studyBuddy.forumNeeds;
+using studyBuddy.studyBuddyNeeds;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddyForm
+namespace studyBuddy
 {
     public partial class userProfileForm : Form
     {
