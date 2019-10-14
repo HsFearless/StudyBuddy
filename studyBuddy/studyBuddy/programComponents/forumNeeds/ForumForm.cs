@@ -48,7 +48,7 @@ namespace studyBuddy.forumNeeds
             createProblemForm.ShowDialog();
         }
 
-        public void addNewProblem(String name, String subject, String description)
+        public void AddNewProblem(String name, String subject, String description)
         {
             problemsGridView.Rows.Add(name, subject, description);
         }
