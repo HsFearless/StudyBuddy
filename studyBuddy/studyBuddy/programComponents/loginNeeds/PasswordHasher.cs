@@ -19,30 +19,30 @@ namespace studyBuddyForm
             this.saltLength = (saltLength > 3) ? saltLength : 12;
             this.derivedLength = (derivedLength > 3) ? derivedLength : 39;
             RNG = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            salt64Length = Convert.ToBase64String(newSalt()).Length;
+            salt64Length = Convert.ToBase64String(NewSalt()).Length;
         }
 
-        private byte[] newSalt()
+        private byte[] NewSalt()
         {
             var salt = new byte[saltLength];
             RNG.GetBytes(salt);
             return salt;
         }
 
-        public string getLastUsedSaltAndForgetIt()
+        public string GetLastUsedSaltAndForgetIt()
         {
             string temp = salt;
             salt = "";
             return temp;
         }
 
-        public string hash(string pass, string saltASCII = null, bool saveUsedSalt = false)
+        public string Hash(string pass, string saltASCII = null, bool saveUsedSalt = false)
         {//#
             byte[] saltBytes = null;
             //is new salt needed or other is provided
             if (saltASCII == null || saltASCII.Length != this.salt64Length)
             { 
-                saltBytes = newSalt();
+                saltBytes = NewSalt();
                 if(saveUsedSalt)
                     this.salt = Convert.ToBase64String(saltBytes); 
             }
@@ -54,7 +54,7 @@ namespace studyBuddyForm
             }
             var derived = new System.Security.Cryptography.Rfc2898DeriveBytes(pass, saltBytes, 30000);
             //100 000 takes about 3 sec
-            var derived64 = Convert.ToBase64String(derived.GetBytes(39));
+            var derived64 = Convert.ToBase64String(derived.GetBytes(this.derivedLength));
             var salt64 = Convert.ToBase64String(saltBytes);
             /*return $"{derived64} (len: {derived64.Length})\n" +
                 $"{salt64} (len: {salt64.Length})";*/

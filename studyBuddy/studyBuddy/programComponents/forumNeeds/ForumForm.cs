@@ -24,7 +24,9 @@ namespace studyBuddyForm.forumNeeds
         private void ForumForm_Load(object sender, EventArgs e)
         {
             problemsGridView.Rows.Add("Pitagoras", "Math", "Turiu dvi krastine 2cm ir 15cm, kokia kita?");
+            CommentsManager.AddNewFile("Pitagoras.txt");
             problemsGridView.Rows.Add("Lietuviu", "Foreign language", "Kas tas yr, renesansas???");
+            CommentsManager.AddNewFile("Lietuviu.txt");
         }
 
         private void SortByNameButton_Click(object sender, EventArgs e)
@@ -47,7 +49,7 @@ namespace studyBuddyForm.forumNeeds
             createProblemForm.ShowDialog();
         }
 
-        public void addNewProblem(String name, String subject, String description)
+        public void AddNewProblem(String name, String subject, String description)
         {
             problemsGridView.Rows.Add(name, subject, description);
         }

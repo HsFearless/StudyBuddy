@@ -121,6 +121,7 @@
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(417, 169);
             this.descriptionTextBox.TabIndex = 13;
+            this.descriptionTextBox.TextChanged += new System.EventHandler(this.DescriptionTextBox_TextChanged);
             // 
             // CreateProblem
             // 

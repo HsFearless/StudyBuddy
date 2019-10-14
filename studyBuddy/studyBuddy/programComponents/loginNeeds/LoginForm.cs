@@ -24,11 +24,11 @@ namespace studyBuddyForm.programComponents.loginNeeds
         {
             var user = textUsername.Text;
             var pass = textPassword.Text;
-            if (skipLogin || Auth.logIn(dataFetcher, user, pass))
+            if (skipLogin || Auth.LogIn(dataFetcher, user, pass))
             {
                 MessageBox.Show("Hi\n" +
                     "You are in");
-                Auth.setLoggedIn(dataFetcher);
+                Auth.SetLoggedIn(dataFetcher);
                 this.Hide();
                 var profile = new userProfileForm();
                 profile.ShowDialog();
@@ -37,9 +37,9 @@ namespace studyBuddyForm.programComponents.loginNeeds
             }
             else
             {
-                MessageBox.Show("No hello for you.\n" +
-                    Auth.error.no.ToString() + $" {Auth.error.message()}");
-                var pressedButton = MessageBox.Show("Want to skip login next time?", "skip?", MessageBoxButtons.YesNoCancel);
+                var pressedButton = MessageBox.Show("No hello for you.\n" +
+                    $" {Auth.error.Message()}\n\n" +
+                    "Want to skip login next time?", "skip?", MessageBoxButtons.YesNoCancel);
                 if (pressedButton == DialogResult.Yes)
                     skipLogin = true;
             }
@@ -60,7 +60,7 @@ namespace studyBuddyForm.programComponents.loginNeeds
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            textUsername.Text = UserDataFetcher.GetLastUsedUsername();
         }
     }
 }

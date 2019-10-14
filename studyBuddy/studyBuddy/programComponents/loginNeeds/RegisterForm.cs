@@ -34,14 +34,14 @@ namespace studyBuddyForm.programComponents.loginNeeds
                 $"\n" +
                 $"{res1}\n{res2}";
             */
-            if (Auth.register(userData, textUsername.Text, textEmail.Text, textPassword.Text, textPassword2.Text))
+            if (Auth.Register(userData, textUsername.Text, textEmail.Text, textPassword.Text, textPassword2.Text))
                 MessageBox.Show($"congratulations {textUsername.Text}");
             else
             {
-                MessageBox.Show($"error: {Auth.error.no}  {Auth.error.message()}");
+                MessageBox.Show($"error:  {Auth.error.Message()}");
             }
             var mysql = new dataNeeds.MysqlHandler();
-            mysql.testSelectAllUsers();
+            mysql.TestSelectAllUsers();
             MessageBox.Show(mysql.messageToOutterWorld + mysql.lastError);
 
             //MessageBox.Show(passwordHasher.newSalt());

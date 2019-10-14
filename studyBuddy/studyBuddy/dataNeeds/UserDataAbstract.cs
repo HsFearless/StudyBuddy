@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace studyBuddyForm.dataNeeds
 {
-    abstract class UserDataAbstract
+    abstract class UserDataAbstract : DataHandler
     {
-        internal protected static MysqlHandler staticSource = new MysqlHandler();
-        internal protected MysqlHandler source = new MysqlHandler();
+        
         internal protected int userId = 0;
 
         public UserDataAbstract(int userId = 0)

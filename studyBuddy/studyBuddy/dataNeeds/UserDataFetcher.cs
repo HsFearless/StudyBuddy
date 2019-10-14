@@ -9,13 +9,11 @@ namespace studyBuddyForm.dataNeeds
     class UserDataFetcher : UserDataAbstract
     {
         
-        private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db
+        private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db //maybe long int?
 
-        
-
-        public string getSalt(string username)
+        public string GetSalt(string username)
         {
-            string[] row = source.selectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
+            string[] row = source.SelectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}' ;");
             if (row.Length == 0)
                 return "";
@@ -23,9 +21,9 @@ namespace studyBuddyForm.dataNeeds
             return row[0];
         }
 
-        public string getSalt(System.Net.Mail.MailAddress mail)
+        public string GetSalt(System.Net.Mail.MailAddress mail)
         {
-            string[] row = source.selectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
+            string[] row = source.SelectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
                 $" WHERE email = '{mail.Address}' ;");
             if (row.Length == 0)
                 return "";
@@ -33,50 +31,65 @@ namespace studyBuddyForm.dataNeeds
             return row[0];
         }
 
-        internal bool isCorrectPassword(string password)
+        internal bool IsCorrectPassword(string password)
         {
-            string[] row = source.selectOneRow("karma FROM " + MysqlHandler.tblUsers +
+            string[] row = source.SelectOneRow("karma FROM " + MysqlHandler.tblUsers +
                 $" WHERE id = '{this.userId}' AND password = '{password}' ;");
             if (row.Length != 1)
                 return false;
             return true;
         }
 
-        internal bool isEmailTaken(System.Net.Mail.MailAddress mail)
+        internal bool IsEmailTaken(System.Net.Mail.MailAddress mail)
         {
-            string[] row = source.selectOneRow("id FROM " + MysqlHandler.tblUsers +
+            string[] row = source.SelectOneRow("id FROM " + MysqlHandler.tblUsers +
                 $" WHERE email = '{mail.Address}' ;");
             if (row.Length == 0)
                 return false;
             return true;
         }
 
-        internal bool isUsernameTaken(string username)
+        internal bool IsUsernameTaken(string username)
         {
-            string[] row = source.selectOneRow("id FROM " + MysqlHandler.tblUsers +
+            string[] row = source.SelectOneRow("id FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}' ;");
             if (row.Length == 0)
                 return false;
             return true;
         }
 
-        public int getKarma(string username)
+        public int GetKarma(string username)
         {
             return 999;
         }
 
-        public int getId()
+        public int GetId()
         {
             return userId;
         }
 
-        public int getId(string username)
+        public int GetId(string username)
         {
-            string[] row = source.selectOneRow("ID FROM " + MysqlHandler.tblUsers + 
+            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers + 
                 $" WHERE username = '{username}';");
             if (row.Length != 1)
                 return 0;
             return Convert.ToInt32(row[0]);
+        }
+
+        public static string GetLastUsedUsername()
+        {
+            return file.Read();
+        }
+
+        public long GetCurrentUserTimeStamp()
+        {
+            return 0;//#
+        }
+
+        public static long GetTimeStamp()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         }
     }
 }
