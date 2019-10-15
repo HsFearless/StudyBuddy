@@ -8,7 +8,7 @@ namespace studyBuddy.dataNeeds.misc
 {
     public sealed class Subjects //singleton
     {
-        public sealed class Subject
+        public sealed class Subject : IComparable<Subject> //^comparable
         {
             public int id { get; private set; }
             public string name { get; private set; }
@@ -30,6 +30,11 @@ namespace studyBuddy.dataNeeds.misc
             public override int GetHashCode()
             {
                 return id;
+            }
+
+            public int CompareTo(Subject other)
+            {
+                return (this.Equals(other))? 1:0;
             }
 
         }//nested class Subject end
