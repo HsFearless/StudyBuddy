@@ -33,7 +33,7 @@ namespace studyBuddy.dataNeeds
         private int port;
         private MySqlConnection con;
         private MySqlCommand cmdCon;
-        public bool ready { get; private set; } = false;//^auto
+        public bool ready { get; private set; } //= false;//^auto
         public string messageToOutterWorld = "";
         public string lastError = "";
         //private Data.MySqlClient a;
@@ -186,6 +186,7 @@ namespace studyBuddy.dataNeeds
                 return false;
             cmdCon = new MySqlCommand(fullSql, this.con);
             cmdCon.ExecuteNonQuery();
+          
             con.Close();
             return true; //probably?
         }

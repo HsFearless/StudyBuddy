@@ -14,6 +14,7 @@ namespace studyBuddy.dataNeeds
             staticSource.InsertInto(MysqlHandler.tblUsers +
                 "(username, email, password, salt) VALUES" +
                 $"('{user}', '{email.Address}', '{hashPass}', '{salt}') ;"); //you sure it safe not to check for " ' " in strings?
+
         }
 
         static internal void pushToFile(string text)
