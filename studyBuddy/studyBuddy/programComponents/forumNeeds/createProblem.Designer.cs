@@ -49,9 +49,9 @@
             this.newProblemGroupBox.Controls.Add(this.problemsNameLabel);
             this.newProblemGroupBox.Controls.Add(this.descriptionTextBox);
             this.newProblemGroupBox.Location = new System.Drawing.Point(214, 64);
-            this.newProblemGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.newProblemGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.newProblemGroupBox.Name = "newProblemGroupBox";
-            this.newProblemGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.newProblemGroupBox.Padding = new System.Windows.Forms.Padding(2);
             this.newProblemGroupBox.Size = new System.Drawing.Size(448, 329);
             this.newProblemGroupBox.TabIndex = 19;
             this.newProblemGroupBox.TabStop = false;
@@ -59,7 +59,7 @@
             // confirmButton
             // 
             this.confirmButton.Location = new System.Drawing.Point(344, 277);
-            this.confirmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(2);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(77, 27);
             this.confirmButton.TabIndex = 18;
@@ -70,7 +70,7 @@
             // problemsNameTextBox
             // 
             this.problemsNameTextBox.Location = new System.Drawing.Point(111, 34);
-            this.problemsNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.problemsNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.problemsNameTextBox.Name = "problemsNameTextBox";
             this.problemsNameTextBox.Size = new System.Drawing.Size(146, 20);
             this.problemsNameTextBox.TabIndex = 12;
@@ -107,7 +107,7 @@
             "Chemistry",
             "Other"});
             this.SubjectComboBox.Location = new System.Drawing.Point(111, 74);
-            this.SubjectComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SubjectComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SubjectComboBox.Name = "SubjectComboBox";
             this.SubjectComboBox.Size = new System.Drawing.Size(146, 21);
             this.SubjectComboBox.TabIndex = 16;
@@ -126,7 +126,7 @@
             // descriptionTextBox
             // 
             this.descriptionTextBox.Location = new System.Drawing.Point(109, 112);
-            this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(314, 138);
@@ -139,7 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 457);
             this.Controls.Add(this.newProblemGroupBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateProblem";
             this.Text = "Study Buddy";
             this.Load += new System.EventHandler(this.CreateProblem_Load);

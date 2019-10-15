@@ -23,8 +23,15 @@ namespace studyBuddy.dataNeeds.misc
             {
                 if (obj == null)
                     return false;
-                if (this.id != ((Subject)obj).id) //^narrowing
+                try
+                {
+                    if (this.id != ((Subject)obj).id) //^narrowing
+                        return false;
+                }
+                catch (InvalidCastException)
+                {
                     return false;
+                }
                 return true;
             }
 
@@ -36,6 +43,11 @@ namespace studyBuddy.dataNeeds.misc
             public int CompareTo(Subject other)
             {
                 return (this.Equals(other))? 1:0;
+            }
+
+            public override string ToString()
+            {
+                return this.name;
             }
 
         }//nested class Subject end
