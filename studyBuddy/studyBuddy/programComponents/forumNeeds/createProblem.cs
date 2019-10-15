@@ -36,5 +36,10 @@ namespace studyBuddy.forumNeeds
         {
 
         }
+
+        private void SubjectComboBox_TextChanged(object sender, EventArgs e)
+        {
+            similarProblemsGridView.Visible = true;
+        }
     }
 }

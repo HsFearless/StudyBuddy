@@ -55,6 +55,7 @@ namespace studyBuddy.forumNeeds
 
         private void SortBySubjectButton_Click(object sender, EventArgs e)
         {
+
             if (sortBySubjectAscending)
             {
                 problemsGridView.Sort(problemsGridView.Columns[1], System.ComponentModel.ListSortDirection.Ascending);
@@ -64,6 +65,12 @@ namespace studyBuddy.forumNeeds
             {
                 problemsGridView.Sort(problemsGridView.Columns[1], System.ComponentModel.ListSortDirection.Descending);
                 sortBySubjectAscending = !sortBySubjectAscending;
+            }
+
+            foreach (DataGridViewRow row in problemsGridView.Rows)
+            {
+                if (row.Cells[1].Value != "Math")
+                    row.Visible = false;
             }
         }
 

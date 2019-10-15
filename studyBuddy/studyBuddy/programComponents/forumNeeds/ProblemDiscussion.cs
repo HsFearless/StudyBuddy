@@ -53,7 +53,6 @@ namespace studyBuddy
             {
                 sw = File.AppendText(problemNameLabel.Text + ".txt");
                 sw.WriteLine(addCommentTextBox.Text);
-                //sw = new StreamWriter(problemNameLabel.Text + ".txt");
                 commentsPosition = CommentsManager.WriteComment(addCommentTextBox.Text, commentsPanel, commentsPosition);
                 fileClosed = true;
                 sw.Close();
