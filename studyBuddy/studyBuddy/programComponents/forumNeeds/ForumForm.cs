@@ -18,7 +18,7 @@ namespace studyBuddy.forumNeeds
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
         private dataNeeds.misc.Subjects subjects = DataFetcher.GetSubjects();
-        private ForumContent forum;
+        private ForumContent forum = DataFetcher.GetForum();
 
         public ForumForm()
         {
@@ -27,10 +27,36 @@ namespace studyBuddy.forumNeeds
 
         private void ForumForm_Load(object sender, EventArgs e)
         {
-            problemsGridView.Rows.Add("Pitagoras", "Math", "Turiu dvi krastine 2cm ir 15cm, kokia kita?");
-            CommentsManager.AddNewFile("Pitagoras.txt");
-            problemsGridView.Rows.Add("Lietuviu", "Foreign language", "Kas tas yr, renesansas???");
-            CommentsManager.AddNewFile("Lietuviu.txt");
+            //var forumContent = forum.GroupJoin(this.subjects, //change to users
+            //    forumRow => forumRow.subjectId,
+            //    subj => subj.id,
+            //    (forumRow, subj) => new
+            //    {
+            //        forumRow.name,
+            //        subject = subj,
+            //        forumRow.description
+            //        //subj.name,
+            //        //forumRow.description
+            //    }) ;
+            var forumContent = subjects.GroupJoin(forum, //^query //^groupjoin
+                su => su.id,
+                fo => fo.subjectId,
+                (su, fo) => new
+                {
+                    su.name,
+                    forumPosts = fo
+                });
+            foreach(var subject in forumContent)
+            {
+                foreach (var forumRow in subject.forumPosts)
+                {
+                    problemsGridView.Rows.Add(forumRow.name, subject.name, forumRow.description);
+                    CommentsManager.AddNewFile(forumRow.name + ".txt");
+                }
+            }
+            
+            //problemsGridView.Rows.Add("Lietuviu", "Foreign language", "Kas tas yr, renesansas???");
+            //CommentsManager.AddNewFile("Lietuviu.txt");
 
             foreach(var subject in subjects)
             {
@@ -103,7 +129,65 @@ namespace studyBuddy.forumNeeds
 
         private void FilterSubjectsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-           //filtruoti
+            if (filterSubjectsComboBox.SelectedIndex < 0)
+                return;
+            int selectedInd = ((dataNeeds.misc.Subjects.Subject)filterSubjectsComboBox.SelectedItem).id;
+            //filtruoti
+            var matchedForumContent = forum.Where(
+                fo => fo.subjectId == selectedInd
+                );
+                
+            var forumContent = matchedForumContent.Join(subjects, //^query
+                 fo => fo.subjectId,
+                 su => su.id,
+                 (fo, su) => new
+                 {
+                     fo.id,
+                     fo.name,
+                     subject = su.name,
+                     fo.description
+                 });
+
+            problemsGridView.Rows.Clear();
+
+            foreach (var forumRow in forumContent)
+            {
+
+                problemsGridView.Rows.Add(forumRow.name, forumRow.subject, forumRow.description);
+                CommentsManager.AddNewFile(forumRow.name + ".txt");
+            }
+            textBoxSearch.Text = "";
+        }
+
+        private void ButtonSearch_Click(object sender, EventArgs e)
+        {
+            string text = textBoxSearch.Text;
+            //filtruoti
+
+            var matchedForumContent = forum.Where(
+                fo => fo.description.Contains(text)
+                );
+
+            var forumContent = matchedForumContent.Join(subjects, //^query
+                 fo => fo.subjectId,
+                 su => su.id,
+                 (fo, su) => new
+                 {
+                     fo.id,
+                     fo.name,
+                     subject = su.name,
+                     fo.description
+                 });
+
+            problemsGridView.Rows.Clear();
+
+            foreach (var forumRow in forumContent)
+            {
+
+                problemsGridView.Rows.Add(forumRow.name, forumRow.subject, forumRow.description);
+                CommentsManager.AddNewFile(forumRow.name + ".txt");
+            }
+            filterSubjectsComboBox.SelectedIndex = -1;
         }
     }
 }

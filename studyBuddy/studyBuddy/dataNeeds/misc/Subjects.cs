@@ -96,7 +96,7 @@ namespace studyBuddy.dataNeeds.misc
 
         IEnumerator<Subject> IEnumerable<Subject>.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new SubjectsEnumerator(subjects);
         }
 
         public Subject this[int i] //^indexed
