@@ -65,8 +65,8 @@ namespace studyBuddy.programComponents.loginNeeds
             {
                 error.no = Error.code.OK;
                 //set log in timestamp
-                UserDataPusher.pushToFile(username);
-                SetLoggedIn(UDF);
+                UserDataPusher.pushToFileFromScratch(username);
+                SetSession(UDF);
                 return true;
             }
 
@@ -74,7 +74,7 @@ namespace studyBuddy.programComponents.loginNeeds
             return false;
         }//logIn
 
-        private static bool SetLoggedIn(UserDataFetcher UDF) //# change to private
+        private static bool SetSession(UserDataFetcher UDF)
         {
                 /* Session. unix in file.
                  * we will hash it.
@@ -87,13 +87,28 @@ namespace studyBuddy.programComponents.loginNeeds
             //-----timestamp
             long unix = DataFetcher.GetServerTimeStamp();
             UserDataPusher.pushToFile(unix.ToString());
+            var hasher = new PasswordHasher(derivedLength: 20);
+            string hashedUnix = hasher.Hash(unix.ToString(), DataFetcher.GetDeviceIdentifier());
+            UserDataPusher.updateUserSession(UDF.GetId(), unix, hashedUnix);
+            //System.Windows.Forms.MessageBox.Show($"hashedUnix: {hashedUnix} ({hashedUnix.Length})");
 
             return true;
             /*
             if (UDF.GetCurrentUserTimeStamp().IsTimeStampOlderThan(7 * 24)) //^extension
                 //user has not been logged in for a whole week
                 return true;
-            return true;*/
+            return true;
+            */
+        }
+
+        public static bool LogInUsingSession()
+        {
+            string lastUser = UserDataFetcher.GetLastUsedUsername();
+            string lastUnix = UserDataFetcher.GetLastLoginTimestamp();
+            long lastUnixInLong = Convert.ToInt64(lastUnix);
+            if (lastUnixInLong.IsTimeStampOlderThan(1))
+                return false;
+            return false;
         }
 
         public static bool Register(UserDataFetcher UDF, string username, string email, string password, string passwordRepeat)
