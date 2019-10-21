@@ -16,9 +16,9 @@ namespace studyBuddy.dataNeeds
             return subjects;
         }
 
-        public static misc.Subjects GetSubjects()
+        public static Subjects GetSubjects()
         {
-            return misc.Subjects.GetInstance();
+            return Subjects.GetInstance();
         }
 
         public static programComponents.forumNeeds.ForumContent GetForum()
@@ -42,7 +42,26 @@ namespace studyBuddy.dataNeeds
             return content;
         }
 
-        //public static GetForumContent
+        public static string GetDeviceIdentifier()
+        {
+            string toReturn = programComponents.loginNeeds.DeviceIdentifier.GetIdentifier();
+            if (toReturn.Length > 0)
+                return toReturn;
+            throw new KeyNotFoundException("Failed to get identifier.");
+        }
+
+        public static long GetServerTimeStamp()
+        {
+            string[] row = staticSource.SelectOneRow("UNIX_TIMESTAMP();");
+            if (row.Length > 0)
+                return Convert.ToInt64(row[0]) ;//long
+            return 0;
+        }
+
+        public static long GetDeviceTimeStamp()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        }
 
     }
 }

@@ -17,7 +17,7 @@ namespace studyBuddy.forumNeeds
     {
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
-        private dataNeeds.misc.Subjects subjects = DataFetcher.GetSubjects();
+        private Subjects subjects = DataFetcher.GetSubjects();
         private ForumContent forum = DataFetcher.GetForum();
 
         public ForumForm()
@@ -131,7 +131,7 @@ namespace studyBuddy.forumNeeds
         {
             if (filterSubjectsComboBox.SelectedIndex < 0)
                 return;
-            int selectedInd = ((dataNeeds.misc.Subjects.Subject)filterSubjectsComboBox.SelectedItem).id;
+            int selectedInd = ((Subjects.Subject)filterSubjectsComboBox.SelectedItem).id;
             //filtruoti
             var matchedForumContent = forum.Where(
                 fo => fo.subjectId == selectedInd

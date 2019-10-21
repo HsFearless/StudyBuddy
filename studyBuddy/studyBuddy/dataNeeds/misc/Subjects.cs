@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace studyBuddy.dataNeeds.misc
+namespace studyBuddy.dataNeeds
 {
     public sealed class Subjects : IEnumerable<Subjects.Subject>//singleton
     {

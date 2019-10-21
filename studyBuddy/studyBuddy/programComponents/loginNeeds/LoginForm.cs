@@ -28,7 +28,7 @@ namespace studyBuddy.programComponents.loginNeeds
             {
                 MessageBox.Show("Hi\n" +
                     "You are in");
-                Auth.SetLoggedIn(dataFetcher);
+                //Auth.SetLoggedIn(dataFetcher);
                 this.Hide();
                 var profile = new userProfileForm();
                 profile.ShowDialog();

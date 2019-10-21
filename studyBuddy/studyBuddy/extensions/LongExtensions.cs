@@ -11,8 +11,8 @@ namespace studyBuddy.extensions
     {
         static public bool IsTimeStampOlderThan(this long timeStamp, int hours)//^extension//#useIt
         {
-            long now = UserDataFetcher.GetTimeStamp();
-            now = now - timeStamp;
+            long now = DataFetcher.GetServerTimeStamp();
+            now -= timeStamp;
             if (now <= 0)
                 return false;
             if (now / 60 / 60 <= hours)

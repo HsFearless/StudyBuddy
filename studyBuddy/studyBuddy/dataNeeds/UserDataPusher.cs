@@ -19,7 +19,7 @@ namespace studyBuddy.dataNeeds
 
         static internal void pushToFile(string text)
         {
-            file.Write(text);
+            file.WriteNewly(text);
         }
     }
 }

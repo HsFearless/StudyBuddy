@@ -79,17 +79,18 @@ namespace studyBuddy.dataNeeds
 
         public static string GetLastUsedUsername()
         {
-            return file.Read();
+            return file.ReadAllAsOne();
         }
 
         public long GetCurrentUserTimeStamp()
         {
-            return 0;//#
-        }
-
-        public static long GetTimeStamp()
-        {
-            return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            string[] row = staticSource.SelectOneRow("loggedIn FROM " + MysqlHandler.tblUsers +
+                " WHERE ID = " + this.GetId());
+            if (row.Length < 1)
+            {
+                return -1;
+            }
+            return Convert.ToInt64(row[0]);
         }
     }
 }

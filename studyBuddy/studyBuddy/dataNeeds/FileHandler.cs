@@ -8,9 +8,9 @@ namespace studyBuddy.dataNeeds
 {
     public class FileHandler
     {
-        string fileName;
+        readonly string fileName;
         static string directory;
-        string fullPath;
+        readonly string fullPath;
 
         public FileHandler(string fileName)
         {
@@ -20,16 +20,30 @@ namespace studyBuddy.dataNeeds
             CheckPrepareDir();
         }
 
-        public void Write(string text)
+        public void WriteNewly(string text)
         {
             System.IO.File.WriteAllText(fullPath, text);
         }
 
-        public string Read()
+        public void Append(string text, char inBetween = '\n')
+        {
+            var appender = System.IO.File.AppendText(fullPath);
+            appender.Write(inBetween + text);
+            appender.Close();
+        }
+
+        public string ReadAllAsOne()
         {
             if (!System.IO.File.Exists(fullPath))
-                return "";
+                return ""; //#possible exception handling
             return System.IO.File.ReadAllText(fullPath);
+        }
+
+        public string[] ReadAll(char inBetween = '\n')
+        {
+            string allInOne = ReadAllAsOne();
+            string[] arr = allInOne.Split('\n');
+            return arr;
         }
 
         private void CheckPrepareDir()

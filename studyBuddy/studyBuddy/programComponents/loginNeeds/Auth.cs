@@ -66,6 +66,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 error.no = Error.code.OK;
                 //set log in timestamp
                 UserDataPusher.pushToFile(username);
+                SetLoggedIn(UDF);
                 return true;
             }
 
@@ -73,14 +74,26 @@ namespace studyBuddy.programComponents.loginNeeds
             return false;
         }//logIn
 
-        public static bool SetLoggedIn(UserDataFetcher UDF) //# change to private
+        private static bool SetLoggedIn(UserDataFetcher UDF) //# change to private
         {
+                /* Session. unix in file.
+                 * we will hash it.
+                 * send it to server.
+                 * if hash matches -> proceed
+                 * does not match -> invalid session
+                 */
             if (!InputValidator.ValidateId(UDF.GetId()))
                 return error.SetErrorAndReturnFalse(Error.code.USER_NOT_FOUND);
-            if (UDF.GetCurrentUserTimeStamp().IsTimeStampOlderThan(7 * 24))
+            //-----timestamp
+            long unix = DataFetcher.GetServerTimeStamp();
+            UserDataPusher.pushToFile(unix.ToString());
+
+            return true;
+            /*
+            if (UDF.GetCurrentUserTimeStamp().IsTimeStampOlderThan(7 * 24)) //^extension
                 //user has not been logged in for a whole week
                 return true;
-            return true;
+            return true;*/
         }
 
         public static bool Register(UserDataFetcher UDF, string username, string email, string password, string passwordRepeat)
@@ -117,6 +130,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 return error.SetErrorAndReturnFalse(Error.code.PUSH_ERROR);
             return true;
         }
+
 
     }//class
 }//namespace
