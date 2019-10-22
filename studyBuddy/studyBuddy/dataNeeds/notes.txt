@@ -1,26 +1,9 @@
-﻿Svarbiausias dalykas - viską bandyti perkelti į Xamarin (Mantas)
-		1. Add seperate Xamarin branch for private work (Mantas)
+﻿Svarbiausias dalykas - viską bandyti perkelti į Xamarin
 Pavyko ar ne, padaryti visą funkcionalumą
-	*Profilio func (Martynas)
-		1. Manage interests (sudeti visus MIF interesest)
-		2. Change picture (Egidijus sudės avatarus)
-		3. Karma variable (Martynas)
-		4. Link to posts (Egidijus)
-		// 5. Buddy rating and buddies found variable
-		6. Up for teaching = unhide from find buddy f()
-		7. Edit info box func (Martynas)
-		// 8. Add comment about person 
-	*Flush out forum (Mantas)
-		1. Add downVote ir upVote metodus (Egidijus)
-		2. Sujungimas su forumForm ^ (Martynas)
-		3. Komentarai į duombaze (Egidijus) 
-		4. Sort by votes (Martynas)
-		5. Disable edit on double click empty row (Martynas)
-	*Find buddy func (Martynas)
-		1. List of users who have the chosen interest and are up for teaching, Egidijus parūpins List (Martynas)
-	*Help and settings sujungt ir func (Martynas)
-		//
-	*Exit ir sign out func (Egidijus)
-		1. Sign out -> login form, destroy session(). (Egidijus)
+	*Profilio func
+	*Flush out forum
+	*Find buddy func
+	*Help and settings sujungt ir func
+	*Exit ir sign out func
 Privesti prie reikalavimų
-	visi reikalavimai bus sukelti i trello +
+	visi reikalavimai bus sukelti i trello
