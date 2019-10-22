@@ -87,8 +87,9 @@ namespace studyBuddy.dataNeeds
             return file.Read(); //#!!! what if order is messed?
         }
 
-        public long GetCurrentUserTimeStamp()
+        /*public long GetCurrentUserTimeStamp()
         {
+        //loggedIn does no longer exist
             string[] row = staticSource.SelectOneRow("loggedIn FROM " + MysqlHandler.tblUsers +
                 " WHERE ID = " + this.GetId());
             if (row.Length < 1)
@@ -96,7 +97,8 @@ namespace studyBuddy.dataNeeds
                 return -1;
             }
             return Convert.ToInt64(row[0]);
-        }
+        }*/
+
 
     }
 }

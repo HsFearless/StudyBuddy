@@ -1,5 +1,4 @@
-﻿using studyBuddy.forumNeeds;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +17,7 @@ namespace studyBuddy
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new programComponents.loginNeeds.loginForm());
-            Application.Run(new ForumForm());
+            Application.Run(new programComponents.forumNeeds.ForumForm());
         }
     }
 }

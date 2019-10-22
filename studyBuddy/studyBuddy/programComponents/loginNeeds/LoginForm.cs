@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using studyBuddy.programComponents;
 
 namespace studyBuddy.programComponents.loginNeeds
 {
@@ -30,7 +31,7 @@ namespace studyBuddy.programComponents.loginNeeds
                     "You are in");
                 //Auth.SetLoggedIn(dataFetcher);
                 this.Hide();
-                var profile = new userProfileForm();
+                var profile = new profileNeeds.userProfileForm();
                 profile.ShowDialog();
                 //this.Visible = true;
                 Application.Exit();
