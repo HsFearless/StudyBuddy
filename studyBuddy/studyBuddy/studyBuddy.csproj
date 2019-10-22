@@ -51,6 +51,7 @@
     <Compile Include="dataNeeds\BinaryFileHandler.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />
     <Compile Include="dataNeeds\abstract\DataHandler.cs" />
+    <Compile Include="dataNeeds\misc\SessionFileHandler.cs" />
     <Compile Include="exceptions\InvalidSession.cs" />
     <Compile Include="programComponents\loginNeeds\DeviceIdentifier.cs" />
     <Compile Include="dataNeeds\misc\ErrorCode.cs" />

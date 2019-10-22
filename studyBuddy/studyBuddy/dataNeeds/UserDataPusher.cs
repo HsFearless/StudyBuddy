@@ -9,7 +9,7 @@ namespace studyBuddy.dataNeeds
     internal abstract class UserDataPusher : UserDataAbstract
     {
         //staticSource, userId from abstract class
-        static internal void pushNewUser(string user, System.Net.Mail.MailAddress email, string hashPass, string salt)
+        static internal void PushNewUser(string user, System.Net.Mail.MailAddress email, string hashPass, string salt)
         {
             staticSource.InsertInto(MysqlHandler.tblUsers +
                 "(username, email, password, salt) VALUES" +
@@ -17,21 +17,31 @@ namespace studyBuddy.dataNeeds
 
         }
 
-        static internal void updateUserSession(int userId, long unix, string hashedUnix)
+        static internal void UpdateUserSession(int userId, string hashedUnix)
         {
             staticSource.Update(MysqlHandler.tblUsers +
-                $" SET loggedIn = '{unix.ToString()}', loggedInHash = '{hashedUnix}'" +
+                $" SET loggedInHash = '{hashedUnix}'" +
                 $" WHERE ID = '{userId}'");
         }
 
-        static internal void pushToFileFromScratch(string text)
+        static internal void PushToFileFromScratch(string text)
         {
             file.WriteNewly(text);
         }
 
-        static internal void pushToFile(string text)
+        static internal void PushToFile(string text)
         {
             file.Append(text);
+        }
+
+        static internal void PushSessionFileUser(string user)
+        {
+            SessionFileHandler.SetLastUser(user);
+        }
+
+        static internal void PushSessionFileLoggedIn(long unix)
+        {
+            SessionFileHandler.SetLoggedIn(unix);
         }
     }
 }

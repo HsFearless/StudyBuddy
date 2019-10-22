@@ -105,13 +105,5 @@ namespace studyBuddy.dataNeeds
             return true;
         }
 
-        static public bool ValidateSession(UserDataFetcher UDF)
-        {
-
-            return true;
-        }
-
-
-
     }
 }

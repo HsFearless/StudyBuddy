@@ -9,8 +9,6 @@ namespace studyBuddy.dataNeeds
     class UserDataFetcher : UserDataAbstract
     {
 
-        private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db //maybe long int?
-
         public string GetSalt(string username)
         {
             string[] row = source.SelectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
@@ -79,12 +77,12 @@ namespace studyBuddy.dataNeeds
 
         public static string GetLastUsedUsername()
         {
-            return file.Read();
+            return SessionFileHandler.GetLastUser(); //cached
         }
 
-        public static string GetLastLoginTimestamp()
+        public static long GetLastLoginTimestamp()
         {
-            return file.Read(); //#!!! what if order is messed?
+            return SessionFileHandler.GetLoggedIn(); //cached
         }
 
         /*public long GetCurrentUserTimeStamp()
@@ -99,6 +97,18 @@ namespace studyBuddy.dataNeeds
             return Convert.ToInt64(row[0]);
         }*/
 
+        public bool IsThisLastLoggedInTimestampHash(string hashedUnix)
+        {
+            //when calling this method make sure that you have called
+            //getId(argument) method before. 
+            if (this.userId == 0)
+                return false; //#possible throw new illegalMethodCall exception
 
+            var row = staticSource.SelectOneRow("rating FROM " + MysqlHandler.tblUsers +
+                $" WHERE loggedInHash = '{hashedUnix}' AND ID = '{this.userId}'");
+            if (row.Length < 1)
+                return false;
+            return true;
+        }
     }
 }

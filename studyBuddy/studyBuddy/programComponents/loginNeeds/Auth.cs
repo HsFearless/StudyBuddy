@@ -12,6 +12,7 @@ namespace studyBuddy.programComponents.loginNeeds
     {
         private static PasswordHasher hasher = new PasswordHasher(saltLength: 12, derivedLength: 39); // not base64 length !!!
         public static Error error = new Error(Error.code.UNKNOWN);
+        private static PasswordHasher timestampHasher = new PasswordHasher(derivedLength: 20);
         public static bool LogIn(UserDataFetcher UDF, string username, string password)
         {
 
@@ -65,7 +66,7 @@ namespace studyBuddy.programComponents.loginNeeds
             {
                 error.no = Error.code.OK;
                 //set log in timestamp
-                UserDataPusher.pushToFileFromScratch(username);
+                UserDataPusher.PushSessionFileUser(username);
                 SetSession(UDF);
                 return true;
             }
@@ -79,6 +80,8 @@ namespace studyBuddy.programComponents.loginNeeds
             /* Session. unix in file.
              * we will hash it.
              * send it to server.
+             * __________________
+             * check procedure: 
              * if hash matches -> proceed
              * does not match -> invalid session
              */
@@ -86,10 +89,9 @@ namespace studyBuddy.programComponents.loginNeeds
                 return error.SetErrorAndReturnFalse(Error.code.USER_NOT_FOUND);
             //-----timestamp
             long unix = DataFetcher.GetServerTimeStamp();
-            UserDataPusher.pushToFile(unix.ToString());
-            var hasher = new PasswordHasher(derivedLength: 20);
-            string hashedUnix = hasher.Hash(unix.ToString(), DataFetcher.GetDeviceIdentifier());
-            UserDataPusher.updateUserSession(UDF.GetId(), unix, hashedUnix);
+            UserDataPusher.PushSessionFileLoggedIn(unix);
+            string hashedUnix = timestampHasher.Hash(unix.ToString(), DataFetcher.GetDeviceIdentifier());
+            UserDataPusher.UpdateUserSession(UDF.GetId(), hashedUnix);
             //System.Windows.Forms.MessageBox.Show($"hashedUnix: {hashedUnix} ({hashedUnix.Length})");
 
             return true;
@@ -103,12 +105,27 @@ namespace studyBuddy.programComponents.loginNeeds
 
         public static bool LogInUsingSession()
         {
+            //is timestamp not old?
+            long lastUnix = UserDataFetcher.GetLastLoginTimestamp();
+            if (lastUnix.IsTimeStampOlderThan(seconds: 30))//^extension
+                return false; //session became a garbage
+
+            //does user exist?
+            UserDataFetcher UDF = new UserDataFetcher();
             string lastUser = UserDataFetcher.GetLastUsedUsername();
-            string lastUnix = UserDataFetcher.GetLastLoginTimestamp();
-            long lastUnixInLong = Convert.ToInt64(lastUnix);
-            if (lastUnixInLong.IsTimeStampOlderThan(1))
+            //first validate it, because user is scum
+            if (!InputValidator.ValidateUsername(lastUser))
+                return false; //throw new exception, session file corrupted
+            //get id. it might be email or username
+
+            //check hash
+            string hashedUnix = timestampHasher.Hash(lastUnix.ToString(), DataFetcher.GetDeviceIdentifier());
+            if (!UDF.IsThisLastLoggedInTimestampHash(hashedUnix) )
                 return false;
-            return false;
+
+            //all good
+            SetSession(UDF);
+            return true;
         }
 
         public static bool Register(UserDataFetcher UDF, string username, string email, string password, string passwordRepeat)
@@ -138,7 +155,7 @@ namespace studyBuddy.programComponents.loginNeeds
             string usedSalt = hasher.GetLastUsedSaltAndForgetIt();
 
             //push user
-            UserDataPusher.pushNewUser(username, mail, hashedPass, usedSalt);
+            UserDataPusher.PushNewUser(username, mail, hashedPass, usedSalt);
 
             //was it successful?
             if (InputValidator.CheckUsernameNotTaken(UDF, username))
