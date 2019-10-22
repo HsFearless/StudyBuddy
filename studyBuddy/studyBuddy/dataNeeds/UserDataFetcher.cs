@@ -79,12 +79,7 @@ namespace studyBuddy.dataNeeds
 
         public static string GetLastUsedUsername()
         {
-            return file.Read();
-        }
-
-        public static string GetLastLoginTimestamp()
-        {
-            return file.Read(); //#!!! what if order is messed?
+            return file.ReadAllAsOne();
         }
 
         public long GetCurrentUserTimeStamp()
@@ -97,6 +92,5 @@ namespace studyBuddy.dataNeeds
             }
             return Convert.ToInt64(row[0]);
         }
-
     }
 }

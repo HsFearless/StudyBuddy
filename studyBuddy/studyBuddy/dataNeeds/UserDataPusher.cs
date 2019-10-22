@@ -17,21 +17,9 @@ namespace studyBuddy.dataNeeds
 
         }
 
-        static internal void updateUserSession(int userId, long unix, string hashedUnix)
-        {
-            staticSource.Update(MysqlHandler.tblUsers +
-                $" SET loggedIn = '{unix.ToString()}', loggedInHash = '{hashedUnix}'" +
-                $" WHERE ID = '{userId}'");
-        }
-
-        static internal void pushToFileFromScratch(string text)
-        {
-            file.WriteNewly(text);
-        }
-
         static internal void pushToFile(string text)
         {
-            file.Append(text);
+            file.WriteNewly(text);
         }
     }
 }

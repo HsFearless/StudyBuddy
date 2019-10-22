@@ -191,20 +191,6 @@ namespace studyBuddy.dataNeeds
             return true; //probably?
         }
 
-        public bool Update(string sqlWithoutUpdate)
-        {
-            PrepareSql(ref sqlWithoutUpdate);
-            string fullSql = "UPDATE";
-            fullSql += sqlWithoutUpdate;
-            if (!OpenNewConnection())
-                return false;
-            cmdCon = new MySqlCommand(fullSql, this.con);
-            cmdCon.ExecuteNonQuery();
-
-            con.Close();
-            return true;
-        }
-
 
 
         public void TestSelectAllUsers()
