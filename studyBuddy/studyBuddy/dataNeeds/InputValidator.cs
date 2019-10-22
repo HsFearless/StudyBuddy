@@ -16,7 +16,7 @@ namespace studyBuddy.dataNeeds
 
         static public bool ValidateUsername(string username)
         {
-            if(username.Length < 4) //<=3
+            if (username.Length < 4) //<=3
             {
                 error.no = Error.code.TOO_SHORT;
                 return false;
@@ -79,7 +79,7 @@ namespace studyBuddy.dataNeeds
 
         static internal bool CheckPasswordMatch(UserDataFetcher UDF, string password)
         {
-            if(UDF.IsCorrectPassword(password))
+            if (UDF.IsCorrectPassword(password))
                 return true;
             return false;
         }
@@ -104,6 +104,14 @@ namespace studyBuddy.dataNeeds
                 return false;
             return true;
         }
+
+        static public bool ValidateSession(UserDataFetcher UDF)
+        {
+
+            return true;
+        }
+
+
 
     }
 }

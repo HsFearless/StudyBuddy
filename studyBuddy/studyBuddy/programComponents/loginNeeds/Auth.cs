@@ -10,7 +10,7 @@ namespace studyBuddy.programComponents.loginNeeds
 {
     abstract internal class Auth
     {
-        private static PasswordHasher hasher = new PasswordHasher(saltLength:12, derivedLength:39); // not base64 length !!!
+        private static PasswordHasher hasher = new PasswordHasher(saltLength: 12, derivedLength: 39); // not base64 length !!!
         public static Error error = new Error(Error.code.UNKNOWN);
         public static bool LogIn(UserDataFetcher UDF, string username, string password)
         {
@@ -36,7 +36,7 @@ namespace studyBuddy.programComponents.loginNeeds
                     //--yes. get salt
                     salt = UDF.GetSalt(email);
                 }
-                    //--no. return false but before set error
+                //--no. return false but before set error
                 else
                     return error.SetErrorAndReturnFalse(Error.code.INVALID_EMAIL | Error.code.INVALID_USERNAME);
             }
@@ -65,8 +65,8 @@ namespace studyBuddy.programComponents.loginNeeds
             {
                 error.no = Error.code.OK;
                 //set log in timestamp
-                UserDataPusher.pushToFile(username);
-                SetLoggedIn(UDF);
+                UserDataPusher.pushToFileFromScratch(username);
+                SetSession(UDF);
                 return true;
             }
 
@@ -74,26 +74,41 @@ namespace studyBuddy.programComponents.loginNeeds
             return false;
         }//logIn
 
-        private static bool SetLoggedIn(UserDataFetcher UDF) //# change to private
+        private static bool SetSession(UserDataFetcher UDF)
         {
-                /* Session. unix in file.
-                 * we will hash it.
-                 * send it to server.
-                 * if hash matches -> proceed
-                 * does not match -> invalid session
-                 */
+            /* Session. unix in file.
+             * we will hash it.
+             * send it to server.
+             * if hash matches -> proceed
+             * does not match -> invalid session
+             */
             if (!InputValidator.ValidateId(UDF.GetId()))
                 return error.SetErrorAndReturnFalse(Error.code.USER_NOT_FOUND);
             //-----timestamp
             long unix = DataFetcher.GetServerTimeStamp();
             UserDataPusher.pushToFile(unix.ToString());
+            var hasher = new PasswordHasher(derivedLength: 20);
+            string hashedUnix = hasher.Hash(unix.ToString(), DataFetcher.GetDeviceIdentifier());
+            UserDataPusher.updateUserSession(UDF.GetId(), unix, hashedUnix);
+            //System.Windows.Forms.MessageBox.Show($"hashedUnix: {hashedUnix} ({hashedUnix.Length})");
 
             return true;
             /*
             if (UDF.GetCurrentUserTimeStamp().IsTimeStampOlderThan(7 * 24)) //^extension
                 //user has not been logged in for a whole week
                 return true;
-            return true;*/
+            return true;
+            */
+        }
+
+        public static bool LogInUsingSession()
+        {
+            string lastUser = UserDataFetcher.GetLastUsedUsername();
+            string lastUnix = UserDataFetcher.GetLastLoginTimestamp();
+            long lastUnixInLong = Convert.ToInt64(lastUnix);
+            if (lastUnixInLong.IsTimeStampOlderThan(1))
+                return false;
+            return false;
         }
 
         public static bool Register(UserDataFetcher UDF, string username, string email, string password, string passwordRepeat)

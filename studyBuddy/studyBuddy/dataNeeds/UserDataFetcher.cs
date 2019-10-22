@@ -8,7 +8,7 @@ namespace studyBuddy.dataNeeds
 {
     class UserDataFetcher : UserDataAbstract
     {
-        
+
         private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db //maybe long int?
 
         public string GetSalt(string username)
@@ -70,7 +70,7 @@ namespace studyBuddy.dataNeeds
 
         public int GetId(string username)
         {
-            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers + 
+            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}';");
             if (row.Length != 1)
                 return 0;
@@ -79,7 +79,12 @@ namespace studyBuddy.dataNeeds
 
         public static string GetLastUsedUsername()
         {
-            return file.ReadAllAsOne();
+            return file.Read();
+        }
+
+        public static string GetLastLoginTimestamp()
+        {
+            return file.Read(); //#!!! what if order is messed?
         }
 
         public long GetCurrentUserTimeStamp()
@@ -92,5 +97,6 @@ namespace studyBuddy.dataNeeds
             }
             return Convert.ToInt64(row[0]);
         }
+
     }
 }

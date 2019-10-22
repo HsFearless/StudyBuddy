@@ -11,6 +11,8 @@ namespace studyBuddy.dataNeeds
         readonly string fileName;
         static string directory;
         readonly string fullPath;
+        private string[] memory = null;
+        public int memoryInd { get; private set; } = 0;
 
         public FileHandler(string fileName)
         {
@@ -42,8 +44,17 @@ namespace studyBuddy.dataNeeds
         public string[] ReadAll(char inBetween = '\n')
         {
             string allInOne = ReadAllAsOne();
-            string[] arr = allInOne.Split('\n');
-            return arr;
+            this.memory = allInOne.Split('\n');
+            return memory;
+        }
+
+        public string Read()
+        {
+            if (memory == null)
+                ReadAll();
+            if (memory.Length <= memoryInd) //#index out of bounds
+                return "";
+            return memory[memoryInd++];
         }
 
         private void CheckPrepareDir()
