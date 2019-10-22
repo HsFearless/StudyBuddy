@@ -105,6 +105,8 @@ namespace studyBuddy.forumNeeds
 
         private void ProblemsGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.problemsGridView.CurrentRow.Cells[0].Value == null)
+                return;
             ProblemDiscussion problemDiscussion = new ProblemDiscussion();
             problemDiscussion.problemNameLabel.Text = this.problemsGridView.CurrentRow.Cells[0].Value.ToString();
             problemDiscussion.problemDescriptionLabel.Text = this.problemsGridView.CurrentRow.Cells[2].Value.ToString();
@@ -188,6 +190,11 @@ namespace studyBuddy.forumNeeds
                 CommentsManager.AddNewFile(forumRow.name + ".txt");
             }
             filterSubjectsComboBox.SelectedIndex = -1;
+        }
+
+        private void ProblemsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

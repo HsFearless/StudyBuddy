@@ -236,7 +236,7 @@
             this.userProfileAddInterestsButton.Name = "userProfileAddInterestsButton";
             this.userProfileAddInterestsButton.Size = new System.Drawing.Size(96, 30);
             this.userProfileAddInterestsButton.TabIndex = 12;
-            this.userProfileAddInterestsButton.Text = "Add interests";
+            this.userProfileAddInterestsButton.Text = "Interests\r\n";
             this.userProfileAddInterestsButton.UseVisualStyleBackColor = true;
             // 
             // userProfileUpForTeachingCheckbox
