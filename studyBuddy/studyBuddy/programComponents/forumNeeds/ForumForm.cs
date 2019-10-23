@@ -103,11 +103,7 @@ namespace studyBuddy.forumNeeds
                 sortBySubjectAscending = !sortBySubjectAscending;
             }
 
-            foreach (DataGridViewRow row in problemsGridView.Rows)
-            {
-                if (row.Cells[1].Value != "Math")
-                    row.Visible = false;
-            }
+            
         }
 
         private void ProblemsGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
