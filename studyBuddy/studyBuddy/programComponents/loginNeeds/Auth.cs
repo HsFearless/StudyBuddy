@@ -13,6 +13,7 @@ namespace studyBuddy.programComponents.loginNeeds
         private static PasswordHasher hasher = new PasswordHasher(saltLength: 12, derivedLength: 39); // not base64 length !!!
         public static Error error = new Error(Error.code.UNKNOWN);
         private static PasswordHasher timestampHasher = new PasswordHasher(derivedLength: 20);
+        public static string messageToOutterWorld =""; //#delete me
         public static bool LogIn(UserDataFetcher UDF, string username, string password)
         {
 
@@ -67,8 +68,9 @@ namespace studyBuddy.programComponents.loginNeeds
                 error.no = Error.code.OK;
                 //set log in timestamp
                 UserDataPusher.PushSessionFileUser(username);
-                SetSession(UDF);
-                return true;
+                if(SetSession(UDF))
+                    return true;
+                return false;
             }
 
             error.no = Error.code.WRONG_PASSWORD;
@@ -91,7 +93,7 @@ namespace studyBuddy.programComponents.loginNeeds
             long unix = DataFetcher.GetServerTimeStamp();
             UserDataPusher.PushSessionFileLoggedIn(unix);
             string hashedUnix = timestampHasher.Hash(unix.ToString(), DataFetcher.GetDeviceIdentifier());
-            UserDataPusher.UpdateUserSession(UDF, hashedUnix);
+            UserDataPusher.UpdateUserSession(UDF, unix, hashedUnix);
             //System.Windows.Forms.MessageBox.Show($"hashedUnix: {hashedUnix} ({hashedUnix.Length})");
 
             return true;
@@ -107,8 +109,9 @@ namespace studyBuddy.programComponents.loginNeeds
         {
             //is timestamp not old?
             long lastUnix = UserDataFetcher.GetLastLoginTimestamp();
-            if (lastUnix.IsTimeStampOlderThan(seconds: 30))//^extension
-                return error.SetErrorAndReturnFalse(Error.code.INVALID_SESSION); //session became a garbage
+            if (lastUnix.IsTimeStampOlderThan(minutes: 5))//^extension
+                return error.SetErrorAndReturnFalse(Error.code.INVALID_SESSION
+                    | Error.code.OUTDATED); //session became a garbage
 
             //does user exist?
             UserDataFetcher UDF = new UserDataFetcher();
@@ -123,6 +126,7 @@ namespace studyBuddy.programComponents.loginNeeds
 
             //check hash
             string hashedUnix = timestampHasher.Hash(lastUnix.ToString(), DataFetcher.GetDeviceIdentifier());
+            messageToOutterWorld = hashedUnix;
             if (!UDF.IsThisLastLoggedInTimestampHash(hashedUnix) )
                 return error.SetErrorAndReturnFalse(Error.code.INVALID_SESSION);
 

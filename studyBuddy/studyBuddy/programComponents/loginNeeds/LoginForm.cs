@@ -18,10 +18,6 @@ namespace studyBuddy.programComponents.loginNeeds
         private UserDataFetcher dataFetcher = new UserDataFetcher();
         public loginForm()
         {
-            if (Auth.LogInUsingSession())
-                ShowAfterLoginScreen();
-            else
-                //MessageBox.Show(Auth.error.no.ToString() );
             InitializeComponent();
         }
 
@@ -61,6 +57,11 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+
+            if (Auth.LogInUsingSession())
+                ShowAfterLoginScreen();
+            else
+                MessageBox.Show(Auth.error.Message() + " " + Auth.messageToOutterWorld + $"({Auth.messageToOutterWorld.Length})");
             textUsername.Text = UserDataFetcher.GetLastUsedUsername();
         }
 
