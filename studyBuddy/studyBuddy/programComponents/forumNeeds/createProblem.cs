@@ -1,4 +1,5 @@
-﻿using System;
+﻿using studyBuddy;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,9 +38,9 @@ namespace studyBuddy.forumNeeds
 
         }
 
-        private void SubjectComboBox_TextChanged(object sender, EventArgs e)
+        private void SubjectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            similarProblemsGridView.Visible = true;
+
         }
     }
 }

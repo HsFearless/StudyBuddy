@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds.misc
 {
-    public sealed class Subjects //singleton
+    public sealed class Subjects : IEnumerable<Subjects.Subject>//singleton
     {
         public sealed class Subject : IComparable<Subject> //^comparable
         {
@@ -22,8 +23,15 @@ namespace studyBuddy.dataNeeds.misc
             {
                 if (obj == null)
                     return false;
-                if (this.id != ((Subject)obj).id) //^narrowing
+                try
+                {
+                    if (this.id != ((Subject)obj).id) //^narrowing
+                        return false;
+                }
+                catch (InvalidCastException)
+                {
                     return false;
+                }
                 return true;
             }
 
@@ -37,10 +45,15 @@ namespace studyBuddy.dataNeeds.misc
                 return (this.Equals(other))? 1:0;
             }
 
+            public override string ToString()
+            {
+                return this.name;
+            }
+
         }//nested class Subject end
 
         private static readonly Lazy<Subjects> lazy =
-            new Lazy<Subjects>(() => new Subjects()); //^geenerics
+            new Lazy<Subjects>(() => new Subjects()); //^generics
         private static Subject[] subjects;
 
         private Subjects()
@@ -48,13 +61,13 @@ namespace studyBuddy.dataNeeds.misc
             //do nothing//singleton after all
         }
 
-        public Subjects getInstance()
+        public static Subjects GetInstance()
         {
             Initialize();
             return lazy.Value;
         }
 
-        private void Initialize()
+        private static void Initialize()
         {
             if (subjects != null && subjects.Length != 0)
                 return; //not null and not 0 elements
@@ -70,10 +83,61 @@ namespace studyBuddy.dataNeeds.misc
                 subjects[i++] = new Subject(id,name);
             }
         }
+
+        public IEnumerator<Subject> GetEnumerator()
+        {
+            return new SubjectsEnumerator(subjects);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return new SubjectsEnumerator(subjects);
+        }
+
+        IEnumerator<Subject> IEnumerable<Subject>.GetEnumerator()
+        {
+            return new SubjectsEnumerator(subjects);
+        }
+
         public Subject this[int i] //^indexed
         {
             get { return subjects[i]; }
             set { subjects[i] = value; }
+        }
+    }
+
+
+    class SubjectsEnumerator : IEnumerator<Subjects.Subject>
+    {
+        private int pos = -1;
+        private Subjects.Subject[] subjects;
+        private int len=0;
+
+        public SubjectsEnumerator(Subjects.Subject[] subjects)
+        {
+            this.subjects = subjects;
+            this.len = subjects.Length;
+        }
+
+        public Subjects.Subject Current => subjects[pos];
+
+        object IEnumerator.Current => subjects[pos];
+
+        public void Dispose()//#
+        {
+            return;
+            //throw new NotImplementedException();
+        }
+
+        public bool MoveNext()
+        {
+            pos++;
+            return pos < len;
+        }
+
+        public void Reset()
+        {
+            pos = -1;
         }
     }
 }

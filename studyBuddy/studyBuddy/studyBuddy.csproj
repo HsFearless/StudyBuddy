@@ -53,6 +53,8 @@
     <Compile Include="dataNeeds\misc\Subjects.cs" />
     <Compile Include="dataNeeds\Rows.cs" />
     <Compile Include="extensions\LongExtensions.cs" />
+    <Compile Include="programComponents\exitNeeds\ComboBoxItem.cs" />
+    <Compile Include="programComponents\forumNeeds\Class1.cs" />
     <Compile Include="programComponents\forumNeeds\ForumContent.cs" />
     <Compile Include="programComponents\forumNeeds\ForumPost.cs" />
     <Compile Include="programComponents\forumNeeds\CommentsManager.cs" />
@@ -123,11 +125,11 @@
     <Compile Include="programComponents\settingsNeeds\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="programComponents\studyBuddyNeeds\studuBuddyForm.cs">
+    <Compile Include="programComponents\studyBuddyNeeds\studyBuddyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="programComponents\studyBuddyNeeds\studuBuddyForm.Designer.cs">
-      <DependentUpon>studuBuddyForm.cs</DependentUpon>
+    <Compile Include="programComponents\studyBuddyNeeds\studyBuddyForm.Designer.cs">
+      <DependentUpon>studyBuddyForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="programComponents\forumNeeds\CreateProblem.resx">
       <DependentUpon>CreateProblem.cs</DependentUpon>
@@ -166,8 +168,8 @@
     <EmbeddedResource Include="programComponents\settingsNeeds\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="programComponents\studyBuddyNeeds\studuBuddyForm.resx">
-      <DependentUpon>studuBuddyForm.cs</DependentUpon>
+    <EmbeddedResource Include="programComponents\studyBuddyNeeds\studyBuddyForm.resx">
+      <DependentUpon>studyBuddyForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

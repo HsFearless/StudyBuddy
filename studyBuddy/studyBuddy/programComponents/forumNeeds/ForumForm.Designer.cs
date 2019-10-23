@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.leftToolBar = new System.Windows.Forms.TableLayoutPanel();
             this.toolBarExitButton = new System.Windows.Forms.Button();
             this.toolBarSettingsButton = new System.Windows.Forms.Button();
@@ -41,11 +41,15 @@
             this.addProblemLabel = new System.Windows.Forms.Label();
             this.sortByNameButton = new System.Windows.Forms.Button();
             this.problemsGridView = new System.Windows.Forms.DataGridView();
-            this.sortBySubjectButton = new System.Windows.Forms.Button();
-            this.addNewGroupBox = new System.Windows.Forms.GroupBox();
             this.problemsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sortBySubjectButton = new System.Windows.Forms.Button();
+            this.addNewGroupBox = new System.Windows.Forms.GroupBox();
+            this.filterSubjectsComboBox = new System.Windows.Forms.ComboBox();
+            this.filterLabel = new System.Windows.Forms.Label();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.leftToolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.problemsGridView)).BeginInit();
             this.addNewGroupBox.SuspendLayout();
@@ -65,7 +69,7 @@
             this.leftToolBar.Controls.Add(this.toolBarProfileButton, 0, 0);
             this.leftToolBar.Controls.Add(this.logoLabel, 0, 3);
             this.leftToolBar.Location = new System.Drawing.Point(-4, -4);
-            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4);
+            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.leftToolBar.Name = "leftToolBar";
             this.leftToolBar.RowCount = 7;
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -121,6 +125,7 @@
             this.toolBarFindBuddyButton.TabIndex = 2;
             this.toolBarFindBuddyButton.Text = "Study Buddy";
             this.toolBarFindBuddyButton.UseVisualStyleBackColor = true;
+            this.toolBarFindBuddyButton.Click += new System.EventHandler(this.ToolBarFindBuddyButton_Click);
             // 
             // toolBarForumButton
             // 
@@ -143,6 +148,7 @@
             this.toolBarProfileButton.TabIndex = 0;
             this.toolBarProfileButton.Text = "Profile";
             this.toolBarProfileButton.UseVisualStyleBackColor = true;
+            this.toolBarProfileButton.Click += new System.EventHandler(this.ToolBarProfileButton_Click);
             // 
             // logoLabel
             // 
@@ -158,9 +164,10 @@
             // 
             // addProblemButton
             // 
-            this.addProblemButton.Location = new System.Drawing.Point(210, 78);
+            this.addProblemButton.Location = new System.Drawing.Point(211, 78);
+            this.addProblemButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addProblemButton.Name = "addProblemButton";
-            this.addProblemButton.Size = new System.Drawing.Size(110, 32);
+            this.addProblemButton.Size = new System.Drawing.Size(109, 32);
             this.addProblemButton.TabIndex = 11;
             this.addProblemButton.Text = "ADD";
             this.addProblemButton.UseVisualStyleBackColor = true;
@@ -177,7 +184,8 @@
             // 
             // sortByNameButton
             // 
-            this.sortByNameButton.Location = new System.Drawing.Point(170, 107);
+            this.sortByNameButton.Location = new System.Drawing.Point(159, 82);
+            this.sortByNameButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sortByNameButton.Name = "sortByNameButton";
             this.sortByNameButton.Size = new System.Drawing.Size(153, 39);
             this.sortByNameButton.TabIndex = 13;
@@ -194,6 +202,7 @@
             this.subjectColumn,
             this.descriptionColumn});
             this.problemsGridView.Location = new System.Drawing.Point(120, 170);
+            this.problemsGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.problemsGridView.Name = "problemsGridView";
             this.problemsGridView.RowHeadersWidth = 51;
             this.problemsGridView.RowTemplate.Height = 24;
@@ -202,31 +211,11 @@
             this.problemsGridView.TabIndex = 12;
             this.problemsGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProblemsGridView_CellDoubleClick);
             // 
-            // sortBySubjectButton
-            // 
-            this.sortBySubjectButton.Location = new System.Drawing.Point(348, 107);
-            this.sortBySubjectButton.Name = "sortBySubjectButton";
-            this.sortBySubjectButton.Size = new System.Drawing.Size(153, 39);
-            this.sortBySubjectButton.TabIndex = 14;
-            this.sortBySubjectButton.Text = "SORT BY SUBJECT";
-            this.sortBySubjectButton.UseVisualStyleBackColor = true;
-            this.sortBySubjectButton.Click += new System.EventHandler(this.SortBySubjectButton_Click);
-            // 
-            // addNewGroupBox
-            // 
-            this.addNewGroupBox.Controls.Add(this.addProblemButton);
-            this.addNewGroupBox.Controls.Add(this.addProblemLabel);
-            this.addNewGroupBox.Location = new System.Drawing.Point(769, -4);
-            this.addNewGroupBox.Name = "addNewGroupBox";
-            this.addNewGroupBox.Size = new System.Drawing.Size(407, 174);
-            this.addNewGroupBox.TabIndex = 15;
-            this.addNewGroupBox.TabStop = false;
-            // 
             // problemsNameColumn
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.problemsNameColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.problemsNameColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.problemsNameColumn.HeaderText = "Problem\'s Name";
             this.problemsNameColumn.MinimumWidth = 6;
             this.problemsNameColumn.Name = "problemsNameColumn";
@@ -246,18 +235,82 @@
             this.descriptionColumn.MinimumWidth = 6;
             this.descriptionColumn.Name = "descriptionColumn";
             // 
+            // sortBySubjectButton
+            // 
+            this.sortBySubjectButton.Location = new System.Drawing.Point(159, 31);
+            this.sortBySubjectButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sortBySubjectButton.Name = "sortBySubjectButton";
+            this.sortBySubjectButton.Size = new System.Drawing.Size(153, 39);
+            this.sortBySubjectButton.TabIndex = 14;
+            this.sortBySubjectButton.Text = "SORT BY SUBJECT";
+            this.sortBySubjectButton.UseVisualStyleBackColor = true;
+            this.sortBySubjectButton.Click += new System.EventHandler(this.SortBySubjectButton_Click);
+            // 
+            // addNewGroupBox
+            // 
+            this.addNewGroupBox.Controls.Add(this.addProblemButton);
+            this.addNewGroupBox.Controls.Add(this.addProblemLabel);
+            this.addNewGroupBox.Location = new System.Drawing.Point(769, -4);
+            this.addNewGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addNewGroupBox.Name = "addNewGroupBox";
+            this.addNewGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addNewGroupBox.Size = new System.Drawing.Size(407, 174);
+            this.addNewGroupBox.TabIndex = 15;
+            this.addNewGroupBox.TabStop = false;
+            // 
+            // filterSubjectsComboBox
+            // 
+            this.filterSubjectsComboBox.FormattingEnabled = true;
+            this.filterSubjectsComboBox.Location = new System.Drawing.Point(339, 50);
+            this.filterSubjectsComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterSubjectsComboBox.Name = "filterSubjectsComboBox";
+            this.filterSubjectsComboBox.Size = new System.Drawing.Size(152, 24);
+            this.filterSubjectsComboBox.TabIndex = 16;
+            this.filterSubjectsComboBox.SelectedIndexChanged += new System.EventHandler(this.FilterSubjectsComboBox_SelectedIndexChanged);
+            // 
+            // filterLabel
+            // 
+            this.filterLabel.AutoSize = true;
+            this.filterLabel.Location = new System.Drawing.Point(372, 31);
+            this.filterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.filterLabel.Name = "filterLabel";
+            this.filterLabel.Size = new System.Drawing.Size(95, 17);
+            this.filterLabel.TabIndex = 17;
+            this.filterLabel.Text = "Filter subjects";
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(493, 99);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(137, 22);
+            this.textBoxSearch.TabIndex = 18;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(645, 83);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(127, 43);
+            this.buttonSearch.TabIndex = 19;
+            this.buttonSearch.Text = "search in Description";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.ButtonSearch_Click);
+            // 
             // ForumForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 572);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.textBoxSearch);
+            this.Controls.Add(this.filterLabel);
+            this.Controls.Add(this.filterSubjectsComboBox);
             this.Controls.Add(this.addNewGroupBox);
             this.Controls.Add(this.sortBySubjectButton);
             this.Controls.Add(this.sortByNameButton);
             this.Controls.Add(this.problemsGridView);
             this.Controls.Add(this.leftToolBar);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1189, 609);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1189, 607);
             this.Name = "ForumForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Study Buddy";
@@ -268,6 +321,7 @@
             this.addNewGroupBox.ResumeLayout(false);
             this.addNewGroupBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -290,5 +344,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn problemsNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn subjectColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
+        private System.Windows.Forms.ComboBox filterSubjectsComboBox;
+        private System.Windows.Forms.Label filterLabel;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }

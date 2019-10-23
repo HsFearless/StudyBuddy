@@ -44,7 +44,7 @@ namespace studyBuddy
 
         private void ToolBarFindBuddyButton_Click(object sender, EventArgs e)
         {
-            var profile = new studyBuddyForm();
+            var profile = new studyBuddyNeeds.studyBuddyForm();
             this.Hide();
             profile.ShowDialog();
             Application.Exit();
