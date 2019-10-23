@@ -19,7 +19,6 @@ C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CoreCompileInputs.cache
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.exe
 C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.pdb
-C:\Users\Apelsinas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.UserProfileForm.resources
 C:\Users\Martynas\Source\Repos\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.exe.config
 C:\Users\Martynas\Source\Repos\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.exe
 C:\Users\Martynas\Source\Repos\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.pdb
@@ -62,11 +61,9 @@ C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\De
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.helpNeeds.helpForm.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.settingsNeeds.settingsForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.exitNeeds.exitForm.resources
-C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.forumForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.helpNeeds.helpForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.settingsNeeds.settingsForm.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.studyBuddyNeeds.studyBuddyForm.resources
-C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.studyBuddyNeeds.studyBuddyForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.loginForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.RegisterForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csprojAssemblyReference.cache
@@ -94,9 +91,12 @@ D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\MySql.Data.xml
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CopyComplete
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.createProblem.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.ProblemDiscussion.resources
-C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.CreateProblem.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.ProblemDiscussion.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.CreateProblem.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.ProblemDiscussion.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.loginForm.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.RegisterForm.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.profileNeeds.userProfileForm.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.studyBuddyNeeds.studyBuddyForm.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.forumNeeds.CreateProblem.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.forumNeeds.ForumForm.resources

@@ -9,7 +9,7 @@ namespace studyBuddy.dataNeeds
 {
     abstract class UserDataAbstract : DataHandler
     {
-        
+
         internal protected int userId = 0;
 
         public UserDataAbstract(int userId = 0)

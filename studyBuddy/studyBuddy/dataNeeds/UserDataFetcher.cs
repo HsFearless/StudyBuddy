@@ -8,8 +8,6 @@ namespace studyBuddy.dataNeeds
 {
     class UserDataFetcher : UserDataAbstract
     {
-        
-        private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db //maybe long int?
 
         public string GetSalt(string username)
         {
@@ -70,7 +68,7 @@ namespace studyBuddy.dataNeeds
 
         public int GetId(string username)
         {
-            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers + 
+            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}';");
             if (row.Length != 1)
                 return 0;
@@ -79,17 +77,38 @@ namespace studyBuddy.dataNeeds
 
         public static string GetLastUsedUsername()
         {
-            return file.Read();
+            return SessionFileHandler.GetLastUser(); //cached
         }
 
-        public long GetCurrentUserTimeStamp()
+        public static long GetLastLoginTimestamp()
         {
-            return 0;//#
+            return SessionFileHandler.GetLoggedIn(); //cached
         }
 
-        public static long GetTimeStamp()
+        /*public long GetCurrentUserTimeStamp()
         {
-            return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        //loggedIn does no longer exist
+            string[] row = staticSource.SelectOneRow("loggedIn FROM " + MysqlHandler.tblUsers +
+                " WHERE ID = " + this.GetId());
+            if (row.Length < 1)
+            {
+                return -1;
+            }
+            return Convert.ToInt64(row[0]);
+        }*/
+
+        public bool IsThisLastLoggedInTimestampHash(string hashedUnix)
+        {
+            //when calling this method make sure that you have called
+            //getId(argument) method before. 
+            if (this.userId == 0)
+                return false; //#possible throw new illegalMethodCall exception
+
+            var row = staticSource.SelectOneRow("rating FROM " + MysqlHandler.tblUsers +
+                $" WHERE loggedInHash = '{hashedUnix}' AND ID = '{this.userId}'");
+            if (row.Length < 1)
+                return false;
+            return true;
         }
     }
 }

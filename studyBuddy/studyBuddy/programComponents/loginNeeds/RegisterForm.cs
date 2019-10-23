@@ -61,5 +61,10 @@ namespace studyBuddy.programComponents.loginNeeds
         {
 
         }
+
+        private void LabelTest_Click(object sender, EventArgs e)
+        {
+            labelTest.Text = DataFetcher.GetServerTimeStamp().ToString();
+        }
     }
 }

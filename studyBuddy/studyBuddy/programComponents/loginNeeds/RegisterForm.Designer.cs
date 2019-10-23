@@ -117,6 +117,7 @@
             this.labelTest.Size = new System.Drawing.Size(66, 17);
             this.labelTest.TabIndex = 10;
             this.labelTest.Text = "labelTest";
+            this.labelTest.Click += new System.EventHandler(this.LabelTest_Click);
             // 
             // groupBox1
             // 
@@ -130,9 +131,9 @@
             this.groupBox1.Controls.Add(this.labelUsername);
             this.groupBox1.Controls.Add(this.textUsername);
             this.groupBox1.Location = new System.Drawing.Point(395, 155);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(340, 222);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;

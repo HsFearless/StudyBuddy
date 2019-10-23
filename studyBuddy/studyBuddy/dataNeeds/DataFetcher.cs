@@ -16,9 +16,9 @@ namespace studyBuddy.dataNeeds
             return subjects;
         }
 
-        public static misc.Subjects GetSubjects()
+        public static Subjects GetSubjects()
         {
-            return misc.Subjects.GetInstance();
+            return Subjects.GetInstance();
         }
 
         public static programComponents.forumNeeds.ForumContent GetForum()
@@ -42,7 +42,56 @@ namespace studyBuddy.dataNeeds
             return content;
         }
 
-        //public static GetForumContent
+        public static string GetDeviceIdentifier()
+        {
+            string toReturn = programComponents.loginNeeds.DeviceIdentifier.GetIdentifier();
+            if (toReturn.Length > 0)
+                return toReturn;
+            throw new KeyNotFoundException("Failed to get identifier.");
+        }
+
+        public static long GetServerTimeStamp()
+        {
+            string[] row = staticSource.SelectOneRow("UNIX_TIMESTAMP();");
+            if (row.Length > 0)
+                return Convert.ToInt64(row[0]) ;//long
+            return 0;
+        }
+
+        public static long GetDeviceTimeStamp()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        }
+
+        public static List<programComponents.profileNeeds.User> GetUsers()
+        {
+            var rows = staticSource.Select("ID, username, email, "
+                + "karma, rating, lastActivity "
+                + "FROM " + MysqlHandler.tblUsers);
+            var toReturn = new List<programComponents.profileNeeds.User>();
+            foreach(string[] col in rows)
+            {
+                int id = Convert.ToInt32(col[0]);
+                string name = col[1];
+                string email = col[2];
+                int karma = Convert.ToInt32(col[3]);
+                int rating = Convert.ToInt32(col[4]);
+                long lastActivity = Convert.ToInt64(col[5]);
+                try
+                {
+                    var user = new programComponents.profileNeeds.User(id, name,
+                        email, karma, rating, lastActivity);
+                    toReturn.Add(user);
+                }
+                catch (Exception)
+                {
+                    // :)
+                } //try catch
+
+            }//foreach
+
+            return toReturn;
+        }//static function
 
     }
 }

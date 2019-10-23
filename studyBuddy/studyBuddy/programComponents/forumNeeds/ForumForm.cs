@@ -1,6 +1,4 @@
-﻿using studyBuddy.programComponents.forumNeeds;
-using studyBuddy.studyBuddyNeeds;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using studyBuddy.dataNeeds;
+using studyBuddy.programComponents;
 
-namespace studyBuddy.forumNeeds
+namespace studyBuddy.programComponents.forumNeeds
 {
     public partial class ForumForm : Form
     {
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
-        private dataNeeds.misc.Subjects subjects = DataFetcher.GetSubjects();
+        private Subjects subjects = DataFetcher.GetSubjects();
         private ForumContent forum = DataFetcher.GetForum();
 
         public ForumForm()
@@ -108,6 +107,8 @@ namespace studyBuddy.forumNeeds
 
         private void ProblemsGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.problemsGridView.CurrentRow.Cells[0].Value == null)
+                return;
             ProblemDiscussion problemDiscussion = new ProblemDiscussion();
             problemDiscussion.problemNameLabel.Text = this.problemsGridView.CurrentRow.Cells[0].Value.ToString();
             problemDiscussion.problemDescriptionLabel.Text = this.problemsGridView.CurrentRow.Cells[2].Value.ToString();
@@ -116,7 +117,7 @@ namespace studyBuddy.forumNeeds
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
         {
-            var profile = new userProfileForm();
+            var profile = new  profileNeeds.userProfileForm();
             this.Hide();
             profile.ShowDialog();
             Application.Exit();
@@ -134,7 +135,7 @@ namespace studyBuddy.forumNeeds
         {
             if (filterSubjectsComboBox.SelectedIndex < 0)
                 return;
-            int selectedInd = ((dataNeeds.misc.Subjects.Subject)filterSubjectsComboBox.SelectedItem).id;
+            int selectedInd = ((Subjects.Subject)filterSubjectsComboBox.SelectedItem).id;
             //filtruoti
             var matchedForumContent = forum.Where(
                 fo => fo.subjectId == selectedInd
@@ -191,6 +192,11 @@ namespace studyBuddy.forumNeeds
                 CommentsManager.AddNewFile(forumRow.name + ".txt");
             }
             filterSubjectsComboBox.SelectedIndex = -1;
+        }
+
+        private void ProblemsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

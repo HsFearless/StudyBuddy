@@ -1,4 +1,4 @@
-﻿namespace studyBuddy
+﻿namespace studyBuddy.programComponents.profileNeeds
 {
     partial class userProfileForm
     {
@@ -56,7 +56,7 @@
             // 
             // leftToolBar
             // 
-            this.leftToolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.leftToolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftToolBar.ColumnCount = 1;
             this.leftToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -236,7 +236,7 @@
             this.userProfileAddInterestsButton.Name = "userProfileAddInterestsButton";
             this.userProfileAddInterestsButton.Size = new System.Drawing.Size(96, 30);
             this.userProfileAddInterestsButton.TabIndex = 12;
-            this.userProfileAddInterestsButton.Text = "Add interests";
+            this.userProfileAddInterestsButton.Text = "Interests\r\n";
             this.userProfileAddInterestsButton.UseVisualStyleBackColor = true;
             // 
             // userProfileUpForTeachingCheckbox
