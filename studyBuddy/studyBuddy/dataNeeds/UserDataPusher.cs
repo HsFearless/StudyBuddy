@@ -17,8 +17,11 @@ namespace studyBuddy.dataNeeds
 
         }
 
-        static internal void UpdateUserSession(int userId, string hashedUnix)
+        static internal void UpdateUserSession(UserDataFetcher UDF, string hashedUnix)
         {
+            int userId = UDF.GetId();
+            if (InputValidator.ValidateId(userId) )
+                return; //#change to exception invalid user //default
             staticSource.Update(MysqlHandler.tblUsers +
                 $" SET loggedInHash = '{hashedUnix}'" +
                 $" WHERE ID = '{userId}'");

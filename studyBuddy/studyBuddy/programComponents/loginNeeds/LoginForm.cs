@@ -18,6 +18,10 @@ namespace studyBuddy.programComponents.loginNeeds
         private UserDataFetcher dataFetcher = new UserDataFetcher();
         public loginForm()
         {
+            if (Auth.LogInUsingSession())
+                ShowAfterLoginScreen();
+            else
+                //MessageBox.Show(Auth.error.no.ToString() );
             InitializeComponent();
         }
 
@@ -30,11 +34,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 MessageBox.Show("Hi\n" +
                     "You are in");
                 //Auth.SetLoggedIn(dataFetcher);
-                this.Hide();
-                var profile = new profileNeeds.userProfileForm();
-                profile.ShowDialog();
-                //this.Visible = true;
-                Application.Exit();
+                ShowAfterLoginScreen();
             }
             else
             {
@@ -62,6 +62,15 @@ namespace studyBuddy.programComponents.loginNeeds
         private void LoginForm_Load(object sender, EventArgs e)
         {
             textUsername.Text = UserDataFetcher.GetLastUsedUsername();
+        }
+
+        private void ShowAfterLoginScreen()
+        {
+            this.Hide();
+            var profile = new profileNeeds.userProfileForm();
+            profile.ShowDialog();
+            //this.Visible = true;
+            Application.Exit();
         }
     }
 }

@@ -66,13 +66,42 @@ namespace studyBuddy.dataNeeds
             return userId;
         }
 
-        public int GetId(string username)
+        public int GetId(string username, bool saveId = true)
         {
+            int toReturn = 0;
             string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}';");
-            if (row.Length != 1)
-                return 0;
-            return Convert.ToInt32(row[0]);
+            if (row.Length == 1)
+                toReturn = Convert.ToInt32(row[0]);
+            if (saveId)
+                userId = toReturn;
+            return toReturn;
+        }
+
+        public int GetId(System.Net.Mail.MailAddress mail, bool saveId = true)
+        {
+            int toReturn = 0;
+            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
+               $" WHERE email = '{mail.Address}';");
+            if (row.Length == 1)
+                toReturn = Convert.ToInt32(row[0]);
+            if (saveId)
+                userId = toReturn;
+            return toReturn;
+        }
+
+        public int GetIdByUsernameOrEmail(string usernameOrEmail, bool saveId = true)
+        {
+            if (InputValidator.ValidateUsername(usernameOrEmail))
+                return GetId(usernameOrEmail, saveId);
+
+            //it is not username
+            System.Net.Mail.MailAddress mail;
+            if (!InputValidator.ValidateEmail(usernameOrEmail, out mail))
+                return 0; //#exception?
+
+            //it is an email
+            return GetId(mail, saveId);
         }
 
         public static string GetLastUsedUsername()

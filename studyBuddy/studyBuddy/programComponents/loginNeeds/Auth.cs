@@ -91,7 +91,7 @@ namespace studyBuddy.programComponents.loginNeeds
             long unix = DataFetcher.GetServerTimeStamp();
             UserDataPusher.PushSessionFileLoggedIn(unix);
             string hashedUnix = timestampHasher.Hash(unix.ToString(), DataFetcher.GetDeviceIdentifier());
-            UserDataPusher.UpdateUserSession(UDF.GetId(), hashedUnix);
+            UserDataPusher.UpdateUserSession(UDF, hashedUnix);
             //System.Windows.Forms.MessageBox.Show($"hashedUnix: {hashedUnix} ({hashedUnix.Length})");
 
             return true;
@@ -108,20 +108,23 @@ namespace studyBuddy.programComponents.loginNeeds
             //is timestamp not old?
             long lastUnix = UserDataFetcher.GetLastLoginTimestamp();
             if (lastUnix.IsTimeStampOlderThan(seconds: 30))//^extension
-                return false; //session became a garbage
+                return error.SetErrorAndReturnFalse(Error.code.INVALID_SESSION); //session became a garbage
 
             //does user exist?
             UserDataFetcher UDF = new UserDataFetcher();
             string lastUser = UserDataFetcher.GetLastUsedUsername();
             //first validate it, because user is scum
             if (!InputValidator.ValidateUsername(lastUser))
-                return false; //throw new exception, session file corrupted
+                return error.SetErrorAndReturnFalse(Error.code.INVALID_USERNAME); //#throw new exception, session file corrupted
             //get id. it might be email or username
+            UDF.GetIdByUsernameOrEmail(lastUser, saveId: true);
+            if (!InputValidator.ValidateId(UDF.GetId()))
+                return error.SetErrorAndReturnFalse(Error.code.USER_NOT_FOUND);
 
             //check hash
             string hashedUnix = timestampHasher.Hash(lastUnix.ToString(), DataFetcher.GetDeviceIdentifier());
             if (!UDF.IsThisLastLoggedInTimestampHash(hashedUnix) )
-                return false;
+                return error.SetErrorAndReturnFalse(Error.code.INVALID_SESSION);
 
             //all good
             SetSession(UDF);
