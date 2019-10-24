@@ -1,6 +1,4 @@
-﻿using studyBuddy.programComponents.forumNeeds;
-using studyBuddy.studyBuddyNeeds;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using studyBuddy.dataNeeds;
+using studyBuddy.programComponents;
 
-namespace studyBuddy.forumNeeds
+namespace studyBuddy.programComponents.forumNeeds
 {
     public partial class ForumForm : Form
     {
@@ -115,7 +114,7 @@ namespace studyBuddy.forumNeeds
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
         {
-            var profile = new userProfileForm();
+            var profile = new  profileNeeds.userProfileForm();
             this.Hide();
             profile.ShowDialog();
             Application.Exit();

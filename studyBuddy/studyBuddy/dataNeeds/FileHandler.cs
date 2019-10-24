@@ -12,7 +12,9 @@ namespace studyBuddy.dataNeeds
         static string directory;
         readonly string fullPath;
         private string[] memory = null;
-        public int memoryInd { get; private set; }  = 0;
+        public char inBetween = '\n';
+        public int memoryInd { get; private set; } = 0;
+        public bool wasNewlyCreated { get; private set; } = false;
 
         public FileHandler(string fileName)
         {
@@ -20,6 +22,17 @@ namespace studyBuddy.dataNeeds
             directory = @"C:\Users\Public\StuddyBuddy\";
             fullPath = System.IO.Path.Combine(directory, this.fileName);
             CheckPrepareDir();
+
+            //file exists?
+            if (!System.IO.File.Exists(fullPath))
+            {
+                try
+                {
+                    System.IO.File.Create(fullPath);
+                }
+                catch (Exception) { } // :)
+                wasNewlyCreated = (System.IO.File.Exists(fullPath));
+            }
         }
 
         public void WriteNewly(string text)
@@ -27,8 +40,9 @@ namespace studyBuddy.dataNeeds
             System.IO.File.WriteAllText(fullPath, text);
         }
 
-        public void Append(string text, char inBetween = '\n')
+        public void Append(string text, char inBetween = '\0')
         {
+            inBetween = (inBetween == '\0') ? this.inBetween : inBetween;
             var appender = System.IO.File.AppendText(fullPath);
             appender.Write(inBetween + text);
             appender.Close();
@@ -41,8 +55,9 @@ namespace studyBuddy.dataNeeds
             return System.IO.File.ReadAllText(fullPath);
         }
 
-        public string[] ReadAll(char inBetween = '\n')
+        public string[] ReadAll(char inBetween = '\0')
         {
+            inBetween = (inBetween == '\0') ? this.inBetween : inBetween;
             string allInOne = ReadAllAsOne();
             this.memory = allInOne.Split('\n');
             return memory;

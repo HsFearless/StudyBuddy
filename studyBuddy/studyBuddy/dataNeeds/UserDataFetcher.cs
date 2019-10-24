@@ -8,8 +8,6 @@ namespace studyBuddy.dataNeeds
 {
     class UserDataFetcher : UserDataAbstract
     {
-        
-        private int loggedIn = 0; //epoch. unix. 10 digits. 11 in db //maybe long int?
 
         public string GetSalt(string username)
         {
@@ -68,27 +66,57 @@ namespace studyBuddy.dataNeeds
             return userId;
         }
 
-        public int GetId(string username)
+        public int GetId(string username, bool saveId = true)
         {
-            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers + 
+            int toReturn = 0;
+            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}';");
-            if (row.Length != 1)
-                return 0;
-            return Convert.ToInt32(row[0]);
+            if (row.Length == 1)
+                toReturn = Convert.ToInt32(row[0]);
+            if (saveId)
+                userId = toReturn;
+            return toReturn;
+        }
+
+        public int GetId(System.Net.Mail.MailAddress mail, bool saveId = true)
+        {
+            int toReturn = 0;
+            string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
+               $" WHERE email = '{mail.Address}';");
+            if (row.Length == 1)
+                toReturn = Convert.ToInt32(row[0]);
+            if (saveId)
+                userId = toReturn;
+            return toReturn;
+        }
+
+        public int GetIdByUsernameOrEmail(string usernameOrEmail, bool saveId = true)
+        {
+            if (InputValidator.ValidateUsername(usernameOrEmail))
+                return GetId(usernameOrEmail, saveId);
+
+            //it is not username
+            System.Net.Mail.MailAddress mail;
+            if (!InputValidator.ValidateEmail(usernameOrEmail, out mail))
+                return 0; //#exception?
+
+            //it is an email
+            return GetId(mail, saveId);
         }
 
         public static string GetLastUsedUsername()
         {
-            return file.Read();
+            return SessionFileHandler.GetLastUser(); //cached
         }
 
-        public static string GetLastLoginTimestamp()
+        public static long GetLastLoginTimestamp()
         {
-            return file.Read(); //#!!! what if order is messed?
+            return SessionFileHandler.GetLoggedIn(); //cached
         }
 
-        public long GetCurrentUserTimeStamp()
+        /*public long GetCurrentUserTimeStamp()
         {
+        //loggedIn does no longer exist
             string[] row = staticSource.SelectOneRow("loggedIn FROM " + MysqlHandler.tblUsers +
                 " WHERE ID = " + this.GetId());
             if (row.Length < 1)
@@ -96,7 +124,20 @@ namespace studyBuddy.dataNeeds
                 return -1;
             }
             return Convert.ToInt64(row[0]);
-        }
+        }*/
 
+        public bool IsThisLastLoggedInTimestampHash(string hashedUnix)
+        {
+            //when calling this method make sure that you have called
+            //getId(argument) method before. 
+            if (this.userId == 0)
+                return false; //#possible throw new illegalMethodCall exception
+
+            var row = staticSource.SelectOneRow("rating FROM " + MysqlHandler.tblUsers +
+                $" WHERE loggedInHash = '{hashedUnix}' AND ID = '{this.userId}'");
+            if (row.Length < 1)
+                return false;
+            return true;
+        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using studyBuddy.forumNeeds;
-using studyBuddy.studyBuddyNeeds;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,14 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using studyBuddy.dataNeeds;
 
-namespace studyBuddy
+namespace studyBuddy.programComponents.profileNeeds
 {
     public partial class userProfileForm : Form
     {
+        private List<User> users;
         public userProfileForm()
         {
             InitializeComponent();
+            users = DataFetcher.GetUsers();
+            string test = "";
+            foreach (User user in users)
+                test += user.ToString(full: true) + '\n';
+            MessageBox.Show(test);
         }
 
         private void Labeltest_Click(object sender, EventArgs e)
@@ -36,7 +41,7 @@ namespace studyBuddy
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)
         {
-            var profile = new ForumForm();
+            var profile = new forumNeeds.ForumForm();
             this.Hide();
             profile.ShowDialog();
             Application.Exit();
@@ -82,7 +87,6 @@ namespace studyBuddy
 
         private void UserProfileChangeAndAddPictureButton_Click(object sender, EventArgs e)
         {
-
         }
     }
     }

@@ -45,7 +45,7 @@ namespace studyBuddy.dataNeeds
             messageToOutterWorld = con.State.ToString();
             ready = (con.State == System.Data.ConnectionState.Open) ? true : false;
         }
-        
+
         public MysqlHandler(string host, string username, string password, string database, int port)
         {
             this.host = host;
@@ -55,7 +55,7 @@ namespace studyBuddy.dataNeeds
             this.port = port;
             Initialize();
         }
-        
+
         public MysqlHandler()
         {
             host = "remotemysql.com";
@@ -119,7 +119,7 @@ namespace studyBuddy.dataNeeds
         {
             given = (given[0] == ' ') ? given : " " + given;
             given = (given[given.Length - 1] == ';') ? given : given + ";";
-            return ;
+            return;
         }
         public List<string[]> Select(string sqlWithoutSelect)
         {
@@ -136,10 +136,10 @@ namespace studyBuddy.dataNeeds
                 var result = cmdCon.ExecuteReader();
                 int item = 0;
                 string[] row;
-                while(result.Read())
+                while (result.Read())
                 {
                     row = new string[result.FieldCount];
-                    for(item=0; item<result.FieldCount; item++)
+                    for (item = 0; item < result.FieldCount; item++)
                     {
                         row[item] = result[item] + "";
                     }
@@ -158,7 +158,7 @@ namespace studyBuddy.dataNeeds
             PrepareSql(ref sqlWithoutSelect);
             string fullSql = "SELECT";
             fullSql += sqlWithoutSelect;
-            if(OpenNewConnection())
+            if (OpenNewConnection())
             {
                 cmdCon = new MySqlCommand(fullSql, this.con);
                 var result = cmdCon.ExecuteReader();
@@ -186,7 +186,7 @@ namespace studyBuddy.dataNeeds
                 return false;
             cmdCon = new MySqlCommand(fullSql, this.con);
             cmdCon.ExecuteNonQuery();
-          
+
             con.Close();
             return true; //probably?
         }
@@ -218,7 +218,7 @@ namespace studyBuddy.dataNeeds
             try
             {
                 var result = cmdCon.ExecuteReader();
-                while(result.Read())
+                while (result.Read())
                 {
                     aut += "username=" + result["username"] + ";\n";
                     aut += "password=" + result["password"] + ";\n";
@@ -226,7 +226,7 @@ namespace studyBuddy.dataNeeds
                 }
                 messageToOutterWorld = aut;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lastError = ex.Message;
             }

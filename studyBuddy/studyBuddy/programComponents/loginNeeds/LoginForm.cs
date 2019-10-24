@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using studyBuddy.programComponents;
 
 namespace studyBuddy.programComponents.loginNeeds
 {
@@ -29,11 +30,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 MessageBox.Show("Hi\n" +
                     "You are in");
                 //Auth.SetLoggedIn(dataFetcher);
-                this.Hide();
-                var profile = new userProfileForm();
-                profile.ShowDialog();
-                //this.Visible = true;
-                Application.Exit();
+                ShowAfterLoginScreen();
             }
             else
             {
@@ -60,7 +57,21 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+
+            if (Auth.LogInUsingSession())
+                ShowAfterLoginScreen();
+            else
+                MessageBox.Show(Auth.error.Message() + " " + Auth.messageToOutterWorld + $"({Auth.messageToOutterWorld.Length})");
             textUsername.Text = UserDataFetcher.GetLastUsedUsername();
+        }
+
+        private void ShowAfterLoginScreen()
+        {
+            this.Hide();
+            var profile = new profileNeeds.userProfileForm();
+            profile.ShowDialog();
+            //this.Visible = true;
+            Application.Exit();
         }
     }
 }

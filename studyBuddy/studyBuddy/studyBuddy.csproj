@@ -51,6 +51,7 @@
     <Compile Include="dataNeeds\BinaryFileHandler.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />
     <Compile Include="dataNeeds\abstract\DataHandler.cs" />
+    <Compile Include="dataNeeds\misc\SessionFileHandler.cs" />
     <Compile Include="exceptions\InvalidSession.cs" />
     <Compile Include="programComponents\loginNeeds\DeviceIdentifier.cs" />
     <Compile Include="dataNeeds\misc\ErrorCode.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="programComponents\loginNeeds\Auth.cs" />
     <Compile Include="programComponents\loginNeeds\PasswordHasher.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="programComponents\profileNeeds\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="programComponents\loginNeeds\RegisterForm.cs">
       <SubType>Form</SubType>

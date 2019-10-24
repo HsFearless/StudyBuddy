@@ -1,4 +1,4 @@
-﻿namespace studyBuddy
+﻿namespace studyBuddy.programComponents.profileNeeds
 {
     partial class userProfileForm
     {
@@ -56,7 +56,7 @@
             // 
             // leftToolBar
             // 
-            this.leftToolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.leftToolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftToolBar.ColumnCount = 1;
             this.leftToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
