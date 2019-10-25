@@ -45,7 +45,8 @@ namespace studyBuddy.dataNeeds
             USER_NOT_FOUND      = 0b_0000_0000_0010_0000_0000_0000_0000_0000,
             USERNAME_TAKEN      = 0b_0000_0000_0100_0000_0000_0000_0000_0000,
             EMAIL_TAKEN         = 0b_0000_0000_1000_0000_0000_0000_0000_0000,
-            PUSH_ERROR          = 0b_0000_0001_0000_0000_0000_0000_0000_0000
+            PUSH_ERROR          = 0b_0000_0001_0000_0000_0000_0000_0000_0000,
+            OUTDATED            = 0b_0000_0010_0000_0000_0000_0000_0000_0000
         }
 
         /*public Error()
@@ -78,6 +79,8 @@ namespace studyBuddy.dataNeeds
                     return nameof(code.INVALID_CHAR);
                 case code.INVALID_EMAIL:
                     return nameof(code.INVALID_EMAIL);
+                case code.INVALID_SESSION:
+                    return nameof(code.INVALID_SESSION);
                 case code.WRONG_PASSWORD:
                     return nameof(code.WRONG_PASSWORD);
                 case code.PASSWORDS_NOT_MATCH:
@@ -92,6 +95,8 @@ namespace studyBuddy.dataNeeds
                     return nameof(code.EMAIL_TAKEN);
                 case code.PUSH_ERROR:
                     return nameof(code.PUSH_ERROR);
+                case code.OUTDATED:
+                    return nameof(code.OUTDATED);
                 default:
                     return "?";
             }
