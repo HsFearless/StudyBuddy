@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "studyBuddy", "studyBuddy\studyBuddy.csproj", "{22A2E36B-9EB4-4291-81F9-A93385D5FFF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBxamarin.Android", "SBxamarin\SBxamarin.Android\SBxamarin.Android.csproj", "{F99A9AD7-0432-49C8-B357-352CD8850777}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBxamarin", "SBxamarin\SBxamarin\SBxamarin.csproj", "{DE8E93C4-ECF0-4E78-9768-0FA006DA6D08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,16 @@ Global
 		{22A2E36B-9EB4-4291-81F9-A93385D5FFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22A2E36B-9EB4-4291-81F9-A93385D5FFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22A2E36B-9EB4-4291-81F9-A93385D5FFF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F99A9AD7-0432-49C8-B357-352CD8850777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F99A9AD7-0432-49C8-B357-352CD8850777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F99A9AD7-0432-49C8-B357-352CD8850777}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F99A9AD7-0432-49C8-B357-352CD8850777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F99A9AD7-0432-49C8-B357-352CD8850777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F99A9AD7-0432-49C8-B357-352CD8850777}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DE8E93C4-ECF0-4E78-9768-0FA006DA6D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8E93C4-ECF0-4E78-9768-0FA006DA6D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8E93C4-ECF0-4E78-9768-0FA006DA6D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8E93C4-ECF0-4E78-9768-0FA006DA6D08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
