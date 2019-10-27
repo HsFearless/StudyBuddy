@@ -68,14 +68,11 @@ C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.RegisterForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csprojAssemblyReference.cache
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.exitNeeds.exitForm.resources
-D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.forumForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.helpNeeds.helpForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.loginForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.Properties.Resources.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.RegisterForm.resources
-D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.userProfileForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.settingsNeeds.settingsForm.resources
-D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.studyBuddyNeeds.studyBuddyForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.GenerateResource.cache
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CoreCompileInputs.cache
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.exe
@@ -89,7 +86,6 @@ D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\Renci.SshNet.dll
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\BouncyCastle.Crypto.dll
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\MySql.Data.xml
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CopyComplete
-D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.createProblem.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.ProblemDiscussion.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.ProblemDiscussion.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.forumNeeds.CreateProblem.resources
@@ -100,3 +96,8 @@ C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.studyBuddyNeeds.studyBuddyForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.forumNeeds.CreateProblem.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.forumNeeds.ForumForm.resources
+D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.forumNeeds.CreateProblem.resources
+D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.forumNeeds.ForumForm.resources
+D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.profileNeeds.userProfileForm.resources
+D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.studyBuddyNeeds.studyBuddyForm.resources
+D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.InterestsForm.resources

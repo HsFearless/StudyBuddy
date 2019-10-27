@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using studyBuddy.extensions;
+using studyBuddy.programComponents.profileNeeds;
+using System.Windows.Forms;
 
 namespace studyBuddy.programComponents.loginNeeds
 {
@@ -69,13 +71,50 @@ namespace studyBuddy.programComponents.loginNeeds
                 //set log in timestamp
                 UserDataPusher.PushSessionFileUser(username);
                 if(SetSession(UDF))
+                {
+                    Auth.SetCurrentUser(username, UDF);
                     return true;
+                }
                 return false;
             }
 
             error.no = Error.code.WRONG_PASSWORD;
             return false;
         }//logIn
+
+        private static void SetCurrentUser(string username, UserDataFetcher UDF)
+        {
+            List<User> users = DataFetcher.GetUsers();
+            int id = UDF.GetId();
+            List<string> interests = new List<string>();
+            DataFetcher.GetInterestsOfCurrentUserAsList(interests, id);
+            //if logged in with username
+            if (InputValidator.ValidateUsername(username))
+            {
+                findUser();
+            }
+            else
+            {
+                System.Net.Mail.MailAddress email;
+                string Email = username;
+                //if logged in with email
+                if (InputValidator.ValidateEmail(Email, out email))
+                    findUser();
+            }
+
+            //find user in db with same id and set CurrentUser's fields
+            void findUser()
+            {
+                for (var i = 0; i < users.Count; i++)
+                {
+                    if (id == users[i].id)
+                    {
+                        CurrentUser.setUserInfo(users[i].name, users[i].id, users[i].karma, users[i].rating, users[i].profileInfo, interests);
+                        break;
+                    }
+                }
+            }
+        }
 
         private static bool SetSession(UserDataFetcher UDF)
         {

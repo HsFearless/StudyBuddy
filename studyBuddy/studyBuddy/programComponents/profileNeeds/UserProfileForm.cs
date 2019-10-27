@@ -13,21 +13,31 @@ namespace studyBuddy.programComponents.profileNeeds
 {
     public partial class userProfileForm : Form
     {
-        private List<User> users;
         public userProfileForm()
         {
             InitializeComponent();
+            if (CurrentUser.isLoggedIn)
+            {
+                userNameLabel.Text = CurrentUser.name;
+                userProfileInfoBox.Text = CurrentUser.profileInfo;
+                numberOfKarmaPointsLabel.Text = CurrentUser.karma.ToString();
+                
+                foreach (string interest in CurrentUser.interests)
+                {
+                    Label interestsLabel = new Label();
+                    interestsLabel.AutoSize = true;
+                    interestsLabel.Text = interest;
+                    userInterestsFlowLayoutPanel.Controls.Add(interestsLabel);
+                }
+            }
+            //commented because that popup was super annoying
+            /*string test = "";
             users = DataFetcher.GetUsers();
-            string test = "";
             foreach (User user in users)
                 test += user.ToString(full: true) + '\n';
-            MessageBox.Show(test);
+            MessageBox.Show(test);*/
         }
-
-        private void Labeltest_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void Button5_Click(object sender, EventArgs e)
         {
@@ -64,29 +74,40 @@ namespace studyBuddy.programComponents.profileNeeds
         {
 
         }
-
-        private void UserProfileNameLabel_Click(object sender, EventArgs e)
+        
+        private void ConfirmEditingUserProfileButton_Click(object sender, EventArgs e)
         {
-
+            confirmEditingUserProfileButton.Visible = false;
+            userProfileInfoBox.ReadOnly = true;
+            UserDataPusher.UpdateUserProfileInfo(userProfileInfoBox.Text);
+            CurrentUser.profileInfo = userProfileInfoBox.Text;
         }
 
-        private void Label2_Click(object sender, EventArgs e)
+        private void UserProfileAddInterestsButton_Click(object sender, EventArgs e)
         {
-
+            var InterestsForm = new InterestsForm(this.userInterestsFlowLayoutPanel);
+            InterestsForm.Show();
         }
 
-        private void UserProfileUpForTeachingCheckbox_CheckedChanged(object sender, EventArgs e)
+        private void UserProfileEditInfoBoxButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void UserProfileInfoBox_TextChanged(object sender, EventArgs e)
-        {
-
+            confirmEditingUserProfileButton.Visible = true;
+            userProfileInfoBox.ReadOnly = false;
         }
 
         private void UserProfileChangeAndAddPictureButton_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void UserNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KarmaPointsLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }

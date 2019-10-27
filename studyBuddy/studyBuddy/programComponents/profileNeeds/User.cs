@@ -14,10 +14,12 @@ namespace studyBuddy.programComponents.profileNeeds
         public readonly int karma;
         public readonly int rating;
         public readonly long lastActivity;
+        public readonly string profileInfo;
+        public readonly List<string> interests;
 
         public User(int id, string name,
             string email, int karma,
-            int rating, long lastActivity)
+            int rating, long lastActivity, string profileInfo)
         {
             this.id = id;
             this.name = name;
@@ -25,6 +27,7 @@ namespace studyBuddy.programComponents.profileNeeds
             this.karma = karma;
             this.rating = rating;
             this.lastActivity = lastActivity;
+            this.profileInfo = profileInfo;
         }
 
         public override string ToString()
@@ -46,5 +49,7 @@ namespace studyBuddy.programComponents.profileNeeds
             toReturn.Append(", name: "); 
             return toReturn.toString();*/
         }
+
+
     }
 }

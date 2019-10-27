@@ -66,7 +66,7 @@ namespace studyBuddy.dataNeeds
         public static List<programComponents.profileNeeds.User> GetUsers()
         {
             var rows = staticSource.Select("ID, username, email, "
-                + "karma, rating, lastActivity "
+                + "karma, rating, lastActivity, profileInfo "
                 + "FROM " + MysqlHandler.tblUsers);
             var toReturn = new List<programComponents.profileNeeds.User>();
             foreach(string[] col in rows)
@@ -77,10 +77,11 @@ namespace studyBuddy.dataNeeds
                 int karma = Convert.ToInt32(col[3]);
                 int rating = Convert.ToInt32(col[4]);
                 long lastActivity = Convert.ToInt64(col[5]);
+                string profileInfo = Convert.ToString(col[6]);
                 try
                 {
                     var user = new programComponents.profileNeeds.User(id, name,
-                        email, karma, rating, lastActivity);
+                        email, karma, rating, lastActivity, profileInfo);
                     toReturn.Add(user);
                 }
                 catch (Exception)
@@ -92,6 +93,24 @@ namespace studyBuddy.dataNeeds
 
             return toReturn;
         }//static function
+
+        public static void GetInterestsOfCurrentUserAsList(List<string> result, int userID)
+        {
+            //get ids of all interests of current user
+            List<string[]> interestsIDs = staticSource.Select("interestID FROM " + MysqlHandler.tblUserInterests + $" WHERE userID = '{userID}' ;");
+            
+            foreach (string[] ids in interestsIDs)
+            {
+                foreach (string id in ids)
+                    {
+                    //get names of those interests
+                    var items = staticSource.Select("name FROM " + MysqlHandler.tblInterests + $" WHERE ID = '{Int32.Parse(id)}' ;");
+                    foreach (string[] interests in items)
+                        foreach (string interest in interests)
+                            result.Add(interest);
+                    }
+            }
+        }
 
     }
 }

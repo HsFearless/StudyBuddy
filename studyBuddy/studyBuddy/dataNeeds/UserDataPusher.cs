@@ -17,6 +17,15 @@ namespace studyBuddy.dataNeeds
 
         }
 
+        static internal void PushNewInterest(string interest)
+        {
+            var interestID = staticSource.Select("ID FROM " + MysqlHandler.tblInterests + $" WHERE name = '{interest}' ;");
+            staticSource.InsertInto(MysqlHandler.tblUserInterests +
+                "(userID, interestID) VALUES" +
+                $"('{CurrentUser.id}', '{Int32.Parse(interestID[0][0])}') ;");
+
+        }
+
         static internal void UpdateUserSession(UserDataFetcher UDF, long unix, string hashedUnix)
         {
             int userId = UDF.GetId();
@@ -25,6 +34,13 @@ namespace studyBuddy.dataNeeds
             staticSource.Update(MysqlHandler.tblUsers +
                 $" SET lastActivity = '{unix}', loggedInHash = '{hashedUnix}'" +
                 $" WHERE ID = '{userId}'");
+        }
+
+        static internal void UpdateUserProfileInfo(String updatedInfo)
+        {
+            staticSource.Update(MysqlHandler.tblUsers +
+                $" SET profileInfo = '{updatedInfo}'" +
+                $" WHERE ID = '{CurrentUser.id}'");
         }
 
         static internal void PushToFileFromScratch(string text)

@@ -48,11 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="programComponents\profileNeeds\CurrentUser.cs" />
     <Compile Include="dataNeeds\BinaryFileHandler.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />
     <Compile Include="dataNeeds\abstract\DataHandler.cs" />
     <Compile Include="dataNeeds\misc\SessionFileHandler.cs" />
     <Compile Include="exceptions\InvalidSession.cs" />
+    <Compile Include="programComponents\profileNeeds\InterestsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="programComponents\profileNeeds\InterestsForm.Designer.cs">
+      <DependentUpon>InterestsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="programComponents\loginNeeds\DeviceIdentifier.cs" />
     <Compile Include="dataNeeds\misc\ErrorCode.cs" />
     <Compile Include="dataNeeds\FileHandler.cs" />
@@ -61,7 +68,6 @@
     <Compile Include="dataNeeds\unused\Rows.cs" />
     <Compile Include="extensions\LongExtensions.cs" />
     <Compile Include="programComponents\exitNeeds\ComboBoxItem.cs" />
-    <Compile Include="programComponents\forumNeeds\Class1.cs" />
     <Compile Include="programComponents\forumNeeds\ForumContent.cs" />
     <Compile Include="programComponents\forumNeeds\ForumPost.cs" />
     <Compile Include="programComponents\forumNeeds\CommentsManager.cs" />
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="programComponents\loginNeeds\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="programComponents\profileNeeds\InterestsForm.resx">
+      <DependentUpon>InterestsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

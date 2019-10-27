@@ -21,21 +21,11 @@ namespace studyBuddy.programComponents.forumNeeds
             InitializeComponent();
         }
 
-        private void CreateProblem_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             forumForm.AddNewProblem(problemsNameTextBox.Text, SubjectComboBox.Text, descriptionTextBox.Text);
             CommentsManager.AddNewFile(problemsNameTextBox.Text + ".txt");
-        }
-
-        private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void SubjectComboBox_SelectedIndexChanged(object sender, EventArgs e)

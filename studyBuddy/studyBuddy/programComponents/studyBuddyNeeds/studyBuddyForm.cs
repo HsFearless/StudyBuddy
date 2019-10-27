@@ -43,5 +43,6 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
             profile.ShowDialog();
             Application.Exit();
         }
+
     }
 }
