@@ -170,6 +170,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 return error.SetErrorAndReturnFalse(Error.code.INVALID_SESSION);
 
             //all good
+            Auth.SetCurrentUser(lastUser, UDF);
             SetSession(UDF);
             return true;
         }

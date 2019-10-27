@@ -31,16 +31,19 @@ namespace studyBuddy
         private void ConfirmAddInterestButton_Click(object sender, EventArgs e)
         {
             //if user doest already have choosen interest, add it
-            if (!CurrentUser.interests.Contains(chooseInterestComboBox.Text) && CurrentUser.isLoggedIn)
+            if (!CurrentUser.interests.Contains(chooseInterestComboBox.Text) && CurrentUser.isLoggedIn != null)
             {
-                CurrentUser.interests.Add(chooseInterestComboBox.Text);
-                UserDataPusher.PushNewInterest(chooseInterestComboBox.Text);
-                //show interest in profile
-                Label interestsLabel = new Label();
-                interestsLabel.AutoSize = true;
-                interestsLabel.Text = chooseInterestComboBox.Text;
-                userInterestsFLP.Controls.Add(interestsLabel);
-            } 
+                if (CurrentUser.isLoggedIn)
+                {
+                    CurrentUser.interests.Add(chooseInterestComboBox.Text);
+                    UserDataPusher.PushNewInterest(chooseInterestComboBox.Text);
+                    //show interest in profile
+                    Label interestsLabel = new Label();
+                    interestsLabel.AutoSize = true;
+                    interestsLabel.Text = chooseInterestComboBox.Text;
+                    userInterestsFLP.Controls.Add(interestsLabel);
+                }
+            }
             else
                 MessageBox.Show("You already have this interest!");
             
