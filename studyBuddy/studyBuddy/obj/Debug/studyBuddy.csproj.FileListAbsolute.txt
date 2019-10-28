@@ -101,3 +101,4 @@ D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComp
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.profileNeeds.userProfileForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.studyBuddyNeeds.studyBuddyForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.InterestsForm.resources
+C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.InterestsForm.resources

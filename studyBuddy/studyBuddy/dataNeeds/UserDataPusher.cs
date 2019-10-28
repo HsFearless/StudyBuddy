@@ -62,5 +62,12 @@ namespace studyBuddy.dataNeeds
         {
             SessionFileHandler.SetLoggedIn(unix);
         }
+
+        static internal bool PushNewProblem(String name, Subjects.Subject subject, String description)
+        {
+            return staticSource.InsertInto(MysqlHandler.tblForum
+                + "(ownerID, name, subjectID, description) VALUES"
+                + $"('{CurrentUser.id}', '{name}', '{subject.id}', '{description}')");
+        }
     }
 }

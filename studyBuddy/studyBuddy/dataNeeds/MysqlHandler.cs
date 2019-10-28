@@ -187,10 +187,12 @@ namespace studyBuddy.dataNeeds
             if (!OpenNewConnection())
                 return false;
             cmdCon = new MySqlCommand(fullSql, this.con);
-            cmdCon.ExecuteNonQuery();
+            int affectedRows = cmdCon.ExecuteNonQuery();
+
+            bool queryOk = (affectedRows > 0);
 
             con.Close();
-            return true; //probably?
+            return queryOk; //probably?
         }
 
         public bool Update(string sqlWithoutUpdate)
@@ -201,10 +203,12 @@ namespace studyBuddy.dataNeeds
             if (!OpenNewConnection())
                 return false;
             cmdCon = new MySqlCommand(fullSql, this.con);
-            cmdCon.ExecuteNonQuery();
+            int affectedRows = cmdCon.ExecuteNonQuery();
+
+            bool queryOk = (affectedRows > 0);
 
             con.Close();
-            return true;
+            return queryOk;
         }
 
 

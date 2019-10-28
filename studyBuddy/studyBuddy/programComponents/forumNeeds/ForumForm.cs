@@ -16,7 +16,7 @@ namespace studyBuddy.programComponents.forumNeeds
     {
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
-        private Subjects subjects = DataFetcher.GetSubjects();
+        public Subjects subjects = DataFetcher.GetSubjects();
         private ForumContent forum = DataFetcher.GetForum();
 
         public ForumForm()

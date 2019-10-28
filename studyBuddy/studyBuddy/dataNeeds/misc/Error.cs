@@ -26,27 +26,30 @@ namespace studyBuddy.dataNeeds
         [Flags]
         public enum code //^enum
         {
-            UNKNOWN             = 0b_0000_0000_0000_0000_0000_0000_0000_0000,
-            OK                  = 0b_0000_0000_0000_0000_0000_0000_0000_0010,
+            UNKNOWN             = 1,
+            OK                  = 2,
             //trigger
-            INVALID_USERNAME    = 0b_0000_0000_0000_0000_0000_0000_0001_0000,
-            INVALID_PASSWORD    = 0b_0000_0000_0000_0000_0000_0000_0010_0000,
-            INVALID_EMAIL       = 0b_0000_0000_0000_0000_0000_0000_0100_0000,
-            WRONG_PASSWORD      = 0b_0000_0000_0000_0000_0000_0000_1000_0000,
-            INVALID_SESSION     = 0b_0000_0000_0000_0000_0000_0001_0000_0000,
+            INVALID_USERNAME    =   16,
+            INVALID_PASSWORD    =   32,
+            INVALID_EMAIL       =   64,
+            WRONG_PASSWORD      =  128,
+            INVALID_SESSION     =  256,
+            INVALID_NAME        =  512,
+            INVALID_CHOSEN_ITEM = 1024,
+            INVALID_TEXT_FIELD  = 2048,
 
             //format
-            TOO_SHORT           = 0b_0000_0000_0000_0000_0001_0000_0000_0000,
-            TOO_LONG            = 0b_0000_0000_0000_0000_0010_0000_0000_0000,
-            INVALID_CHAR        = 0b_0000_0000_0000_0000_0100_0000_0000_0000,
+            TOO_SHORT           =  4096,
+            TOO_LONG            =  8192,
+            INVALID_CHAR        = 16384,
            
             //misc
-            PASSWORDS_NOT_MATCH = 0b_0000_0000_0001_0000_0000_0000_0000_0000,
-            USER_NOT_FOUND      = 0b_0000_0000_0010_0000_0000_0000_0000_0000,
-            USERNAME_TAKEN      = 0b_0000_0000_0100_0000_0000_0000_0000_0000,
-            EMAIL_TAKEN         = 0b_0000_0000_1000_0000_0000_0000_0000_0000,
-            PUSH_ERROR          = 0b_0000_0001_0000_0000_0000_0000_0000_0000,
-            OUTDATED            = 0b_0000_0010_0000_0000_0000_0000_0000_0000
+            PASSWORDS_NOT_MATCH = 1048576,
+            USER_NOT_FOUND      = 1048576*2,
+            USERNAME_TAKEN      = 1048576*4,
+            EMAIL_TAKEN         = 1048576*8,
+            PUSH_ERROR          = 1048576*16,
+            OUTDATED            = 1048576*32
         }
 
         /*public Error()
@@ -97,6 +100,12 @@ namespace studyBuddy.dataNeeds
                     return nameof(code.PUSH_ERROR);
                 case code.OUTDATED:
                     return nameof(code.OUTDATED);
+                case code.INVALID_TEXT_FIELD:
+                    return nameof(code.INVALID_TEXT_FIELD);
+                case code.INVALID_CHOSEN_ITEM:
+                    return nameof(code.INVALID_CHOSEN_ITEM);
+                case code.INVALID_NAME:
+                    return nameof(code.INVALID_NAME);
                 default:
                     return "?";
             }

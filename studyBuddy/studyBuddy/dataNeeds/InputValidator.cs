@@ -105,5 +105,34 @@ namespace studyBuddy.dataNeeds
             return true;
         }
 
-    }
-}
+        static public bool ValidateForumProblemName(string name)
+        {
+            if (name.Length < 4)
+                return error.SetErrorAndReturnFalse(Error.code.TOO_SHORT);
+            if (name.Length > 50)
+                return error.SetErrorAndReturnFalse(Error.code.TOO_LONG);
+            Regex forbidden = new Regex("[^\x20-\x7E\n\r\tąĄčČęĘėĖįĮšŠųŲūŪžŽ]");
+            //regex
+            //^ this time means NEGATIVE
+            //\x20-\x7E means from hex value 20 to hex value 7E
+            //from space to tilde
+            //all ascii ~!@#$... symbols and letters
+            //http://www.asciitable.com/
+            //new line, return, tab
+            if (forbidden.IsMatch(name))
+                return error.SetErrorAndReturnFalse(Error.code.INVALID_CHAR);
+            name.Replace('\t', ' '); //#validator escapes !?!?!?
+            return true;
+        }
+
+        static public bool ValidateForumProblemDescription(string desc)
+        {
+            if (desc.Length < 4)
+                return error.SetErrorAndReturnFalse(Error.code.TOO_SHORT);
+            if (desc.Length > 40000)
+                return error.SetErrorAndReturnFalse(Error.code.TOO_LONG);
+            return true;
+        }
+
+    }//class
+}//namespace

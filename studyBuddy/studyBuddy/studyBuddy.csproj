@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="programComponents\forumNeeds\ForumManager.cs" />
     <Compile Include="programComponents\profileNeeds\CurrentUser.cs" />
     <Compile Include="dataNeeds\BinaryFileHandler.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />

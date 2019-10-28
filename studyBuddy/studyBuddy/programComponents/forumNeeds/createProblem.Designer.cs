@@ -98,14 +98,6 @@
             // SubjectComboBox
             // 
             this.SubjectComboBox.FormattingEnabled = true;
-            this.SubjectComboBox.Items.AddRange(new object[] {
-            "Math",
-            "Physics",
-            "Foreign language",
-            "Music",
-            "Biology",
-            "Chemistry",
-            "Other"});
             this.SubjectComboBox.Location = new System.Drawing.Point(111, 74);
             this.SubjectComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SubjectComboBox.Name = "SubjectComboBox";
