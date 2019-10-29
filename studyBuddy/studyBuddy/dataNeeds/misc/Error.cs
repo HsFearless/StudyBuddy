@@ -8,7 +8,7 @@ namespace studyBuddy.dataNeeds
 {
     struct Error //^struct
     {
-        public code no; // { get; set; } = code.OK;
+        public ErrorCode no; // { get; set; } = code.OK;
                         //# trigger struct somewhere
                         /*public const int OK = 0; //0
                         public const int TOO_SHORT = 1;
@@ -22,90 +22,75 @@ namespace studyBuddy.dataNeeds
                         public const int USERNAME_TAKEN = 9;
                         public const int EMAIL_TAKEN = 10;
                         public const int PUSH_ERROR = 11;*/
+        public string reason;
 
-        [Flags]
-        public enum code //^enum
-        {
-            UNKNOWN             = 1,
-            OK                  = 2,
-            //trigger
-            INVALID_USERNAME    =   16,
-            INVALID_PASSWORD    =   32,
-            INVALID_EMAIL       =   64,
-            WRONG_PASSWORD      =  128,
-            INVALID_SESSION     =  256,
-            INVALID_NAME        =  512,
-            INVALID_CHOSEN_ITEM = 1024,
-            INVALID_TEXT_FIELD  = 2048,
-
-            //format
-            TOO_SHORT           =  4096,
-            TOO_LONG            =  8192,
-            INVALID_CHAR        = 16384,
-           
-            //misc
-            PASSWORDS_NOT_MATCH = 1048576,
-            USER_NOT_FOUND      = 1048576*2,
-            USERNAME_TAKEN      = 1048576*4,
-            EMAIL_TAKEN         = 1048576*8,
-            PUSH_ERROR          = 1048576*16,
-            OUTDATED            = 1048576*32
-        }
+        
 
         /*public Error()
         {
             no = code.OK;
         }*/
 
-        public Error(code no)
+        public Error(ErrorCode no) : this(no,"")
         {
-            this.no = no;
         }
 
-        public bool SetErrorAndReturnFalse(code no)
+        public Error(ErrorCode no, string reason)
+        {
+            this.no = no;
+            this.reason = (reason == null)? "":reason;
+        }
+
+        public void Clear()
+        {
+            this.no = ErrorCode.OK;
+            this.reason = "";
+        }
+
+        public bool SetErrorAndReturnFalse(ErrorCode no)
         {
             this.no = no;
             return false;
         }
 
-        public static string Message(code no)
+        public static string Message(ErrorCode no)
         {
             switch (no)
             {
-                case code.OK:
-                    return nameof(code.OK);
-                case code.TOO_SHORT:
-                    return nameof(code.TOO_SHORT);
-                case code.TOO_LONG:
-                    return nameof(code.TOO_LONG);
-                case code.INVALID_CHAR:
-                    return nameof(code.INVALID_CHAR);
-                case code.INVALID_EMAIL:
-                    return nameof(code.INVALID_EMAIL);
-                case code.INVALID_SESSION:
-                    return nameof(code.INVALID_SESSION);
-                case code.WRONG_PASSWORD:
-                    return nameof(code.WRONG_PASSWORD);
-                case code.PASSWORDS_NOT_MATCH:
-                    return nameof(code.PASSWORDS_NOT_MATCH);
-                case code.UNKNOWN:
-                    return nameof(code.UNKNOWN);
-                case code.USER_NOT_FOUND:
-                    return nameof(code.USER_NOT_FOUND);
-                case code.USERNAME_TAKEN:
-                    return nameof(code.USERNAME_TAKEN);
-                case code.EMAIL_TAKEN:
-                    return nameof(code.EMAIL_TAKEN);
-                case code.PUSH_ERROR:
-                    return nameof(code.PUSH_ERROR);
-                case code.OUTDATED:
-                    return nameof(code.OUTDATED);
-                case code.INVALID_TEXT_FIELD:
-                    return nameof(code.INVALID_TEXT_FIELD);
-                case code.INVALID_CHOSEN_ITEM:
-                    return nameof(code.INVALID_CHOSEN_ITEM);
-                case code.INVALID_NAME:
-                    return nameof(code.INVALID_NAME);
+                case ErrorCode.OK:
+                    return nameof(ErrorCode.OK);
+                case ErrorCode.TOO_SHORT:
+                    return nameof(ErrorCode.TOO_SHORT);
+                case ErrorCode.TOO_LONG:
+                    return nameof(ErrorCode.TOO_LONG);
+                case ErrorCode.INVALID_CHAR:
+                    return nameof(ErrorCode.INVALID_CHAR);
+                case ErrorCode.INVALID_EMAIL:
+                    return nameof(ErrorCode.INVALID_EMAIL);
+                case ErrorCode.INVALID_SESSION:
+                    return nameof(ErrorCode.INVALID_SESSION);
+                case ErrorCode.WRONG_PASSWORD:
+                    return nameof(ErrorCode.WRONG_PASSWORD);
+                case ErrorCode.PASSWORDS_NOT_MATCH:
+                    return nameof(ErrorCode.PASSWORDS_NOT_MATCH);
+                case ErrorCode.UNKNOWN:
+                    return nameof(ErrorCode.UNKNOWN);
+                case ErrorCode.USER_NOT_FOUND:
+                    return nameof(ErrorCode.USER_NOT_FOUND);
+                case ErrorCode.USERNAME_TAKEN:
+                    return nameof(ErrorCode.USERNAME_TAKEN);
+                case ErrorCode.EMAIL_TAKEN:
+                    return nameof(ErrorCode.EMAIL_TAKEN);
+                case ErrorCode.PUSH_ERROR:
+                    return nameof(ErrorCode.PUSH_ERROR);
+                case ErrorCode.OUTDATED:
+                    return nameof(ErrorCode.OUTDATED);
+                case ErrorCode.INVALID_TEXT_FIELD:
+                    return nameof(ErrorCode.INVALID_TEXT_FIELD);
+                case ErrorCode.INVALID_CHOSEN_ITEM:
+                    return nameof(ErrorCode.INVALID_CHOSEN_ITEM);
+                case ErrorCode.INVALID_NAME:
+                    return nameof(ErrorCode.INVALID_NAME);
                 default:
                     return "?";
             }
@@ -114,7 +99,10 @@ namespace studyBuddy.dataNeeds
         public string Message()
         {
             //return message(this.no);
-            return $"Error: {no}";
+            string toReturn = $"Error: {no}";
+            if (this.reason != null && this.reason.Length > 0)
+                toReturn += "\nReason: " + this.reason;
+            return toReturn;
         }
 
     }

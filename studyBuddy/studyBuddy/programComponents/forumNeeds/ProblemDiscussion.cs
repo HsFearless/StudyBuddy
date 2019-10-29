@@ -10,30 +10,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddy
+namespace studyBuddy.programComponents.forumNeeds
 {
     public partial class ProblemDiscussion : Form
     {
-        int commentsPosition = 1;
-        public StreamWriter sw;
-        public bool fileClosed = false;
-        public ProblemDiscussion()
+        //int commentsPosition = 1;
+        //public StreamWriter sw;
+        //public bool fileClosed = false;
+        public ForumPost forumPost;
+        public ProblemDiscussion(ForumPost forumPost)
         {
             InitializeComponent();
+            this.forumPost = forumPost;
+            this.problemNameLabel.Text = forumPost.name;
+            this.problemDescriptionLabel.Text = forumPost.description;
         }
 
         private void ProblemDiscussion_Load(object sender, EventArgs e)
         {
-            commentsPosition = CommentsManager.LoadComments(problemNameLabel.Text, commentsPanel, commentsPosition);
-            //if(sw == null)
-            if (File.Exists(problemNameLabel.Text + ".txt") == false)
-            {
-                sw = new StreamWriter(problemNameLabel.Text + ".txt");
-            }
-            else
-            {
-                fileClosed = true;
-            }
+            forumPost.comments.Load(commentsPanel);
+            //if (sw == null)
+            //if (File.Exists(problemNameLabel.Text + ".txt") == false)
+            //{
+            //    sw = new StreamWriter(problemNameLabel.Text + ".txt");
+            //}
+            //else
+            //{
+            //    fileClosed = true;
+            //}
         }
 
 
@@ -45,28 +49,17 @@ namespace studyBuddy
 
         private void AddCommentButton_Click(object sender, EventArgs e)
         {
-            if (fileClosed == false)
-            {
-                commentsPosition = CommentsManager.WriteComment(sw, addCommentTextBox.Text, commentsPanel, commentsPosition);
-                fileClosed = true; 
-            }
-            else
-            {
-                sw = File.AppendText(problemNameLabel.Text + ".txt");
-                sw.WriteLine(addCommentTextBox.Text);
-                commentsPosition = CommentsManager.WriteComment(addCommentTextBox.Text, commentsPanel, commentsPosition);
-                fileClosed = true;
-                sw.Close();
-            }
+            forumPost.comments.Write(addCommentTextBox.Text);
+            forumPost.comments.LoadLast(commentsPanel);
             addCommentTextBox.ResetText();
         }
 
         private void ProblemDiscussion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (fileClosed == false)
-            {
-                sw.Close();
-            }
+            //if (fileClosed == false)
+            //{
+            //    sw.Close();
+            //}
         }
     }
 }

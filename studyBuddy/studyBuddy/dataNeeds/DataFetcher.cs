@@ -63,7 +63,7 @@ namespace studyBuddy.dataNeeds
             return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         }
 
-        public static List<programComponents.profileNeeds.User> GetUsers()
+        public static List<programComponents.profileNeeds.User> GetUsersAsList()
         {
             var rows = staticSource.Select("ID, username, email, "
                 + "karma, rating, lastActivity, profileInfo "
@@ -110,6 +110,40 @@ namespace studyBuddy.dataNeeds
                             result.Add(interest);
                     }
             }
+        }
+
+        public static List<programComponents.forumNeeds.Comment> GetCommentsAsList(long chosenForumId)
+        {
+            var rows = staticSource.Select("ID, forumID, userID, comment, time FROM " +
+                MysqlHandler.tblForumComments + 
+                " WHERE forumID = " + chosenForumId);
+            var toReturn = new List<programComponents.forumNeeds.Comment>();
+            foreach (var row in rows)
+            {
+                long id = Convert.ToInt32(row[0]);
+                int ownerId = Convert.ToInt32(row[1]);
+                long forumId = Convert.ToInt64(row[2]);
+                string content = row[3];
+                long unix = Convert.ToInt64(row[4]);
+                var temp = new programComponents.forumNeeds.Comment(id, ownerId, forumId, content, unix);
+                toReturn.Add(temp);
+            }
+            return toReturn;
+        }
+
+        public static programComponents.forumNeeds.Comment GetCommentFromTemplate(
+                        programComponents.forumNeeds.Comment commentTemplate)
+        {
+            programComponents.forumNeeds.Comment toReturn = null;
+
+            var row = staticSource.SelectOneRow("ID FROM " + MysqlHandler.tblForumComments
+                + $" WHERE userID = '{commentTemplate.ownerId}'"
+                + $" AND time = '{commentTemplate.postedAt}'");
+            long id = Convert.ToInt64(row[0]);
+
+            toReturn = new programComponents.forumNeeds.Comment(id, commentTemplate.ownerId,
+                commentTemplate.forumPostId, commentTemplate.content, commentTemplate.postedAt);
+            return toReturn;
         }
 
     }

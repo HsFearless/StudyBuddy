@@ -13,7 +13,7 @@ namespace studyBuddy.dataNeeds
         {
             staticSource.InsertInto(MysqlHandler.tblUsers +
                 "(username, email, password, salt) VALUES" +
-                $"('{user}', '{email.Address}', '{hashPass}', '{salt}') ;"); //you sure it safe not to check for " ' " in strings?
+                $"('{user}', '{email.Address}', '{hashPass}', '{salt}') ;"); //#you sure it safe not to check for " ' " in strings?
 
         }
 
@@ -63,11 +63,38 @@ namespace studyBuddy.dataNeeds
             SessionFileHandler.SetLoggedIn(unix);
         }
 
-        static internal bool PushNewProblem(String name, Subjects.Subject subject, String description)
+        static internal bool PushNewForumProblem(programComponents.forumNeeds.ForumPost forumPost)
         {
+            string name = forumPost.name;
+            string description = forumPost.description;
+            var subjectId = forumPost.subjectId;
+            //name = string.Format("'{0}'", name);
+            //description = string.Format("'{0}'", description);
+            string nameHolder = "■name"; //alt 254
+            string descHolder = "■desc";
+            var qParams = MysqlHandler.ConstructQueryParams(new string[] { nameHolder, descHolder },
+                new string[] { name, description });
+
             return staticSource.InsertInto(MysqlHandler.tblForum
                 + "(ownerID, name, subjectID, description) VALUES"
-                + $"('{CurrentUser.id}', '{name}', '{subject.id}', '{description}')");
+                + $"('{CurrentUser.id}', '{nameHolder}', '{subjectId}', '{descHolder}')",
+                qParams);
+        }
+
+        static internal bool PushNewForumProblemComment(programComponents.forumNeeds.Comment comment)
+        {
+            //local id skipped. It is fake or equal to 0
+            var ownerId = comment.ownerId;
+            var forumId = comment.forumPostId;
+            string content = comment.content;
+
+            string contentHolder = "■content";
+            var qParams = MysqlHandler.ConstructQueryParams(new string[] { contentHolder },
+                new string[] { content });
+
+            return staticSource.InsertInto(MysqlHandler.tblForumComments +
+                " (userID, forumID, comment, time) VALUES " +
+                $"('{ownerId}', '{forumId}', '{contentHolder}', '{comment.postedAt}')", qParams);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace studyBuddy.programComponents.forumNeeds
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
         public Subjects subjects = DataFetcher.GetSubjects();
-        private ForumContent forum = DataFetcher.GetForum();
+        public ForumContent forum = DataFetcher.GetForum();
 
         public ForumForm()
         {
@@ -49,7 +49,7 @@ namespace studyBuddy.programComponents.forumNeeds
             {
                 foreach (var forumRow in subject.forumPosts)
                 {
-                    problemsGridView.Rows.Add(forumRow.name, subject.name, forumRow.description);
+                    problemsGridView.Rows.Add(0,forumRow.name, subject.name, forumRow.description, forumRow.id);
                     CommentsManager.AddNewFile(forumRow.name + ".txt");
                 }
             }
@@ -109,10 +109,16 @@ namespace studyBuddy.programComponents.forumNeeds
         {
             if (this.problemsGridView.CurrentRow.Cells[0].Value == null)
                 return;
-            ProblemDiscussion problemDiscussion = new ProblemDiscussion();
-            problemDiscussion.problemNameLabel.Text = this.problemsGridView.CurrentRow.Cells[0].Value.ToString();
-            problemDiscussion.problemDescriptionLabel.Text = this.problemsGridView.CurrentRow.Cells[2].Value.ToString();
-            problemDiscussion.ShowDialog();
+            long forumPostId = Convert.ToInt64(problemsGridView.CurrentRow.Cells["Id"].Value);
+            var problem = forum[forumPostId];
+            if (problem != null)
+            {
+                ProblemDiscussion problemDiscussion = new ProblemDiscussion(problem);
+                problemDiscussion.ShowDialog();
+            }
+            else
+                MessageBox.Show("Sorry, it is an error. Try other choosing other post");
+            
         }
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
