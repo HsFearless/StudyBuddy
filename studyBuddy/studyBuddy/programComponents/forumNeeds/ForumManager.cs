@@ -11,7 +11,7 @@ namespace studyBuddy.programComponents.forumNeeds
     static class ForumManager
     {
         public static Error error = new Error();
-        public static bool NewProblem(String name, Subjects.Subject subject, String description)
+        public static bool NewProblem(String name, Subjects.Subject subject, String description, ForumContent FC)
         {
             error.no = ErrorCode.OK;
             //user id
@@ -26,8 +26,20 @@ namespace studyBuddy.programComponents.forumNeeds
             //problem description
             if (!InputValidator.ValidateForumProblemDescription(description))
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_TEXT_FIELD | InputValidator.error.no);
+            //create forum post
+            ForumPost forumPost;
+            try
+            {
+                //#watch out. A forum post with ID 0 !
+                forumPost = new ForumPost(0, subject.id, name, description, CurrentUser.id);
+            }
+            catch (Exception)
+            {
+                return error.SetErrorAndReturnFalse(ErrorCode.UNKNOWN);
+            }
+            FC.Add(forumPost);
             //push ok
-            if (!UserDataPusher.PushNewForumProblem(name, subject, description))
+            if (!UserDataPusher.PushNewForumProblem(forumPost))
                 return error.SetErrorAndReturnFalse(ErrorCode.PUSH_ERROR);
             return true;
         }

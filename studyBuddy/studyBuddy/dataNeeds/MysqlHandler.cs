@@ -28,6 +28,7 @@ namespace studyBuddy.dataNeeds
         public static string tblForum = "ForumPosts";
         public static string tblUserInterests = "UserInterests";
         public static string tblInterests = "Interests";
+        public static string tblForumComments = "ForumComments";
         private string host;
         private string username;
         private string password;

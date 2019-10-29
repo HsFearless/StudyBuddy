@@ -7,17 +7,22 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.programComponents.forumNeeds
 {
-    class ForumContent : IEnumerable<ForumPost>//^IEnumerable
+    public class ForumContent : IEnumerable<ForumPost>//^IEnumerable
     {
+
+        private bool sorted = false;
+        long maxId = 0;
 
         public ForumPost[] post;
 
         public void Add(ForumPost onePost)
         {
             post.Append<ForumPost>(onePost);
+            sorted = false;
+            maxId = Math.Max(maxId, onePost.id);
         }
 
-        public ForumContent(ForumPost[] posts=null)
+        public ForumContent(ForumPost[] posts = null)
         {
             if (posts == null)
                 post = new ForumPost[0];
@@ -33,6 +38,42 @@ namespace studyBuddy.programComponents.forumNeeds
         IEnumerator IEnumerable.GetEnumerator()
         {
             return new ForumPostEnumerator(post);
+        }
+
+        private void FindMaxId()
+        {
+            if (sorted)
+            {
+                this.maxId = post[post.Length - 1].id;
+                return;
+            }
+                
+            foreach (var post in this)
+            {
+                maxId = Math.Max(maxId, post.id);
+            }
+        }
+
+        private void Sort()
+        {
+            if (maxId == 0)
+                FindMaxId();
+            Array.Sort<ForumPost>(post);
+        }
+
+        private ForumPost FindPost(long id)
+        {
+            if (!this.sorted)
+                Sort();
+            ForumPost toFind = new ForumPost(id, 0, null, null, 0);
+            long index = Array.BinarySearch<ForumPost>(post, toFind); //#but it returns int32
+            ForumPost toReturn = index > -1 ? post[index] : null;
+            return toReturn;
+        }
+
+        public ForumPost this[long id]
+        {
+            get { return FindPost(id); }
         }
 
 

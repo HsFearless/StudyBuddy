@@ -84,7 +84,7 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private static void SetCurrentUser(string username, UserDataFetcher UDF)
         {
-            List<User> users = DataFetcher.GetUsers();
+            List<User> users = DataFetcher.GetUsersAsList();
             int id = UDF.GetId();
             List<string> interests = new List<string>();
             DataFetcher.GetInterestsOfCurrentUserAsList(interests, id);

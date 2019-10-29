@@ -138,5 +138,17 @@ namespace studyBuddy.dataNeeds
             return true;
         }
 
+        static public bool ValidateForumProblemCommentText(string text)
+        {
+            error.no = ErrorCode.OK;
+            if (text.Contains('■'))
+                return error.SetErrorAndReturnFalse(ErrorCode.INVALID_CHAR);
+            if (text.Length < 4)
+                return error.SetErrorAndReturnFalse(ErrorCode.TOO_SHORT);
+            if (text.Length > 20000)
+                return error.SetErrorAndReturnFalse(ErrorCode.TOO_LONG);
+            return true;
+        }
+
     }//class
 }//namespace

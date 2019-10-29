@@ -36,7 +36,7 @@ namespace studyBuddy.programComponents.forumNeeds
             //this.Hide(); //#might need to change to this.close() or something //but it works somehow
             if (ForumManager.NewProblem(problemsNameTextBox.Text,
                 (Subjects.Subject)SubjectComboBox.SelectedItem,
-                descriptionTextBox.Text))
+                descriptionTextBox.Text, forumForm.forum))
                 this.Close(); //#without it it also works
             else
             {

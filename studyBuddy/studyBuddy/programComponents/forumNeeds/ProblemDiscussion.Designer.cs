@@ -1,4 +1,4 @@
-﻿namespace studyBuddy
+﻿namespace studyBuddy.programComponents.forumNeeds
 {
     partial class ProblemDiscussion
     {
