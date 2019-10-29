@@ -148,7 +148,7 @@ namespace studyBuddy.programComponents.loginNeeds
         {
             //is timestamp not old?
             long lastUnix = UserDataFetcher.GetLastLoginTimestamp();
-            if (lastUnix.IsTimeStampOlderThan(minutes: 5))//^extension
+            if (lastUnix.IsTimeStampOlderThan(hours: 1,minutes: 5))//^extension
                 return error.SetErrorAndReturnFalse(Error.code.INVALID_SESSION
                     | Error.code.OUTDATED); //session became a garbage
 

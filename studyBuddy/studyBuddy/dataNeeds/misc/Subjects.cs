@@ -72,9 +72,8 @@ namespace studyBuddy.dataNeeds
             if (subjects != null && subjects.Length != 0)
                 return; //not null and not 0 elements
             //we need to initialize it
-            var subjectsList = studyBuddy.dataNeeds.DataFetcher.GetSubjectsAsStringList();
+            var subjectsList = DataFetcher.GetSubjectsAsStringList();
             subjects = new Subject[subjectsList.Count];
-
             int i = 0;
             foreach(string[] subjectAsStringArr in subjectsList)
             {
