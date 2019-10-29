@@ -63,7 +63,7 @@ namespace studyBuddy.dataNeeds
             SessionFileHandler.SetLoggedIn(unix);
         }
 
-        static internal bool PushNewProblem(String name, Subjects.Subject subject, String description)
+        static internal bool PushNewForumProblem(String name, Subjects.Subject subject, String description)
         {
             //name = string.Format("'{0}'", name);
             //description = string.Format("'{0}'", description);

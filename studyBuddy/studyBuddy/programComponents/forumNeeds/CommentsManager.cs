@@ -14,14 +14,14 @@ namespace studyBuddy
         public static ArrayList commentsTextFiles = new ArrayList();
 
         public static void AddNewFile(string textFilesName)
-        {
+        {/*
             FileStream fs = File.Create(textFilesName);
             commentsTextFiles.Add(textFilesName);
-            fs.Close();
+            fs.Close();*/
         }
 
         public static int WriteComment(StreamWriter File, string commmentToShow, Panel panel, int commentsPosition)
-        {
+        {/*
             using (File)
             {
                 File.WriteLine(commmentToShow, true);
@@ -37,11 +37,12 @@ namespace studyBuddy
             }
 
             return commentsPosition;
-
+            */
+            return 0;
         }
 
         public static int WriteComment(string commmentToShow, Panel panel, int commentsPosition)
-        {
+        {/*
 
                 Label comment = new Label();
                 comment.BackColor = Color.White;
@@ -54,12 +55,14 @@ namespace studyBuddy
                 commentsPosition++;
 
             return commentsPosition;
-
+            */
+            return 0;
         }
 
 
         public static int LoadComments(string textFilesName, Panel panel, int commentsPosition)
         {
+            /*
             using (StreamReader sr = new StreamReader(textFilesName + ".txt")) {
                 String line;
                 //StreamReader sr = new StreamReader(textFilesName + ".txt");
@@ -80,6 +83,8 @@ namespace studyBuddy
                 sr.Close();
             }
             return commentsPosition;
+            */
+            return 0;
         }
     }
 }

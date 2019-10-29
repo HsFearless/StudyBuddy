@@ -39,8 +39,10 @@ namespace studyBuddy.programComponents.forumNeeds
                 descriptionTextBox.Text))
                 this.Close(); //#without it it also works
             else
+            {
                 this.Visible = true;
-            System.Windows.Forms.MessageBox.Show(ForumManager.error.Message());
+                System.Windows.Forms.MessageBox.Show(ForumManager.error.Message());
+            }
 
             //forumForm.AddNewProblem(problemsNameTextBox.Text, SubjectComboBox.Text, descriptionTextBox.Text);
             //CommentsManager.AddNewFile(problemsNameTextBox.Text + ".txt");
