@@ -179,7 +179,7 @@ namespace studyBuddy.dataNeeds
             return toReturn;
         }
 
-        public bool InsertInto(string sqlWithoutInsertInto)
+        public bool InsertInto(string sqlWithoutInsertInto, KeyValuePair<string, string>[] queryParams=null)
         {
             PrepareSql(ref sqlWithoutInsertInto);
             string fullSql = "INSERT INTO";
@@ -187,6 +187,20 @@ namespace studyBuddy.dataNeeds
             if (!OpenNewConnection())
                 return false;
             cmdCon = new MySqlCommand(fullSql, this.con);
+            if(queryParams != null && queryParams.Length > 0)
+            {
+                foreach(var qParam in queryParams)
+                {
+                    //#cmdCon.Parameters.Add(qParam.Key, qParam.Value);
+                    sqlWithoutInsertInto = sqlWithoutInsertInto.Replace(qParam.Key,
+                        MySql.Data.MySqlClient.MySqlHelper.EscapeString(qParam.Value) + "");
+                    System.Windows.Forms.MessageBox.Show("key: " + qParam.Key +
+                        "\nval: " + qParam.Value);
+                    //escape bad symbols
+                }
+                System.Windows.Forms.MessageBox.Show(sqlWithoutInsertInto);
+                return false;
+            }
             int affectedRows = cmdCon.ExecuteNonQuery();
 
             bool queryOk = (affectedRows > 0);
@@ -236,6 +250,18 @@ namespace studyBuddy.dataNeeds
             {
                 lastError = ex.Message;
             }
+        }
+
+        public static KeyValuePair<string, string>[] ConstructQueryParams(string[] keys, string[] values)
+        {
+            if (keys.Length != values.Length)
+                throw new Exception();//#
+            KeyValuePair<string, string>[] toReturn = new KeyValuePair<string, string>[keys.Length];
+            for(int i = 0; i<keys.Length; i++)
+            {
+                toReturn[i] = new KeyValuePair<string, string>(keys[i], values[i]);
+            }
+            return toReturn;
         }
 
     }

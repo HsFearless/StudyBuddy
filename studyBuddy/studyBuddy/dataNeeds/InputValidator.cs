@@ -107,11 +107,12 @@ namespace studyBuddy.dataNeeds
 
         static public bool ValidateForumProblemName(string name)
         {
+            error.no = Error.code.OK;
             if (name.Length < 4)
                 return error.SetErrorAndReturnFalse(Error.code.TOO_SHORT);
             if (name.Length > 50)
                 return error.SetErrorAndReturnFalse(Error.code.TOO_LONG);
-            Regex forbidden = new Regex("[^\x20-\x7E\n\r\tąĄčČęĘėĖįĮšŠųŲūŪžŽ]");
+            Regex forbidden = new Regex("[^\x20-\x7E\n\r\t€ąĄčČęĘėĖįĮšŠųŲūŪžŽ]");
             //regex
             //^ this time means NEGATIVE
             //\x20-\x7E means from hex value 20 to hex value 7E
@@ -127,6 +128,9 @@ namespace studyBuddy.dataNeeds
 
         static public bool ValidateForumProblemDescription(string desc)
         {
+            error.no = Error.code.OK;
+            if (desc.Contains('■'))
+                return error.SetErrorAndReturnFalse(Error.code.INVALID_CHAR);
             if (desc.Length < 4)
                 return error.SetErrorAndReturnFalse(Error.code.TOO_SHORT);
             if (desc.Length > 40000)

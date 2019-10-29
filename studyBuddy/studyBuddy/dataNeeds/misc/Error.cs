@@ -22,6 +22,7 @@ namespace studyBuddy.dataNeeds
                         public const int USERNAME_TAKEN = 9;
                         public const int EMAIL_TAKEN = 10;
                         public const int PUSH_ERROR = 11;*/
+        public string reason;
 
         [Flags]
         public enum code //^enum
@@ -57,9 +58,20 @@ namespace studyBuddy.dataNeeds
             no = code.OK;
         }*/
 
-        public Error(code no)
+        public Error(code no) : this(no,"")
+        {
+        }
+
+        public Error(code no, string reason)
         {
             this.no = no;
+            this.reason = (reason == null)? "":reason;
+        }
+
+        public void Clear()
+        {
+            this.no = code.OK;
+            this.reason = "";
         }
 
         public bool SetErrorAndReturnFalse(code no)
@@ -114,7 +126,10 @@ namespace studyBuddy.dataNeeds
         public string Message()
         {
             //return message(this.no);
-            return $"Error: {no}";
+            string toReturn = $"Error: {no}";
+            if (this.reason != null && this.reason.Length > 0)
+                toReturn += "\nReason: " + this.reason;
+            return toReturn;
         }
 
     }

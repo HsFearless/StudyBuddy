@@ -65,9 +65,17 @@ namespace studyBuddy.dataNeeds
 
         static internal bool PushNewProblem(String name, Subjects.Subject subject, String description)
         {
+            //name = string.Format("'{0}'", name);
+            //description = string.Format("'{0}'", description);
+            string nameName = "■name";
+            string descName = "■desc";
+            var qParams = MysqlHandler.ConstructQueryParams(new string[] { nameName, descName },
+                new string[] { name, description });
+
             return staticSource.InsertInto(MysqlHandler.tblForum
                 + "(ownerID, name, subjectID, description) VALUES"
-                + $"('{CurrentUser.id}', '{name}', '{subject.id}', '{description}')");
+                + $"('{CurrentUser.id}', '{nameName}', '{subject.id}', '{descName}')",
+                qParams);
         }
     }
 }
