@@ -15,11 +15,11 @@ namespace studyBuddy.programComponents.profileNeeds
         public readonly int rating;
         public readonly long lastActivity;
         public readonly string profileInfo;
-        public readonly List<string> interests;
+        public readonly int upForTeaching;
 
         public User(int id, string name,
             string email, int karma,
-            int rating, long lastActivity, string profileInfo)
+            int rating, long lastActivity, string profileInfo, int upForTeaching)
         {
             this.id = id;
             this.name = name;
@@ -28,6 +28,7 @@ namespace studyBuddy.programComponents.profileNeeds
             this.rating = rating;
             this.lastActivity = lastActivity;
             this.profileInfo = profileInfo;
+            this.upForTeaching = upForTeaching;
         }
 
         public override string ToString()

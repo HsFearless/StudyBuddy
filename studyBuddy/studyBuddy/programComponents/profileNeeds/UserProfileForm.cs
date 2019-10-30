@@ -22,6 +22,14 @@ namespace studyBuddy.programComponents.profileNeeds
                 userNameLabel.Text = CurrentUser.name;
                 userProfileInfoBox.Text = CurrentUser.profileInfo;
                 numberOfKarmaPointsLabel.Text = CurrentUser.karma.ToString();
+                if(CurrentUser.upForTeaching == 1)
+                {
+                    userProfileUpForTeachingCheckbox.Checked = true;
+                }
+                else
+                {
+                    userProfileUpForTeachingCheckbox.Checked = false;
+                }
                 
                 foreach (string interest in CurrentUser.interests)
                 {
@@ -109,6 +117,21 @@ namespace studyBuddy.programComponents.profileNeeds
         private void KarmaPointsLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void UserProfileUpForTeachingCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (userProfileUpForTeachingCheckbox.Checked)
+            {
+                UserDataPusher.UpdateIfUserUpForTeaching(1);
+                CurrentUser.upForTeaching = 1;
+            }
+            else
+            {
+                UserDataPusher.UpdateIfUserUpForTeaching(0);
+                CurrentUser.upForTeaching = 0;
+            }
+                
         }
     }
     }

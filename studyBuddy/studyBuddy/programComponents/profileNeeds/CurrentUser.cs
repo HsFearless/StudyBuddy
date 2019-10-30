@@ -30,6 +30,7 @@ namespace studyBuddy
         }
         public static string profileInfo;
         public static List<string> interests;
+        public static int upForTeaching;
 
         public static void SetUserInfo(string username, int id, int karma, int rating, String profileInfo, List<string> interests)
         {
@@ -39,6 +40,7 @@ namespace studyBuddy
             CurrentUser.rating = rating;
             CurrentUser.profileInfo = profileInfo;
             CurrentUser.interests = interests;
+            CurrentUser.upForTeaching = upForTeaching;
             isLoggedIn = true;
         } 
 
