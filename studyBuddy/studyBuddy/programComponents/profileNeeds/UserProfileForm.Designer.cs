@@ -222,6 +222,7 @@
             this.userProfileUpForTeachingCheckbox.TabIndex = 14;
             this.userProfileUpForTeachingCheckbox.Text = "Up for teaching";
             this.userProfileUpForTeachingCheckbox.UseVisualStyleBackColor = true;
+            this.userProfileUpForTeachingCheckbox.CheckedChanged += new System.EventHandler(this.UserProfileUpForTeachingCheckbox_CheckedChanged);
             // 
             // userProfileInfoBox
             // 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace studyBuddy.dataNeeds
 {
@@ -24,6 +25,14 @@ namespace studyBuddy.dataNeeds
                 "(userID, interestID) VALUES" +
                 $"('{CurrentUser.id}', '{Int32.Parse(interestID[0][0])}') ;");
 
+        }
+        
+        static internal void UpdateIfUserUpForTeaching(int isUpForTeaching)
+        {
+            // isUPForTeaching = 1 if yes, 0 if no
+            staticSource.Update(MysqlHandler.tblUsers +
+                $" SET upForTeaching = '{isUpForTeaching}'" +
+                $" WHERE ID = '{CurrentUser.id}'");
         }
 
         static internal void UpdateUserSession(UserDataFetcher UDF, long unix, string hashedUnix)

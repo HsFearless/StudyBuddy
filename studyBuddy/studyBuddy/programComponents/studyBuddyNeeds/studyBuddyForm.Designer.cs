@@ -40,6 +40,8 @@
             this.StudyBuddyFindBuddyButton = new System.Windows.Forms.Button();
             this.StudyBuddySearchBuddyGroup = new System.Windows.Forms.GroupBox();
             this.chooseWhatToLearnComboBox = new System.Windows.Forms.ComboBox();
+            this.availableBuddiesLabel = new System.Windows.Forms.Label();
+            this.availableBuddiesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.leftToolBar.SuspendLayout();
             this.StudyBuddySearchBuddyGroup.SuspendLayout();
             this.SuspendLayout();
@@ -178,7 +180,7 @@
             this.StudyBuddySearchBuddyGroup.Controls.Add(this.chooseWhatToLearnComboBox);
             this.StudyBuddySearchBuddyGroup.Controls.Add(this.StudyBuddyFindBuddyButton);
             this.StudyBuddySearchBuddyGroup.Controls.Add(this.studyBuddyIwantToLearnLabel);
-            this.StudyBuddySearchBuddyGroup.Location = new System.Drawing.Point(493, 169);
+            this.StudyBuddySearchBuddyGroup.Location = new System.Drawing.Point(489, 106);
             this.StudyBuddySearchBuddyGroup.Margin = new System.Windows.Forms.Padding(4);
             this.StudyBuddySearchBuddyGroup.Name = "StudyBuddySearchBuddyGroup";
             this.StudyBuddySearchBuddyGroup.Padding = new System.Windows.Forms.Padding(4);
@@ -202,11 +204,32 @@
             this.chooseWhatToLearnComboBox.Size = new System.Drawing.Size(274, 24);
             this.chooseWhatToLearnComboBox.TabIndex = 6;
             // 
+            // availableBuddiesLabel
+            // 
+            this.availableBuddiesLabel.AutoSize = true;
+            this.availableBuddiesLabel.Location = new System.Drawing.Point(596, 257);
+            this.availableBuddiesLabel.Name = "availableBuddiesLabel";
+            this.availableBuddiesLabel.Size = new System.Drawing.Size(123, 17);
+            this.availableBuddiesLabel.TabIndex = 7;
+            this.availableBuddiesLabel.Text = "Available buddies:";
+            this.availableBuddiesLabel.Visible = false;
+            // 
+            // availableBuddiesFlowLayoutPanel
+            // 
+            this.availableBuddiesFlowLayoutPanel.AutoScroll = true;
+            this.availableBuddiesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.availableBuddiesFlowLayoutPanel.Location = new System.Drawing.Point(489, 277);
+            this.availableBuddiesFlowLayoutPanel.Name = "availableBuddiesFlowLayoutPanel";
+            this.availableBuddiesFlowLayoutPanel.Size = new System.Drawing.Size(325, 283);
+            this.availableBuddiesFlowLayoutPanel.TabIndex = 8;
+            // 
             // studyBuddyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 572);
+            this.Controls.Add(this.availableBuddiesFlowLayoutPanel);
+            this.Controls.Add(this.availableBuddiesLabel);
             this.Controls.Add(this.StudyBuddySearchBuddyGroup);
             this.Controls.Add(this.leftToolBar);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -219,6 +242,7 @@
             this.StudyBuddySearchBuddyGroup.ResumeLayout(false);
             this.StudyBuddySearchBuddyGroup.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -236,5 +260,7 @@
         private System.Windows.Forms.Button StudyBuddyFindBuddyButton;
         private System.Windows.Forms.GroupBox StudyBuddySearchBuddyGroup;
         private System.Windows.Forms.ComboBox chooseWhatToLearnComboBox;
+        private System.Windows.Forms.Label availableBuddiesLabel;
+        private System.Windows.Forms.FlowLayoutPanel availableBuddiesFlowLayoutPanel;
     }
 }

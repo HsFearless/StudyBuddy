@@ -21,6 +21,20 @@ namespace studyBuddy.dataNeeds
             return Subjects.GetInstance();
         }
 
+        public static List<string[]> GetUserInterestsAsStringList()
+        {
+            var interests = staticSource.Select("userID, interestID FROM " +
+                MysqlHandler.tblUserInterests);
+            return interests;
+        }
+
+        public static List<string[]> GetInterestsAsStringList()
+        {
+            var interests = staticSource.Select("ID, name FROM " +
+                MysqlHandler.tblInterests);
+            return interests;
+        }
+
         public static programComponents.forumNeeds.ForumContent GetForum()
         {
             var rows = staticSource.Select("ID, name, subjectID, description, ownerID FROM " +
@@ -66,7 +80,7 @@ namespace studyBuddy.dataNeeds
         public static List<programComponents.profileNeeds.User> GetUsersAsList()
         {
             var rows = staticSource.Select("ID, username, email, "
-                + "karma, rating, lastActivity, profileInfo "
+                + "karma, rating, lastActivity, profileInfo, upForTeaching "
                 + "FROM " + MysqlHandler.tblUsers);
             var toReturn = new List<programComponents.profileNeeds.User>();
             foreach(string[] col in rows)
@@ -78,10 +92,11 @@ namespace studyBuddy.dataNeeds
                 int rating = Convert.ToInt32(col[4]);
                 long lastActivity = Convert.ToInt64(col[5]);
                 string profileInfo = Convert.ToString(col[6]);
+                int upForTeaching = Convert.ToInt32(col[7]);
                 try
                 {
                     var user = new programComponents.profileNeeds.User(id, name,
-                        email, karma, rating, lastActivity, profileInfo);
+                        email, karma, rating, lastActivity, profileInfo, upForTeaching);
                     toReturn.Add(user);
                 }
                 catch (Exception)
