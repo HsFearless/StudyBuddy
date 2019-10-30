@@ -35,6 +35,10 @@
             this.addCommentTextBox = new System.Windows.Forms.TextBox();
             this.addCommentButton = new System.Windows.Forms.Button();
             this.problemDescriptionLabel = new System.Windows.Forms.Label();
+            this.votesCountLabel = new System.Windows.Forms.Label();
+            this.votesGroupBox = new System.Windows.Forms.GroupBox();
+            this.upvoteButton = new System.Windows.Forms.Button();
+            this.votesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // problemNameLabel
@@ -107,12 +111,46 @@
             this.problemDescriptionLabel.TabIndex = 13;
             this.problemDescriptionLabel.Text = "Description placeholder";
             // 
+            // votesCountLabel
+            // 
+            this.votesCountLabel.AutoSize = true;
+            this.votesCountLabel.ForeColor = System.Drawing.Color.Green;
+            this.votesCountLabel.Location = new System.Drawing.Point(6, 18);
+            this.votesCountLabel.Name = "votesCountLabel";
+            this.votesCountLabel.Size = new System.Drawing.Size(16, 17);
+            this.votesCountLabel.TabIndex = 15;
+            this.votesCountLabel.Text = "?";
+            // 
+            // votesGroupBox
+            // 
+            this.votesGroupBox.Controls.Add(this.upvoteButton);
+            this.votesGroupBox.Controls.Add(this.votesCountLabel);
+            this.votesGroupBox.Location = new System.Drawing.Point(7, 63);
+            this.votesGroupBox.Name = "votesGroupBox";
+            this.votesGroupBox.Size = new System.Drawing.Size(61, 82);
+            this.votesGroupBox.TabIndex = 16;
+            this.votesGroupBox.TabStop = false;
+            this.votesGroupBox.Text = "Votes:";
+            // 
+            // upvoteButton
+            // 
+            this.upvoteButton.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.upvoteButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.upvoteButton.Location = new System.Drawing.Point(0, 38);
+            this.upvoteButton.Name = "upvoteButton";
+            this.upvoteButton.Size = new System.Drawing.Size(61, 38);
+            this.upvoteButton.TabIndex = 16;
+            this.upvoteButton.Text = "Vote++";
+            this.upvoteButton.UseVisualStyleBackColor = false;
+            this.upvoteButton.Click += new System.EventHandler(this.UpvoteButton_Click);
+            // 
             // ProblemDiscussion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1171, 562);
+            this.Controls.Add(this.votesGroupBox);
             this.Controls.Add(this.problemDescriptionLabel);
             this.Controls.Add(this.addCommentButton);
             this.Controls.Add(this.addCommentTextBox);
@@ -124,6 +162,8 @@
             this.Text = "Study Buddy";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProblemDiscussion_FormClosing);
             this.Load += new System.EventHandler(this.ProblemDiscussion_Load);
+            this.votesGroupBox.ResumeLayout(false);
+            this.votesGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,5 +178,8 @@
         private System.Windows.Forms.TextBox addCommentTextBox;
         private System.Windows.Forms.Button addCommentButton;
         public System.Windows.Forms.Label problemDescriptionLabel;
+        private System.Windows.Forms.Label votesCountLabel;
+        private System.Windows.Forms.GroupBox votesGroupBox;
+        private System.Windows.Forms.Button upvoteButton;
     }
 }

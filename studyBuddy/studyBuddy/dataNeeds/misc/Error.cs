@@ -91,6 +91,10 @@ namespace studyBuddy.dataNeeds
                     return nameof(ErrorCode.INVALID_CHOSEN_ITEM);
                 case ErrorCode.INVALID_NAME:
                     return nameof(ErrorCode.INVALID_NAME);
+                case ErrorCode.UPDATE_ERROR:
+                    return nameof(ErrorCode.PUSH_ERROR);
+                case ErrorCode.NOT_FOUND:
+                    return nameof(ErrorCode.NOT_FOUND);
                 default:
                     return "?";
             }

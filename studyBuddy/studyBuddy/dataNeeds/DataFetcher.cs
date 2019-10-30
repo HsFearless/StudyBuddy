@@ -37,7 +37,7 @@ namespace studyBuddy.dataNeeds
 
         public static programComponents.forumNeeds.ForumContent GetForum()
         {
-            var rows = staticSource.Select("ID, name, subjectID, description, ownerID FROM " +
+            var rows = staticSource.Select("ID, name, subjectID, description, ownerID, votes FROM " +
                 MysqlHandler.tblForum);
             var post = new programComponents.forumNeeds.ForumPost[rows.Count];
             int i = 0;
@@ -48,7 +48,9 @@ namespace studyBuddy.dataNeeds
                 int subjectId = Convert.ToInt32(row[2]);
                 string description = row[3];
                 int ownerId = Convert.ToInt32(row[4]);
-                var temp = new programComponents.forumNeeds.ForumPost(id, subjectId, name, description, ownerId);
+                int votes = Convert.ToInt32(row[5]);
+                var temp = new programComponents.forumNeeds.ForumPost(id, subjectId, name, 
+                                                                        description, ownerId,votes);
                 //System.Windows.Forms.MessageBox.Show(temp.ToString() );
                 post[i++] = temp;
             }
@@ -159,6 +161,14 @@ namespace studyBuddy.dataNeeds
             toReturn = new programComponents.forumNeeds.Comment(id, commentTemplate.ownerId,
                 commentTemplate.forumPostId, commentTemplate.content, commentTemplate.postedAt);
             return toReturn;
+        }
+
+        public static int GetForumPostVotes(programComponents.forumNeeds.ForumPost post)
+        {
+            var row = staticSource.SelectOneRow("votes FROM " + MysqlHandler.tblForum +
+                $" WHERE ID = '{post.id}'");
+            int votes = Convert.ToInt32(row[0]);
+            return votes;
         }
 
     }

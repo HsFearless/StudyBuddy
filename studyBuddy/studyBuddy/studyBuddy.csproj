@@ -48,10 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataNeeds\DataCrusher.cs" />
+    <Compile Include="dataNeeds\DataPusher.cs" />
+    <Compile Include="exceptions\ConfirmationNotReceived.cs" />
+    <Compile Include="exceptions\DoneBefore.cs" />
     <Compile Include="programComponents\forumNeeds\Comment.cs" />
     <Compile Include="programComponents\forumNeeds\ForumManager.cs" />
     <Compile Include="programComponents\profileNeeds\CurrentUser.cs" />
-    <Compile Include="dataNeeds\BinaryFileHandler.cs" />
+    <Compile Include="dataNeeds\unused\BinaryFileHandler.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />
     <Compile Include="dataNeeds\abstract\DataHandler.cs" />
     <Compile Include="dataNeeds\misc\SessionFileHandler.cs" />

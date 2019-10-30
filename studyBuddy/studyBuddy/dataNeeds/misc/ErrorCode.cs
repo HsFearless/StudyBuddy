@@ -32,6 +32,8 @@ namespace studyBuddy.dataNeeds
         USERNAME_TAKEN = 1048576 * 4,
         EMAIL_TAKEN = 1048576 * 8,
         PUSH_ERROR = 1048576 * 16,
-        OUTDATED = 1048576 * 32
+        OUTDATED = 1048576 * 32,
+        UPDATE_ERROR = 1048576 * 64,
+        NOT_FOUND = 1048576 * 128
     }
 }

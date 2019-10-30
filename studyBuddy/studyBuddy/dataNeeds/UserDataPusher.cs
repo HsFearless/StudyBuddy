@@ -105,5 +105,12 @@ namespace studyBuddy.dataNeeds
                 " (userID, forumID, comment, time) VALUES " +
                 $"('{ownerId}', '{forumId}', '{contentHolder}', '{comment.postedAt}')", qParams);
         }
+
+        static internal bool UpvoteForumProblem(programComponents.forumNeeds.ForumPost post)
+        {
+            return staticSource.InsertInto(MysqlHandler.tblForumVotes +
+                " (userID, forumID) VALUES "
+                + $"('{CurrentUser.id}', '{post.id}')");
+        }
     }
 }
