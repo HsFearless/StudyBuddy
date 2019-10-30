@@ -13,7 +13,7 @@ namespace studyBuddy.programComponents.forumNeeds
 {
     public class CommentsManager
     {
-        internal static Error error;
+        internal Error error;
         public readonly ForumPost forumPost;
         public int commentsPosition { get; private set; } = 1;
         private List<Comment> comments;

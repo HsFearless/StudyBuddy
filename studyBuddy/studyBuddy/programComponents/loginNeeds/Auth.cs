@@ -109,7 +109,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 {
                     if (id == users[i].id)
                     {
-                        CurrentUser.setUserInfo(users[i].name, users[i].id, users[i].karma, users[i].rating, users[i].profileInfo, interests);
+                        CurrentUser.SetUserInfo(users[i].name, users[i].id, users[i].karma, users[i].rating, users[i].profileInfo, interests);
                         break;
                     }
                 }

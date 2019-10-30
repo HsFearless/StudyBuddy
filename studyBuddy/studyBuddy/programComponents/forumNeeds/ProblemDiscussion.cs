@@ -49,9 +49,14 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void AddCommentButton_Click(object sender, EventArgs e)
         {
-            forumPost.comments.Write(addCommentTextBox.Text);
-            forumPost.comments.LoadLast(commentsPanel);
-            addCommentTextBox.ResetText();
+            if(forumPost.comments.Write(addCommentTextBox.Text))
+            {
+                forumPost.comments.LoadLast(commentsPanel);
+                addCommentTextBox.ResetText();
+            }
+            else
+                MessageBox.Show(forumPost.comments.error.Message());
+
         }
 
         private void ProblemDiscussion_FormClosing(object sender, FormClosingEventArgs e)
