@@ -71,7 +71,7 @@
             this.leftToolBar.Controls.Add(this.toolBarProfileButton, 0, 0);
             this.leftToolBar.Controls.Add(this.logoLabel, 0, 3);
             this.leftToolBar.Location = new System.Drawing.Point(-4, -4);
-            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4);
             this.leftToolBar.Name = "leftToolBar";
             this.leftToolBar.RowCount = 7;
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -243,7 +243,7 @@
             // 
             this.filterSubjectsComboBox.FormattingEnabled = true;
             this.filterSubjectsComboBox.Location = new System.Drawing.Point(339, 50);
-            this.filterSubjectsComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterSubjectsComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.filterSubjectsComboBox.Name = "filterSubjectsComboBox";
             this.filterSubjectsComboBox.Size = new System.Drawing.Size(152, 24);
             this.filterSubjectsComboBox.TabIndex = 16;
@@ -283,6 +283,7 @@
             this.Votes.HeaderText = "Votes";
             this.Votes.MinimumWidth = 6;
             this.Votes.Name = "Votes";
+            this.Votes.ReadOnly = true;
             this.Votes.Width = 125;
             // 
             // problemsNameColumn
@@ -293,6 +294,7 @@
             this.problemsNameColumn.HeaderText = "Problem\'s Name";
             this.problemsNameColumn.MinimumWidth = 6;
             this.problemsNameColumn.Name = "problemsNameColumn";
+            this.problemsNameColumn.ReadOnly = true;
             this.problemsNameColumn.Width = 175;
             // 
             // subjectColumn
@@ -300,6 +302,7 @@
             this.subjectColumn.HeaderText = "Subject";
             this.subjectColumn.MinimumWidth = 6;
             this.subjectColumn.Name = "subjectColumn";
+            this.subjectColumn.ReadOnly = true;
             this.subjectColumn.Width = 175;
             // 
             // descriptionColumn
@@ -308,6 +311,7 @@
             this.descriptionColumn.HeaderText = "Description";
             this.descriptionColumn.MinimumWidth = 6;
             this.descriptionColumn.Name = "descriptionColumn";
+            this.descriptionColumn.ReadOnly = true;
             // 
             // Id
             // 
@@ -332,7 +336,7 @@
             this.Controls.Add(this.sortByNameButton);
             this.Controls.Add(this.problemsGridView);
             this.Controls.Add(this.leftToolBar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1189, 606);
             this.Name = "ForumForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

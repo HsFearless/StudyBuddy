@@ -19,6 +19,8 @@ using System.Data.SqlClient;
  * */
 
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
+
 namespace studyBuddy.dataNeeds
 {
     class MysqlHandler
@@ -29,6 +31,8 @@ namespace studyBuddy.dataNeeds
         public static string tblUserInterests = "UserInterests";
         public static string tblInterests = "Interests";
         public static string tblForumComments = "ForumComments";
+        public static string tblForumVotes = "ForumVotes";
+        public static string tblForumCommentsVotes = "CommentVotes";
         private string host;
         private string username;
         private string password;
@@ -215,7 +219,24 @@ namespace studyBuddy.dataNeeds
             return queryOk;
         }
 
+        public bool DeleteFrom(string sqlWithoutDeleteFrom, bool fullDeleteAllowed = false)
+        {
+            PrepareSql(ref sqlWithoutDeleteFrom);
+            string fullSql = "DELETE FROM";
+            fullSql += sqlWithoutDeleteFrom;
+            if (fullDeleteAllowed == false)
+                if (!Regex.IsMatch(fullSql, Regex.Escape("WHERE"), RegexOptions.IgnoreCase))
+                    throw new exceptions.ConfirmationNotReceived(); //^unhandled exception
+            if (!OpenNewConnection())
+                return false;
+            cmdCon = new MySqlCommand(fullSql, this.con);
+            int affectedRows = cmdCon.ExecuteNonQuery();
 
+            bool queryOk = (affectedRows > 0);
+
+            con.Close();
+            return queryOk;
+        }
 
         public void TestSelectAllUsers()
         {

@@ -16,12 +16,23 @@ namespace studyBuddy
        // public static MailAddress email;
         public static int karma;
         public static int rating;
-        public static bool isLoggedIn;
+        private static bool _isLoggedIn = false;
+        public static bool isLoggedIn
+        {
+            get
+            {
+                return (_isLoggedIn && InputValidator.ValidateId(id));
+            }
+            set
+            {
+                _isLoggedIn = value;
+            }
+        }
         public static string profileInfo;
         public static List<string> interests;
         public static int upForTeaching;
 
-        public static void setUserInfo(string username, int id, int karma, int rating, String profileInfo, List<string> interests, int upForTeaching)
+        public static void SetUserInfo(string username, int id, int karma, int rating, String profileInfo, List<string> interests)
         {
             name = username;
             CurrentUser.id = id;

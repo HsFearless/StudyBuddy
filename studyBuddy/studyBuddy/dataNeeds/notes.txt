@@ -13,9 +13,10 @@ Pavyko ar ne, padaryti visą funkcionalumą
 	*Flush out forum (Mantas)
 		1. Add downVote ir upVote metodus (Egidijus)
 		2. Sujungimas su forumForm ^ (Martynas)
-		3. Komentarai į duombaze (Egidijus) 
+		3. Komentarai į duombaze (Egidijus) +
 		4. Sort by votes (Martynas)
 		5. Disable edit on double click empty row (Martynas)
+		//6.~Early shutdown of comments and new forumPost forms if not loggedIn(E)
 	*Find buddy func (Martynas)
 		1. List of users who have the chosen interest and are up for teaching, Egidijus parūpins List (Martynas)
 	*Help and settings sujungt ir func (Martynas)
