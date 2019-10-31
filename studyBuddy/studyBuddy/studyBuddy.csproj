@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataNeeds\misc\Interests.cs" />
     <Compile Include="programComponents\forumNeeds\Comment.cs" />
     <Compile Include="programComponents\forumNeeds\ForumManager.cs" />
     <Compile Include="programComponents\profileNeeds\CurrentUser.cs" />
