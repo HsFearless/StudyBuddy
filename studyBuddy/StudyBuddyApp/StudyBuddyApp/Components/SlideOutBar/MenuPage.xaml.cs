@@ -20,17 +20,18 @@ namespace StudyBuddyApp.Components.SlideOutBar
             Content = new StackLayout
             {
                 Padding = new Thickness(0, Device.OnPlatform<int>(20, 0, 0), 0, 0),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+
                 Children = {
                 new MainLink("Profile"),
                 new MainLink("Forum"),
                 new MainLink("Find Buddy"),
                 new MainLink("Help and Settings"),
                 new MainLink("Sign Out"),
-
-            }
+                }
             };
             Title = "Master";
-            BackgroundColor = Color.Gray.WithLuminosity(0.9);
+            BackgroundColor = Color.Purple;
         }
     }
 }

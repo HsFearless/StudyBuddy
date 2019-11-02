@@ -11,6 +11,7 @@ namespace StudyBuddyApp.Components.SlideOutBar
         public SubLink(string name)
         {
             Text = name;
+            TextColor = Color.White;
             Command = new Command(o => App.MasterDetailPage.Detail.Navigation.PushAsync(new LinkPage(name)));
         }
 

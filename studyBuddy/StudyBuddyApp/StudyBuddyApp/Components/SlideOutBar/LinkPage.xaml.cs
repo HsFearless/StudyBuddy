@@ -24,6 +24,7 @@ namespace StudyBuddyApp.Components.SlideOutBar
                     //new SubLink(name + ".1")
                 },
             };
+            BackgroundColor = Color.White;
         }
     }
 }
