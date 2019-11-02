@@ -15,13 +15,13 @@
               ItemsSource="{Binding MenuItems}">
         <d:ListView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
-                          
-                    <x:String>Profile</x:String>
-                    <x:String>Forums</x:String>
+
+                    <x:String >Profile</x:String>
+                    <x:String>Forum</x:String>
                     <x:String>Find Buddy</x:String>
                     <x:String>Help and Settings</x:String>
                     <x:String>Sign Out</x:String>
-                          
+
                 </x:Array>
         </d:ListView.ItemsSource>
             
