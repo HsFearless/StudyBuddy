@@ -21,7 +21,10 @@ namespace studyBuddy
         {
             get
             {
-                return (_isLoggedIn && InputValidator.ValidateId(id));
+                if (_isLoggedIn && InputValidator.ValidateId(id))
+                    return true;
+                else
+                    throw new exceptions.InvalidSession(didUserLogOutOnHisFreeWill: false);
             }
             set
             {

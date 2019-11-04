@@ -73,6 +73,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 if(SetSession(UDF))
                 {
                     Auth.SetCurrentUser(username, UDF);
+                    SetIsLoggedIn(UDF);
                     return true;
                 }
                 return false;
@@ -144,6 +145,26 @@ namespace studyBuddy.programComponents.loginNeeds
             */
         }
 
+        public static bool SetLoggedOut()
+        {
+            //always true because we do not care if user whether user is valid or not
+            UserDataPusher.PushSessionFileIsLoggedOut(true);
+            return true;
+        }
+
+        private static bool SetIsLoggedIn(UserDataFetcher UDF, bool IKnowThatThisFunctionMustGoAfterSetCurrentUser=true)
+        {
+            if (!InputValidator.ValidateId(UDF.GetId()))
+                return error.SetErrorAndReturnFalse(ErrorCode.USER_NOT_FOUND);
+            if (CurrentUser.isLoggedIn)
+            {
+                UserDataPusher.PushSessionFileIsLoggedOut(false);
+                return true;
+            }
+            return false;
+
+        }
+
         public static bool LogInUsingSession()
         {
             //is timestamp not old?
@@ -151,6 +172,10 @@ namespace studyBuddy.programComponents.loginNeeds
             if (lastUnix.IsTimeStampOlderThan(hours: 1,minutes: 5))//^extension
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION
                     | ErrorCode.OUTDATED); //session became a garbage
+
+            //has user manually logged out?
+            if (UserDataFetcher.GetLastLogoutWasDoneOrNot() == true)
+                return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION | ErrorCode.OK);
 
             //does user exist?
             UserDataFetcher UDF = new UserDataFetcher();
@@ -172,6 +197,7 @@ namespace studyBuddy.programComponents.loginNeeds
             //all good
             Auth.SetCurrentUser(lastUser, UDF);
             SetSession(UDF);
+            SetIsLoggedIn(UDF);
             return true;
         }
 

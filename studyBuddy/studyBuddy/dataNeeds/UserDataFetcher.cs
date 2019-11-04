@@ -114,6 +114,11 @@ namespace studyBuddy.dataNeeds
             return SessionFileHandler.GetLoggedIn(); //cached
         }
 
+        public static bool GetLastLogoutWasDoneOrNot()
+        {
+            return SessionFileHandler.GetSignedOut();
+        }
+
         /*public long GetCurrentUserTimeStamp()
         {
         //loggedIn does no longer exist

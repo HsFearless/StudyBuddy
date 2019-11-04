@@ -1,4 +1,4 @@
-﻿using StudyBuddyApp.Components.SlideOutBar;
+﻿using StudyBuddyApp.Components;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,14 +16,8 @@ namespace StudyBuddyApp
 
             MainPage = new MainPage();
 
-            MasterDetailPage = new MasterDetailPage
-            {
-                Master = new MenuPage(),
-                Detail = new NavigationPage(new LinkPage("Profile")),
-            };
-            MainPage = MasterDetailPage;
         }
-
+      
         protected override void OnStart()
         {
             // Handle when your app starts

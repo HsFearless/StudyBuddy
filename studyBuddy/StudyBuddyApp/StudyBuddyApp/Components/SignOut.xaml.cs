@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace StudyBuddyApp
+namespace StudyBuddyApp.Components
 {
-
-    [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SignOut : ContentPage
     {
-        public MainPage()
+        public SignOut()
         {
             InitializeComponent();
         }
     }
-
 }

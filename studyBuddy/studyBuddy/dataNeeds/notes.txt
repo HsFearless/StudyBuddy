@@ -11,7 +11,7 @@ Pavyko ar ne, padaryti visą funkcionalumą
 		7. Edit info box func (Martynas)
 		// 8. Add comment about person 
 	*Flush out forum (Mantas)
-		1. Add downVote ir upVote metodus (Egidijus)
+		1. Add downVote ir upVote metodus (Egidijus) +
 		2. Sujungimas su forumForm ^ (Martynas)
 		3. Komentarai į duombaze (Egidijus) +
 		4. Sort by votes (Martynas)

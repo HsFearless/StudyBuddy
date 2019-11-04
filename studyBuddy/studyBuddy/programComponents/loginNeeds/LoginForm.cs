@@ -16,6 +16,7 @@ namespace studyBuddy.programComponents.loginNeeds
     {
         private bool skipLogin = false;
         private UserDataFetcher dataFetcher = new UserDataFetcher();
+        public bool itWasExpectedExit { get; private set; } = false;
         public loginForm()
         {
             InitializeComponent();
@@ -71,7 +72,13 @@ namespace studyBuddy.programComponents.loginNeeds
             var profile = new profileNeeds.userProfileForm();
             profile.ShowDialog();
             //this.Visible = true;
+            this.itWasExpectedExit = true;
             Application.Exit();
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.itWasExpectedExit = true; //exceptions do not close forms this way
         }
     }
 }
