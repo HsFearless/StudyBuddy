@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds
 {
-    public sealed class Interests
+    public sealed class Interests : IEnumerable<Interests.Interest>
     {
         public sealed class Interest
         {
@@ -49,5 +50,56 @@ namespace studyBuddy.dataNeeds
                 interests[i++] = new Interest(id, name);
             }
         }
+         public IEnumerator<Interest> GetEnumerator()
+        {
+            return new InterestsEnumerator(interests);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return new InterestsEnumerator(interests);
+        }
+
+        IEnumerator<Interest> IEnumerable<Interest>.GetEnumerator()
+        {
+            return new InterestsEnumerator(interests);
+        }
+
     }
-}
+
+
+    class InterestsEnumerator : IEnumerator<Interests.Interest>
+    {
+        private int pos = -1;
+        private Interests.Interest[] interests;
+        private int len = 0;
+
+        public InterestsEnumerator(Interests.Interest[] interests)
+        {
+            this.interests = interests;
+            this.len = interests.Length;
+        }
+
+        public Interests.Interest Current => interests[pos];
+
+        object System.Collections.IEnumerator.Current => interests[pos];
+
+        public void Dispose()
+        {
+            return;
+            //throw new NotImplementedException();
+        }
+
+        public bool MoveNext()
+        {
+            pos++;
+            return pos < len;
+        }
+
+        public void Reset()
+        {
+            pos = -1;
+        }
+    }
+ }
+

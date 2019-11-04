@@ -21,6 +21,11 @@ namespace studyBuddy.dataNeeds
             return Subjects.GetInstance();
         }
 
+        public static Interests GetInterests()
+        {
+            return Interests.GetInstance();
+        }
+
         public static List<string[]> GetUserInterestsAsStringList()
         {
             var interests = staticSource.Select("userID, interestID FROM " +

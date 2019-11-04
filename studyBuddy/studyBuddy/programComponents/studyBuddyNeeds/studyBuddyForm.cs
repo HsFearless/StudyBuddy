@@ -15,6 +15,7 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
 {
     public partial class studyBuddyForm : Form
     {
+        public Interests interests = DataFetcher.GetInterests();
         public studyBuddyForm()
         {
             InitializeComponent();
@@ -40,18 +41,17 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
 
             List<User>  users = DataFetcher.GetUsersAsList();
             var userInterests = DataFetcher.GetUserInterestsAsStringList();
-            var allInterests = DataFetcher.GetInterestsAsStringList();
 
-            var subjectID = (from interest in allInterests // interest[1] - name of interest
-                             where interest[1] == chooseWhatToLearnComboBox.Text
-                             select Int32.Parse(interest[0]));
+            var subjectID = (from interest in interests
+                             where interest.name == chooseWhatToLearnComboBox.Text
+                             select interest.id);
 
             //get users who have that interest and are up for teaching
                 var matchedUsers = from user in users
                                    join userInterest in userInterests
                                    on user.id equals Convert.ToInt32(userInterest[0]) // userInterest[0] - userID
                                    where user.upForTeaching == 1
-                                   where Convert.ToInt32(userInterest[1]) == subjectID.FirstOrDefault<int>()
+                                   where Convert.ToInt32(userInterest[1]) == subjectID.FirstOrDefault<int>() // userInterest[1] - subjectID
                                    where user.id != CurrentUser.id
                                    select user.name;
 
