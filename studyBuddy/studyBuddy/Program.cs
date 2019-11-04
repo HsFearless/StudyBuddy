@@ -16,8 +16,34 @@ namespace studyBuddy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new programComponents.loginNeeds.loginForm());
-            Application.Run(new programComponents.forumNeeds.ForumForm());
+            while(true)
+            {
+                try
+                {
+                    Console.WriteLine("tryBlock");
+                    var loginForm = new programComponents.loginNeeds.loginForm();
+                    loginForm.ShowDialog();
+                    //Application.Run(loginForm);
+                    if (loginForm.itWasExpectedExit)
+                        break;
+                }
+                catch (studyBuddy.exceptions.InvalidSession exis)
+                {
+                    if (exis.wasNotLogged)
+                        MessageBox.Show("Your session seems to be corrupted");
+                    MessageBox.Show("catchBlock");
+                    Console.WriteLine("catchBlock");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Testing + "+ ex.ToString() );
+                }
+                finally
+                {
+                    Console.WriteLine("finallyBlock");
+                }
+            }
+            
         }
     }
 }

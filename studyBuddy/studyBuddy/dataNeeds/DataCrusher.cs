@@ -13,5 +13,10 @@ namespace studyBuddy.dataNeeds
             return staticSource.DeleteFrom(MysqlHandler.tblForumVotes +
                 $" WHERE userID = {CurrentUser.id} AND forumID = {post.id}");
         }
+
+        public static void DestroySession()
+        {
+            SessionFileHandler.SetLoggedIn(0);
+        }
     }
 }

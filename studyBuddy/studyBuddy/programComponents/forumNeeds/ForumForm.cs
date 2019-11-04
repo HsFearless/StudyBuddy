@@ -204,5 +204,13 @@ namespace studyBuddy.programComponents.forumNeeds
         {
 
         }
+
+        private void ToolBarSettingsButton_Click(object sender, EventArgs e)
+        {
+            var settings = new programComponents.settingsNeeds.settingsForm();
+            this.Hide();
+            settings.ShowDialog();
+
+        }
     }
 }

@@ -12,7 +12,8 @@ namespace studyBuddy.dataNeeds
         //to keep data in order
         private static FileHandler file;
         private static string lastUser = null;
-        private static long loggedIn = 0; //epoch. unix. 10 digits. 11 in db
+        private static long loggedIn = -1; //epoch. unix. 10 digits. 11 in db
+        private static bool signedOut = true;
         static SessionFileHandler()
         {
             file = new FileHandler("sbSession.txt");
@@ -30,24 +31,33 @@ namespace studyBuddy.dataNeeds
             Flush();
         }
 
+        public static void SetSignedOut(bool trueFalse)
+        {
+            signedOut = trueFalse;
+            Flush();
+        }
+
         private static void Flush()
         {
             lastUser = (lastUser == null) ? "" : lastUser;
             file.WriteNewly(lastUser);
             file.Append(loggedIn.ToString());
+            file.Append(signedOut.ToString());
         }
 
-        private static void fetchAllData()
+        private static void FetchAllData()
         {
             try
             {
                 lastUser = file.Read();
                 loggedIn = Convert.ToInt64(file.Read());
+                signedOut = Convert.ToBoolean(file.Read());
             }
             catch (Exception)
             {
-                lastUser = "";
-                loggedIn = 0;
+                lastUser = (lastUser == null) ? "" : lastUser;
+                loggedIn = (loggedIn == -1) ? 0 : loggedIn;
+                signedOut = true;
             }
             
         }
@@ -57,7 +67,7 @@ namespace studyBuddy.dataNeeds
             if (lastUser != null)
                 return lastUser;
             //it is
-            fetchAllData();
+            FetchAllData();
             return lastUser;
         }
 
@@ -65,8 +75,16 @@ namespace studyBuddy.dataNeeds
         {
             if (lastUser != null) //because loggedIn can be 0 but can not be null;
                 return loggedIn;
-            fetchAllData();
+            FetchAllData();
             return loggedIn;
+        }
+
+        public static bool GetSignedOut()
+        {
+            if (lastUser != null)
+                return signedOut;
+            FetchAllData();
+            return signedOut;
         }
 
     }

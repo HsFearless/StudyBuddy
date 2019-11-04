@@ -41,17 +41,17 @@
             this.addProblemLabel = new System.Windows.Forms.Label();
             this.sortByNameButton = new System.Windows.Forms.Button();
             this.problemsGridView = new System.Windows.Forms.DataGridView();
+            this.Votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.problemsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subjectColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sortBySubjectButton = new System.Windows.Forms.Button();
             this.addNewGroupBox = new System.Windows.Forms.GroupBox();
             this.filterSubjectsComboBox = new System.Windows.Forms.ComboBox();
             this.filterLabel = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.Votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.problemsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subjectColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leftToolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.problemsGridView)).BeginInit();
             this.addNewGroupBox.SuspendLayout();
@@ -105,6 +105,7 @@
             this.toolBarSettingsButton.TabIndex = 5;
             this.toolBarSettingsButton.Text = "Settings";
             this.toolBarSettingsButton.UseVisualStyleBackColor = true;
+            this.toolBarSettingsButton.Click += new System.EventHandler(this.ToolBarSettingsButton_Click);
             // 
             // toolBarHelpButton
             // 
@@ -216,6 +217,50 @@
             this.problemsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProblemsGridView_CellContentClick);
             this.problemsGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProblemsGridView_CellDoubleClick);
             // 
+            // Votes
+            // 
+            this.Votes.HeaderText = "Votes";
+            this.Votes.MinimumWidth = 6;
+            this.Votes.Name = "Votes";
+            this.Votes.ReadOnly = true;
+            this.Votes.Width = 125;
+            // 
+            // problemsNameColumn
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.problemsNameColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.problemsNameColumn.HeaderText = "Problem\'s Name";
+            this.problemsNameColumn.MinimumWidth = 6;
+            this.problemsNameColumn.Name = "problemsNameColumn";
+            this.problemsNameColumn.ReadOnly = true;
+            this.problemsNameColumn.Width = 175;
+            // 
+            // subjectColumn
+            // 
+            this.subjectColumn.HeaderText = "Subject";
+            this.subjectColumn.MinimumWidth = 6;
+            this.subjectColumn.Name = "subjectColumn";
+            this.subjectColumn.ReadOnly = true;
+            this.subjectColumn.Width = 175;
+            // 
+            // descriptionColumn
+            // 
+            this.descriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionColumn.HeaderText = "Description";
+            this.descriptionColumn.MinimumWidth = 6;
+            this.descriptionColumn.Name = "descriptionColumn";
+            this.descriptionColumn.ReadOnly = true;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "InvisibleColumn";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 125;
+            // 
             // sortBySubjectButton
             // 
             this.sortBySubjectButton.Location = new System.Drawing.Point(159, 31);
@@ -277,50 +322,6 @@
             this.buttonSearch.Text = "search in Description";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.ButtonSearch_Click);
-            // 
-            // Votes
-            // 
-            this.Votes.HeaderText = "Votes";
-            this.Votes.MinimumWidth = 6;
-            this.Votes.Name = "Votes";
-            this.Votes.ReadOnly = true;
-            this.Votes.Width = 125;
-            // 
-            // problemsNameColumn
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.problemsNameColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.problemsNameColumn.HeaderText = "Problem\'s Name";
-            this.problemsNameColumn.MinimumWidth = 6;
-            this.problemsNameColumn.Name = "problemsNameColumn";
-            this.problemsNameColumn.ReadOnly = true;
-            this.problemsNameColumn.Width = 175;
-            // 
-            // subjectColumn
-            // 
-            this.subjectColumn.HeaderText = "Subject";
-            this.subjectColumn.MinimumWidth = 6;
-            this.subjectColumn.Name = "subjectColumn";
-            this.subjectColumn.ReadOnly = true;
-            this.subjectColumn.Width = 175;
-            // 
-            // descriptionColumn
-            // 
-            this.descriptionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionColumn.HeaderText = "Description";
-            this.descriptionColumn.MinimumWidth = 6;
-            this.descriptionColumn.Name = "descriptionColumn";
-            this.descriptionColumn.ReadOnly = true;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "InvisibleColumn";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 125;
             // 
             // ForumForm
             // 

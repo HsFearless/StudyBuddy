@@ -72,6 +72,11 @@ namespace studyBuddy.dataNeeds
             SessionFileHandler.SetLoggedIn(unix);
         }
 
+        static internal void PushSessionFileIsLoggedOut(bool trueFalse)
+        {
+            SessionFileHandler.SetSignedOut(trueFalse);
+        }
+
         static internal bool PushNewForumProblem(programComponents.forumNeeds.ForumPost forumPost)
         {
             string name = forumPost.name;
