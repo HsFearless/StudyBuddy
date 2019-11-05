@@ -24,7 +24,11 @@ namespace studyBuddy
                 if (_isLoggedIn && InputValidator.ValidateId(id))
                     return true;
                 else
+                { //true false
+                    return false; //temporary. exception must be moved out of getter
+                    Console.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
                     throw new exceptions.InvalidSession(didUserLogOutOnHisFreeWill: false);
+                }
             }
             set
             {

@@ -58,12 +58,7 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
-            if (Auth.LogInUsingSession())
-                ShowAfterLoginScreen();
-            else
-                MessageBox.Show(Auth.error.Message() + " " + Auth.messageToOutterWorld + $"({Auth.messageToOutterWorld.Length})");
-            textUsername.Text = UserDataFetcher.GetLastUsedUsername();
+            Method();
         }
 
         private void ShowAfterLoginScreen()
@@ -79,6 +74,27 @@ namespace studyBuddy.programComponents.loginNeeds
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.itWasExpectedExit = true; //exceptions do not close forms this way
+        }
+        private void Method()
+        {
+            try
+            {
+                if (Auth.LogInUsingSession())
+                    ShowAfterLoginScreen();
+                else
+                    MessageBox.Show(Auth.error.Message() + " " + Auth.messageToOutterWorld + $"({Auth.messageToOutterWorld.Length})");
+                textUsername.Text = UserDataFetcher.GetLastUsedUsername();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        private void SesijaButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
