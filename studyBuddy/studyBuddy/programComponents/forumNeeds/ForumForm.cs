@@ -1,6 +1,4 @@
-﻿using studyBuddy.programComponents.forumNeeds;
-using studyBuddy.studyBuddyNeeds;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using studyBuddy.dataNeeds;
+using studyBuddy.programComponents;
 
-namespace studyBuddy.forumNeeds
+namespace studyBuddy.programComponents.forumNeeds
 {
     public partial class ForumForm : Form
     {
         private bool sortByNameAscending = true;
         private bool sortBySubjectAscending = true;
-        private dataNeeds.misc.Subjects subjects = DataFetcher.GetSubjects();
-        private ForumContent forum = DataFetcher.GetForum();
+        public Subjects subjects = DataFetcher.GetSubjects();
+        public ForumContent forum = DataFetcher.GetForum();
 
         public ForumForm()
         {
@@ -50,7 +49,7 @@ namespace studyBuddy.forumNeeds
             {
                 foreach (var forumRow in subject.forumPosts)
                 {
-                    problemsGridView.Rows.Add(forumRow.name, subject.name, forumRow.description);
+                    problemsGridView.Rows.Add(0,forumRow.name, subject.name, forumRow.description, forumRow.id);
                     CommentsManager.AddNewFile(forumRow.name + ".txt");
                 }
             }
@@ -91,6 +90,7 @@ namespace studyBuddy.forumNeeds
 
         private void SortBySubjectButton_Click(object sender, EventArgs e)
         {
+
             if (sortBySubjectAscending)
             {
                 problemsGridView.Sort(problemsGridView.Columns[1], System.ComponentModel.ListSortDirection.Ascending);
@@ -101,19 +101,29 @@ namespace studyBuddy.forumNeeds
                 problemsGridView.Sort(problemsGridView.Columns[1], System.ComponentModel.ListSortDirection.Descending);
                 sortBySubjectAscending = !sortBySubjectAscending;
             }
+
+            
         }
 
         private void ProblemsGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ProblemDiscussion problemDiscussion = new ProblemDiscussion();
-            problemDiscussion.problemNameLabel.Text = this.problemsGridView.CurrentRow.Cells[0].Value.ToString();
-            problemDiscussion.problemDescriptionLabel.Text = this.problemsGridView.CurrentRow.Cells[2].Value.ToString();
-            problemDiscussion.ShowDialog();
+            if (this.problemsGridView.CurrentRow.Cells[0].Value == null)
+                return;
+            long forumPostId = Convert.ToInt64(problemsGridView.CurrentRow.Cells["Id"].Value);
+            var problem = forum[forumPostId];
+            if (problem != null)
+            {
+                ProblemDiscussion problemDiscussion = new ProblemDiscussion(problem);
+                problemDiscussion.ShowDialog();
+            }
+            else
+                MessageBox.Show("Sorry, it is an error. Try other choosing other post");
+            
         }
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
         {
-            var profile = new userProfileForm();
+            var profile = new  profileNeeds.userProfileForm();
             this.Hide();
             profile.ShowDialog();
             Application.Exit();
@@ -131,7 +141,7 @@ namespace studyBuddy.forumNeeds
         {
             if (filterSubjectsComboBox.SelectedIndex < 0)
                 return;
-            int selectedInd = ((dataNeeds.misc.Subjects.Subject)filterSubjectsComboBox.SelectedItem).id;
+            int selectedInd = ((Subjects.Subject)filterSubjectsComboBox.SelectedItem).id;
             //filtruoti
             var matchedForumContent = forum.Where(
                 fo => fo.subjectId == selectedInd
@@ -188,6 +198,19 @@ namespace studyBuddy.forumNeeds
                 CommentsManager.AddNewFile(forumRow.name + ".txt");
             }
             filterSubjectsComboBox.SelectedIndex = -1;
+        }
+
+        private void ProblemsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ToolBarSettingsButton_Click(object sender, EventArgs e)
+        {
+            var settings = new programComponents.settingsNeeds.settingsForm();
+            this.Hide();
+            settings.ShowDialog();
+
         }
     }
 }

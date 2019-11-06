@@ -8,39 +8,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using studyBuddy.dataNeeds;
 
-namespace studyBuddy.forumNeeds
+namespace studyBuddy.programComponents.forumNeeds
 {
     public partial class CreateProblem : Form
     {
-       public ForumForm forumForm;
+        public ForumForm forumForm;
+        private Subjects subjects;
 
         public CreateProblem(ForumForm forumForm)
         {
             this.forumForm = forumForm;
+            this.subjects = forumForm.subjects;
             InitializeComponent();
-        }
 
-        private void CreateProblem_Load(object sender, EventArgs e)
-        {
+            foreach(var subject in subjects)
+            {
+                SubjectComboBox.Items.Add(subject);
+            }
+
 
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            forumForm.AddNewProblem(problemsNameTextBox.Text, SubjectComboBox.Text, descriptionTextBox.Text);
-            CommentsManager.AddNewFile(problemsNameTextBox.Text + ".txt");
-        }
+            //this.Hide(); //#might need to change to this.close() or something //but it works somehow
+            if (ForumManager.NewProblem(problemsNameTextBox.Text,
+                (Subjects.Subject)SubjectComboBox.SelectedItem,
+                descriptionTextBox.Text, forumForm.forum))
+                this.Close(); //#without it it also works
+            else
+            {
+                this.Visible = true;
+                System.Windows.Forms.MessageBox.Show(ForumManager.error.Message());
+            }
 
-        private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
-        {
+            //forumForm.AddNewProblem(problemsNameTextBox.Text, SubjectComboBox.Text, descriptionTextBox.Text);
+            //CommentsManager.AddNewFile(problemsNameTextBox.Text + ".txt");
+
+
 
         }
 
         private void SubjectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

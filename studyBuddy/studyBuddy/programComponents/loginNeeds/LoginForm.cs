@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using studyBuddy.programComponents;
 
 namespace studyBuddy.programComponents.loginNeeds
 {
@@ -15,6 +16,7 @@ namespace studyBuddy.programComponents.loginNeeds
     {
         private bool skipLogin = false;
         private UserDataFetcher dataFetcher = new UserDataFetcher();
+        public bool itWasExpectedExit { get; private set; } = false;
         public loginForm()
         {
             InitializeComponent();
@@ -28,12 +30,8 @@ namespace studyBuddy.programComponents.loginNeeds
             {
                 MessageBox.Show("Hi\n" +
                     "You are in");
-                Auth.SetLoggedIn(dataFetcher);
-                this.Hide();
-                var profile = new userProfileForm();
-                profile.ShowDialog();
-                //this.Visible = true;
-                Application.Exit();
+                //Auth.SetLoggedIn(dataFetcher);
+                ShowAfterLoginScreen();
             }
             else
             {
@@ -60,7 +58,43 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            textUsername.Text = UserDataFetcher.GetLastUsedUsername();
+            Method();
+        }
+
+        private void ShowAfterLoginScreen()
+        {
+            this.Hide();
+            var profile = new profileNeeds.userProfileForm();
+            profile.ShowDialog();
+            //this.Visible = true;
+            this.itWasExpectedExit = true;
+            Application.Exit();
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.itWasExpectedExit = true; //exceptions do not close forms this way
+        }
+        private void Method()
+        {
+            try
+            {
+                if (Auth.LogInUsingSession())
+                    ShowAfterLoginScreen();
+                else
+                    MessageBox.Show(Auth.error.Message() + " " + Auth.messageToOutterWorld + $"({Auth.messageToOutterWorld.Length})");
+                textUsername.Text = UserDataFetcher.GetLastUsedUsername();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        private void SesijaButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

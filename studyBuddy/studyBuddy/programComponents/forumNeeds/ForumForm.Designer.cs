@@ -1,4 +1,4 @@
-﻿namespace studyBuddy.forumNeeds
+﻿namespace studyBuddy.programComponents.forumNeeds
 {
     partial class ForumForm
     {
@@ -41,9 +41,11 @@
             this.addProblemLabel = new System.Windows.Forms.Label();
             this.sortByNameButton = new System.Windows.Forms.Button();
             this.problemsGridView = new System.Windows.Forms.DataGridView();
+            this.Votes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.problemsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sortBySubjectButton = new System.Windows.Forms.Button();
             this.addNewGroupBox = new System.Windows.Forms.GroupBox();
             this.filterSubjectsComboBox = new System.Windows.Forms.ComboBox();
@@ -69,7 +71,7 @@
             this.leftToolBar.Controls.Add(this.toolBarProfileButton, 0, 0);
             this.leftToolBar.Controls.Add(this.logoLabel, 0, 3);
             this.leftToolBar.Location = new System.Drawing.Point(-4, -4);
-            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4);
             this.leftToolBar.Name = "leftToolBar";
             this.leftToolBar.RowCount = 7;
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -103,6 +105,7 @@
             this.toolBarSettingsButton.TabIndex = 5;
             this.toolBarSettingsButton.Text = "Settings";
             this.toolBarSettingsButton.UseVisualStyleBackColor = true;
+            this.toolBarSettingsButton.Click += new System.EventHandler(this.ToolBarSettingsButton_Click);
             // 
             // toolBarHelpButton
             // 
@@ -198,9 +201,11 @@
             this.problemsGridView.AllowUserToOrderColumns = true;
             this.problemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.problemsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Votes,
             this.problemsNameColumn,
             this.subjectColumn,
-            this.descriptionColumn});
+            this.descriptionColumn,
+            this.Id});
             this.problemsGridView.Location = new System.Drawing.Point(120, 170);
             this.problemsGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.problemsGridView.Name = "problemsGridView";
@@ -209,7 +214,16 @@
             this.problemsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.problemsGridView.Size = new System.Drawing.Size(1056, 406);
             this.problemsGridView.TabIndex = 12;
+            this.problemsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProblemsGridView_CellContentClick);
             this.problemsGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProblemsGridView_CellDoubleClick);
+            // 
+            // Votes
+            // 
+            this.Votes.HeaderText = "Votes";
+            this.Votes.MinimumWidth = 6;
+            this.Votes.Name = "Votes";
+            this.Votes.ReadOnly = true;
+            this.Votes.Width = 125;
             // 
             // problemsNameColumn
             // 
@@ -219,6 +233,7 @@
             this.problemsNameColumn.HeaderText = "Problem\'s Name";
             this.problemsNameColumn.MinimumWidth = 6;
             this.problemsNameColumn.Name = "problemsNameColumn";
+            this.problemsNameColumn.ReadOnly = true;
             this.problemsNameColumn.Width = 175;
             // 
             // subjectColumn
@@ -226,6 +241,7 @@
             this.subjectColumn.HeaderText = "Subject";
             this.subjectColumn.MinimumWidth = 6;
             this.subjectColumn.Name = "subjectColumn";
+            this.subjectColumn.ReadOnly = true;
             this.subjectColumn.Width = 175;
             // 
             // descriptionColumn
@@ -234,6 +250,16 @@
             this.descriptionColumn.HeaderText = "Description";
             this.descriptionColumn.MinimumWidth = 6;
             this.descriptionColumn.Name = "descriptionColumn";
+            this.descriptionColumn.ReadOnly = true;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "InvisibleColumn";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 125;
             // 
             // sortBySubjectButton
             // 
@@ -262,7 +288,7 @@
             // 
             this.filterSubjectsComboBox.FormattingEnabled = true;
             this.filterSubjectsComboBox.Location = new System.Drawing.Point(339, 50);
-            this.filterSubjectsComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterSubjectsComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.filterSubjectsComboBox.Name = "filterSubjectsComboBox";
             this.filterSubjectsComboBox.Size = new System.Drawing.Size(152, 24);
             this.filterSubjectsComboBox.TabIndex = 16;
@@ -280,14 +306,16 @@
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(493, 99);
+            this.textBoxSearch.Location = new System.Drawing.Point(493, 98);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(137, 22);
             this.textBoxSearch.TabIndex = 18;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(645, 83);
+            this.buttonSearch.Location = new System.Drawing.Point(645, 82);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(127, 43);
             this.buttonSearch.TabIndex = 19;
@@ -309,8 +337,8 @@
             this.Controls.Add(this.sortByNameButton);
             this.Controls.Add(this.problemsGridView);
             this.Controls.Add(this.leftToolBar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1189, 607);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1189, 606);
             this.Name = "ForumForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Study Buddy";
@@ -341,12 +369,14 @@
         private System.Windows.Forms.DataGridView problemsGridView;
         private System.Windows.Forms.Button sortBySubjectButton;
         private System.Windows.Forms.GroupBox addNewGroupBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn problemsNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subjectColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
         private System.Windows.Forms.ComboBox filterSubjectsComboBox;
         private System.Windows.Forms.Label filterLabel;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Votes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn problemsNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subjectColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
     }
 }

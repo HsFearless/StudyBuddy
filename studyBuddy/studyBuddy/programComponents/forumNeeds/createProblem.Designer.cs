@@ -1,4 +1,4 @@
-﻿namespace studyBuddy.forumNeeds
+﻿namespace studyBuddy.programComponents.forumNeeds
 {
     partial class CreateProblem
     {
@@ -98,14 +98,6 @@
             // SubjectComboBox
             // 
             this.SubjectComboBox.FormattingEnabled = true;
-            this.SubjectComboBox.Items.AddRange(new object[] {
-            "Math",
-            "Physics",
-            "Foreign language",
-            "Music",
-            "Biology",
-            "Chemistry",
-            "Other"});
             this.SubjectComboBox.Location = new System.Drawing.Point(111, 74);
             this.SubjectComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SubjectComboBox.Name = "SubjectComboBox";
@@ -131,7 +123,6 @@
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(314, 138);
             this.descriptionTextBox.TabIndex = 13;
-            this.descriptionTextBox.TextChanged += new System.EventHandler(this.DescriptionTextBox_TextChanged);
             // 
             // CreateProblem
             // 
@@ -142,7 +133,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateProblem";
             this.Text = "Study Buddy";
-            this.Load += new System.EventHandler(this.CreateProblem_Load);
             this.newProblemGroupBox.ResumeLayout(false);
             this.newProblemGroupBox.PerformLayout();
             this.ResumeLayout(false);

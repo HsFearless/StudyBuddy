@@ -19,6 +19,8 @@ using System.Data.SqlClient;
  * */
 
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
+
 namespace studyBuddy.dataNeeds
 {
     class MysqlHandler
@@ -26,6 +28,11 @@ namespace studyBuddy.dataNeeds
         public static string tblUsers = "Users";
         public static string tblSubjects = "Subjects";
         public static string tblForum = "ForumPosts";
+        public static string tblUserInterests = "UserInterests";
+        public static string tblInterests = "Interests";
+        public static string tblForumComments = "ForumComments";
+        public static string tblForumVotes = "ForumVotes";
+        public static string tblForumCommentsVotes = "CommentVotes";
         private string host;
         private string username;
         private string password;
@@ -45,7 +52,7 @@ namespace studyBuddy.dataNeeds
             messageToOutterWorld = con.State.ToString();
             ready = (con.State == System.Data.ConnectionState.Open) ? true : false;
         }
-        
+
         public MysqlHandler(string host, string username, string password, string database, int port)
         {
             this.host = host;
@@ -55,7 +62,7 @@ namespace studyBuddy.dataNeeds
             this.port = port;
             Initialize();
         }
-        
+
         public MysqlHandler()
         {
             host = "remotemysql.com";
@@ -119,7 +126,7 @@ namespace studyBuddy.dataNeeds
         {
             given = (given[0] == ' ') ? given : " " + given;
             given = (given[given.Length - 1] == ';') ? given : given + ";";
-            return ;
+            return;
         }
         public List<string[]> Select(string sqlWithoutSelect)
         {
@@ -136,10 +143,10 @@ namespace studyBuddy.dataNeeds
                 var result = cmdCon.ExecuteReader();
                 int item = 0;
                 string[] row;
-                while(result.Read())
+                while (result.Read())
                 {
                     row = new string[result.FieldCount];
-                    for(item=0; item<result.FieldCount; item++)
+                    for (item = 0; item < result.FieldCount; item++)
                     {
                         row[item] = result[item] + "";
                     }
@@ -158,7 +165,7 @@ namespace studyBuddy.dataNeeds
             PrepareSql(ref sqlWithoutSelect);
             string fullSql = "SELECT";
             fullSql += sqlWithoutSelect;
-            if(OpenNewConnection())
+            if (OpenNewConnection())
             {
                 cmdCon = new MySqlCommand(fullSql, this.con);
                 var result = cmdCon.ExecuteReader();
@@ -177,21 +184,59 @@ namespace studyBuddy.dataNeeds
             return toReturn;
         }
 
-        public bool InsertInto(string sqlWithoutInsertInto)
+        public bool InsertInto(string sqlWithoutInsertInto, KeyValuePair<string, string>[] escapePair=null)
         {
             PrepareSql(ref sqlWithoutInsertInto);
             string fullSql = "INSERT INTO";
             fullSql += sqlWithoutInsertInto;
             if (!OpenNewConnection())
                 return false;
+            if (escapePair != null)
+                fullSql = EscapeString(fullSql, escapePair);
             cmdCon = new MySqlCommand(fullSql, this.con);
-            cmdCon.ExecuteNonQuery();
-          
+            int affectedRows = cmdCon.ExecuteNonQuery();
+            bool queryOk = (affectedRows > 0);
+
             con.Close();
-            return true; //probably?
+            return queryOk; //probably?
         }
 
+        public bool Update(string sqlWithoutUpdate, KeyValuePair<string, string>[] escapePair= null)
+        {
+            PrepareSql(ref sqlWithoutUpdate);
+            string fullSql = "UPDATE";
+            fullSql += sqlWithoutUpdate;
+            if (!OpenNewConnection())
+                return false;
+            if (escapePair != null)
+                fullSql = EscapeString(fullSql, escapePair);
+            cmdCon = new MySqlCommand(fullSql, this.con);
+            int affectedRows = cmdCon.ExecuteNonQuery();
 
+            bool queryOk = (affectedRows > 0);
+
+            con.Close();
+            return queryOk;
+        }
+
+        public bool DeleteFrom(string sqlWithoutDeleteFrom, bool fullDeleteAllowed = false)
+        {
+            PrepareSql(ref sqlWithoutDeleteFrom);
+            string fullSql = "DELETE FROM";
+            fullSql += sqlWithoutDeleteFrom;
+            if (fullDeleteAllowed == false)
+                if (!Regex.IsMatch(fullSql, Regex.Escape("WHERE"), RegexOptions.IgnoreCase))
+                    throw new exceptions.ConfirmationNotReceived(); //^unhandled exception
+            if (!OpenNewConnection())
+                return false;
+            cmdCon = new MySqlCommand(fullSql, this.con);
+            int affectedRows = cmdCon.ExecuteNonQuery();
+
+            bool queryOk = (affectedRows > 0);
+
+            con.Close();
+            return queryOk;
+        }
 
         public void TestSelectAllUsers()
         {
@@ -204,7 +249,7 @@ namespace studyBuddy.dataNeeds
             try
             {
                 var result = cmdCon.ExecuteReader();
-                while(result.Read())
+                while (result.Read())
                 {
                     aut += "username=" + result["username"] + ";\n";
                     aut += "password=" + result["password"] + ";\n";
@@ -212,10 +257,41 @@ namespace studyBuddy.dataNeeds
                 }
                 messageToOutterWorld = aut;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lastError = ex.Message;
             }
+        }
+
+        public static KeyValuePair<string, string>[] ConstructQueryParams(string[] keys, string[] values)
+        {
+            if (keys.Length != values.Length)
+                throw new Exception();//#
+            KeyValuePair<string, string>[] toReturn = new KeyValuePair<string, string>[keys.Length];
+            for(int i = 0; i<keys.Length; i++)
+            {
+                toReturn[i] = new KeyValuePair<string, string>(keys[i], values[i]);
+            }
+            return toReturn;
+        }
+
+        private static string EscapeString(string sql, KeyValuePair<string, string>[] escapeTagContentPair)
+        {
+            string toReturn = sql;
+            if (escapeTagContentPair != null && escapeTagContentPair.Length > 0)
+            {
+                foreach (var qParam in escapeTagContentPair)
+                {
+                    //#cmdCon.Parameters.Add(qParam.Key, qParam.Value);
+                    toReturn = toReturn.Replace(qParam.Key,
+                        MySql.Data.MySqlClient.MySqlHelper.EscapeString(qParam.Value) + "");
+                    System.Windows.Forms.MessageBox.Show("key: " + qParam.Key +
+                        "\nval: " + qParam.Value);
+                    //escape bad symbols
+                }
+                System.Windows.Forms.MessageBox.Show(toReturn);
+            }
+            return toReturn;
         }
 
     }

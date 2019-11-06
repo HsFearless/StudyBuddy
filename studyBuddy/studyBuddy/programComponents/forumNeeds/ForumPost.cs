@@ -6,22 +6,32 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.programComponents.forumNeeds
 {
-    class ForumPost
+    public class ForumPost : IComparable<ForumPost>
     {
-        public int id { get; private set; }
+        public long id { get; private set; }
         public string name;
         public string description;
         public int subjectId;
         public int ownerId;
-        public string[] comments = null;
+        public int votes;
+        private CommentsManager backingComments = null;
+        public CommentsManager comments { get
+            {
+                if (this.backingComments == null)
+                    this.backingComments = new CommentsManager(this);
+                return this.backingComments;
+            }
+            set { this.backingComments = value; }
+        }
 
-        public ForumPost(long id, int subjectId, string name="", string description = "", int ownerId=0)
+        public ForumPost(long id, int subjectId, string name="", string description = "", int ownerId=0, int votes=0)
         {
-            this.id = (int)id; //^widening with possible precision loss
+            this.id = id;
             this.name = name;
             this.subjectId = subjectId;
             this.description = description;
             this.ownerId = (ownerId >= 0) ? ownerId : 0;
+            this.votes = votes;
         }
 
         public override string ToString()
@@ -30,5 +40,19 @@ namespace studyBuddy.programComponents.forumNeeds
                 $"description = ({description}), ownerId = ({ownerId})";
         }
 
+        public int CompareTo(ForumPost other)
+        {
+            return this.id.CompareTo(other.id);
+        }
+
+        public bool Upvote()
+        {
+            return ForumManager.UpvoteProblem(this);
+        }
+
+        public bool TakeBackUpvote()
+        {
+            return ForumManager.TakeBackUpvoteProblem(this);
+        }
     }
 }

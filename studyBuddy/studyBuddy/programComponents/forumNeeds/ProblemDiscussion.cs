@@ -10,30 +10,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddy
+namespace studyBuddy.programComponents.forumNeeds
 {
     public partial class ProblemDiscussion : Form
     {
-        int commentsPosition = 1;
-        public StreamWriter sw;
-        public bool fileClosed = false;
-        public ProblemDiscussion()
+        //int commentsPosition = 1;
+        //public StreamWriter sw;
+        //public bool fileClosed = false;
+        bool toUpvote = true;
+
+        public ForumPost forumPost;
+        public ProblemDiscussion(ForumPost forumPost)
         {
             InitializeComponent();
+            this.forumPost = forumPost;
+            this.problemNameLabel.Text = forumPost.name;
+            this.problemDescriptionLabel.Text = forumPost.description;
         }
 
         private void ProblemDiscussion_Load(object sender, EventArgs e)
         {
-            commentsPosition = CommentsManager.LoadComments(problemNameLabel.Text, commentsPanel, commentsPosition);
-            //if(sw == null)
-            if (File.Exists(problemNameLabel.Text + ".txt") == false)
-            {
-                sw = new StreamWriter(problemNameLabel.Text + ".txt");
-            }
-            else
-            {
-                fileClosed = true;
-            }
+            forumPost.comments.Load(commentsPanel);
+            votesCountLabel.Text = forumPost.votes.ToString();  //before and after vote it auto updates
+            AfterUpvote();
+            //if (sw == null)
+            //if (File.Exists(problemNameLabel.Text + ".txt") == false)
+            //{
+            //    sw = new StreamWriter(problemNameLabel.Text + ".txt");
+            //}
+            //else
+            //{
+            //    fileClosed = true;
+            //}
         }
 
 
@@ -45,29 +53,82 @@ namespace studyBuddy
 
         private void AddCommentButton_Click(object sender, EventArgs e)
         {
-            if (fileClosed == false)
+            if(forumPost.comments.Write(addCommentTextBox.Text))
             {
-                commentsPosition = CommentsManager.WriteComment(sw, addCommentTextBox.Text, commentsPanel, commentsPosition);
-                fileClosed = true; 
+                forumPost.comments.LoadLast(commentsPanel);
+                addCommentTextBox.ResetText();
             }
             else
-            {
-                sw = File.AppendText(problemNameLabel.Text + ".txt");
-                sw.WriteLine(addCommentTextBox.Text);
-                //sw = new StreamWriter(problemNameLabel.Text + ".txt");
-                commentsPosition = CommentsManager.WriteComment(addCommentTextBox.Text, commentsPanel, commentsPosition);
-                fileClosed = true;
-                sw.Close();
-            }
-            addCommentTextBox.ResetText();
+                MessageBox.Show(forumPost.comments.error.Message());
+
         }
 
         private void ProblemDiscussion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (fileClosed == false)
-            {
-                sw.Close();
-            }
+            //if (fileClosed == false)
+            //{
+            //    sw.Close();
+            //}
         }
+
+        private void UpvoteButton_Click(object sender, EventArgs e)
+        {
+            if (toUpvote)
+            {
+                try
+                {
+                    if (!forumPost.Upvote())
+                        MessageBox.Show(ForumManager.error.Message());
+                    else
+                    {
+                        AfterUpvote();
+                    }
+                }
+                catch (exceptions.DoneBefore)
+                {
+                    AfterUpvote();
+                    MessageBox.Show("You have already upvoted it!");
+                }
+            }//still upvote
+            else
+            { //take back upvote
+                if (!forumPost.TakeBackUpvote())
+                    if(ForumManager.error.no == dataNeeds.ErrorCode.NOT_FOUND)
+                    {
+                        MessageBox.Show("Your vote did not exist");
+                        AfterTakeBackUpvote();
+                    }
+                    else
+                        MessageBox.Show(ForumManager.error.Message());
+                else
+                    AfterTakeBackUpvote();
+            }
+            
+            
+        }
+
+        private void AfterTakeBackUpvote()
+        {
+            Button butt = upvoteButton;
+            toUpvote = true;
+            butt.BackColor = Color.Green;
+            butt.Text = "Vote++";
+            UpdateVotesLabel();
+        }
+
+        private void AfterUpvote()
+        {
+            Button butt = upvoteButton;
+            toUpvote = false;
+            butt.BackColor = Color.MediumSlateBlue;
+            butt.Text = "Vote --";
+            UpdateVotesLabel();
+        }
+
+        private void UpdateVotesLabel()
+        {
+            votesCountLabel.Text = forumPost.votes.ToString();
+        }
+
     }
 }

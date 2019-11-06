@@ -9,15 +9,18 @@ namespace studyBuddy.extensions
 {
     static class LongExtensions
     {
-        static public bool IsTimeStampOlderThan(this long timeStamp, int hours)//^extension//#useIt
+        static public bool IsTimeStampOlderThan(this long timeStamp, 
+            uint hours=0, uint minutes=0, uint seconds=0)//^extension
         {
-            long now = UserDataFetcher.GetTimeStamp();
-            now = now - timeStamp;
+            uint compareTo = hours * 60 * 60 + minutes * 60 + seconds;
+            long now = DataFetcher.GetServerTimeStamp();
+            now -= timeStamp;
             if (now <= 0)
                 return false;
-            if (now / 60 / 60 <= hours)
+            if (now <= compareTo)
                 return false;
             return true;
         }
+
     }
 }

@@ -16,5 +16,10 @@ namespace studyBuddy.programComponents.exitNeeds
         {
             InitializeComponent();
         }
+
+        private void ExitForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
