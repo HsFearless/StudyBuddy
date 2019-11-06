@@ -16,5 +16,10 @@ namespace studyBuddy.helpNeeds
         {
             InitializeComponent();
         }
+
+        private void ToolBarProfileButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

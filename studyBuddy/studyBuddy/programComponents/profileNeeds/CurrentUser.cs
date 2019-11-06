@@ -16,25 +16,8 @@ namespace studyBuddy
        // public static MailAddress email;
         public static int karma;
         public static int rating;
-        private static bool _isLoggedIn = false;
-        public static bool isLoggedIn
-        {
-            get
-            {
-                if (_isLoggedIn && InputValidator.ValidateId(id))
-                    return true;
-                else
-                { //true false
-                    return false; //temporary. exception must be moved out of getter
-                    Console.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
-                    throw new exceptions.InvalidSession(didUserLogOutOnHisFreeWill: false);
-                }
-            }
-            set
-            {
-                _isLoggedIn = value;
-            }
-        }
+        //private static bool _isLoggedIn = false;
+        public static bool isLoggedIn { get; private set; } = false;
         public static string profileInfo;
         public static List<string> interests;
         public static int upForTeaching;

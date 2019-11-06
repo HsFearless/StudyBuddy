@@ -53,7 +53,7 @@
             this.leftToolBar.Controls.Add(this.toolBarProfileButton, 0, 0);
             this.leftToolBar.Controls.Add(this.logoLabel, 0, 3);
             this.leftToolBar.Location = new System.Drawing.Point(-4, -4);
-            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4);
             this.leftToolBar.Name = "leftToolBar";
             this.leftToolBar.RowCount = 7;
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -76,6 +76,7 @@
             this.toolBarExitButton.TabIndex = 6;
             this.toolBarExitButton.Text = "Exit";
             this.toolBarExitButton.UseVisualStyleBackColor = true;
+            this.toolBarExitButton.Click += new System.EventHandler(this.ToolBarExitButton_Click);
             // 
             // toolBarSettingsButton
             // 
@@ -87,6 +88,7 @@
             this.toolBarSettingsButton.TabIndex = 5;
             this.toolBarSettingsButton.Text = "Settings";
             this.toolBarSettingsButton.UseVisualStyleBackColor = true;
+            this.toolBarSettingsButton.Click += new System.EventHandler(this.ToolBarSettingsButton_Click);
             // 
             // toolBarHelpButton
             // 
@@ -98,6 +100,7 @@
             this.toolBarHelpButton.TabIndex = 4;
             this.toolBarHelpButton.Text = "Help";
             this.toolBarHelpButton.UseVisualStyleBackColor = true;
+            this.toolBarHelpButton.Click += new System.EventHandler(this.ToolBarHelpButton_Click);
             // 
             // toolBarFindBuddyButton
             // 
@@ -109,6 +112,7 @@
             this.toolBarFindBuddyButton.TabIndex = 2;
             this.toolBarFindBuddyButton.Text = "Study Buddy";
             this.toolBarFindBuddyButton.UseVisualStyleBackColor = true;
+            this.toolBarFindBuddyButton.Click += new System.EventHandler(this.ToolBarFindBuddyButton_Click);
             // 
             // toolBarForumButton
             // 
@@ -120,6 +124,7 @@
             this.toolBarForumButton.TabIndex = 1;
             this.toolBarForumButton.Text = "Forum";
             this.toolBarForumButton.UseVisualStyleBackColor = true;
+            this.toolBarForumButton.Click += new System.EventHandler(this.ToolBarForumButton_Click);
             // 
             // toolBarProfileButton
             // 
@@ -131,6 +136,7 @@
             this.toolBarProfileButton.TabIndex = 0;
             this.toolBarProfileButton.Text = "Profile";
             this.toolBarProfileButton.UseVisualStyleBackColor = true;
+            this.toolBarProfileButton.Click += new System.EventHandler(this.ToolBarProfileButton_Click);
             // 
             // logoLabel
             // 
@@ -150,7 +156,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 572);
             this.Controls.Add(this.leftToolBar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1189, 609);
             this.Name = "exitForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

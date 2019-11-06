@@ -31,10 +31,32 @@ namespace studyBuddy.programComponents.settingsNeeds
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)
         {
-            var profile = new forumNeeds.ForumForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToForumFrom(this);
+        }
+
+        private void ToolBarProfileButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToProfileFrom(this);
+        }
+
+        private void ToolBarFindBuddyButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToStudyBuddyFrom(this);
+        }
+
+        private void ToolBarHelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolBarSettingsButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToSettingsFrom(this);
+        }
+
+        private void ToolBarExitButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToExitFrom(this);
         }
     }
 }

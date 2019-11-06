@@ -60,6 +60,7 @@
     <Compile Include="programComponents\loginNeeds\SessionLoginForm.Designer.cs">
       <DependentUpon>SessionLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="programComponents\NavigationHelper.cs" />
     <Compile Include="programComponents\profileNeeds\CurrentUser.cs" />
     <Compile Include="dataNeeds\unused\BinaryFileHandler.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />

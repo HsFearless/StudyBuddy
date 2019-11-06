@@ -22,6 +22,30 @@ namespace studyBuddy.programComponents.forumNeeds
         public ForumForm()
         {
             InitializeComponent();
+            var forumContent = subjects.GroupJoin(forum, //^query //^groupjoin
+                su => su.id,
+                fo => fo.subjectId,
+                (su, fo) => new
+                {
+                    su.name,
+                    forumPosts = fo
+                });
+            foreach (var subject in forumContent)
+            {
+                foreach (var forumRow in subject.forumPosts)
+                {
+                    problemsGridView.Rows.Add(0, forumRow.name, subject.name, forumRow.description, forumRow.id);
+                    CommentsManager.AddNewFile(forumRow.name + ".txt");
+                }
+            }
+
+            //problemsGridView.Rows.Add("Lietuviu", "Foreign language", "Kas tas yr, renesansas???");
+            //CommentsManager.AddNewFile("Lietuviu.txt");
+
+            foreach (var subject in subjects)
+            {
+                filterSubjectsComboBox.Items.Add(subject);
+            }
         }
 
         private void ForumForm_Load(object sender, EventArgs e)
@@ -37,30 +61,7 @@ namespace studyBuddy.programComponents.forumNeeds
             //        //subj.name,
             //        //forumRow.description
             //    }) ;
-            var forumContent = subjects.GroupJoin(forum, //^query //^groupjoin
-                su => su.id,
-                fo => fo.subjectId,
-                (su, fo) => new
-                {
-                    su.name,
-                    forumPosts = fo
-                });
-            foreach(var subject in forumContent)
-            {
-                foreach (var forumRow in subject.forumPosts)
-                {
-                    problemsGridView.Rows.Add(0,forumRow.name, subject.name, forumRow.description, forumRow.id);
-                    CommentsManager.AddNewFile(forumRow.name + ".txt");
-                }
-            }
             
-            //problemsGridView.Rows.Add("Lietuviu", "Foreign language", "Kas tas yr, renesansas???");
-            //CommentsManager.AddNewFile("Lietuviu.txt");
-
-            foreach(var subject in subjects)
-            {
-                filterSubjectsComboBox.Items.Add(subject);
-            }
         }
 
         private void SortByNameButton_Click(object sender, EventArgs e)
@@ -123,18 +124,12 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
         {
-            var profile = new  profileNeeds.userProfileForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToProfileFrom(this);
         }
 
         private void ToolBarFindBuddyButton_Click(object sender, EventArgs e)
         {
-            var profile = new studyBuddyNeeds.studyBuddyForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToStudyBuddyFrom(this);
         }
 
         private void FilterSubjectsComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,10 +202,23 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void ToolBarSettingsButton_Click(object sender, EventArgs e)
         {
-            var settings = new programComponents.settingsNeeds.settingsForm();
-            this.Hide();
-            settings.ShowDialog();
+            NavigationHelper.SwitchToSettingsFrom(this);
 
+        }
+
+        private void ToolBarForumButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToForumFrom(this);
+        }
+
+        private void ToolBarHelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolBarExitButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToExitFrom(this);
         }
     }
 }

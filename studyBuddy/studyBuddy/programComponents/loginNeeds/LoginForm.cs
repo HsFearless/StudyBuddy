@@ -63,9 +63,7 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private void ShowAfterLoginScreen()
         {
-            this.Hide();
-            var profile = new profileNeeds.userProfileForm();
-            profile.ShowDialog();
+            NavigationHelper.SwitchToProfileFrom(this, closeAfterwards: false);
             //this.Visible = true;
             this.itWasExpectedExit = true;
             Application.Exit();
