@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.leftToolBar = new System.Windows.Forms.TableLayoutPanel();
             this.toolBarExitButton = new System.Windows.Forms.Button();
             this.toolBarSettingsButton = new System.Windows.Forms.Button();
@@ -94,6 +94,7 @@
             this.toolBarExitButton.TabIndex = 6;
             this.toolBarExitButton.Text = "Exit";
             this.toolBarExitButton.UseVisualStyleBackColor = true;
+            this.toolBarExitButton.Click += new System.EventHandler(this.ToolBarExitButton_Click);
             // 
             // toolBarSettingsButton
             // 
@@ -117,6 +118,7 @@
             this.toolBarHelpButton.TabIndex = 4;
             this.toolBarHelpButton.Text = "Help";
             this.toolBarHelpButton.UseVisualStyleBackColor = true;
+            this.toolBarHelpButton.Click += new System.EventHandler(this.ToolBarHelpButton_Click);
             // 
             // toolBarFindBuddyButton
             // 
@@ -140,6 +142,7 @@
             this.toolBarForumButton.TabIndex = 1;
             this.toolBarForumButton.Text = "Forum";
             this.toolBarForumButton.UseVisualStyleBackColor = true;
+            this.toolBarForumButton.Click += new System.EventHandler(this.ToolBarForumButton_Click);
             // 
             // toolBarProfileButton
             // 
@@ -227,9 +230,9 @@
             // 
             // problemsNameColumn
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.problemsNameColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.problemsNameColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.problemsNameColumn.HeaderText = "Problem\'s Name";
             this.problemsNameColumn.MinimumWidth = 6;
             this.problemsNameColumn.Name = "problemsNameColumn";

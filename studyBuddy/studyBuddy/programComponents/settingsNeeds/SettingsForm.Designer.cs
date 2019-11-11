@@ -77,6 +77,7 @@
             this.toolBarExitButton.TabIndex = 6;
             this.toolBarExitButton.Text = "Exit";
             this.toolBarExitButton.UseVisualStyleBackColor = true;
+            this.toolBarExitButton.Click += new System.EventHandler(this.ToolBarExitButton_Click);
             // 
             // toolBarSettingsButton
             // 
@@ -88,6 +89,7 @@
             this.toolBarSettingsButton.TabIndex = 5;
             this.toolBarSettingsButton.Text = "Settings";
             this.toolBarSettingsButton.UseVisualStyleBackColor = true;
+            this.toolBarSettingsButton.Click += new System.EventHandler(this.ToolBarSettingsButton_Click);
             // 
             // toolBarHelpButton
             // 
@@ -99,6 +101,7 @@
             this.toolBarHelpButton.TabIndex = 4;
             this.toolBarHelpButton.Text = "Help";
             this.toolBarHelpButton.UseVisualStyleBackColor = true;
+            this.toolBarHelpButton.Click += new System.EventHandler(this.ToolBarHelpButton_Click);
             // 
             // toolBarFindBuddyButton
             // 
@@ -110,6 +113,7 @@
             this.toolBarFindBuddyButton.TabIndex = 2;
             this.toolBarFindBuddyButton.Text = "Study Buddy";
             this.toolBarFindBuddyButton.UseVisualStyleBackColor = true;
+            this.toolBarFindBuddyButton.Click += new System.EventHandler(this.ToolBarFindBuddyButton_Click);
             // 
             // toolBarForumButton
             // 
@@ -133,6 +137,7 @@
             this.toolBarProfileButton.TabIndex = 0;
             this.toolBarProfileButton.Text = "Profile";
             this.toolBarProfileButton.UseVisualStyleBackColor = true;
+            this.toolBarProfileButton.Click += new System.EventHandler(this.ToolBarProfileButton_Click);
             // 
             // logoLabel
             // 

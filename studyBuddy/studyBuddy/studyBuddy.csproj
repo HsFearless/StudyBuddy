@@ -55,6 +55,13 @@
     <Compile Include="dataNeeds\misc\Interests.cs" />
     <Compile Include="programComponents\forumNeeds\Comment.cs" />
     <Compile Include="programComponents\forumNeeds\ForumManager.cs" />
+    <Compile Include="programComponents\loginNeeds\SessionLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="programComponents\loginNeeds\SessionLoginForm.Designer.cs">
+      <DependentUpon>SessionLoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="programComponents\NavigationHelper.cs" />
     <Compile Include="programComponents\profileNeeds\CurrentUser.cs" />
     <Compile Include="dataNeeds\unused\BinaryFileHandler.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />
@@ -169,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="programComponents\loginNeeds\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="programComponents\loginNeeds\SessionLoginForm.resx">
+      <DependentUpon>SessionLoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="programComponents\profileNeeds\InterestsForm.resx">
       <DependentUpon>InterestsForm.cs</DependentUpon>

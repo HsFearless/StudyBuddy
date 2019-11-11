@@ -236,6 +236,16 @@ namespace studyBuddy.programComponents.loginNeeds
             return true;
         }
 
+        public static void DoCheckCurrentUser()
+        {
+            if (CurrentUser.isLoggedIn && InputValidator.ValidateId(CurrentUser.id))
+                return ;
+            else
+            {
+                //Console.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
+                throw new exceptions.InvalidSession(didUserLogOutOnHisFreeWill: false);
+            }
+        }
 
     }//class
 }//namespace

@@ -17,7 +17,8 @@ namespace studyBuddy.programComponents.profileNeeds
         public userProfileForm()
         {
             InitializeComponent();
-            if (CurrentUser.isLoggedIn)
+            loginNeeds.Auth.DoCheckCurrentUser(); //possible exception throwing
+            if (CurrentUser.isLoggedIn) //unnecessary
             {
                 userNameLabel.Text = CurrentUser.name;
                 userProfileInfoBox.Text = CurrentUser.profileInfo;
