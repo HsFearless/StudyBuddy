@@ -213,7 +213,7 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void ToolBarHelpButton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ToolBarExitButton_Click(object sender, EventArgs e)

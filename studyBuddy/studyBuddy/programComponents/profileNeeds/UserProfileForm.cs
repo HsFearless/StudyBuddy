@@ -61,28 +61,22 @@ namespace studyBuddy.programComponents.profileNeeds
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)
         {
-            var profile = new forumNeeds.ForumForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToForumFrom(this);
         }
 
         private void ToolBarFindBuddyButton_Click(object sender, EventArgs e)
         {
-            var profile = new studyBuddyNeeds.studyBuddyForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToStudyBuddyFrom(this);
         }
 
         private void ToolBarSettingsButton_Click(object sender, EventArgs e)
         {
-
+            NavigationHelper.SwitchToSettingsFrom(this);
         }
 
         private void ToolBarExitButton_Click(object sender, EventArgs e)
         {
-
+            NavigationHelper.SwitchToExitFrom(this);
         }
         
         private void ConfirmEditingUserProfileButton_Click(object sender, EventArgs e)

@@ -23,10 +23,7 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
         {
-            var profile = new profileNeeds.userProfileForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToProfileFrom(this);
         }
 
         private void StudyBuddyIwantToLearnLabel_Click(object sender, EventArgs e)
@@ -66,10 +63,7 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)
         {
-            var profile = new forumNeeds.ForumForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToForumFrom(this);
         }
 
     }
