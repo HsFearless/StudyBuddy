@@ -75,18 +75,18 @@ namespace studyBuddy.programComponents.loginNeeds
         }
         private void Method()
         {
-            try
-            {
+            //try
+            //{
                 if (Auth.LogInUsingSession())
                     ShowAfterLoginScreen();
                 else
                     MessageBox.Show(Auth.error.Message() + " " + Auth.messageToOutterWorld + $"({Auth.messageToOutterWorld.Length})");
                 textUsername.Text = UserDataFetcher.GetLastUsedUsername();
-            }
-            catch
-            {
-                throw;
-            }
+            //}
+            //catch
+            //{
+                //throw;
+            //}
         }
 
 

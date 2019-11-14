@@ -16,6 +16,8 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
     public partial class studyBuddyForm : Form
     {
         public Interests interests = DataFetcher.GetInterests();
+        delegate IEnumerable<int> IdGetter<T>(string name, T items); //^generics in delegate
+        IdGetter<Interests> getId = GetID; 
         public studyBuddyForm()
         {
             InitializeComponent();
@@ -39,9 +41,8 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
             List<User>  users = DataFetcher.GetUsersAsList();
             var userInterests = DataFetcher.GetUserInterestsAsStringList();
 
-            var subjectID = (from interest in interests
-                             where interest.name == chooseWhatToLearnComboBox.Text
-                             select interest.id);
+
+            var subjectID = getId(chooseWhatToLearnComboBox.Text,interests); //^delegate usage
 
             //get users who have that interest and are up for teaching
                 var matchedUsers = from user in users
@@ -52,14 +53,30 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
                                    where user.id != CurrentUser.id
                                    select user.name;
 
-                foreach (var matchedUser in matchedUsers)
+            Action<IEnumerable<string>> showUsers = delegate (IEnumerable<string> Users) //^anonymous method
+            {
+                foreach (var user in Users)
                 {
                     Label name = new Label();
                     name.AutoSize = true;
-                    name.Text = matchedUser;
+                    name.Text = user;
                     availableBuddiesFlowLayoutPanel.Controls.Add(name);
                 }
+            };
+
+            showUsers(matchedUsers);
+               
         }
+
+        static IEnumerable<int> GetID<T>(string name, T items) where T : Interests
+        {
+            var ID = from item in items
+                             where item.name == name
+                             select item.id;
+            return ID;
+        }
+
+
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)
         {

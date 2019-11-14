@@ -285,11 +285,11 @@ namespace studyBuddy.dataNeeds
                     //#cmdCon.Parameters.Add(qParam.Key, qParam.Value);
                     toReturn = toReturn.Replace(qParam.Key,
                         MySql.Data.MySqlClient.MySqlHelper.EscapeString(qParam.Value) + "");
-                    System.Windows.Forms.MessageBox.Show("key: " + qParam.Key +
-                        "\nval: " + qParam.Value);
+                    //System.Windows.Forms.MessageBox.Show("key: " + qParam.Key +
+                        //"\nval: " + qParam.Value);
                     //escape bad symbols
                 }
-                System.Windows.Forms.MessageBox.Show(toReturn);
+                //System.Windows.Forms.MessageBox.Show(toReturn);
             }
             return toReturn;
         }

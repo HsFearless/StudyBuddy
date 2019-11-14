@@ -20,17 +20,30 @@ namespace studyBuddy.programComponents.forumNeeds
         bool toUpvote = true;
 
         public ForumPost forumPost;
+        public CommentsManager comments;
         public ProblemDiscussion(ForumPost forumPost)
         {
             InitializeComponent();
             this.forumPost = forumPost;
             this.problemNameLabel.Text = forumPost.name;
             this.problemDescriptionLabel.Text = forumPost.description;
+            comments = new CommentsManager(forumPost, commentsPanel);
+            comments.SuccessfullyAddedCommentEvent += SuccessfullyAddedCommentEventHandler;
+            
+            
+        }
+
+        public void SuccessfullyAddedCommentEventHandler(object sender, SuccessfullyAddedCommentEventArgs args)
+        {
+            string message =
+                "Your comment: " + Environment.NewLine + args.commentText + Environment.NewLine +
+                "Was successfully created at: " + args.commentUnix.ToString();
+            MessageBox.Show(message);
         }
 
         private void ProblemDiscussion_Load(object sender, EventArgs e)
         {
-            forumPost.comments.Load(commentsPanel);
+            comments.Load(commentsPanel);
             votesCountLabel.Text = forumPost.votes.ToString();  //before and after vote it auto updates
             AfterUpvote();
             //if (sw == null)
@@ -53,13 +66,17 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void AddCommentButton_Click(object sender, EventArgs e)
         {
-            if(forumPost.comments.Write(addCommentTextBox.Text))
-            {
-                forumPost.comments.LoadLast(commentsPanel);
-                addCommentTextBox.ResetText();
-            }
-            else
-                MessageBox.Show(forumPost.comments.error.Message());
+            
+            
+                if (comments.Write(addCommentTextBox.Text))
+                {
+                    comments.LoadLast(commentsPanel);
+                    addCommentTextBox.ResetText();
+                }
+                else
+                    MessageBox.Show(forumPost.comments.error.Message());
+            
+        
 
         }
 
