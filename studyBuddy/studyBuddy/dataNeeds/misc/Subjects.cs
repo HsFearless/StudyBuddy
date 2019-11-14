@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds
 {
-    public sealed class Subjects : IEnumerable<Subjects.Subject>//singleton
+    public class Subjects : IEnumerable<Subjects.Subject>//singleton  
     {
         public sealed class Subject : IComparable<Subject> //^comparable
         {

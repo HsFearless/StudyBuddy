@@ -16,14 +16,24 @@ namespace studyBuddy.programComponents.forumNeeds
         internal Error error;
         public readonly ForumPost forumPost;
         public int commentsPosition { get; private set; } = 1;
+        public Panel commentsPanel;
         private List<Comment> comments;
         private Comment lastComment;
+        public delegate void SuccessfullyAddedComment(object sender, SuccessfullyAddedCommentEventArgs e);
+        public event SuccessfullyAddedComment SuccessfullyAddedCommentEvent;
         //public static ArrayList commentsTextFiles = new ArrayList();
 
         public CommentsManager(ForumPost forumPost)
         {
             this.forumPost = forumPost;
         }
+
+        public CommentsManager(ForumPost forumPost, Panel commentsPanel)
+        {
+            this.forumPost = forumPost;
+            this.commentsPanel = commentsPanel;
+        }
+
 
         public static void AddNewFile(string textFilesName)
         {/*
@@ -79,6 +89,14 @@ namespace studyBuddy.programComponents.forumNeeds
             this.lastComment = DataFetcher.GetCommentFromTemplate(comment); //changes only id
 
             comments.Add(this.lastComment);
+            
+
+            //this.LoadLast(this.commentsPanel);
+
+            if (SuccessfullyAddedCommentEvent != null)
+            {
+                SuccessfullyAddedCommentEvent.Invoke(this, new SuccessfullyAddedCommentEventArgs(commentToShow, unix));
+            }
 
             return true;
             

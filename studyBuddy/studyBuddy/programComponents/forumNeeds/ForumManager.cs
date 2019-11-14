@@ -11,6 +11,8 @@ namespace studyBuddy.programComponents.forumNeeds
     static class ForumManager
     {
         public static Error error = new Error();
+        public delegate void ProblemAlreadyExists();
+        public static event ProblemAlreadyExists ProblemAlreadyExistsEvent;
         public static bool NewProblem(String name, Subjects.Subject subject, String description, ForumContent FC)
         {
             error.no = ErrorCode.OK;

@@ -138,9 +138,6 @@
     <Compile Include="programComponents\loginNeeds\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="programComponents\forumNeeds\roundButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="programComponents\profileNeeds\UserProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +156,7 @@
     <Compile Include="programComponents\studyBuddyNeeds\studyBuddyForm.Designer.cs">
       <DependentUpon>studyBuddyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="programComponents\forumNeeds\SuccessfullyAddedCommentEventArgs.cs" />
     <EmbeddedResource Include="programComponents\forumNeeds\CreateProblem.resx">
       <DependentUpon>CreateProblem.cs</DependentUpon>
     </EmbeddedResource>

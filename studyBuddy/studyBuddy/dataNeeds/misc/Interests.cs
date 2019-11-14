@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds
 {
-    public sealed class Interests : IEnumerable<Interests.Interest>
+    public class Interests : IEnumerable<Interests.Interest>
     {
         public sealed class Interest
         {
             public int id { get; private set; }
-            public string name { get; private set; }
+            public string name { get;  private set; }
 
             internal Interest(int id, string name)
             {
