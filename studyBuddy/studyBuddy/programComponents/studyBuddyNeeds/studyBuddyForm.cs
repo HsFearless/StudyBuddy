@@ -17,7 +17,7 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
     {
         public Interests interests = DataFetcher.GetInterests();
         delegate IEnumerable<int> IdGetter<T>(string name, T items); //^generics in delegate
-        IdGetter<Interests> getId = GetID; 
+        IdGetter<Interests> getId = GetID;  //initialization of delegate
         public studyBuddyForm()
         {
             InitializeComponent();
@@ -68,7 +68,7 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
                
         }
 
-        static IEnumerable<int> GetID<T>(string name, T items) where T : Interests
+        static IEnumerable<int> GetID<T>(string name, T items) where T : Interests //^generics in method
         {
             var ID = from item in items
                              where item.name == name

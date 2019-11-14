@@ -20,20 +20,20 @@ namespace studyBuddy.programComponents.forumNeeds
         bool toUpvote = true;
 
         public ForumPost forumPost;
-        public CommentsManager comments;
+        public CommentsManager commentsManager;
         public ProblemDiscussion(ForumPost forumPost)
         {
             InitializeComponent();
             this.forumPost = forumPost;
             this.problemNameLabel.Text = forumPost.name;
             this.problemDescriptionLabel.Text = forumPost.description;
-            comments = new CommentsManager(forumPost, commentsPanel);
-            comments.SuccessfullyAddedCommentEvent += SuccessfullyAddedCommentEventHandler;
+            commentsManager = new CommentsManager(forumPost, commentsPanel);
+            commentsManager.SuccessfullyAddedCommentEvent += SuccessfullyAddedCommentEventHandler; //subscribes to event
             
             
         }
 
-        public void SuccessfullyAddedCommentEventHandler(object sender, SuccessfullyAddedCommentEventArgs args)
+        public void SuccessfullyAddedCommentEventHandler(object sender, SuccessfullyAddedCommentEventArgs args) //event handler
         {
             string message =
                 "Your comment: " + Environment.NewLine + args.commentText + Environment.NewLine +
@@ -43,7 +43,7 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void ProblemDiscussion_Load(object sender, EventArgs e)
         {
-            comments.Load(commentsPanel);
+            commentsManager.Load(commentsPanel);
             votesCountLabel.Text = forumPost.votes.ToString();  //before and after vote it auto updates
             AfterUpvote();
             //if (sw == null)
@@ -68,10 +68,10 @@ namespace studyBuddy.programComponents.forumNeeds
         {
             
             
-                if (comments.Write(addCommentTextBox.Text))
+                if (commentsManager.Write(addCommentTextBox.Text)) //this line if true might invoke SuccessfullyAddedCommentEvent
                 {
-                    comments.LoadLast(commentsPanel);
-                    addCommentTextBox.ResetText();
+                commentsManager.LoadLast(commentsPanel); //makes added comment visible
+                addCommentTextBox.ResetText();
                 }
                 else
                     MessageBox.Show(forumPost.comments.error.Message());
