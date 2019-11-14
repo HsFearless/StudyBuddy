@@ -57,7 +57,6 @@ C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\De
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.csproj.CopyComplete
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.exitNeeds.exitForm.resources
 C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.helpNeeds.helpForm.resources
-C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.settingsNeeds.settingsForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.exitNeeds.exitForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.helpNeeds.helpForm.resources
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.loginForm.resources
@@ -104,3 +103,5 @@ C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\De
 C:\Users\Apelsinas\source\repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.settingsNeeds.settingsForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.settingsNeeds.settingsForm.resources
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.SessionLoginForm.resources
+C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.loginNeeds.SessionLoginForm.resources
+C:\Users\Mantas\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\obj\Debug\studyBuddy.programComponents.settingsNeeds.settingsForm.resources
