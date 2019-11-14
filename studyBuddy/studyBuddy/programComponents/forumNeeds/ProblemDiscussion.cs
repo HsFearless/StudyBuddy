@@ -27,6 +27,11 @@ namespace studyBuddy.programComponents.forumNeeds
             this.forumPost = forumPost;
             this.problemNameLabel.Text = forumPost.name;
             this.problemDescriptionLabel.Text = forumPost.description;
+            this.upvoteButton = new VoteButton(forumPost);
+            this.upvoteButton.Name = "upvoteButton";
+            this.upvoteButton.Location = new System.Drawing.Point(7, 39);
+            this.upvoteButton.Click += (o,e) => UpdateVotesLabel(); //^lambda
+            this.votesGroupBox.Controls.Add(this.upvoteButton); //^events standard
             comments = new CommentsManager(forumPost, commentsPanel);
             comments.SuccessfullyAddedCommentEvent += SuccessfullyAddedCommentEventHandler;
             
@@ -45,7 +50,7 @@ namespace studyBuddy.programComponents.forumNeeds
         {
             comments.Load(commentsPanel);
             votesCountLabel.Text = forumPost.votes.ToString();  //before and after vote it auto updates
-            AfterUpvote();
+            //AfterUpvote();
             //if (sw == null)
             //if (File.Exists(problemNameLabel.Text + ".txt") == false)
             //{
@@ -74,7 +79,7 @@ namespace studyBuddy.programComponents.forumNeeds
                     addCommentTextBox.ResetText();
                 }
                 else
-                    MessageBox.Show(forumPost.comments.error.Message());
+                    MessageBox.Show(comments.error.Message());
             
         
 
@@ -90,38 +95,38 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void UpvoteButton_Click(object sender, EventArgs e)
         {
-            if (toUpvote)
-            {
-                try
-                {
-                    if (!forumPost.Upvote())
-                        MessageBox.Show(ForumManager.error.Message());
-                    else
-                    {
-                        AfterUpvote();
-                    }
-                }
-                catch (exceptions.DoneBefore)
-                {
-                    AfterUpvote();
-                    MessageBox.Show("You have already upvoted it!");
-                }
-            }//still upvote
-            else
-            { //take back upvote
-                if (!forumPost.TakeBackUpvote())
-                    if(ForumManager.error.no == dataNeeds.ErrorCode.NOT_FOUND)
-                    {
-                        MessageBox.Show("Your vote did not exist");
-                        AfterTakeBackUpvote();
-                    }
-                    else
-                        MessageBox.Show(ForumManager.error.Message());
-                else
-                    AfterTakeBackUpvote();
-            }
-            
-            
+            //if (toupvote)
+            //{
+            //    try
+            //    {
+            //        if (!forumpost.upvote())
+            //            messagebox.show(forummanager.error.message());
+            //        else
+            //        {
+            //            afterupvote();
+            //        }
+            //    }
+            //    catch (exceptions.donebefore)
+            //    {
+            //        afterupvote();
+            //        messagebox.show("you have already upvoted it!");
+            //    }
+            //}//still upvote
+            //else
+            //{ //take back upvote
+            //    if (!forumpost.takebackupvote())
+            //        if (forummanager.error.no == dataneeds.errorcode.not_found)
+            //        {
+            //            messagebox.show("your vote did not exist");
+            //            aftertakebackupvote();
+            //        }
+            //        else
+            //            messagebox.show(forummanager.error.message());
+            //    else
+            //        aftertakebackupvote();
+            //}
+
+
         }
 
         private void AfterTakeBackUpvote()

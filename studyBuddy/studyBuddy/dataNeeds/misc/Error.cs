@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace studyBuddy.dataNeeds
 {
-    struct Error //^struct
+    public struct Error //^struct
     {
         public ErrorCode no; // { get; set; } = code.OK;
                         //# trigger struct somewhere

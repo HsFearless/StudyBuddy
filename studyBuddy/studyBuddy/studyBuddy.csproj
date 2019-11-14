@@ -53,9 +53,13 @@
     <Compile Include="exceptions\ConfirmationNotReceived.cs" />
     <Compile Include="exceptions\DoneBefore.cs" />
     <Compile Include="dataNeeds\misc\Interests.cs" />
+    <Compile Include="programComponents\forumNeeds\VoteButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="programComponents\forumNeeds\Comment.cs" />
     <Compile Include="programComponents\forumNeeds\ForumManager.cs" />
     <Compile Include="dataNeeds\unused\SessionLoginFormLogic.cs" />
+    <Compile Include="programComponents\forumNeeds\Iface\IVotable.cs" />
     <Compile Include="programComponents\loginNeeds\SessionLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
