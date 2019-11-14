@@ -165,39 +165,50 @@ namespace studyBuddy.programComponents.loginNeeds
 
         }
 
-        public static bool LogInUsingSession()
+        public static bool LogInUsingSession(ProgressBar progresas)
         {
             //is timestamp not old?
+            progresas.Value = 0;
             long lastUnix = UserDataFetcher.GetLastLoginTimestamp();
-            if (lastUnix.IsTimeStampOlderThan(hours: 1,minutes: 5))//^extension
+            if (lastUnix.IsTimeStampOlderThan(hours: 1, minutes: 30, seconds: 0))//^extension
+                //# username nuplaukia, jei sesija mirsta.
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION
                     | ErrorCode.OUTDATED); //session became a garbage
 
             //has user manually logged out?
+            progresas.Value = 10;
             if (UserDataFetcher.GetLastLogoutWasDoneOrNot() == true)
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION | ErrorCode.OK);
 
             //does user exist?
+            progresas.Value = 20;
             UserDataFetcher UDF = new UserDataFetcher();
             string lastUser = UserDataFetcher.GetLastUsedUsername();
             //first validate it, because user is scum
+            progresas.Value = 30;
             if (!InputValidator.ValidateUsername(lastUser))
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_USERNAME); //#throw new exception, session file corrupted
             //get id. it might be email or username
+            progresas.Value = 40;
             UDF.GetIdByUsernameOrEmail(lastUser, saveId: true);
             if (!InputValidator.ValidateId(UDF.GetId()))
                 return error.SetErrorAndReturnFalse(ErrorCode.USER_NOT_FOUND);
 
             //check hash
+            progresas.Value = 50;
             string hashedUnix = timestampHasher.Hash(lastUnix.ToString(), DataFetcher.GetDeviceIdentifier());
-            messageToOutterWorld = hashedUnix;
-            if (!UDF.IsThisLastLoggedInTimestampHash(hashedUnix) )
+            //messageToOutterWorld = hashedUnix; //#remove
+            if (!UDF.IsThisLastLoggedInTimestampHash(hashedUnix))
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION);
 
             //all good
+            progresas.Value = 60;
             Auth.SetCurrentUser(lastUser, UDF);
+            progresas.Value = 70;
             SetSession(UDF);
+            progresas.Value = 80;
             SetIsLoggedIn(UDF);
+            progresas.Value = 100;
             return true;
         }
 
@@ -245,6 +256,13 @@ namespace studyBuddy.programComponents.loginNeeds
                 //Console.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
                 throw new exceptions.InvalidSession(didUserLogOutOnHisFreeWill: false);
             }
+        }
+
+        public static void LogOut()
+        {
+            Auth.SetLoggedOut();
+            CurrentUser.id = 0;
+            throw new exceptions.InvalidSession(true); //^exceptipn
         }
 
     }//class

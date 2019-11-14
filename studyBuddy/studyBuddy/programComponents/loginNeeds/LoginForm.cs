@@ -58,7 +58,7 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            Method();
+            //Method();
         }
 
         private void ShowAfterLoginScreen()
@@ -77,7 +77,7 @@ namespace studyBuddy.programComponents.loginNeeds
         {
             //try
             //{
-                if (Auth.LogInUsingSession())
+                if (Auth.LogInUsingSession(new ProgressBar()))
                     ShowAfterLoginScreen();
                 else
                     MessageBox.Show(Auth.error.Message() + " " + Auth.messageToOutterWorld + $"({Auth.messageToOutterWorld.Length})");
