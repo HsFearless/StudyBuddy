@@ -19,8 +19,8 @@ namespace studyBuddy.programComponents.forumNeeds
         public Panel commentsPanel;
         private List<Comment> comments;
         private Comment lastComment;
-        public delegate void SuccessfullyAddedComment(object sender, SuccessfullyAddedCommentEventArgs e);
-        public event SuccessfullyAddedComment SuccessfullyAddedCommentEvent;
+        public delegate void SuccessfullyAddedComment<T>(object sender, T args); //^generic event's delegate
+        public event SuccessfullyAddedComment<SuccessfullyAddedCommentEventArgs> SuccessfullyAddedCommentEvent;  //event's declaration
         //public static ArrayList commentsTextFiles = new ArrayList();
 
         public CommentsManager(ForumPost forumPost)
@@ -95,7 +95,7 @@ namespace studyBuddy.programComponents.forumNeeds
 
             if (SuccessfullyAddedCommentEvent != null)
             {
-                SuccessfullyAddedCommentEvent.Invoke(this, new SuccessfullyAddedCommentEventArgs(commentToShow, unix));
+                SuccessfullyAddedCommentEvent.Invoke(this, new SuccessfullyAddedCommentEventArgs(commentToShow, unix)); //invokes event if it has subscribers
             }
 
             return true;
