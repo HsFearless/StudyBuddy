@@ -1,4 +1,4 @@
-﻿namespace studyBuddy.helpNeeds
+﻿namespace studyBuddy.programComponents.helpNeeds
 {
     partial class helpForm
     {
@@ -41,7 +41,7 @@
             // 
             // leftToolBar
             // 
-            this.leftToolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.leftToolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftToolBar.ColumnCount = 1;
             this.leftToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -52,8 +52,7 @@
             this.leftToolBar.Controls.Add(this.toolBarForumButton, 0, 1);
             this.leftToolBar.Controls.Add(this.toolBarProfileButton, 0, 0);
             this.leftToolBar.Controls.Add(this.logoLabel, 0, 3);
-            this.leftToolBar.Location = new System.Drawing.Point(-4, -4);
-            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.leftToolBar.Location = new System.Drawing.Point(-3, -3);
             this.leftToolBar.Name = "leftToolBar";
             this.leftToolBar.RowCount = 7;
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -63,16 +62,16 @@
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.leftToolBar.Size = new System.Drawing.Size(121, 580);
+            this.leftToolBar.Size = new System.Drawing.Size(91, 471);
             this.leftToolBar.TabIndex = 2;
             // 
             // toolBarExitButton
             // 
             this.toolBarExitButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarExitButton.Location = new System.Drawing.Point(0, 493);
+            this.toolBarExitButton.Location = new System.Drawing.Point(0, 397);
             this.toolBarExitButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarExitButton.Name = "toolBarExitButton";
-            this.toolBarExitButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarExitButton.Size = new System.Drawing.Size(91, 74);
             this.toolBarExitButton.TabIndex = 6;
             this.toolBarExitButton.Text = "Exit";
             this.toolBarExitButton.UseVisualStyleBackColor = true;
@@ -80,10 +79,10 @@
             // toolBarSettingsButton
             // 
             this.toolBarSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarSettingsButton.Location = new System.Drawing.Point(0, 406);
+            this.toolBarSettingsButton.Location = new System.Drawing.Point(0, 327);
             this.toolBarSettingsButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarSettingsButton.Name = "toolBarSettingsButton";
-            this.toolBarSettingsButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarSettingsButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarSettingsButton.TabIndex = 5;
             this.toolBarSettingsButton.Text = "Settings";
             this.toolBarSettingsButton.UseVisualStyleBackColor = true;
@@ -91,10 +90,10 @@
             // toolBarHelpButton
             // 
             this.toolBarHelpButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarHelpButton.Location = new System.Drawing.Point(0, 319);
+            this.toolBarHelpButton.Location = new System.Drawing.Point(0, 257);
             this.toolBarHelpButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarHelpButton.Name = "toolBarHelpButton";
-            this.toolBarHelpButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarHelpButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarHelpButton.TabIndex = 4;
             this.toolBarHelpButton.Text = "Help";
             this.toolBarHelpButton.UseVisualStyleBackColor = true;
@@ -102,10 +101,10 @@
             // toolBarFindBuddyButton
             // 
             this.toolBarFindBuddyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarFindBuddyButton.Location = new System.Drawing.Point(0, 174);
+            this.toolBarFindBuddyButton.Location = new System.Drawing.Point(0, 140);
             this.toolBarFindBuddyButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarFindBuddyButton.Name = "toolBarFindBuddyButton";
-            this.toolBarFindBuddyButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarFindBuddyButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarFindBuddyButton.TabIndex = 2;
             this.toolBarFindBuddyButton.Text = "Study Buddy";
             this.toolBarFindBuddyButton.UseVisualStyleBackColor = true;
@@ -113,10 +112,10 @@
             // toolBarForumButton
             // 
             this.toolBarForumButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarForumButton.Location = new System.Drawing.Point(0, 87);
+            this.toolBarForumButton.Location = new System.Drawing.Point(0, 70);
             this.toolBarForumButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarForumButton.Name = "toolBarForumButton";
-            this.toolBarForumButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarForumButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarForumButton.TabIndex = 1;
             this.toolBarForumButton.Text = "Forum";
             this.toolBarForumButton.UseVisualStyleBackColor = true;
@@ -127,7 +126,7 @@
             this.toolBarProfileButton.Location = new System.Drawing.Point(0, 0);
             this.toolBarProfileButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarProfileButton.Name = "toolBarProfileButton";
-            this.toolBarProfileButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarProfileButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarProfileButton.TabIndex = 0;
             this.toolBarProfileButton.Text = "Profile";
             this.toolBarProfileButton.UseVisualStyleBackColor = true;
@@ -137,25 +136,24 @@
             // 
             this.logoLabel.AutoSize = true;
             this.logoLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoLabel.Location = new System.Drawing.Point(4, 261);
-            this.logoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.logoLabel.Location = new System.Drawing.Point(3, 210);
             this.logoLabel.Name = "logoLabel";
-            this.logoLabel.Size = new System.Drawing.Size(113, 58);
+            this.logoLabel.Size = new System.Drawing.Size(85, 47);
             this.logoLabel.TabIndex = 7;
             this.logoLabel.Text = "Logo\r\n";
             this.logoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // helpForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 572);
+            this.ClientSize = new System.Drawing.Size(880, 465);
             this.Controls.Add(this.leftToolBar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1189, 609);
+            this.MinimumSize = new System.Drawing.Size(896, 502);
             this.Name = "helpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Study Buddy";
+            this.Load += new System.EventHandler(this.HelpForm_Load);
             this.leftToolBar.ResumeLayout(false);
             this.leftToolBar.PerformLayout();
             this.ResumeLayout(false);

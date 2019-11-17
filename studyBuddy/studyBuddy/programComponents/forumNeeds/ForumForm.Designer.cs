@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.leftToolBar = new System.Windows.Forms.TableLayoutPanel();
             this.toolBarExitButton = new System.Windows.Forms.Button();
             this.toolBarSettingsButton = new System.Windows.Forms.Button();
@@ -70,8 +70,7 @@
             this.leftToolBar.Controls.Add(this.toolBarForumButton, 0, 1);
             this.leftToolBar.Controls.Add(this.toolBarProfileButton, 0, 0);
             this.leftToolBar.Controls.Add(this.logoLabel, 0, 3);
-            this.leftToolBar.Location = new System.Drawing.Point(-4, -4);
-            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4);
+            this.leftToolBar.Location = new System.Drawing.Point(-3, -3);
             this.leftToolBar.Name = "leftToolBar";
             this.leftToolBar.RowCount = 7;
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -81,16 +80,16 @@
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.leftToolBar.Size = new System.Drawing.Size(121, 580);
+            this.leftToolBar.Size = new System.Drawing.Size(91, 471);
             this.leftToolBar.TabIndex = 1;
             // 
             // toolBarExitButton
             // 
             this.toolBarExitButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarExitButton.Location = new System.Drawing.Point(0, 493);
+            this.toolBarExitButton.Location = new System.Drawing.Point(0, 397);
             this.toolBarExitButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarExitButton.Name = "toolBarExitButton";
-            this.toolBarExitButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarExitButton.Size = new System.Drawing.Size(91, 74);
             this.toolBarExitButton.TabIndex = 6;
             this.toolBarExitButton.Text = "Exit";
             this.toolBarExitButton.UseVisualStyleBackColor = true;
@@ -99,10 +98,10 @@
             // toolBarSettingsButton
             // 
             this.toolBarSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarSettingsButton.Location = new System.Drawing.Point(0, 406);
+            this.toolBarSettingsButton.Location = new System.Drawing.Point(0, 327);
             this.toolBarSettingsButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarSettingsButton.Name = "toolBarSettingsButton";
-            this.toolBarSettingsButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarSettingsButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarSettingsButton.TabIndex = 5;
             this.toolBarSettingsButton.Text = "Settings";
             this.toolBarSettingsButton.UseVisualStyleBackColor = true;
@@ -111,10 +110,10 @@
             // toolBarHelpButton
             // 
             this.toolBarHelpButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarHelpButton.Location = new System.Drawing.Point(0, 319);
+            this.toolBarHelpButton.Location = new System.Drawing.Point(0, 257);
             this.toolBarHelpButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarHelpButton.Name = "toolBarHelpButton";
-            this.toolBarHelpButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarHelpButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarHelpButton.TabIndex = 4;
             this.toolBarHelpButton.Text = "Help";
             this.toolBarHelpButton.UseVisualStyleBackColor = true;
@@ -123,10 +122,10 @@
             // toolBarFindBuddyButton
             // 
             this.toolBarFindBuddyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarFindBuddyButton.Location = new System.Drawing.Point(0, 174);
+            this.toolBarFindBuddyButton.Location = new System.Drawing.Point(0, 140);
             this.toolBarFindBuddyButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarFindBuddyButton.Name = "toolBarFindBuddyButton";
-            this.toolBarFindBuddyButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarFindBuddyButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarFindBuddyButton.TabIndex = 2;
             this.toolBarFindBuddyButton.Text = "Study Buddy";
             this.toolBarFindBuddyButton.UseVisualStyleBackColor = true;
@@ -135,10 +134,10 @@
             // toolBarForumButton
             // 
             this.toolBarForumButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolBarForumButton.Location = new System.Drawing.Point(0, 87);
+            this.toolBarForumButton.Location = new System.Drawing.Point(0, 70);
             this.toolBarForumButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarForumButton.Name = "toolBarForumButton";
-            this.toolBarForumButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarForumButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarForumButton.TabIndex = 1;
             this.toolBarForumButton.Text = "Forum";
             this.toolBarForumButton.UseVisualStyleBackColor = true;
@@ -150,7 +149,7 @@
             this.toolBarProfileButton.Location = new System.Drawing.Point(0, 0);
             this.toolBarProfileButton.Margin = new System.Windows.Forms.Padding(0);
             this.toolBarProfileButton.Name = "toolBarProfileButton";
-            this.toolBarProfileButton.Size = new System.Drawing.Size(121, 87);
+            this.toolBarProfileButton.Size = new System.Drawing.Size(91, 70);
             this.toolBarProfileButton.TabIndex = 0;
             this.toolBarProfileButton.Text = "Profile";
             this.toolBarProfileButton.UseVisualStyleBackColor = true;
@@ -160,20 +159,19 @@
             // 
             this.logoLabel.AutoSize = true;
             this.logoLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoLabel.Location = new System.Drawing.Point(4, 261);
-            this.logoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.logoLabel.Location = new System.Drawing.Point(3, 210);
             this.logoLabel.Name = "logoLabel";
-            this.logoLabel.Size = new System.Drawing.Size(113, 58);
+            this.logoLabel.Size = new System.Drawing.Size(85, 47);
             this.logoLabel.TabIndex = 7;
             this.logoLabel.Text = "Logo\r\n";
             this.logoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // addProblemButton
             // 
-            this.addProblemButton.Location = new System.Drawing.Point(211, 78);
-            this.addProblemButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addProblemButton.Location = new System.Drawing.Point(158, 63);
+            this.addProblemButton.Margin = new System.Windows.Forms.Padding(2);
             this.addProblemButton.Name = "addProblemButton";
-            this.addProblemButton.Size = new System.Drawing.Size(109, 32);
+            this.addProblemButton.Size = new System.Drawing.Size(82, 26);
             this.addProblemButton.TabIndex = 11;
             this.addProblemButton.Text = "ADD";
             this.addProblemButton.UseVisualStyleBackColor = true;
@@ -182,18 +180,19 @@
             // addProblemLabel
             // 
             this.addProblemLabel.AutoSize = true;
-            this.addProblemLabel.Location = new System.Drawing.Point(53, 86);
+            this.addProblemLabel.Location = new System.Drawing.Point(40, 70);
+            this.addProblemLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.addProblemLabel.Name = "addProblemLabel";
-            this.addProblemLabel.Size = new System.Drawing.Size(117, 17);
+            this.addProblemLabel.Size = new System.Drawing.Size(89, 13);
             this.addProblemLabel.TabIndex = 10;
             this.addProblemLabel.Text = "Add new problem";
             // 
             // sortByNameButton
             // 
-            this.sortByNameButton.Location = new System.Drawing.Point(159, 82);
-            this.sortByNameButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sortByNameButton.Location = new System.Drawing.Point(119, 67);
+            this.sortByNameButton.Margin = new System.Windows.Forms.Padding(2);
             this.sortByNameButton.Name = "sortByNameButton";
-            this.sortByNameButton.Size = new System.Drawing.Size(153, 39);
+            this.sortByNameButton.Size = new System.Drawing.Size(115, 32);
             this.sortByNameButton.TabIndex = 13;
             this.sortByNameButton.Text = "SORT BY NAME";
             this.sortByNameButton.UseVisualStyleBackColor = true;
@@ -209,13 +208,13 @@
             this.subjectColumn,
             this.descriptionColumn,
             this.Id});
-            this.problemsGridView.Location = new System.Drawing.Point(120, 170);
-            this.problemsGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.problemsGridView.Location = new System.Drawing.Point(90, 138);
+            this.problemsGridView.Margin = new System.Windows.Forms.Padding(2);
             this.problemsGridView.Name = "problemsGridView";
             this.problemsGridView.RowHeadersWidth = 51;
             this.problemsGridView.RowTemplate.Height = 24;
             this.problemsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.problemsGridView.Size = new System.Drawing.Size(1056, 406);
+            this.problemsGridView.Size = new System.Drawing.Size(792, 330);
             this.problemsGridView.TabIndex = 12;
             this.problemsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProblemsGridView_CellContentClick);
             this.problemsGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProblemsGridView_CellDoubleClick);
@@ -230,9 +229,9 @@
             // 
             // problemsNameColumn
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.problemsNameColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.problemsNameColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.problemsNameColumn.HeaderText = "Problem\'s Name";
             this.problemsNameColumn.MinimumWidth = 6;
             this.problemsNameColumn.Name = "problemsNameColumn";
@@ -266,10 +265,10 @@
             // 
             // sortBySubjectButton
             // 
-            this.sortBySubjectButton.Location = new System.Drawing.Point(159, 31);
-            this.sortBySubjectButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sortBySubjectButton.Location = new System.Drawing.Point(119, 25);
+            this.sortBySubjectButton.Margin = new System.Windows.Forms.Padding(2);
             this.sortBySubjectButton.Name = "sortBySubjectButton";
-            this.sortBySubjectButton.Size = new System.Drawing.Size(153, 39);
+            this.sortBySubjectButton.Size = new System.Drawing.Size(115, 32);
             this.sortBySubjectButton.TabIndex = 14;
             this.sortBySubjectButton.Text = "SORT BY SUBJECT";
             this.sortBySubjectButton.UseVisualStyleBackColor = true;
@@ -279,48 +278,46 @@
             // 
             this.addNewGroupBox.Controls.Add(this.addProblemButton);
             this.addNewGroupBox.Controls.Add(this.addProblemLabel);
-            this.addNewGroupBox.Location = new System.Drawing.Point(769, -4);
-            this.addNewGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addNewGroupBox.Location = new System.Drawing.Point(577, -3);
+            this.addNewGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.addNewGroupBox.Name = "addNewGroupBox";
-            this.addNewGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.addNewGroupBox.Size = new System.Drawing.Size(407, 174);
+            this.addNewGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.addNewGroupBox.Size = new System.Drawing.Size(305, 141);
             this.addNewGroupBox.TabIndex = 15;
             this.addNewGroupBox.TabStop = false;
             // 
             // filterSubjectsComboBox
             // 
             this.filterSubjectsComboBox.FormattingEnabled = true;
-            this.filterSubjectsComboBox.Location = new System.Drawing.Point(339, 50);
-            this.filterSubjectsComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.filterSubjectsComboBox.Location = new System.Drawing.Point(252, 25);
             this.filterSubjectsComboBox.Name = "filterSubjectsComboBox";
-            this.filterSubjectsComboBox.Size = new System.Drawing.Size(152, 24);
+            this.filterSubjectsComboBox.Size = new System.Drawing.Size(115, 21);
             this.filterSubjectsComboBox.TabIndex = 16;
             this.filterSubjectsComboBox.SelectedIndexChanged += new System.EventHandler(this.FilterSubjectsComboBox_SelectedIndexChanged);
             // 
             // filterLabel
             // 
             this.filterLabel.AutoSize = true;
-            this.filterLabel.Location = new System.Drawing.Point(372, 31);
-            this.filterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.filterLabel.Location = new System.Drawing.Point(277, 9);
             this.filterLabel.Name = "filterLabel";
-            this.filterLabel.Size = new System.Drawing.Size(95, 17);
+            this.filterLabel.Size = new System.Drawing.Size(71, 13);
             this.filterLabel.TabIndex = 17;
             this.filterLabel.Text = "Filter subjects";
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(493, 98);
-            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxSearch.Location = new System.Drawing.Point(257, 51);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(137, 22);
+            this.textBoxSearch.Size = new System.Drawing.Size(104, 20);
             this.textBoxSearch.TabIndex = 18;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(645, 82);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSearch.Location = new System.Drawing.Point(260, 75);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(127, 43);
+            this.buttonSearch.Size = new System.Drawing.Size(95, 35);
             this.buttonSearch.TabIndex = 19;
             this.buttonSearch.Text = "search in Description";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -328,9 +325,9 @@
             // 
             // ForumForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 572);
+            this.ClientSize = new System.Drawing.Size(880, 465);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.filterLabel);
@@ -340,11 +337,11 @@
             this.Controls.Add(this.sortByNameButton);
             this.Controls.Add(this.problemsGridView);
             this.Controls.Add(this.leftToolBar);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1189, 606);
+            this.MinimumSize = new System.Drawing.Size(896, 500);
             this.Name = "ForumForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Study Buddy";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ForumForm_FormClosing);
             this.Load += new System.EventHandler(this.ForumForm_Load);
             this.leftToolBar.ResumeLayout(false);
             this.leftToolBar.PerformLayout();

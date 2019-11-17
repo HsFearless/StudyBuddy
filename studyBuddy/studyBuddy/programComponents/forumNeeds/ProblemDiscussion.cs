@@ -24,6 +24,9 @@ namespace studyBuddy.programComponents.forumNeeds
         public ProblemDiscussion(ForumPost forumPost)
         {
             InitializeComponent();
+
+            FormConfig.GetFormConfig(this);
+
             this.forumPost = forumPost;
             this.problemNameLabel.Text = forumPost.name;
             this.problemDescriptionLabel.Text = forumPost.description;

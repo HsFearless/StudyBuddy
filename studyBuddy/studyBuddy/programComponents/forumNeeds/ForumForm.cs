@@ -22,6 +22,7 @@ namespace studyBuddy.programComponents.forumNeeds
         public ForumForm()
         {
             InitializeComponent();
+
             var forumContent = subjects.GroupJoin(forum, //^query //^groupjoin
                 su => su.id,
                 fo => fo.subjectId,
@@ -81,7 +82,7 @@ namespace studyBuddy.programComponents.forumNeeds
         private void AddProblemButton_Click(object sender, EventArgs e)
         {
             var createProblemForm = new CreateProblem(this);
-            createProblemForm.ShowDialog();
+            createProblemForm.ShowDialog(this);
         }
 
         public void AddNewProblem(String name, String subject, String description)
@@ -219,6 +220,11 @@ namespace studyBuddy.programComponents.forumNeeds
         private void ToolBarExitButton_Click(object sender, EventArgs e)
         {
             NavigationHelper.SwitchToExitFrom(this);
+        }
+
+        private void ForumForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //FormConfig.FormClosingEventHandler(this);
         }
     }
 }

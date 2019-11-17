@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace studyBuddy.helpNeeds
+namespace studyBuddy.programComponents.helpNeeds
 {
     public partial class helpForm : Form
     {
@@ -18,6 +18,11 @@ namespace studyBuddy.helpNeeds
         }
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HelpForm_Load(object sender, EventArgs e)
         {
 
         }

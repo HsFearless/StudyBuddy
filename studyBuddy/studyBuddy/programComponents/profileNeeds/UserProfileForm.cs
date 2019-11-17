@@ -17,6 +17,7 @@ namespace studyBuddy.programComponents.profileNeeds
         public userProfileForm()
         {
             InitializeComponent();
+
             loginNeeds.Auth.DoCheckCurrentUser(); //possible exception throwing
             if (CurrentUser.isLoggedIn) //unnecessary
             {
@@ -40,6 +41,7 @@ namespace studyBuddy.programComponents.profileNeeds
                     userInterestsFlowLayoutPanel.Controls.Add(interestsLabel);
                 }
             }
+
             //commented because that popup was super annoying
             /*string test = "";
             users = DataFetcher.GetUsers();
@@ -47,7 +49,6 @@ namespace studyBuddy.programComponents.profileNeeds
                 test += user.ToString(full: true) + '\n';
             MessageBox.Show(test);*/
         }
-        
 
         private void Button5_Click(object sender, EventArgs e)
         {
@@ -128,6 +129,10 @@ namespace studyBuddy.programComponents.profileNeeds
             }
                 
         }
+
+        private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           // FormConfig.FormClosingEventHandler(this);
+        }
     }
-    }
-//}
+}

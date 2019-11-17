@@ -18,9 +18,12 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
         public Interests interests = DataFetcher.GetInterests();
         delegate IEnumerable<int> IdGetter<T>(string name, T items); //^generics in delegate
         IdGetter<Interests> getId = GetID;  //initialization of delegate
+
         public studyBuddyForm()
         {
             InitializeComponent();
+
+            FormConfig.GetFormConfig(this);
         }
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
@@ -83,5 +86,18 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
             NavigationHelper.SwitchToForumFrom(this);
         }
 
+        private void StudyBuddyForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StudyBuddyForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        }
+
+        private void ToolBarHelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

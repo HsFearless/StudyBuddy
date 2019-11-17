@@ -58,5 +58,9 @@ namespace studyBuddy.programComponents.settingsNeeds
         {
             NavigationHelper.SwitchToExitFrom(this);
         }
+
+        private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace studyBuddy
                     }
                     else
                     {
-                        programComponents.NavigationHelper.SwitchToProfileFrom(SessionLoginForm, true);
+                        programComponents.NavigationHelper.SwitchToProfileFrom(SessionLoginForm);
                         break;
                         //# invalid session exception gali buti kazkas kitas suvalgo.
                     }
