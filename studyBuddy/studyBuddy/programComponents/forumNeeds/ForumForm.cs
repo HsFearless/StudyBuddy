@@ -23,6 +23,11 @@ namespace studyBuddy.programComponents.forumNeeds
         {
             InitializeComponent();
 
+            
+        }
+
+        private void ForumForm_Load(object sender, EventArgs e)
+        {
             var forumContent = subjects.GroupJoin(forum, //^query //^groupjoin
                 su => su.id,
                 fo => fo.subjectId,
@@ -47,10 +52,6 @@ namespace studyBuddy.programComponents.forumNeeds
             {
                 filterSubjectsComboBox.Items.Add(subject);
             }
-        }
-
-        private void ForumForm_Load(object sender, EventArgs e)
-        {
             //var forumContent = forum.GroupJoin(this.subjects, //change to users
             //    forumRow => forumRow.subjectId,
             //    subj => subj.id,
@@ -62,7 +63,7 @@ namespace studyBuddy.programComponents.forumNeeds
             //        //subj.name,
             //        //forumRow.description
             //    }) ;
-            
+
         }
 
         private void SortByNameButton_Click(object sender, EventArgs e)

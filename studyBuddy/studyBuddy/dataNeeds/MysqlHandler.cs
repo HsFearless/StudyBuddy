@@ -20,6 +20,7 @@ using System.Data.SqlClient;
 
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace studyBuddy.dataNeeds
 {
@@ -118,8 +119,29 @@ namespace studyBuddy.dataNeeds
         }
         private bool OpenNewConnection()
         {
-            con.Close();
-            return OpenConnection();
+            //Console.WriteLine("Request from thread id: " + Thread.CurrentThread.ManagedThreadId);
+            //bool opened = false;
+            //if (Program.mainThreadId == Thread.CurrentThread.ManagedThreadId)
+            //{
+            //    Program._blockThread2.WaitOne();
+            //    con.Close()
+            //    opened = OpenConnection();
+            //}
+            //else
+            //{
+            //    con.Close();
+            //    opened = OpenConnection();
+            //}
+            //return opened;
+
+            while (true)
+            {
+                if (!Program.ThreadSaysYes && Program.mainThreadId == Thread.CurrentThread.ManagedThreadId) //^thread fake lock
+                    continue;
+                con.Close();
+                return OpenConnection();
+            }
+                
         }
 
         private void PrepareSql(ref string given)

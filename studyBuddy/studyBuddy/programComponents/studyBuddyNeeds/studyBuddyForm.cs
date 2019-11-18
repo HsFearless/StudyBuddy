@@ -23,7 +23,6 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
         {
             InitializeComponent();
 
-            FormConfig.GetFormConfig(this);
         }
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)

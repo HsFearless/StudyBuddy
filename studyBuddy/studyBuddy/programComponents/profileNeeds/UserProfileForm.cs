@@ -18,29 +18,8 @@ namespace studyBuddy.programComponents.profileNeeds
         {
             InitializeComponent();
 
-            loginNeeds.Auth.DoCheckCurrentUser(); //possible exception throwing
-            if (CurrentUser.isLoggedIn) //unnecessary
-            {
-                userNameLabel.Text = CurrentUser.name;
-                userProfileInfoBox.Text = CurrentUser.profileInfo;
-                numberOfKarmaPointsLabel.Text = CurrentUser.karma.ToString();
-                if(CurrentUser.upForTeaching == 1)
-                {
-                    userProfileUpForTeachingCheckbox.Checked = true;
-                }
-                else
-                {
-                    userProfileUpForTeachingCheckbox.Checked = false;
-                }
-                
-                foreach (string interest in CurrentUser.interests)
-                {
-                    Label interestsLabel = new Label();
-                    interestsLabel.AutoSize = true;
-                    interestsLabel.Text = interest;
-                    userInterestsFlowLayoutPanel.Controls.Add(interestsLabel);
-                }
-            }
+            //loginNeeds.Auth.DoCheckCurrentUser(); //possible exception throwing
+            
 
             //commented because that popup was super annoying
             /*string test = "";
@@ -57,7 +36,28 @@ namespace studyBuddy.programComponents.profileNeeds
 
         private void UserProfileForm_Load(object sender, EventArgs e)
         {
+            if (CurrentUser.isLoggedIn) //unnecessary
+            {
+                userNameLabel.Text = CurrentUser.name;
+                userProfileInfoBox.Text = CurrentUser.profileInfo;
+                numberOfKarmaPointsLabel.Text = CurrentUser.karma.ToString();
+                if (CurrentUser.upForTeaching == 1)
+                {
+                    userProfileUpForTeachingCheckbox.Checked = true;
+                }
+                else
+                {
+                    userProfileUpForTeachingCheckbox.Checked = false;
+                }
 
+                foreach (string interest in CurrentUser.interests)
+                {
+                    Label interestsLabel = new Label();
+                    interestsLabel.AutoSize = true;
+                    interestsLabel.Text = interest;
+                    userInterestsFlowLayoutPanel.Controls.Add(interestsLabel);
+                }
+            }
         }
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace studyBuddy.programComponents.loginNeeds
     public partial class loginForm : Form
     {
         private bool skipLogin = false;
+        public bool success = false;
         private UserDataFetcher dataFetcher = new UserDataFetcher();
         public bool itWasExpectedExit { get; private set; } = false;
         public loginForm()
@@ -59,14 +60,24 @@ namespace studyBuddy.programComponents.loginNeeds
         private void LoginForm_Load(object sender, EventArgs e)
         {
             //Method();
+            this.textUsername.Text = UserDataFetcher.GetLastUsedUsername();
         }
 
         private void ShowAfterLoginScreen()
         {
-            NavigationHelper.SwitchToProfileFrom(this);
+
+
+            success = true;
+            this.Close();
+            /*
+             * NavigationHelper.SwitchToProfileFrom(this);
             //this.Visible = true;
             this.itWasExpectedExit = true;
             Application.Exit();
+            */
+
+
+
         }
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)

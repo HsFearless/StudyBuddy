@@ -62,6 +62,8 @@ namespace studyBuddy.programComponents
             FormConfig.GetMinSize(next);
             FormConfig.GetFormConfig(next);
 
+            loginNeeds.Auth.DoCheckCurrentUser();
+
             next.FormClosing += (o, e) => FormConfig.SaveFormConfig(next); //^delegate //^lambda
             next.ShowDialog();
 

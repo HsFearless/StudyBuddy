@@ -13,7 +13,6 @@ namespace studyBuddy.programComponents.loginNeeds
 {
     public partial class SessionLoginForm : Form
     {
-        private Thread logInThread = null;
         public bool success = false;
         public SessionLoginForm()
         {
