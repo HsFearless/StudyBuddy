@@ -75,7 +75,7 @@ namespace studyBuddy.programComponents.forumNeeds
                         AfterUpvote();
                     }
                 }
-                catch //^exceptions
+                catch (exceptions.DoneBefore) //^exceptions
                 {
                     AfterUpvote();
                     MessageBox.Show("You have already upvoted it!");
@@ -100,20 +100,20 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void AfterUpvote()
         {
-            Button butt = this;
+            Button button = this;
             toUpvote = false;
             previousToUpvote = !toUpvote;
-            butt.BackColor = Color.MediumSlateBlue;
-            butt.Text = "Vote--";
+            button.BackColor = Color.MediumSlateBlue;
+            button.Text = "Vote--";
         }
 
         private void AfterTakeBackUpvote()
         {
-            Button butt = this;
+            Button button = this;
             toUpvote = true;
             previousToUpvote = !toUpvote;
-            butt.BackColor = Color.Green;
-            butt.Text = "Vote++";
+            button.BackColor = Color.Green;
+            button.Text = "Vote++";
         }
 
     }

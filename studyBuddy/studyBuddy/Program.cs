@@ -77,7 +77,7 @@ namespace studyBuddy
                     //Application.Run(loginForm);
                     
                 }
-                catch (studyBuddy.exceptions.InvalidSession exis)
+                catch (studyBuddy.exceptions.InvalidSession exis) //^exception
                 {
                     if (threadCreated)
                         SessionCheckerThread.Abort();

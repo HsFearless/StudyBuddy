@@ -75,7 +75,6 @@ namespace studyBuddy.programComponents.forumNeeds
         private void AddCommentButton_Click(object sender, EventArgs e)
         {
             
-            
                 if (comments.Write(addCommentTextBox.Text))
                 {
                     comments.LoadLast(commentsPanel);
@@ -83,71 +82,12 @@ namespace studyBuddy.programComponents.forumNeeds
                 }
                 else
                     MessageBox.Show(comments.error.Message());
-            
-        
 
         }
 
         private void ProblemDiscussion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (fileClosed == false)
-            //{
-            //    sw.Close();
-            //}
-        }
-
-        private void UpvoteButton_Click(object sender, EventArgs e)
-        {
-            //if (toupvote)
-            //{
-            //    try
-            //    {
-            //        if (!forumpost.upvote())
-            //            messagebox.show(forummanager.error.message());
-            //        else
-            //        {
-            //            afterupvote();
-            //        }
-            //    }
-            //    catch (exceptions.donebefore)
-            //    {
-            //        afterupvote();
-            //        messagebox.show("you have already upvoted it!");
-            //    }
-            //}//still upvote
-            //else
-            //{ //take back upvote
-            //    if (!forumpost.takebackupvote())
-            //        if (forummanager.error.no == dataneeds.errorcode.not_found)
-            //        {
-            //            messagebox.show("your vote did not exist");
-            //            aftertakebackupvote();
-            //        }
-            //        else
-            //            messagebox.show(forummanager.error.message());
-            //    else
-            //        aftertakebackupvote();
-            //}
-
-
-        }
-
-        private void AfterTakeBackUpvote()
-        {
-            Button butt = upvoteButton;
-            toUpvote = true;
-            butt.BackColor = Color.Green;
-            butt.Text = "Vote++";
-            UpdateVotesLabel();
-        }
-
-        private void AfterUpvote()
-        {
-            Button butt = upvoteButton;
-            toUpvote = false;
-            butt.BackColor = Color.MediumSlateBlue;
-            butt.Text = "Vote --";
-            UpdateVotesLabel();
+  
         }
 
         private void UpdateVotesLabel()
