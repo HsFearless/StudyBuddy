@@ -19,6 +19,8 @@ namespace studyBuddy.programComponents.forumNeeds
 
         public CreateProblem(ForumForm forumForm)
         {
+            this.StartPosition = FormStartPosition.CenterParent;
+
             this.forumForm = forumForm;
             this.subjects = forumForm.subjects;
             InitializeComponent();
@@ -53,6 +55,16 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void SubjectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void CreateProblem_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateProblem_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

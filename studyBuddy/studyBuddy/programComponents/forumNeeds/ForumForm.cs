@@ -22,6 +22,12 @@ namespace studyBuddy.programComponents.forumNeeds
         public ForumForm()
         {
             InitializeComponent();
+
+            
+        }
+
+        private void ForumForm_Load(object sender, EventArgs e)
+        {
             var forumContent = subjects.GroupJoin(forum, //^query //^groupjoin
                 su => su.id,
                 fo => fo.subjectId,
@@ -46,10 +52,6 @@ namespace studyBuddy.programComponents.forumNeeds
             {
                 filterSubjectsComboBox.Items.Add(subject);
             }
-        }
-
-        private void ForumForm_Load(object sender, EventArgs e)
-        {
             //var forumContent = forum.GroupJoin(this.subjects, //change to users
             //    forumRow => forumRow.subjectId,
             //    subj => subj.id,
@@ -61,7 +63,7 @@ namespace studyBuddy.programComponents.forumNeeds
             //        //subj.name,
             //        //forumRow.description
             //    }) ;
-            
+
         }
 
         private void SortByNameButton_Click(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace studyBuddy.programComponents.forumNeeds
         private void AddProblemButton_Click(object sender, EventArgs e)
         {
             var createProblemForm = new CreateProblem(this);
-            createProblemForm.ShowDialog();
+            createProblemForm.ShowDialog(this);
         }
 
         public void AddNewProblem(String name, String subject, String description)
@@ -219,6 +221,11 @@ namespace studyBuddy.programComponents.forumNeeds
         private void ToolBarExitButton_Click(object sender, EventArgs e)
         {
             NavigationHelper.SwitchToExitFrom(this);
+        }
+
+        private void ForumForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //FormConfig.FormClosingEventHandler(this);
         }
     }
 }

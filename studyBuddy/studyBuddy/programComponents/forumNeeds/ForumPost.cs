@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using studyBuddy.dataNeeds;
 
 namespace studyBuddy.programComponents.forumNeeds
 {
-    public class ForumPost : IComparable<ForumPost>
+    public class ForumPost : IComparable<ForumPost>, IVotable
     {
         public long id { get; private set; }
         public string name;
@@ -53,6 +54,16 @@ namespace studyBuddy.programComponents.forumNeeds
         public bool TakeBackUpvote()
         {
             return ForumManager.TakeBackUpvoteProblem(this);
+        }
+
+        public string VoteErrorMessage()
+        {
+            return ForumManager.error.Message();
+        }
+
+        public Error GetError()
+        {
+            return ForumManager.error;
         }
     }
 }

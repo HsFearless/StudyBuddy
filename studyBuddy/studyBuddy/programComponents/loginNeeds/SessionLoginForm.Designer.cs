@@ -70,6 +70,7 @@
             this.Name = "SessionLoginForm";
             this.Text = "SessionLoginForm";
             this.Load += new System.EventHandler(this.SessionLoginForm_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SessionLoginForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

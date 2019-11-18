@@ -133,6 +133,8 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateProblem";
             this.Text = "Study Buddy";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateProblem_FormClosing);
+            this.Load += new System.EventHandler(this.CreateProblem_Load);
             this.newProblemGroupBox.ResumeLayout(false);
             this.newProblemGroupBox.PerformLayout();
             this.ResumeLayout(false);
