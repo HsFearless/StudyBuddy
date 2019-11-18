@@ -12,7 +12,7 @@ namespace studyBuddy.dataNeeds
         public sealed class Interest
         {
             public int id { get; private set; }
-            public string name { get;  private set; }
+            public string name { get; private set; }
 
             internal Interest(int id, string name)
             {
@@ -23,10 +23,16 @@ namespace studyBuddy.dataNeeds
 
         private static readonly Lazy<Interests> lazy = new Lazy<Interests>(() => new Interests());
         private static Interest[] interests;
+        private static Func<Interest[]> createInterestArray = () => //^lambda statement
+        {
+            var interestsList = DataFetcher.GetInterestsAsStringList();
+            return new Interest[interestsList.Count];
+        };
+
 
         private Interests()
         {
-            
+
         }
 
         public static Interests GetInstance()
@@ -40,10 +46,12 @@ namespace studyBuddy.dataNeeds
             if (interests != null && interests.Length != 0)
                 return;
             //initialization
-            var interestsList = DataFetcher.GetInterestsAsStringList();
-            interests = new Interest[interestsList.Count];
+            interests = createInterestArray();
+
+
+            var listOfInterests = DataFetcher.GetInterestsAsStringList();
             int i = 0;
-            foreach (string[] interestAsStringArr in interestsList)
+            foreach (string[] interestAsStringArr in listOfInterests)
             {
                 int id = Convert.ToInt32(interestAsStringArr[0]);
                 string name = interestAsStringArr[1];
