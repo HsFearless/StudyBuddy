@@ -1,4 +1,4 @@
-﻿namespace studyBuddy.helpNeeds
+﻿namespace studyBuddy.programComponents.helpNeeds
 {
     partial class helpForm
     {
@@ -41,7 +41,7 @@
             // 
             // leftToolBar
             // 
-            this.leftToolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.leftToolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftToolBar.ColumnCount = 1;
             this.leftToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -130,6 +130,7 @@
             this.toolBarProfileButton.TabIndex = 0;
             this.toolBarProfileButton.Text = "Profile";
             this.toolBarProfileButton.UseVisualStyleBackColor = true;
+            this.toolBarProfileButton.Click += new System.EventHandler(this.ToolBarProfileButton_Click);
             // 
             // logoLabel
             // 
@@ -148,10 +149,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 465);
             this.Controls.Add(this.leftToolBar);
-            this.MinimumSize = new System.Drawing.Size(896, 504);
+            this.MinimumSize = new System.Drawing.Size(896, 502);
             this.Name = "helpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Study Buddy";
+            this.Load += new System.EventHandler(this.HelpForm_Load);
             this.leftToolBar.ResumeLayout(false);
             this.leftToolBar.PerformLayout();
             this.ResumeLayout(false);

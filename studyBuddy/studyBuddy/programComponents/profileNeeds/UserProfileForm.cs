@@ -17,28 +17,10 @@ namespace studyBuddy.programComponents.profileNeeds
         public userProfileForm()
         {
             InitializeComponent();
-            if (CurrentUser.isLoggedIn)
-            {
-                userNameLabel.Text = CurrentUser.name;
-                userProfileInfoBox.Text = CurrentUser.profileInfo;
-                numberOfKarmaPointsLabel.Text = CurrentUser.karma.ToString();
-                if(CurrentUser.upForTeaching == 1)
-                {
-                    userProfileUpForTeachingCheckbox.Checked = true;
-                }
-                else
-                {
-                    userProfileUpForTeachingCheckbox.Checked = false;
-                }
-                
-                foreach (string interest in CurrentUser.interests)
-                {
-                    Label interestsLabel = new Label();
-                    interestsLabel.AutoSize = true;
-                    interestsLabel.Text = interest;
-                    userInterestsFlowLayoutPanel.Controls.Add(interestsLabel);
-                }
-            }
+
+            //loginNeeds.Auth.DoCheckCurrentUser(); //possible exception throwing
+            
+
             //commented because that popup was super annoying
             /*string test = "";
             users = DataFetcher.GetUsers();
@@ -46,7 +28,6 @@ namespace studyBuddy.programComponents.profileNeeds
                 test += user.ToString(full: true) + '\n';
             MessageBox.Show(test);*/
         }
-        
 
         private void Button5_Click(object sender, EventArgs e)
         {
@@ -55,33 +36,48 @@ namespace studyBuddy.programComponents.profileNeeds
 
         private void UserProfileForm_Load(object sender, EventArgs e)
         {
+            if (CurrentUser.isLoggedIn) //unnecessary
+            {
+                userNameLabel.Text = CurrentUser.name;
+                userProfileInfoBox.Text = CurrentUser.profileInfo;
+                numberOfKarmaPointsLabel.Text = CurrentUser.karma.ToString();
+                if (CurrentUser.upForTeaching == 1)
+                {
+                    userProfileUpForTeachingCheckbox.Checked = true;
+                }
+                else
+                {
+                    userProfileUpForTeachingCheckbox.Checked = false;
+                }
 
+                foreach (string interest in CurrentUser.interests)
+                {
+                    Label interestsLabel = new Label();
+                    interestsLabel.AutoSize = true;
+                    interestsLabel.Text = interest;
+                    userInterestsFlowLayoutPanel.Controls.Add(interestsLabel);
+                }
+            }
         }
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)
         {
-            var profile = new forumNeeds.ForumForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToForumFrom(this);
         }
 
         private void ToolBarFindBuddyButton_Click(object sender, EventArgs e)
         {
-            var profile = new studyBuddyNeeds.studyBuddyForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToStudyBuddyFrom(this);
         }
 
         private void ToolBarSettingsButton_Click(object sender, EventArgs e)
         {
-
+            NavigationHelper.SwitchToSettingsFrom(this);
         }
 
         private void ToolBarExitButton_Click(object sender, EventArgs e)
         {
-
+            NavigationHelper.SwitchToExitFrom(this);
         }
         
         private void ConfirmEditingUserProfileButton_Click(object sender, EventArgs e)
@@ -133,6 +129,10 @@ namespace studyBuddy.programComponents.profileNeeds
             }
                 
         }
+
+        private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           // FormConfig.FormClosingEventHandler(this);
+        }
     }
-    }
-//}
+}

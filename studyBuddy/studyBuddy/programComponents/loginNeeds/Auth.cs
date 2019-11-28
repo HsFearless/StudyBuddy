@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using studyBuddy.extensions;
 using studyBuddy.programComponents.profileNeeds;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace studyBuddy.programComponents.loginNeeds
 {
@@ -165,39 +166,42 @@ namespace studyBuddy.programComponents.loginNeeds
 
         }
 
-        public static bool LogInUsingSession()
+        public static bool LogInUsingSession(ProgressBar progresas)
         {
             //is timestamp not old?
+            progresas.Value = 0;
             long lastUnix = UserDataFetcher.GetLastLoginTimestamp();
-            if (lastUnix.IsTimeStampOlderThan(hours: 1,minutes: 5))//^extension
+            if (lastUnix.IsTimeStampOlderThan(hours: 1, minutes: 30, seconds: 0))//^extension
+                //# username nuplaukia, jei sesija mirsta.
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION
                     | ErrorCode.OUTDATED); //session became a garbage
 
             //has user manually logged out?
+            progresas.Value = 10;
             if (UserDataFetcher.GetLastLogoutWasDoneOrNot() == true)
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION | ErrorCode.OK);
 
             //does user exist?
+            progresas.Value = 20;
+
             UserDataFetcher UDF = new UserDataFetcher();
-            string lastUser = UserDataFetcher.GetLastUsedUsername();
-            //first validate it, because user is scum
-            if (!InputValidator.ValidateUsername(lastUser))
-                return error.SetErrorAndReturnFalse(ErrorCode.INVALID_USERNAME); //#throw new exception, session file corrupted
-            //get id. it might be email or username
-            UDF.GetIdByUsernameOrEmail(lastUser, saveId: true);
-            if (!InputValidator.ValidateId(UDF.GetId()))
-                return error.SetErrorAndReturnFalse(ErrorCode.USER_NOT_FOUND);
+            string lastUser;
+            IsUserDataValid(UDF, out lastUser);
 
             //check hash
-            string hashedUnix = timestampHasher.Hash(lastUnix.ToString(), DataFetcher.GetDeviceIdentifier());
-            messageToOutterWorld = hashedUnix;
-            if (!UDF.IsThisLastLoggedInTimestampHash(hashedUnix) )
+            progresas.Value = 50;
+            //messageToOutterWorld = hashedUnix; //#remove
+            if (!IsThisTheLastSessionTimestamp(UDF, lastUnix))
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION);
 
             //all good
+            progresas.Value = 60;
             Auth.SetCurrentUser(lastUser, UDF);
+            progresas.Value = 70;
             SetSession(UDF);
+            progresas.Value = 80;
             SetIsLoggedIn(UDF);
+            progresas.Value = 100;
             return true;
         }
 
@@ -236,6 +240,83 @@ namespace studyBuddy.programComponents.loginNeeds
             return true;
         }
 
+        public static void DoCheckCurrentUser()
+        {
+            if (CurrentUser.isLoggedIn && InputValidator.ValidateId(CurrentUser.id))
+                return ;
+            else
+            {
+                //Console.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
+                throw new exceptions.InvalidSession(didUserLogOutOnHisFreeWill: false);
+            }
+        }
+
+        public static void DoCheckSessionOverTakenLoopForThread()
+        {
+            Console.WriteLine("Thread checking id");
+            if (!InputValidator.ValidateId(CurrentUser.id))
+                throw new exceptions.InvalidSession(false);
+
+
+            Console.WriteLine("Thread checking last user string");
+            UserDataFetcher UDF = new UserDataFetcher();
+            string lastUser;
+            if (!IsUserDataValid(UDF, out lastUser))
+                return;
+
+            while (true)
+            { // for thread  //^thread
+                Console.WriteLine("thread is alive");
+
+                //Program._blockThread1.WaitOne();
+                Program.ThreadSaysYes = false;
+                Thread.Sleep(250);
+                //Program.ThreadSaysYes = false;
+                if (!IsThisTheLastSessionTimestamp(UDF))
+                {
+
+                    //Program._blockThread1.Set();
+                    Program.ThreadSaysYes = true;
+                    LogOut(throwNowException: false);
+                    return;
+                }
+                Program.ThreadSaysYes = true;
+                Thread.Sleep(3000);
+                //Program._blockThread1.Set();
+                //System.Threading.Thread.Sleep(5000);
+            }
+        }
+
+        private static bool IsThisTheLastSessionTimestamp(UserDataFetcher UDF, long lastUnix = -1)
+        {
+            lastUnix = (lastUnix == -1) ? UserDataFetcher.GetLastLoginTimestamp() : lastUnix;
+            string hashedUnix = timestampHasher.Hash(lastUnix.ToString(), DataFetcher.GetDeviceIdentifier());
+            if (!UDF.IsThisLastLoggedInTimestampHash(hashedUnix))
+                return false;
+            return true;
+        } 
+
+        private static bool IsUserDataValid(UserDataFetcher UDF, out string lastUser)
+        {
+            
+            lastUser = UserDataFetcher.GetLastUsedUsername();
+            //first validate it, because user is scum
+            if (!InputValidator.ValidateUsername(lastUser))
+                return error.SetErrorAndReturnFalse(ErrorCode.INVALID_USERNAME); //#throw new exception, session file corrupted
+            //get id. it might be email or username
+            UDF.GetIdByUsernameOrEmail(lastUser, saveId: true);
+            if (!InputValidator.ValidateId(UDF.GetId()))
+                return error.SetErrorAndReturnFalse(ErrorCode.USER_NOT_FOUND);
+            return true;
+        }
+
+        public static void LogOut(bool throwNowException = true)
+        {
+            Auth.SetLoggedOut();
+            CurrentUser.id = 0;
+            if (throwNowException)
+                throw new exceptions.InvalidSession(true); //^exception
+        }
 
     }//class
 }//namespace

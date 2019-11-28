@@ -15,17 +15,19 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
 {
     public partial class studyBuddyForm : Form
     {
+        public Interests interests = DataFetcher.GetInterests();
+        delegate IEnumerable<int> IdGetter<T>(string name, T items); //^generics in delegate
+        IdGetter<Interests> getId = GetID;  //initialization of delegate
+
         public studyBuddyForm()
         {
             InitializeComponent();
+
         }
 
         private void ToolBarProfileButton_Click(object sender, EventArgs e)
         {
-            var profile = new profileNeeds.userProfileForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToProfileFrom(this);
         }
 
         private void StudyBuddyIwantToLearnLabel_Click(object sender, EventArgs e)
@@ -40,37 +42,61 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
 
             List<User>  users = DataFetcher.GetUsersAsList();
             var userInterests = DataFetcher.GetUserInterestsAsStringList();
-            var allInterests = DataFetcher.GetInterestsAsStringList();
 
-            var subjectID = (from interest in allInterests // interest[1] - name of interest
-                             where interest[1] == chooseWhatToLearnComboBox.Text
-                             select Int32.Parse(interest[0]));
+
+            var subjectID = getId(chooseWhatToLearnComboBox.Text,interests); //^delegate usage
 
             //get users who have that interest and are up for teaching
                 var matchedUsers = from user in users
                                    join userInterest in userInterests
                                    on user.id equals Convert.ToInt32(userInterest[0]) // userInterest[0] - userID
                                    where user.upForTeaching == 1
-                                   where Convert.ToInt32(userInterest[1]) == subjectID.FirstOrDefault<int>()
+                                   where Convert.ToInt32(userInterest[1]) == subjectID.FirstOrDefault<int>() // userInterest[1] - subjectID
                                    where user.id != CurrentUser.id
                                    select user.name;
 
-                foreach (var matchedUser in matchedUsers)
+            Action<IEnumerable<string>> showUsers = delegate (IEnumerable<string> Users) //^anonymous method
+            {
+                foreach (var user in Users)
                 {
                     Label name = new Label();
                     name.AutoSize = true;
-                    name.Text = matchedUser;
+                    name.Text = user;
                     availableBuddiesFlowLayoutPanel.Controls.Add(name);
                 }
+            };
+
+            showUsers(matchedUsers);
+               
         }
+
+        static IEnumerable<int> GetID<T>(string name, T items) where T : Interests //^generics in method
+        {
+            var ID = from item in items
+                             where item.name == name
+                             select item.id;
+            return ID;
+        }
+
+
 
         private void ToolBarForumButton_Click(object sender, EventArgs e)
         {
-            var profile = new forumNeeds.ForumForm();
-            this.Hide();
-            profile.ShowDialog();
-            Application.Exit();
+            NavigationHelper.SwitchToForumFrom(this);
         }
 
+        private void StudyBuddyForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StudyBuddyForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        }
+
+        private void ToolBarHelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

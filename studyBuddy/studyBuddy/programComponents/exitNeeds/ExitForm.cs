@@ -21,5 +21,39 @@ namespace studyBuddy.programComponents.exitNeeds
         {
 
         }
+
+        private void ToolBarProfileButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToProfileFrom(this);
+        }
+
+        private void ToolBarForumButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToForumFrom(this);
+        }
+
+        private void ToolBarFindBuddyButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToStudyBuddyFrom(this);
+        }
+
+        private void ToolBarHelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolBarSettingsButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToSettingsFrom(this);
+        }
+
+        private void ToolBarExitButton_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.SwitchToExitFrom(this);
+        }
+
+        private void ExitForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        }
     }
 }

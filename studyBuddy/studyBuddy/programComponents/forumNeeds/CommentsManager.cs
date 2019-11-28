@@ -16,14 +16,24 @@ namespace studyBuddy.programComponents.forumNeeds
         internal Error error;
         public readonly ForumPost forumPost;
         public int commentsPosition { get; private set; } = 1;
+        public Panel commentsPanel;
         private List<Comment> comments;
         private Comment lastComment;
+        public delegate void SuccessfullyAddedComment<T>(object sender, T args); //^generic event's delegate
+        public event SuccessfullyAddedComment<SuccessfullyAddedCommentEventArgs> SuccessfullyAddedCommentEvent;  //event's declaration
         //public static ArrayList commentsTextFiles = new ArrayList();
 
         public CommentsManager(ForumPost forumPost)
         {
             this.forumPost = forumPost;
         }
+
+        public CommentsManager(ForumPost forumPost, Panel commentsPanel)
+        {
+            this.forumPost = forumPost;
+            this.commentsPanel = commentsPanel;
+        }
+
 
         public static void AddNewFile(string textFilesName)
         {/*
@@ -79,6 +89,14 @@ namespace studyBuddy.programComponents.forumNeeds
             this.lastComment = DataFetcher.GetCommentFromTemplate(comment); //changes only id
 
             comments.Add(this.lastComment);
+            
+
+            //this.LoadLast(this.commentsPanel);
+
+            if (SuccessfullyAddedCommentEvent != null)
+            {
+                SuccessfullyAddedCommentEvent.Invoke(this, new SuccessfullyAddedCommentEventArgs(commentToShow, unix)); //invokes event if it has subscribers
+            }
 
             return true;
             
@@ -107,17 +125,38 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private static Label MakeCommentLabel(string text, int commentsPosition)
         {
+            
             //new label
             Label lComment = new Label();
+            lComment.AutoEllipsis = true;
             lComment.BackColor = Color.White;
             lComment.MinimumSize = new Size(760, 15);
             lComment.AutoSize = true;
             //label text
             lComment.Text = text;
             //position?
-            Point position = new Point(commentsPosition, 30 * commentsPosition);
+            Point position = new Point(69, 39 * commentsPosition);
             lComment.Location = position;
             return lComment;
+            
+
+            /*
+            TextBox lComment = new TextBox();
+            lComment.BackColor = Color.White;
+            lComment.MaximumSize = new Size(760, 8000);
+            lComment.AutoSize = false;
+            //label text
+            lComment.Text = text;
+            //position?
+            Point position = new Point(commentsPosition, 30 * commentsPosition);
+            lComment.Location = position;
+            lComment.ReadOnly = true;
+            lComment.Multiline = true;
+            lComment.HideSelection = false;
+            lComment.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lComment.Enabled = true;
+            lComment.WordWrap = true;
+            return lComment;*/
         }
     }
 }

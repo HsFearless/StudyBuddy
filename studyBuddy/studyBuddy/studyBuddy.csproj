@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
@@ -52,14 +53,22 @@
     <Compile Include="dataNeeds\DataPusher.cs" />
     <Compile Include="exceptions\ConfirmationNotReceived.cs" />
     <Compile Include="exceptions\DoneBefore.cs" />
+    <Compile Include="dataNeeds\misc\Interests.cs" />
+    <Compile Include="programComponents\FormConfig.cs" />
+    <Compile Include="programComponents\forumNeeds\VoteButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="programComponents\forumNeeds\Comment.cs" />
     <Compile Include="programComponents\forumNeeds\ForumManager.cs" />
+    <Compile Include="dataNeeds\unused\SessionLoginFormLogic.cs" />
+    <Compile Include="programComponents\forumNeeds\Iface\IVotable.cs" />
     <Compile Include="programComponents\loginNeeds\SessionLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="programComponents\loginNeeds\SessionLoginForm.Designer.cs">
       <DependentUpon>SessionLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="programComponents\NavigationHelper.cs" />
     <Compile Include="programComponents\profileNeeds\CurrentUser.cs" />
     <Compile Include="dataNeeds\unused\BinaryFileHandler.cs" />
     <Compile Include="dataNeeds\DataFetcher.cs" />
@@ -136,9 +145,6 @@
     <Compile Include="programComponents\loginNeeds\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="programComponents\forumNeeds\roundButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="programComponents\profileNeeds\UserProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,7 @@
     <Compile Include="programComponents\studyBuddyNeeds\studyBuddyForm.Designer.cs">
       <DependentUpon>studyBuddyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="programComponents\forumNeeds\SuccessfullyAddedCommentEventArgs.cs" />
     <EmbeddedResource Include="programComponents\forumNeeds\CreateProblem.resx">
       <DependentUpon>CreateProblem.cs</DependentUpon>
     </EmbeddedResource>
