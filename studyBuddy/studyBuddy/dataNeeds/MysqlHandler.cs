@@ -44,6 +44,7 @@ namespace studyBuddy.dataNeeds
         public bool ready { get; private set; } //= false;//^auto
         public string messageToOutterWorld = "";
         public string lastError = "";
+        public static object locker = new object();
         //private Data.MySqlClient a;
 
         private void Initialize()
@@ -93,6 +94,11 @@ namespace studyBuddy.dataNeeds
         {
             try
             {
+                //for(int i= 0; i< 20; i++)
+                //{
+                //    Task.Run(() => con.Open());
+                //}
+
                 if (con.State == System.Data.ConnectionState.Open)
                     return true;
                 con.Open();
@@ -134,13 +140,36 @@ namespace studyBuddy.dataNeeds
             //}
             //return opened;
 
-            while (true)
+            //while (true)
+            //{
+            //    if (!Program.ThreadSaysYes && Program.mainThreadId == Thread.CurrentThread.ManagedThreadId) //^thread fake lock
+            //        continue;
+            //    con.Close();
+            //    return OpenConnection();
+            //}
+
+            //Monitor.TryEnter(locker);
+            lock (locker)
             {
-                if (!Program.ThreadSaysYes && Program.mainThreadId == Thread.CurrentThread.ManagedThreadId) //^thread fake lock
-                    continue;
+                con.Close();
+            }
+
+            return OpenConnection();
+
+            try
+            {
                 con.Close();
                 return OpenConnection();
             }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                Monitor.Exit(locker);
+            }
+                
                 
         }
 

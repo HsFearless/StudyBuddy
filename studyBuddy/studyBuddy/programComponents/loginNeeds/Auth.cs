@@ -269,19 +269,23 @@ namespace studyBuddy.programComponents.loginNeeds
                 Console.WriteLine("thread is alive");
 
                 //Program._blockThread1.WaitOne();
-                Program.ThreadSaysYes = false;
-                Thread.Sleep(250);
+                    //Program.ThreadSaysYes = false;
+                    //Thread.Sleep(250);
                 //Program.ThreadSaysYes = false;
-                if (!IsThisTheLastSessionTimestamp(UDF))
+                lock(MysqlHandler.locker)
                 {
+                    if (!IsThisTheLastSessionTimestamp(UDF))
+                    {
 
-                    //Program._blockThread1.Set();
-                    Program.ThreadSaysYes = true;
-                    LogOut(throwNowException: false);
-                    return;
+                        //Program._blockThread1.Set();
+                        //Program.ThreadSaysYes = true;
+                        LogOut(throwNowException: false);
+                        return;
+                    }
                 }
-                Program.ThreadSaysYes = true;
-                Thread.Sleep(3000);
+                
+                    //Program.ThreadSaysYes = true;
+                    //Thread.Sleep(3000);
                 //Program._blockThread1.Set();
                 //System.Threading.Thread.Sleep(5000);
             }
