@@ -1,4 +1,4 @@
-﻿using StudyBuddyApp.Components;
+using StudyBuddyApp.Components;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,6 +7,7 @@ namespace StudyBuddyApp
 {
     public partial class App : Application
     {
+        public static string BaseImageUrl { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
         public static MasterDetailPage MasterDetailPage;
 
         [Obsolete]

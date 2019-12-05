@@ -11,6 +11,10 @@
 
   <ItemGroup>
     <PackageReference Include="LiveXAML" Version="2.1.73" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.3.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.3.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.3.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.3.0.33" />
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
@@ -42,6 +46,24 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Components\SlideOutBar\MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ForumBeta\TransactionHistoryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LogInSignUp\SimpleEmailEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LogInSignUp\SimpleLoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LogInSignUp\SimpleSignUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LogInSignUp\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>
