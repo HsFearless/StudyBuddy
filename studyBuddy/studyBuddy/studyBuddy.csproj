@@ -46,11 +46,23 @@
     <Reference Include="Syncfusion.Core.XForms, Version=17.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Xamarin.Core.17.3.0.33\lib\netstandard2.0\Syncfusion.Core.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.DataSource.Portable, Version=17.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Xamarin.DataSource.17.3.0.33\lib\netstandard2.0\Syncfusion.DataSource.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.Portable, Version=17.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Xamarin.GridCommon.17.3.0.33\lib\netstandard2.0\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Licensing, Version=17.3460.0.33, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Licensing.17.3.0.33\lib\net46\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfComboBox.XForms, Version=17.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Xamarin.SfComboBox.17.3.0.33\lib\netstandard2.0\Syncfusion.SfComboBox.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfListView.XForms, Version=17.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfListView.17.3.0.33\lib\netstandard2.0\Syncfusion.SfListView.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms, Version=17.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfRating.17.3.0.33\lib\netstandard2.0\Syncfusion.SfRating.XForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

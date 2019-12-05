@@ -15,6 +15,8 @@
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.3.0.33" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.3.0.33" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.3.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.3.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="17.3.0.33" />
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
@@ -50,6 +52,12 @@
     <EmbeddedResource Update="Themes\LightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ForumAlfa\FeedbackPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ForumAlfa\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ForumBeta\TransactionHistoryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -63,6 +71,12 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LogInSignUp\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ReviewTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
