@@ -76,15 +76,18 @@
                         FontFamily="{StaticResource Montserrat-Medium}"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource LabelStyle}"
-                        Text="Let's get to work"
-                        TextColor="{DynamicResource Gray-800}" />
+                        Text="Let's find you a buddy!"
+                        TextColor="#660066" />
 
-                    <!--  Entry to get email ID from user  -->
-                    <local:SimpleEmailEntry Grid.Row="2" Padding="0,24" />
+                    <local:SimpleEmailEntry Grid.Row="2"/>
+
+                    <StackLayout Grid.Row="4">
+                        <Label></Label>
+                    </StackLayout>
 
                     <!--  Entry to get password from user  -->
                     <border:SfBorder
-                        Grid.Row="3"
+                        Grid.Row="5"
                         BackgroundColor="{DynamicResource Gray-White}"
                         BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
                         Style="{StaticResource SfBorderStyle}">
@@ -92,71 +95,21 @@
                             x:Name="PasswordEntry"
                             IsPassword="True"
                             Placeholder="Password"
-                            PlaceholderColor="{DynamicResource Gray-700}"
+                            PlaceholderColor="#660066"
                             Style="{StaticResource EntryStyle}"
                             Text="{Binding Password}"
                             TextColor="{DynamicResource Gray-900}" />
                     </border:SfBorder>
 
-                    <!--  Forgot password link  -->
-                    <Label
-                        x:Name="ForgotPasswordLabel"
-                        Grid.Row="4"
-                        Margin="0,16"
-                        FontFamily="{StaticResource Montserrat-SemiBold}"
-                        FontSize="12"
-                        HorizontalOptions="End"
-                        Text="FORGOT PASSWORD?"
-                        TextColor="{DynamicResource Gray-800}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" CommandParameter="{x:Reference ForgotPasswordLabel}" />
-                        </Label.GestureRecognizers>
-                    </Label>
-
                     <!--  Login button  -->
                     <buttons:SfButton
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Margin="0,16"
                         Command="{Binding LoginCommand}"
                         Style="{StaticResource SfButtonStyle}"
+                        BackgroundColor="#660066"
+                        TextColor="White"
                         Text="LOG IN" />
-
-
-                    <Label
-                        Grid.Row="6"
-                        FontFamily="{StaticResource Montserrat-Medium}"
-                        HorizontalTextAlignment="Center"
-                        Style="{StaticResource LabelStyle}"
-                        Text="Or create an account using social media"
-                        TextColor="{DynamicResource Gray-800}" />
-
-                    <!--  Login through facebook account  -->
-                    <buttons:SfButton
-                        Grid.Row="7"
-                        Margin="0,16,0,16"
-                        BackgroundColor="{DynamicResource FacebookBlue}"
-                        Command="{Binding SocialMediaLoginCommand}"
-                        CornerRadius="20"
-                        HeightRequest="40">
-                        <buttons:SfButton.Content>
-                            <StackLayout
-                                HorizontalOptions="CenterAndExpand"
-                                Orientation="Horizontal"
-                                VerticalOptions="Center">
-                                <Label
-                                    FontFamily="{StaticResource FontIcons}"
-                                    FontSize="18"
-                                    Text="&#xe735;"
-                                    TextColor="{DynamicResource Gray-White}"
-                                    VerticalTextAlignment="Center" />
-                                <Label
-                                    FontFamily="{StaticResource Montserrat-Medium}"
-                                    FontSize="16"
-                                    Text="Login with Facebook"
-                                    TextColor="{DynamicResource Gray-White}" />
-                            </StackLayout>
-                        </buttons:SfButton.Content>
-                    </buttons:SfButton>
 
                 </Grid>
 
@@ -165,13 +118,6 @@
                     Orientation="Horizontal"
                     Spacing="1"
                     VerticalOptions="End">
-
-                    <StackLayout.Padding>
-                        <OnIdiom
-                            x:DataType="Thickness"
-                            Default="0, 48, 0, 0"
-                            Phone="0" />
-                    </StackLayout.Padding>
 
                     <Label
                         FontFamily="{StaticResource Montserrat-Medium}"
@@ -187,6 +133,8 @@
                         Command="{Binding SignUpCommand}"
                         CornerRadius="4"
                         Style="{StaticResource SfFlatButtonStyle}"
+                        BackgroundColor="#660066"
+                        TextColor="White"
                         Text="Sign Up" />
 
                 </StackLayout>
