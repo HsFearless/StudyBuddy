@@ -1,4 +1,5 @@
 using StudyBuddyApp.Components;
+using StudyBuddyApp.Views.LogInSignUp;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,7 +16,8 @@ namespace StudyBuddyApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new SimpleLoginPage();
+
 
         }
       

@@ -1,0 +1,19 @@
+Front end:
+	Log in / Sign up - Mantas
+	Profile - Mantas
+	Forum - Martynas
+	StudyBuddy - Martynas
+	Help & Settings - Mantas
+	Sign Out / Exit - Egidijus
+
+Back end:
+	Log in / Sign up - Egidijus
+	Profile - Martynas
+	Forum - Martynas
+		Data Fetcher - Egidijus
+		Discussion - Martynas
+		Up Vote - Egidijus
+	StudyBuddy - Martynas
+	Sign out / Exit - Egidijus
+		
+	
