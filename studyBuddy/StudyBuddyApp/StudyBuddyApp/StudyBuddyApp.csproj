@@ -58,9 +58,6 @@
     <EmbeddedResource Update="Views\ForumAlfa\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ForumBeta\TransactionHistoryPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\LogInSignUp\SimpleEmailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -79,5 +76,9 @@
     <EmbeddedResource Update="Views\Templates\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
 </Project>
