@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.Entity;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,6 +29,7 @@ namespace studyBuddy
         [STAThread]
         static void Main()
         {
+            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

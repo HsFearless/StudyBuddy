@@ -41,7 +41,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 MessageBox.Show($"error:  {Auth.error.Message()}");
             }
             var mysql = new dataNeeds.MysqlHandler();
-            mysql.TestSelectAllUsers();
+            //mysql.TestSelectAllUsers();
             MessageBox.Show(mysql.messageToOutterWorld + mysql.lastError);
 
             //MessageBox.Show(passwordHasher.newSalt());

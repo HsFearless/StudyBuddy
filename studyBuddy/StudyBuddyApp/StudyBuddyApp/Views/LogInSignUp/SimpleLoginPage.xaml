@@ -94,7 +94,7 @@
                         <control:BorderlessEntry
                             x:Name="PasswordEntry"
                             IsPassword="True"
-                            Placeholder="Password"
+                            Placeholder="{Binding problem.name}"
                             PlaceholderColor="#660066"
                             Style="{StaticResource EntryStyle}"
                             Text="{Binding Password}"
