@@ -3,6 +3,7 @@ using StudyBuddyApp.Views.LogInSignUp;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using StudyBuddyApp.Views.ForumAlfa;
 
 namespace StudyBuddyApp
 {
@@ -16,7 +17,7 @@ namespace StudyBuddyApp
         {
             InitializeComponent();
 
-            MainPage = new SimpleLoginPage();
+            MainPage = new FeedbackPage();
 
 
         }

@@ -24,6 +24,7 @@ namespace StudyBuddyApp.Components
             if (item == null)
                 return;
 
+            //if(item.TargetType == Forum) 
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
 

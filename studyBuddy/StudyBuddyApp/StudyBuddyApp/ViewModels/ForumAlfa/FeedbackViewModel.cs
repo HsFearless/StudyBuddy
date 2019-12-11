@@ -18,6 +18,20 @@ namespace StudyBuddyApp.ViewModels.ForumAlfa
         public FeedbackViewModel()
         {
             var randomNum = new Random(0123456789);
+            var a = new DataHandler1();
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            Console.WriteLine("!!!!!!!!!");
+            a.GetForum();
             this.FeedbackInfo = new ObservableCollection<Review>
             {
                 new Review
@@ -27,11 +41,14 @@ namespace StudyBuddyApp.ViewModels.ForumAlfa
                     ReviewedDate = DateTime.Now.AddDays(randomNum.Next(0, 1000)),
                     CustomerImage = App.BaseImageUrl + "ProfileImage" + randomNum.Next(1, 19) + ".png",
                     Rating = randomNum.Next(0, 5),
-                    Images = new List<string>
+                   /* Images = new List<string>
                     {
                         App.BaseImageUrl + "ReviewShoe.png",
                         App.BaseImageUrl + "ReviewShoe.png"
-                    }
+                    }*/
+                },
+                new Review{
+
                 },
                 new Review
                 {
