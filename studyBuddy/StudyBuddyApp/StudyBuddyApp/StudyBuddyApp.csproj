@@ -10,9 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="LiveXAML" Version="2.1.73" />
-    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.18" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.3.0.33" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.3.0.33" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.3.0.33" />
@@ -83,5 +81,11 @@
 
   <ItemGroup>
     <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 8.0.18\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

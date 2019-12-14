@@ -109,10 +109,6 @@ C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBud
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.exe
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\studyBuddy.pdb
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Data.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Data.EntityFramework.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySQL.Data.EntityFrameworkCore.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Web.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Buttons.XForms.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Cards.XForms.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Core.XForms.dll
@@ -130,10 +126,6 @@ C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBud
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Renci.SshNet.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Data.xml
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Data.EntityFramework.xml
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Web.xml
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Buttons.XForms.xml
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Cards.XForms.xml
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Core.XForms.xml
@@ -171,10 +163,6 @@ C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBud
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Bcl.HashCode.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.EntityFrameworkCore.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.EntityFrameworkCore.Relational.Design.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -187,8 +175,6 @@ C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBud
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Logging.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Options.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Primitives.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySql.Data.Entity.EF6.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\MySqlConnector.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Newtonsoft.Json.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Pomelo.JsonObject.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\SshNet.Security.Cryptography.dll
@@ -206,10 +192,6 @@ C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBud
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Bcl.HashCode.xml
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.EntityFrameworkCore.xml
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.EntityFrameworkCore.Relational.Design.xml
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Configuration.xml

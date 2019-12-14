@@ -1,4 +1,4 @@
-﻿using MySql.Data.Entity;
+﻿//using MySql.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -29,7 +29,7 @@ namespace studyBuddy
         [STAThread]
         static void Main()
         {
-            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
+            //DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
