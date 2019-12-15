@@ -121,16 +121,14 @@ namespace studyBuddy.programComponents.profileNeeds
             
             if (userProfileUpForTeachingCheckbox.Checked)
             {
-                UserDataPusher.UpdateIfUserUpForTeaching(1);
                 DataFetcherDA dfDA = new DataFetcherDA(handler);
-                //dfDA.UpdateIfUserIsUpForTeaching(1);
+                dfDA.UpdateIfUserIsUpForTeaching(1);
                 CurrentUser.upForTeaching = 1;
             }
             else
             {
-                 UserDataPusher.UpdateIfUserUpForTeaching(0);
                 DataFetcherDA dfDA = new DataFetcherDA(handler);
-                //dfDA.UpdateIfUserIsUpForTeaching(0);
+                dfDA.UpdateIfUserIsUpForTeaching(0);
                 CurrentUser.upForTeaching = 0;
             }
                 

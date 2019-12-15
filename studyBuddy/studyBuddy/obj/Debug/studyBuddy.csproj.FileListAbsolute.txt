@@ -233,7 +233,6 @@ D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.O
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Primitives.dll
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\Newtonsoft.Json.dll
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\Pomelo.JsonObject.dll
-D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\SshNet.Security.Cryptography.dll
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Buttons.XForms.dll
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Cards.XForms.dll
 D:\unioProg\studyBuddyTOP\studyBuddy\studyBuddy\bin\Debug\Syncfusion.Core.XForms.dll

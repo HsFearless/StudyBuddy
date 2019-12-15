@@ -22,7 +22,7 @@ namespace studyBuddy
         public static List<string> interests;
         public static int upForTeaching;
 
-        public static void SetUserInfo(string username, int id, int karma, int rating, String profileInfo, List<string> interests)
+        public static void SetUserInfo(string username, int id, int karma, int rating, String profileInfo, int upForTeaching, List<string> interests)
         {
             name = username;
             CurrentUser.id = id;

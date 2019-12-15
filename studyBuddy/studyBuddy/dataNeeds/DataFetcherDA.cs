@@ -38,9 +38,8 @@ namespace studyBuddy
                 var karma = (int)row[3];
                 var rating = (int)row[4];
                 var profileInfo = (string)row[6];
-                var upForTeaching = row[7];
-
-                CurrentUser.SetUserInfo(username, IDCurrent, karma, rating, profileInfo, interests);
+                var upForTeaching = (int)row[7];
+                CurrentUser.SetUserInfo(username, IDCurrent, karma, rating, profileInfo, upForTeaching ,interests);
             }
             con.Close();
             da.Dispose();
