@@ -87,7 +87,13 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
 
         private void StudyBuddyForm_Load(object sender, EventArgs e)
         {
+            string[] userNames = DataFetcher.GetUserNamesAsArray();  //^Aggregate
+            var users = userNames.Aggregate((a, b) => a + ", " + b);
+            allUsersBox.Text = users;
 
+            var usersToRecommend = userNames.Take(6).Skip(4);
+            var recommendUsers = usersToRecommend.Aggregate((a, b) => a + System.Environment.NewLine + b);
+            recommendedUsersBox.Text = recommendUsers;
         }
 
         private void StudyBuddyForm_FormClosing(object sender, FormClosingEventArgs e)

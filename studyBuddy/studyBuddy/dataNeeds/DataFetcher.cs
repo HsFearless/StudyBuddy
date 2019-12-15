@@ -116,6 +116,24 @@ namespace studyBuddy.dataNeeds
             return toReturn;
         }//static function
 
+        public static string[] GetUserNamesAsArray()
+        {
+            var rows = staticSource.Select("ID, username "
+                + "FROM " + MysqlHandler.tblUsers);
+            var toReturn = new string[rows.Count];
+            var index = 0;
+            foreach (string[] col in rows)
+            {
+                string name = col[1];
+                toReturn[index] = name;
+                index++;
+               
+            }//foreach
+
+            return toReturn;
+        }
+
+
         public static void GetInterestsOfCurrentUserAsList(List<string> result, int userID)
         {
             //get ids of all interests of current user
