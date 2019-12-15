@@ -257,6 +257,7 @@ namespace studyBuddy.dataNeeds
                     row = new string[result.FieldCount];
                     for (item = 0; item < result.FieldCount; item++)
                     {
+                        //System.Windows.Forms.MessageBox.Show(result[item] + "");
                         row[item] = result[item] + "";
                     }
                     toReturn.Add(row);
@@ -285,6 +286,12 @@ namespace studyBuddy.dataNeeds
                     for (int i = 0; i < result.FieldCount; i++)
                         toReturn[i] = result[i] + "";
                     //break after 1st iteration
+                        //string temp = "";
+                        //for (int ii = 0; ii < result.FieldCount; ii++)
+                        //    temp = temp + '\n' + toReturn[ii];
+                        //System.Windows.Forms.MessageBox.Show("query: " + fullSql + "\nresult: " + temp) ;
+                    
+
                     result.Close();
                     con.Close();
                     return toReturn;
@@ -303,8 +310,8 @@ namespace studyBuddy.dataNeeds
             if (escapePair != null)
                 fullSql = EscapeString(fullSql, escapePair);
             cmdCon = new MySqlCommand(fullSql, this.con);
-            //int affectedRows = cmdCon.ExecuteNonQuery();
-            bool queryOk = true;// (affectedRows > 0);
+            int affectedRows = cmdCon.ExecuteNonQuery();
+            bool queryOk =  (affectedRows > 0);
 
             con.Close();
             return queryOk; //probably?

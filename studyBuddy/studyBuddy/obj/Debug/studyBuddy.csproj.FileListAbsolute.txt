@@ -177,7 +177,6 @@ C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBud
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Microsoft.Extensions.Primitives.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Newtonsoft.Json.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\Pomelo.JsonObject.dll
-C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\SshNet.Security.Cryptography.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\System.Buffers.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\System.Collections.Immutable.dll
 C:\Users\RED-ACER-LAPTOP\Source\Repos\HsFearless\StuddyBuddy\studyBuddy\studyBuddy\bin\Debug\System.ComponentModel.Annotations.dll
