@@ -338,6 +338,8 @@
     <Compile Include="MyEF2\UserInterests.cs" />
     <Compile Include="MyEF2\Users.cs" />
     <Compile Include="programComponents\FormConfig.cs" />
+    <Compile Include="programComponents\forumNeeds\ForumPostExtracted.cs" />
+    <Compile Include="programComponents\forumNeeds\SubjectKnowsPosts.cs" />
     <Compile Include="programComponents\forumNeeds\VoteButton.cs">
       <SubType>Component</SubType>
     </Compile>

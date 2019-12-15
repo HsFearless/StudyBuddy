@@ -10,11 +10,22 @@ namespace studyBuddy.programComponents.forumNeeds
     public class ForumPost : IComparable<ForumPost>, IVotable
     {
         public long id { get; private set; }
-        public string name;
-        public string description;
-        public int subjectId;
-        public int ownerId;
-        public int votes;
+        public string name { get; set; }
+        public string description { get; set; }
+        public int subjectId { get; set; }
+        private Subjects.Subject _subject;
+        public Subjects.Subject subject { get
+            {
+                return _subject;
+            }
+            set
+            {
+                _subject = value;
+                subjectId = value.id;
+            }
+        }
+        public int ownerId { get; set; }
+        public int votes { get; set; }
         private CommentsManager backingComments = null;
         public CommentsManager comments { get
             {
@@ -25,7 +36,7 @@ namespace studyBuddy.programComponents.forumNeeds
             set { this.backingComments = value; }
         }
 
-        public ForumPost(long id, int subjectId, string name="", string description = "", int ownerId=0, int votes=0)
+        public ForumPost(long id, int subjectId, string name = "", string description = "", int ownerId = 0, int votes = 0)
         {
             this.id = id;
             this.name = name;
