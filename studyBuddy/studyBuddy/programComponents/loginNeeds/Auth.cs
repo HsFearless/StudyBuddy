@@ -107,14 +107,16 @@ namespace studyBuddy.programComponents.loginNeeds
             //find user in db with same id and set CurrentUser's fields
             void findUser()
             {
-                for (var i = 0; i < users.Count; i++)
+                /*for (var i = 0; i < users.Count; i++)
                 {
                     if (id == users[i].id)
                     {
                         CurrentUser.SetUserInfo(users[i].name, users[i].id, users[i].karma, users[i].rating, users[i].profileInfo, interests);
                         break;
                     }
-                }
+                }*/
+                DataFetcherDA dfDA = new DataFetcherDA(UDF.source);
+                dfDA.SetUser(id, interests);     
             }
         }
 

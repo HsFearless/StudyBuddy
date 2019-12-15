@@ -148,6 +148,11 @@ namespace studyBuddy.dataNeeds
             messageToOutterWorld = this.con.ToString();
         }
 
+        public MySqlConnection GetMySqlConnection()
+        {
+            return this.con;
+        }
+
         private bool OpenConnection()
         {
             try

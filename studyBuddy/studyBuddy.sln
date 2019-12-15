@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyBuddyApp.Android", "St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyBuddyApp", "StudyBuddyApp\StudyBuddyApp\StudyBuddyApp.csproj", "{9D5FD713-58A3-4EE1-BFFE-AB3A24244585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7th_Dummy_For_EF_Core_Tools_In_Xamarin", "7th_Dummy_For_EF_Core_Tools_In_Xamarin\7th_Dummy_For_EF_Core_Tools_In_Xamarin.csproj", "{4A087584-0B17-41F1-8580-52E7318E848C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7th_Dummy_For_EF_Core_Tools_In_Xamarin", "7th_Dummy_For_EF_Core_Tools_In_Xamarin\7th_Dummy_For_EF_Core_Tools_In_Xamarin.csproj", "{4A087584-0B17-41F1-8580-52E7318E848C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

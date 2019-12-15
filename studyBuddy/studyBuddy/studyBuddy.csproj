@@ -323,6 +323,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataNeeds\DataFetcherDA.cs" />
     <Compile Include="dataNeeds\DataCrusher.cs" />
     <Compile Include="dataNeeds\DataPusher.cs" />
     <Compile Include="exceptions\ConfirmationNotReceived.cs" />

@@ -22,7 +22,7 @@ namespace StudyBuddyApp
         public void GetForum()
         {
           
-            SqlDataAdapter da = new SqlDataAdapter();
+            MySqlDataAdapter da = new MySqlDataAdapter();
             cn.Open();
             //SqlCommand command = new SqlCommand("ID, name, subjectID, description, ownerID, votes FROM ForumPosts", cn);
            // da.SelectCommand = command;
