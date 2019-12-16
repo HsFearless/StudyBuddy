@@ -37,7 +37,7 @@ namespace StudyBuddyApp.MyModelsc
                    // replace with your Server Version and Type
                    // .ServerVersion(new ServerVersion(new Version(8, 0, 18), ServerType.MySql)));
                   // );
-                optionsBuilder.UseMySQL("remotemysql.com;database=cDKryxhEGc;user=cDKryxhEGc;password=rw0faFJV0H;");
+                optionsBuilder.UseMySQL("server=remotemysql.com;port=3306;database=cDKryxhEGc;user=cDKryxhEGc;password=rw0faFJV0H;");
             }
         }
 

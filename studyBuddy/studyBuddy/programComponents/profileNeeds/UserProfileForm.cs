@@ -138,5 +138,10 @@ namespace studyBuddy.programComponents.profileNeeds
         {
            // FormConfig.FormClosingEventHandler(this);
         }
+
+        private void UserProfilePicture_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

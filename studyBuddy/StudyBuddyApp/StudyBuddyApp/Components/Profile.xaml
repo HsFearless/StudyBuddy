@@ -6,10 +6,55 @@
              mc:Ignorable="d"
              x:Class="StudyBuddyApp.Components.Profile">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+      <StackLayout>
+
+        <Label HorizontalOptions="CenterAndExpand" Margin="20">
+          <Label.FormattedText>
+            <FormattedString >
+              <Span Text="Name: " FontAttributes="Bold" FontSize="20"/>
+              <Span Text=" Vardas Pavarde" FontSize="20" />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+            
+
+            <Label HorizontalOptions="CenterAndExpand">
+          <Label.FormattedText>
+            <FormattedString >
+              <Span Text="Karma points: " FontAttributes="Bold" FontSize="18"/>
+              <Span Text="69" FontSize="15" />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+
+          <Label Text="Up for teaching:" HorizontalOptions="Center" Margin="0,20,0,0"/>
+          <Switch IsToggled="false"  HorizontalOptions="Center"/>
+        
+        <Label Text="Interests:" HorizontalOptions="Center" Margin="0,20,0,0"/>
+            
+          <ListView x:Name="EmployeeView"
+            ItemsSource="{Binding Employees}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding DisplayName}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Picker x:Name="picker"
+      Title="Select interest to add"
+      TitleColor="Red">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Diskrečioji matematika</x:String>
+                        <x:String>IT ir komunikacijos įgūdžia</x:String>
+                        <x:String>Kompiuterių architektūra</x:String>
+                        <x:String>Procedūrinis programavimas</x:String>
+                        <x:String>Užsienio kalba (anglų) I/II</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Button Text="Add interest" Margin="100,10,100,0"/>
+          
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

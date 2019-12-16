@@ -75,6 +75,7 @@ namespace studyBuddy.dataNeeds
                 var daba = db;
                 var uze = db.Users;
                 var were = uze.Where(use => use.Id > 0);
+        
                 var forst = were.First();
                 Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 return "----";

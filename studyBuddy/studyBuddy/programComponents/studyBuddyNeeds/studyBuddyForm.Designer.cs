@@ -46,6 +46,7 @@
             this.allUsersBox = new System.Windows.Forms.TextBox();
             this.recommendedBudiesLabel = new System.Windows.Forms.Label();
             this.recommendedUsersBox = new System.Windows.Forms.TextBox();
+            this.availableBuddiesBox = new System.Windows.Forms.TextBox();
             this.leftToolBar.SuspendLayout();
             this.StudyBuddySearchBuddyGroup.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,7 @@
             this.leftToolBar.Controls.Add(this.toolBarProfileButton, 0, 0);
             this.leftToolBar.Controls.Add(this.logoLabel, 0, 3);
             this.leftToolBar.Location = new System.Drawing.Point(-4, -4);
-            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.leftToolBar.Margin = new System.Windows.Forms.Padding(4);
             this.leftToolBar.Name = "leftToolBar";
             this.leftToolBar.RowCount = 7;
             this.leftToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -172,7 +173,7 @@
             // StudyBuddyFindBuddyButton
             // 
             this.StudyBuddyFindBuddyButton.Location = new System.Drawing.Point(83, 76);
-            this.StudyBuddyFindBuddyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StudyBuddyFindBuddyButton.Margin = new System.Windows.Forms.Padding(4);
             this.StudyBuddyFindBuddyButton.Name = "StudyBuddyFindBuddyButton";
             this.StudyBuddyFindBuddyButton.Size = new System.Drawing.Size(164, 37);
             this.StudyBuddyFindBuddyButton.TabIndex = 5;
@@ -186,9 +187,9 @@
             this.StudyBuddySearchBuddyGroup.Controls.Add(this.StudyBuddyFindBuddyButton);
             this.StudyBuddySearchBuddyGroup.Controls.Add(this.studyBuddyIwantToLearnLabel);
             this.StudyBuddySearchBuddyGroup.Location = new System.Drawing.Point(500, 127);
-            this.StudyBuddySearchBuddyGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StudyBuddySearchBuddyGroup.Margin = new System.Windows.Forms.Padding(4);
             this.StudyBuddySearchBuddyGroup.Name = "StudyBuddySearchBuddyGroup";
-            this.StudyBuddySearchBuddyGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StudyBuddySearchBuddyGroup.Padding = new System.Windows.Forms.Padding(4);
             this.StudyBuddySearchBuddyGroup.Size = new System.Drawing.Size(325, 130);
             this.StudyBuddySearchBuddyGroup.TabIndex = 6;
             this.StudyBuddySearchBuddyGroup.TabStop = false;
@@ -269,12 +270,25 @@
             this.recommendedUsersBox.ReadOnly = true;
             this.recommendedUsersBox.Size = new System.Drawing.Size(260, 109);
             this.recommendedUsersBox.TabIndex = 18;
+            this.recommendedUsersBox.TextChanged += new System.EventHandler(this.RecommendedUsersBox_TextChanged);
+            // 
+            // availableBuddiesBox
+            // 
+            this.availableBuddiesBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.availableBuddiesBox.Location = new System.Drawing.Point(866, 124);
+            this.availableBuddiesBox.Margin = new System.Windows.Forms.Padding(4);
+            this.availableBuddiesBox.Multiline = true;
+            this.availableBuddiesBox.Name = "availableBuddiesBox";
+            this.availableBuddiesBox.ReadOnly = true;
+            this.availableBuddiesBox.Size = new System.Drawing.Size(260, 303);
+            this.availableBuddiesBox.TabIndex = 19;
             // 
             // studyBuddyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 572);
+            this.Controls.Add(this.availableBuddiesBox);
             this.Controls.Add(this.recommendedUsersBox);
             this.Controls.Add(this.recommendedBudiesLabel);
             this.Controls.Add(this.allUsersBox);
@@ -283,7 +297,7 @@
             this.Controls.Add(this.availableBuddiesLabel);
             this.Controls.Add(this.StudyBuddySearchBuddyGroup);
             this.Controls.Add(this.leftToolBar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1189, 607);
             this.Name = "studyBuddyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -319,5 +333,6 @@
         private System.Windows.Forms.TextBox allUsersBox;
         private System.Windows.Forms.Label recommendedBudiesLabel;
         private System.Windows.Forms.TextBox recommendedUsersBox;
+        private System.Windows.Forms.TextBox availableBuddiesBox;
     }
 }
