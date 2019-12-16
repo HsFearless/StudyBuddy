@@ -32,11 +32,12 @@ namespace StudyBuddyApp.MyModelsc
             if (!optionsBuilder.IsConfigured)
             {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("server=remotemysql.com;port=3306;database=cDKryxhEGc;username=cDKryxhEGc;password=rw0faFJV0H"
+                //optionsBuilder.UseMySQL("server=remotemysql.com;port=3306;database=cDKryxhEGc;username=cDKryxhEGc;password=rw0faFJV0H;"
                    //mySqlOptions => mySqlOptions
                    // replace with your Server Version and Type
                    // .ServerVersion(new ServerVersion(new Version(8, 0, 18), ServerType.MySql)));
-                   );
+                  // );
+                optionsBuilder.UseMySQL("remotemysql.com;database=cDKryxhEGc;user=cDKryxhEGc;password=rw0faFJV0H;");
             }
         }
 
@@ -211,8 +212,8 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.LoggedInHash)
                     .HasColumnName("loggedInHash")
-                    .HasColumnType("char(28)")
-                    .HasComment("hashed using device identifier");
+                    .HasColumnType("char(28)");
+                    //.HasComment("hashed using device identifier");
                 //.HasCharSet("ascii")
                 //.HasCollation("ascii_general_ci");
 
