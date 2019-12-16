@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StudyBuddyApp.MyModels
+namespace StudyBuddyApp.MyModelsc
 {
     public partial class ForumVotes
     {
