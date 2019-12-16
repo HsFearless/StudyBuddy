@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,8 @@ namespace studyBuddy.dataNeeds
         public FileHandler(string fileName)
         {
             this.fileName = fileName;
-            directory = @"C:\Users\Public\StuddyBuddy\";
+            //directory = @"C:\Users\Public\StuddyBuddy\";
+            directory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             fullPath = System.IO.Path.Combine(directory, this.fileName);
             CheckPrepareDir();
 
