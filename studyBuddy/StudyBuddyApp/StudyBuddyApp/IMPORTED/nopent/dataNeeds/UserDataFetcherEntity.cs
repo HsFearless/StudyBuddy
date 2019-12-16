@@ -70,6 +70,10 @@ namespace studyBuddy.dataNeeds
             Console.WriteLine("I am in get salt by email");
             using(var db = new MyDbContext())
             {
+
+
+               
+
                 Users user = db.Users.Where(use => use.Email.ToLower() == mail.Address.ToLower())
                     .DefaultIfEmpty(null).FirstOrDefault();
                 if (user == null)
