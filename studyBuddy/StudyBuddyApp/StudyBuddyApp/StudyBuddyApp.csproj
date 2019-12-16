@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IMPORTED\nopen%2527t\**" />
+    <EmbeddedResource Remove="IMPORTED\nopen%2527t\**" />
+    <None Remove="IMPORTED\nopen%2527t\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="LiveXAML" Version="2.1.73" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0" />
@@ -21,6 +27,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.3.0.34" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="17.3.0.34" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>

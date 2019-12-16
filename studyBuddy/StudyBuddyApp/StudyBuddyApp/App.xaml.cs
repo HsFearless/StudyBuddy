@@ -17,7 +17,7 @@ namespace StudyBuddyApp
         {
             InitializeComponent();
 
-            MainPage = new FeedbackPage();
+            MainPage = new SimpleLoginPage();
 
 
         }

@@ -13,6 +13,7 @@ namespace StudyBuddyApp.Views.LogInSignUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SimpleLoginPage
     {
+        string text = "adsadasdasdsadasdas";
 
         //Problem problem;
         /// <summary>
@@ -24,7 +25,9 @@ namespace StudyBuddyApp.Views.LogInSignUp
             {
                 problem = db.ForumPosts.Single(p => p.ID == 1);
             }*/
+            text = "textas";
             InitializeComponent();
+            text = "textas2222";
             
         }
     }

@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 
 namespace StudyBuddyApp.MyModelsc
 {
-    public partial class DbScaffoldedContext : DbContext
+    public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        public DbScaffoldedContext()
+        public DbContext()
         {
         }
 
-        public DbScaffoldedContext(DbContextOptions<DbScaffoldedContext> options)
+        public DbContext(DbContextOptions<DbContext> options)
             : base(options)
         {
         }
@@ -31,7 +31,7 @@ namespace StudyBuddyApp.MyModelsc
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseMySQL("server=remotemysql.com;port=3306;database=cDKryxhEGc;username=cDKryxhEGc;password=rw0faFJV0H"
                    //mySqlOptions => mySqlOptions
                    // replace with your Server Version and Type
