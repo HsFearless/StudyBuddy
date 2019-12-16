@@ -70,10 +70,28 @@ namespace studyBuddy.dataNeeds
             Console.WriteLine("I am in get salt by email");
             using(var db = new MyDbContext())
             {
+                try
+                {
+                var daba = db;
+                var uze = db.Users;
+                var were = uze.Where(use => use.Id > 0);
+                var forst = were.First();
+                Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                return "----";
 
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.ToString());
 
-               
-
+                }
+                return "+++++";
                 Users user = db.Users.Where(use => use.Email.ToLower() == mail.Address.ToLower())
                     .DefaultIfEmpty(null).FirstOrDefault();
                 if (user == null)
