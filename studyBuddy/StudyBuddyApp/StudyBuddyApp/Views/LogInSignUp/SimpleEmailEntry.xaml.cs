@@ -10,6 +10,15 @@ namespace StudyBuddyApp.Views.LogInSignUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SimpleEmailEntry
     {
+        public string EmailText { get
+            {
+                return EmailEntry.Text;
+            }
+            set
+            {
+                EmailEntry.Text = value;
+            }
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleEmailEntry" /> class.
         /// </summary>

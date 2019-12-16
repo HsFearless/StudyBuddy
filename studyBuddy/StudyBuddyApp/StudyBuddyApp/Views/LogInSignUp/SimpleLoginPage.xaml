@@ -79,7 +79,7 @@
                         Text="Let's find you a buddy!"
                         TextColor="#660066" />
 
-                    <local:SimpleEmailEntry Grid.Row="2"/>
+                    <local:SimpleEmailEntry Grid.Row="2" x:Name="EmailEntry"/> <!--is this email? -->
 
                     <StackLayout Grid.Row="4">
                         <Label></Label>
@@ -103,6 +103,7 @@
 
                     <!--  Login button  -->
                     <buttons:SfButton
+                        x:Name="LoginButton"
                         Grid.Row="6"
                         Margin="0,16"
                         Command="{Binding LoginCommand}"

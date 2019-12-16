@@ -17,7 +17,7 @@ namespace studyBuddy.programComponents.loginNeeds
         public static Error error = new Error(ErrorCode.UNKNOWN);
         private static PasswordHasher timestampHasher = new PasswordHasher(derivedLength: 20);
         public static string messageToOutterWorld =""; //#delete me
-        public static bool LogIn(UserDataFetcher UDF, string username, string password)
+        public static bool LogIn(IUserDataFetcher UDF, string username, string password)
         {
 
             string salt;
@@ -84,7 +84,7 @@ namespace studyBuddy.programComponents.loginNeeds
             return false;
         }//logIn
 
-        private static void SetCurrentUser(string username, UserDataFetcher UDF)
+        private static void SetCurrentUser(string username, IUserDataFetcher UDF)
         {
             List<User> users = DataFetcher.GetUsersAsList();
             int id = UDF.GetId();
@@ -118,7 +118,7 @@ namespace studyBuddy.programComponents.loginNeeds
             }
         }
 
-        private static bool SetSession(UserDataFetcher UDF)
+        private static bool SetSession(IUserDataFetcher UDF)
         {
             /* Session. unix in file.
              * we will hash it.
@@ -153,7 +153,7 @@ namespace studyBuddy.programComponents.loginNeeds
             return true;
         }
 
-        private static bool SetIsLoggedIn(UserDataFetcher UDF, bool IKnowThatThisFunctionMustGoAfterSetCurrentUser=true)
+        private static bool SetIsLoggedIn(IUserDataFetcher UDF, bool IKnowThatThisFunctionMustGoAfterSetCurrentUser=true)
         {
             if (!InputValidator.ValidateId(UDF.GetId()))
                 return error.SetErrorAndReturnFalse(ErrorCode.USER_NOT_FOUND);
@@ -166,11 +166,11 @@ namespace studyBuddy.programComponents.loginNeeds
 
         }
 
-        public static bool LogInUsingSession(/*ProgressBar progresas*/)
+        public static bool LogInUsingSession(/*ProgressBar progresas*/IUserDataFetcher UDF)
         {
             //is timestamp not old?
             //progresas.Value = 0;
-            long lastUnix = UserDataFetcher.GetLastLoginTimestamp();
+            long lastUnix = UDF.GetLastLoginTimestamp();
             if (lastUnix.IsTimeStampOlderThan(hours: 1, minutes: 30, seconds: 0))//^extension
                 //# username nuplaukia, jei sesija mirsta.
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION
@@ -184,7 +184,7 @@ namespace studyBuddy.programComponents.loginNeeds
             //does user exist?
             //progresas.Value = 20;
 
-            UserDataFetcher UDF = new UserDataFetcher();
+            //UserDataFetcher UDF = new UserDataFetcher();
             string lastUser;
             IsUserDataValid(UDF, out lastUser);
 
@@ -205,7 +205,7 @@ namespace studyBuddy.programComponents.loginNeeds
             return true;
         }
 
-        public static bool Register(UserDataFetcher UDF, string username, string email, string password, string passwordRepeat)
+        public static bool Register(IUserDataFetcher UDF, string username, string email, string password, string passwordRepeat)
         {
             error.no = ErrorCode.OK;
             //valid username password
@@ -251,47 +251,47 @@ namespace studyBuddy.programComponents.loginNeeds
             }
         }
 
-        public static void DoCheckSessionOverTakenLoopForThread()
-        {
-            Console.WriteLine("Thread checking id");
-            if (!InputValidator.ValidateId(CurrentUser.id))
-                throw new exceptions.InvalidSession(false);
+        //public static void DoCheckSessionOverTakenLoopForThread()
+        //{
+        //    Console.WriteLine("Thread checking id");
+        //    if (!InputValidator.ValidateId(CurrentUser.id))
+        //        throw new exceptions.InvalidSession(false);
 
 
-            Console.WriteLine("Thread checking last user string");
-            UserDataFetcher UDF = new UserDataFetcher();
-            string lastUser;
-            if (!IsUserDataValid(UDF, out lastUser))
-                return;
+        //    Console.WriteLine("Thread checking last user string");
+        //    UserDataFetcher UDF = new UserDataFetcher();
+        //    string lastUser;
+        //    if (!IsUserDataValid(UDF, out lastUser))
+        //        return;
 
-            while (true)
-            { // for thread  //^thread
-                Console.WriteLine("thread is alive");
+        //    while (true)
+        //    { // for thread  //^thread
+        //        Console.WriteLine("thread is alive");
 
-                //Program._blockThread1.WaitOne();
-                    //Program.ThreadSaysYes = false;
-                    //Thread.Sleep(250);
-                //Program.ThreadSaysYes = false;
-                lock(MysqlHandler.locker)
-                {
-                    if (!IsThisTheLastSessionTimestamp(UDF))
-                    {
+        //        //Program._blockThread1.WaitOne();
+        //            //Program.ThreadSaysYes = false;
+        //            //Thread.Sleep(250);
+        //        //Program.ThreadSaysYes = false;
+        //        lock(MysqlHandler.locker)
+        //        {
+        //            if (!IsThisTheLastSessionTimestamp(UDF))
+        //            {
 
-                        //Program._blockThread1.Set();
-                        //Program.ThreadSaysYes = true;
-                        LogOut(throwNowException: false);
-                        return;
-                    }
-                }
+        //                //Program._blockThread1.Set();
+        //                //Program.ThreadSaysYes = true;
+        //                LogOut(throwNowException: false);
+        //                return;
+        //            }
+        //        }
                 
-                    //Program.ThreadSaysYes = true;
-                    //Thread.Sleep(3000);
-                //Program._blockThread1.Set();
-                //System.Threading.Thread.Sleep(5000);
-            }
-        }
+        //            //Program.ThreadSaysYes = true;
+        //            //Thread.Sleep(3000);
+        //        //Program._blockThread1.Set();
+        //        //System.Threading.Thread.Sleep(5000);
+        //    }
+        //}
 
-        private static bool IsThisTheLastSessionTimestamp(UserDataFetcher UDF, long lastUnix = -1)
+        private static bool IsThisTheLastSessionTimestamp(IUserDataFetcher UDF, long lastUnix = -1)
         {
             lastUnix = (lastUnix == -1) ? UserDataFetcher.GetLastLoginTimestamp() : lastUnix;
             string hashedUnix = timestampHasher.Hash(lastUnix.ToString(), DataFetcher.GetDeviceIdentifier());
@@ -300,7 +300,7 @@ namespace studyBuddy.programComponents.loginNeeds
             return true;
         } 
 
-        private static bool IsUserDataValid(UserDataFetcher UDF, out string lastUser)
+        private static bool IsUserDataValid(IUserDataFetcher UDF, out string lastUser)
         {
             
             lastUser = UserDataFetcher.GetLastUsedUsername();

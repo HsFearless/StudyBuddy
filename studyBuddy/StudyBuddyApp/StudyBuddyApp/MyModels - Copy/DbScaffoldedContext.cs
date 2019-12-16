@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 
 namespace StudyBuddyApp.MyModelsc
 {
-    public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
+    public partial class MyDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        public DbContext()
+        public MyDbContext()
         {
         }
 
-        public DbContext(DbContextOptions<DbContext> options)
+        public MyDbContext(DbContextOptions<MyDbContext> options)
             : base(options)
         {
         }

@@ -36,7 +36,7 @@ namespace studyBuddy.dataNeeds
                 $" WHERE ID = '{CurrentUser.id}'");
         }
 
-        static internal void UpdateUserSession(UserDataFetcher UDF, long unix, string hashedUnix)
+        static internal void UpdateUserSession(IUserDataFetcher UDF, long unix, string hashedUnix)
         {
             int userId = UDF.GetId();
             if (!InputValidator.ValidateId(userId))

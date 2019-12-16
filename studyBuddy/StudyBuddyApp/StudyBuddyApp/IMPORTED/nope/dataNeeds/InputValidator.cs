@@ -77,21 +77,21 @@ namespace studyBuddy.dataNeeds
             return true;
         }
 
-        static internal bool CheckPasswordMatch(UserDataFetcher UDF, string password)
+        static internal bool CheckPasswordMatch(IUserDataFetcher UDF, string password)
         {
             if (UDF.IsCorrectPassword(password))
                 return true;
             return false;
         }
 
-        static public bool CheckEmailNotTaken(UserDataFetcher UDF, System.Net.Mail.MailAddress mail)
+        static public bool CheckEmailNotTaken(IUserDataFetcher UDF, System.Net.Mail.MailAddress mail)
         {
             if (UDF.IsEmailTaken(mail))
                 return false;
             return true;
         }
 
-        static public bool CheckUsernameNotTaken(UserDataFetcher UDF, string username)
+        static public bool CheckUsernameNotTaken(IUserDataFetcher UDF, string username)
         {
             if (UDF.IsUsernameTaken(username))
                 return false;
