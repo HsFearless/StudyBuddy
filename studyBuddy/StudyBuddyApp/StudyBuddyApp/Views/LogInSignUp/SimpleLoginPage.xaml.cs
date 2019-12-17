@@ -123,9 +123,9 @@ namespace StudyBuddyApp.Views.LogInSignUp
             //test += "\npassword text: " + PasswordEntry.Text;
             DisplayAlert("Alert", "You have been alerteeeed\n" + test, "OK");
             /*if (Auth.LogIn(UDF, mail, pass))
-                EmailEntry.EmailText = "penis";
+                EmailEntry.EmailText = "senis";
             else
-                EmailEntry.EmailText = "kurwa, nepaejo tau login";*/
+                EmailEntry.EmailText = "deja, nepaejo tau login";*/
             int i = 690 * 690;
             while (i > 0)
             {

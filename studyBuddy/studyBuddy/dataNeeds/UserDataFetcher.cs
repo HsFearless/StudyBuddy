@@ -14,7 +14,8 @@ namespace studyBuddy.dataNeeds
             using (var db = new studybuddyDBEntities() )
             {
                 var user = db.Users.Where(use => use.username.ToLower() == username.ToLower()).DefaultIfEmpty(null).FirstOrDefault();
-                
+                if (user == null)
+                    return "";
                 userId = user.ID;
                 return user.salt;
 
@@ -32,7 +33,8 @@ namespace studyBuddy.dataNeeds
             using(var db = new studybuddyDBEntities())
             {
                 var user = db.Users.Where(use => use.email.ToLower() == mail.Address.ToLower()).DefaultIfEmpty(null).FirstOrDefault();
-                
+                if (user == null)
+                    return "";
                 userId = user.ID;
                 return user.salt;
 
@@ -50,7 +52,8 @@ namespace studyBuddy.dataNeeds
             using (var db = new studybuddyDBEntities())
             {
                 var user = db.Users.Where(use => (use.password == password && use.ID == userId)).DefaultIfEmpty(null).FirstOrDefault();
-
+                if (user == null)
+                    return false;
                 return true;
             }
             /*
@@ -66,6 +69,8 @@ namespace studyBuddy.dataNeeds
             using(var db = new studybuddyDBEntities())
             {
                 var user = db.Users.Where(use => use.email.ToLower() == mail.Address.ToLower()).DefaultIfEmpty(null).FirstOrDefault();
+                if (user == null)
+                    return false;
                 return true;
             }
             /*
@@ -81,9 +86,11 @@ namespace studyBuddy.dataNeeds
             using (var db = new studybuddyDBEntities())
             {
                 var user = db.Users.Where(use => use.username == use.username).DefaultIfEmpty(null).FirstOrDefault();
-
-                return false;
+                if (user == null)
+                    return false;
+                return true;
             }
+
             string[] row = source.SelectOneRow("id FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}' ;");
             if (row.Length == 0)
@@ -106,10 +113,10 @@ namespace studyBuddy.dataNeeds
             using(var db = new studybuddyDBEntities())
             {
                 var user = db.Users.Where(use => use.username == username).DefaultIfEmpty(null).FirstOrDefault();
-
+                int toReturn = (user == null) ? 0 : user.ID;
                 if (saveId)
-                    userId = user.ID;
-                return user.ID ;
+                    userId = toReturn;
+                return toReturn ;
             }
             /*
             int toReturn = 0;
@@ -127,10 +134,10 @@ namespace studyBuddy.dataNeeds
             using (var db = new studybuddyDBEntities())
             {
                 var user = db.Users.Where(use => use.email.ToLower() == mail.Address).DefaultIfEmpty(null).FirstOrDefault();
-
+                int toReturn = (user == null) ? 0 : user.ID;
                 if (saveId)
-                    userId = user.ID;
-                return user.ID;
+                    userId = toReturn;
+                return toReturn;
             }
                 /*int toReturn = 0;
             string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
@@ -188,7 +195,8 @@ namespace studyBuddy.dataNeeds
             using(var db = new studybuddyDBEntities())
             {
                 var user = db.Users.Where(use => (use.loggedInHash == hashedUnix && use.ID == userId)).DefaultIfEmpty().FirstOrDefault();
-
+                if (user == null)
+                    return false;
                 return true;
             }
             //when calling this method make sure that you have called

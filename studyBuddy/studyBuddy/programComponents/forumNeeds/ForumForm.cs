@@ -33,7 +33,7 @@ namespace studyBuddy.programComponents.forumNeeds
             {
                 foreach (var forumRow in subject.forumPosts)
                 {
-                    problemsGridView.Rows.Add(0, forumRow.name, subject.name, forumRow.description, forumRow.id);
+                    problemsGridView.Rows.Add(forumRow.votes, forumRow.name, subject.name, forumRow.description, forumRow.id);
                     CommentsManager.AddNewFile(forumRow.name + ".txt");
                 }
             }
