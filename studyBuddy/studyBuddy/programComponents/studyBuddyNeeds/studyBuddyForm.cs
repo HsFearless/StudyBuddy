@@ -96,14 +96,14 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
             recommendedUsersBox.Text = recommendUsers;
 
             var sb = new System.Text.StringBuilder();
-            var something = DataFetcher.GetUsersAsList();
-            var somethingGroup =
-                       from some in something
-                       group some by some.upForTeaching;
-            foreach (var group in somethingGroup)
+            var userList = DataFetcher.GetUsersAsList();
+            var groupedUsers =
+                       from userFromList in userList
+                       group userFromList by userFromList.upForTeaching;
+            foreach (var groupedUser in groupedUsers)
             {
-                Console.WriteLine(group.Key == 1 ? sb.AppendLine("Up for teaching: ") : sb.AppendLine(Environment.NewLine + Environment.NewLine + "Not up for teaching: "));
-                foreach (var user in group)
+                Console.WriteLine(groupedUser.Key == 1 ? sb.AppendLine("Up for teaching: ") : sb.AppendLine(Environment.NewLine + Environment.NewLine + "Not up for teaching: "));
+                foreach (var user in groupedUser)
                 {
                     sb.Append(user.name + " ");
                 }

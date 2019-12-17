@@ -53,7 +53,7 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Button Text="Add interest" Margin="100,10,100,0"/>
+            <Button Text="Add interest" Margin="100,10,100,0" Clicked="onAddInterestClicked"/>
           
         </StackLayout>
     </ContentPage.Content>

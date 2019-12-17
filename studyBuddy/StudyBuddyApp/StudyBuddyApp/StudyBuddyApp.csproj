@@ -19,6 +19,7 @@
     <PackageReference Include="LiveXAML" Version="2.1.73" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.2" />
+    <PackageReference Include="MySql.Data" Version="8.0.18" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.18" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.3.0.34" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.3.0.34" />

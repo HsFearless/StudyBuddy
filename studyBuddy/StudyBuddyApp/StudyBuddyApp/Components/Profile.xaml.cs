@@ -34,5 +34,11 @@ namespace StudyBuddyApp.Components
             employees.Add(new Employee { DisplayName = "Sheri Spruce" });
             employees.Add(new Employee { DisplayName = "Burt Indybrick" });
         }
+
+        void onAddInterestClicked(object sender, EventArgs e)
+        {
+            DataHandler1 dh = new DataHandler1();
+            dh.GetForum();
+        }
     }
 }
