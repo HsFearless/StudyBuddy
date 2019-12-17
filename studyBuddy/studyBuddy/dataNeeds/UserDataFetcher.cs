@@ -11,44 +11,79 @@ namespace studyBuddy.dataNeeds
 
         public string GetSalt(string username)
         {
-            string[] row = source.SelectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
+            using (var db = new studybuddyDBEntities() )
+            {
+                var user = db.Users.Where(use => use.username.ToLower() == username.ToLower()).DefaultIfEmpty(null).FirstOrDefault();
+                
+                userId = user.ID;
+                return user.salt;
+
+            }
+            /*string[] row = source.SelectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}' ;");
             if (row.Length == 0)
                 return "";
             userId = Convert.ToInt32(row[1]);
-            return row[0];
+            return row[0];*/
         }
 
         public string GetSalt(System.Net.Mail.MailAddress mail)
         {
-            string[] row = source.SelectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
-                $" WHERE email = '{mail.Address}' ;");
-            if (row.Length == 0)
-                return "";
-            userId = Convert.ToInt32(row[1]);
-            return row[0];
+            using(var db = new studybuddyDBEntities())
+            {
+                var user = db.Users.Where(use => use.email.ToLower() == mail.Address.ToLower()).DefaultIfEmpty(null).FirstOrDefault();
+                
+                userId = user.ID;
+                return user.salt;
+
+            }
+            //string[] row = source.SelectOneRow("salt,id FROM " + MysqlHandler.tblUsers +
+            //    $" WHERE email = '{mail.Address}' ;");
+            //if (row.Length == 0)
+            //    return "";
+            //userId = Convert.ToInt32(row[1]);
+            //return row[0];
         }
 
         internal bool IsCorrectPassword(string password)
         {
+            using (var db = new studybuddyDBEntities())
+            {
+                var user = db.Users.Where(use => (use.password == password && use.ID == userId)).DefaultIfEmpty(null).FirstOrDefault();
+
+                return true;
+            }
+            /*
             string[] row = source.SelectOneRow("karma FROM " + MysqlHandler.tblUsers +
                 $" WHERE id = '{this.userId}' AND password = '{password}' ;");
             if (row.Length != 1)
                 return false;
-            return true;
+            return true;*/
         }
 
         internal bool IsEmailTaken(System.Net.Mail.MailAddress mail)
         {
+            using(var db = new studybuddyDBEntities())
+            {
+                var user = db.Users.Where(use => use.email.ToLower() == mail.Address.ToLower()).DefaultIfEmpty(null).FirstOrDefault();
+                return true;
+            }
+            /*
             string[] row = source.SelectOneRow("id FROM " + MysqlHandler.tblUsers +
                 $" WHERE email = '{mail.Address}' ;");
             if (row.Length == 0)
                 return false;
-            return true;
+            return true;*/
         }
 
         internal bool IsUsernameTaken(string username)
         {
+            using (var db = new studybuddyDBEntities())
+            {
+                var user = db.Users.Where(use => use.username == use.username).DefaultIfEmpty(null).FirstOrDefault();
+
+                return false;
+            }
             string[] row = source.SelectOneRow("id FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}' ;");
             if (row.Length == 0)
@@ -68,6 +103,15 @@ namespace studyBuddy.dataNeeds
 
         public int GetId(string username, bool saveId = true)
         {
+            using(var db = new studybuddyDBEntities())
+            {
+                var user = db.Users.Where(use => use.username == username).DefaultIfEmpty(null).FirstOrDefault();
+
+                if (saveId)
+                    userId = user.ID;
+                return user.ID ;
+            }
+            /*
             int toReturn = 0;
             string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
                 $" WHERE username = '{username}';");
@@ -75,19 +119,27 @@ namespace studyBuddy.dataNeeds
                 toReturn = Convert.ToInt32(row[0]);
             if (saveId)
                 userId = toReturn;
-            return toReturn;
+            return toReturn;*/
         }
 
         public int GetId(System.Net.Mail.MailAddress mail, bool saveId = true)
         {
-            int toReturn = 0;
+            using (var db = new studybuddyDBEntities())
+            {
+                var user = db.Users.Where(use => use.email.ToLower() == mail.Address).DefaultIfEmpty(null).FirstOrDefault();
+
+                if (saveId)
+                    userId = user.ID;
+                return user.ID;
+            }
+                /*int toReturn = 0;
             string[] row = source.SelectOneRow("ID FROM " + MysqlHandler.tblUsers +
                $" WHERE email = '{mail.Address}';");
             if (row.Length == 1)
                 toReturn = Convert.ToInt32(row[0]);
             if (saveId)
                 userId = toReturn;
-            return toReturn;
+            return toReturn;*/
         }
 
         public int GetIdByUsernameOrEmail(string usernameOrEmail, bool saveId = true)
@@ -133,16 +185,21 @@ namespace studyBuddy.dataNeeds
 
         public bool IsThisLastLoggedInTimestampHash(string hashedUnix)
         {
+            using(var db = new studybuddyDBEntities())
+            {
+                var user = db.Users.Where(use => (use.loggedInHash == hashedUnix && use.ID == userId)).DefaultIfEmpty().FirstOrDefault();
+
+                return true;
+            }
             //when calling this method make sure that you have called
             //getId(argument) method before. 
-            if (this.userId == 0)
-                return false; //#possible throw new illegalMethodCall exception
+            /*
 
             var row = staticSource.SelectOneRow("rating FROM " + MysqlHandler.tblUsers +
                 $" WHERE loggedInHash = '{hashedUnix}' AND ID = '{this.userId}'");
             if (row.Length < 1)
                 return false;
-            return true;
+            return true;*/
         }
 
     }

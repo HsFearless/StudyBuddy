@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudyBuddyApp.MyModelsc;
+using studyBuddy.MyEF2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace studyBuddy.dataNeeds
 {
@@ -68,23 +69,23 @@ namespace studyBuddy.dataNeeds
             //userId = Convert.ToInt32(row[1]);
             //return row[0];
             Console.WriteLine("I am in get salt by email");
-            using(var db = new MyDbContext())
+            using (var db = new studybuddyDBEntities())
             {
                 try
                 {
-                    foreach(var uzze in db.Users)
+                    foreach (var uzze in db.Users)
                     {
-                        Console.WriteLine(uzze.Username);
+                        Console.WriteLine(uzze.username);
                     }
-                var daba = db;
-                var uze = db.Users;
-                var were = uze.Where(use => use.Id > 0);
-                var forst = were.First();
-                Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                return "----";
+                    var daba = db;
+                    var uze = db.Users;
+                    var were = uze.Where(use => use.ID > 0);
+                    var forst = were.First();
+                    Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    return "----";
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                     Console.WriteLine(ex.ToString());
@@ -96,13 +97,13 @@ namespace studyBuddy.dataNeeds
 
                 }
                 return "+++++";
-                Users user = db.Users.Where(use => use.Email.ToLower() == mail.Address.ToLower())
+                var user = db.Users.Where(use => use.email.ToLower() == mail.Address.ToLower())
                     .DefaultIfEmpty(null).FirstOrDefault();
                 if (user == null)
                     return "";
 
-                userId = user.Id;
-                return user.Salt;
+                userId = user.ID;
+                return user.salt;
             }
         }
 

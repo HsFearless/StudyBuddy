@@ -7,6 +7,8 @@ using studyBuddy.programComponents.loginNeeds;
 using studyBuddy.dataNeeds;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using System.Collections.Generic;
+using StudyBuddyApp.MyModelsc;
 
 namespace StudyBuddyApp.Views.LogInSignUp
 {
@@ -34,13 +36,60 @@ namespace StudyBuddyApp.Views.LogInSignUp
 
             InitializeComponent();
             text = "textas2222";
-            PasswordEntry.Text = "penis";
+            PasswordEntry.Text = "senis";
             PasswordEntry.IsPassword = false;
             UDF = new UserDataFetcherEntity();
             LoginButton.Clicked += (sender, e) => OnClickLogIn();
 
             System.Console.WriteLine("I am in somewhere");
             //System.Console.ReadKey();
+            using (var db = new MyModelsc.MyDbContext())
+            {
+
+                if (db.Users.Count() == 0)
+                {
+                    var uzeriai = new List<Users>();
+                    uzeriai.Add(
+                        new Users()
+                        {
+                            Email = "user@user.user",
+                            Username = "user",
+                            Id = 1,
+                            Password = "MPHLqx0yd/wDufaA9lt3eWtSxITHRSafptB5JRYkLKo+UKExr6vJ",
+                            Salt = "jyOvDxA6FpyQsTWM",
+                            Karma = 81,
+                            ProfileInfo = "asdff huehuehuehue",
+                            Rating = -1,
+                            UpForTeaching = 1,
+                            LoggedInHash = "uCz8upbdZ31kfL4modQcGwAT5oo =",
+                            LastActivity = 1576438551
+
+
+                        }
+                        );
+                    uzeriai.Add(
+                        new Users()
+                        {
+                            Email = "user04@user.user",
+                            Username = "user04",
+                            Id = 2,
+                            Password = "ToC6pFqY2SK7+Gog2zspDcTcbpeUXCAZn3t7TEGo2ZQkaD9jx+31",
+                            Salt = "KJQ4cRT/DDxJqCyr",
+                            Karma = 81,
+                            ProfileInfo = "asdff huehuehuehue",
+                            Rating = -1,
+                            UpForTeaching = 1,
+                            LoggedInHash = "uCz8upbdZ31kfL4modQcGwAT5oo =",
+                            LastActivity = 1571837767
+
+                        }
+                        );
+                    db.Users.AddRange(uzeriai);
+                    db.SaveChanges();
+                }
+
+            }
+
 
 
         }

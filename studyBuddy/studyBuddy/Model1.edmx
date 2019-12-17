@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="studybuddyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ForumComments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="forumID" Type="bigint" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="time" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForumPosts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ownerID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="subjectID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="votes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForumVotes">
+          <Key>
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="forumID" />
+          </Key>
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="forumID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Interests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInterests">
+          <Key>
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="interestID" />
+          </Key>
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="interestID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="password" Type="char" MaxLength="52" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="salt" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="karma" Type="int" Nullable="false" />
+          <Property Name="rating" Type="int" Nullable="false" />
+          <Property Name="lastActivity" Type="int" Nullable="false" />
+          <Property Name="loggedInHash" Type="char" MaxLength="28" />
+          <Property Name="profileInfo" Type="varchar" MaxLength="255" />
+          <Property Name="upForTeaching" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="studybuddyDBModelStoreContainer">
+          <EntitySet Name="ForumComments" EntityType="Self.ForumComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForumPosts" EntityType="Self.ForumPosts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForumVotes" EntityType="Self.ForumVotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interests" EntityType="Self.Interests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInterests" EntityType="Self.UserInterests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="studybuddyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ForumComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="forumID" Type="Int64" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForumPost">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subjectID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="votes" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForumVote">
+          <Key>
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="forumID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="forumID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Interest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInterest">
+          <Key>
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="interestID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="interestID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="52" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="salt" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="karma" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="Int32" Nullable="false" />
+          <Property Name="lastActivity" Type="Int32" Nullable="false" />
+          <Property Name="loggedInHash" Type="String" MaxLength="28" FixedLength="true" Unicode="false" />
+          <Property Name="profileInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="upForTeaching" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="studybuddyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ForumComments" EntityType="Self.ForumComment" />
+          <EntitySet Name="ForumPosts" EntityType="Self.ForumPost" />
+          <EntitySet Name="ForumVotes" EntityType="Self.ForumVote" />
+          <EntitySet Name="Interests" EntityType="Self.Interest" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="UserInterests" EntityType="Self.UserInterest" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="studybuddyDBModelStoreContainer" CdmEntityContainer="studybuddyDBEntities">
+          <EntitySetMapping Name="ForumComments">
+            <EntityTypeMapping TypeName="studybuddyDBModel.ForumComment">
+              <MappingFragment StoreEntitySet="ForumComments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="forumID" ColumnName="forumID" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="time" ColumnName="time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForumPosts">
+            <EntityTypeMapping TypeName="studybuddyDBModel.ForumPost">
+              <MappingFragment StoreEntitySet="ForumPosts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="subjectID" ColumnName="subjectID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="votes" ColumnName="votes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForumVotes">
+            <EntityTypeMapping TypeName="studybuddyDBModel.ForumVote">
+              <MappingFragment StoreEntitySet="ForumVotes">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="forumID" ColumnName="forumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interests">
+            <EntityTypeMapping TypeName="studybuddyDBModel.Interest">
+              <MappingFragment StoreEntitySet="Interests">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="studybuddyDBModel.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInterests">
+            <EntityTypeMapping TypeName="studybuddyDBModel.UserInterest">
+              <MappingFragment StoreEntitySet="UserInterests">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="interestID" ColumnName="interestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="studybuddyDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
+                <ScalarProperty Name="karma" ColumnName="karma" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="lastActivity" ColumnName="lastActivity" />
+                <ScalarProperty Name="loggedInHash" ColumnName="loggedInHash" />
+                <ScalarProperty Name="profileInfo" ColumnName="profileInfo" />
+                <ScalarProperty Name="upForTeaching" ColumnName="upForTeaching" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -4,13 +4,36 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using System.Linq;
 //using Pomelo.EntityFrameworkCore.MySql.Storage.Internal;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+//using EntityFrameworkWithXamarin;
+//using EntityFrameworkWithXamarin.Core;
+using System.Collections.Generic;
+using StudyBuddyApp.MyModelsc;
 
 namespace StudyBuddyApp.MyModelsc
 {
+
+    /*public class PostDatabaseHelper<T> where T : MyDbContext
+    {
+
+        protected MyDbContext CrateContext()
+        {
+            MyDbContext postDatabaseContext = (T)Activator.CreateInstance(typeof(T));
+            postDatabaseContext.Database.EnsureCreated();
+            postDatabaseContext.Database.Migrate();
+            return postDatabaseContext;
+        }
+    }*/
+
+
     public partial class MyDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
         public MyDbContext()
         {
+            this.Database.EnsureCreated();
+            this.Database.Migrate();
         }
 
         public MyDbContext(DbContextOptions<MyDbContext> options)
@@ -31,15 +54,21 @@ namespace StudyBuddyApp.MyModelsc
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 //optionsBuilder.UseMySQL("server=remotemysql.com;port=3306;database=cDKryxhEGc;username=cDKryxhEGc;password=rw0faFJV0H;"
-                   //mySqlOptions => mySqlOptions
-                   // replace with your Server Version and Type
-                   // .ServerVersion(new ServerVersion(new Version(8, 0, 18), ServerType.MySql)));
-                  // );
-                optionsBuilder.UseMySQL("remotemysql.com;database=cDKryxhEGc;user=cDKryxhEGc;password=rw0faFJV0H;");
+                //mySqlOptions => mySqlOptions
+                // replace with your Server Version and Type
+                // .ServerVersion(new ServerVersion(new Version(8, 0, 18), ServerType.MySql)));
+                // );
+                //optionsBuilder.UseMySQL("server=remotemysql.com;port=3306;database=cDKryxhEGc;user=cDKryxhEGc;password=rw0faFJV0H;");
+                //optionsBuilder.UseSqlServer("Server=tcp:studybuddytop.database.windows.net,1433;Initial Catalog=studybuddyDB;Persist Security Info=False;User ID=studybuddy;Password=rw0faFJV0H;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                //optionsBuilder.UseSqlServer("Server = studybuddytop.database.windows.net; Database = studybuddyDB; User Id = myUsername;
+                //Password = myPassword;"); 
+                var databasePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "myData.db");
+                optionsBuilder.UseSqlite($"Filename={databasePath}");
             }
         }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,11 +79,11 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.UserId)
                     .HasColumnName("userID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.CommentId)
                     .HasColumnName("commentID")
-                    .HasColumnType("bigint(18)");
+                    .HasColumnType("bigint");
             });
 
             modelBuilder.Entity<ForumComments>(entity =>
@@ -64,26 +93,26 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .HasColumnType("bigint(18)");
+                    .HasColumnType("bigint");
 
                 entity.Property(e => e.Comment)
                     .IsRequired()
                     .HasColumnName("comment")
-                    .HasColumnType("text");
+                    .HasColumnType("varchar(8000)");
                     //.HasCharSet("utf8")
                     //.HasCollation("utf8_unicode_ci");
 
                 entity.Property(e => e.ForumId)
                     .HasColumnName("forumID")
-                    .HasColumnType("bigint(17)");
+                    .HasColumnType("bigint");
 
                 entity.Property(e => e.Time)
                     .HasColumnName("time")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.UserId)
                     .HasColumnName("userID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
             });
 
             modelBuilder.Entity<ForumPosts>(entity =>
@@ -93,12 +122,12 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .HasColumnType("bigint(17)");
+                    .HasColumnType("bigint");
 
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasColumnName("description")
-                    .HasColumnType("text");
+                    .HasColumnType("varchar(8000)");
                 //.HasCharSet("utf8mb4")
                 //.HasCollation("utf8mb4_bin");
 
@@ -111,15 +140,15 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.OwnerId)
                     .HasColumnName("ownerID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.SubjectId)
                     .HasColumnName("subjectID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Votes)
                     .HasColumnName("votes")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
             });
 
             modelBuilder.Entity<ForumVotes>(entity =>
@@ -129,18 +158,18 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.UserId)
                     .HasColumnName("userID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.ForumId)
                     .HasColumnName("forumID")
-                    .HasColumnType("bigint(17)");
+                    .HasColumnType("bigint");
             });
 
             modelBuilder.Entity<Interests>(entity =>
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -154,7 +183,7 @@ namespace StudyBuddyApp.MyModelsc
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -171,11 +200,11 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.UserId)
                     .HasColumnName("userID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.InterestId)
                     .HasColumnName("interestID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
             });
 
             modelBuilder.Entity<Users>(entity =>
@@ -193,7 +222,7 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .HasColumnType("int(9)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -204,11 +233,11 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.Karma)
                     .HasColumnName("karma")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.LastActivity)
                     .HasColumnName("lastActivity")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.LoggedInHash)
                     .HasColumnName("loggedInHash")
@@ -232,7 +261,7 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.Rating)
                     .HasColumnName("rating")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Salt)
                     .IsRequired()
@@ -243,7 +272,7 @@ namespace StudyBuddyApp.MyModelsc
 
                 entity.Property(e => e.UpForTeaching)
                     .HasColumnName("upForTeaching")
-                    .HasColumnType("tinyint(5)");
+                    .HasColumnType("tinyint");
 
                 entity.Property(e => e.Username)
                     .IsRequired()

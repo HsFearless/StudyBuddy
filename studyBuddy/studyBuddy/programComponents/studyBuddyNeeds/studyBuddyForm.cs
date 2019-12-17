@@ -40,7 +40,7 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
             availableBuddiesLabel.Visible = true;
             availableBuddiesFlowLayoutPanel.Controls.Clear(); //clearing what was in panel before
 
-            List<User>  users = DataFetcher.GetUsersAsList();
+            List<profileNeeds.User>  users = DataFetcher.GetUsersAsList();
             var userInterests = DataFetcher.GetUserInterestsAsStringList();
 
 

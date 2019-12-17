@@ -65,6 +65,10 @@ namespace studyBuddy.programComponents.loginNeeds
         private void LabelTest_Click(object sender, EventArgs e)
         {
             labelTest.Text = DataFetcher.GetServerTimeStamp().ToString();
+            var UDF = new UserDataFetcherEntity();
+            var mail = new System.Net.Mail.MailAddress("user@user.user");
+            string text = UDF.GetSalt(mail);
+            MessageBox.Show(text);
         }
     }
 }

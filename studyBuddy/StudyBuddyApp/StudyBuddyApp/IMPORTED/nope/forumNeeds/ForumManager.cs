@@ -66,9 +66,10 @@ namespace studyBuddy.programComponents.forumNeeds
                     return error.SetErrorAndReturnFalse(ErrorCode.PUSH_ERROR);
                 return true;
             }
-            catch(MySql.Data.MySqlClient.MySqlException myEx)
+            catch(Exception myEx) //MySql.Data.MySqlClient.MySqlException myEx)
             { //^exception handling
-                if (myEx.Number == (uint)MySql.Data.MySqlClient.MySqlErrorCode.DuplicateKeyEntry)
+                //if (myEx.Number == (uint)MySql.Data.MySqlClient.MySqlErrorCode.DuplicateKeyEntry)
+                if(1 < 2)
                     throw new exceptions.DoneBefore();
                 else
                     throw myEx;
