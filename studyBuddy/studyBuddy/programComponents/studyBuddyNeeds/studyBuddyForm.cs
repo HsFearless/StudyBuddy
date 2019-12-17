@@ -94,6 +94,21 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
             var usersToRecommend = userNames.Take(6).Skip(4);
             var recommendUsers = usersToRecommend.Aggregate((a, b) => a + System.Environment.NewLine + b);
             recommendedUsersBox.Text = recommendUsers;
+
+            var sb = new System.Text.StringBuilder();
+            var userList = DataFetcher.GetUsersAsList();
+            var groupedUsers =
+                       from userFromList in userList
+                       group userFromList by userFromList.upForTeaching;
+            foreach (var groupedUser in groupedUsers)
+            {
+                Console.WriteLine(groupedUser.Key == 1 ? sb.AppendLine("Up for teaching: ") : sb.AppendLine(Environment.NewLine + Environment.NewLine + "Not up for teaching: "));
+                foreach (var user in groupedUser)
+                {
+                    sb.Append(user.name + " ");
+                }
+            }
+            availableBuddiesBox.Text = sb.ToString();
         }
 
         private void StudyBuddyForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -101,6 +116,11 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
         }
 
         private void ToolBarHelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RecommendedUsersBox_TextChanged(object sender, EventArgs e)
         {
 
         }

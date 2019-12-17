@@ -7,9 +7,21 @@
              x:Class="StudyBuddyApp.Components.FindBuddy">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+          <Label Text="Select subject" Margin="150,30,100,0"/>
+          <Picker x:Name="picker"
+      Title="Select"
+      TitleColor="Red">
+            <Picker.ItemsSource>
+              <x:Array Type="{x:Type x:String}">
+                        <x:String>Diskrečioji matematika</x:String>
+                        <x:String>IT ir komunikacijos įgūdžia</x:String>
+                        <x:String>Kompiuterių architektūra</x:String>
+                        <x:String>Procedūrinis programavimas</x:String>
+                        <x:String>Užsienio kalba (anglų) I/II</x:String>
+                    </x:Array>
+            </Picker.ItemsSource>
+          </Picker>
+          <Button Text="Find buddy" Margin="100,10,100,0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

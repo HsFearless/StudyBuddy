@@ -34,7 +34,7 @@ namespace StudyBuddyApp.Components
                 MenuItems = new ObservableCollection<MainPageMasterMenuItem>(new[]
                 {
                     new MainPageMasterMenuItem { Id = 0, Title = "Profile", TargetType = typeof(Profile)},
-                    new MainPageMasterMenuItem { Id = 1, Title = "Forums", TargetType = typeof(Views.ForumAlfa.FeedbackPage)},
+                    new MainPageMasterMenuItem { Id = 1, Title = "Forums", TargetType = typeof(Forum)},
                     new MainPageMasterMenuItem { Id = 2, Title = "Find Buddy", TargetType = typeof(FindBuddy)},
                     new MainPageMasterMenuItem { Id = 3, Title = "Help & Settings", TargetType = typeof(HelpAndSettings)},
                     new MainPageMasterMenuItem { Id = 4, Title = "Sign Out", TargetType = typeof(SignOut)},
