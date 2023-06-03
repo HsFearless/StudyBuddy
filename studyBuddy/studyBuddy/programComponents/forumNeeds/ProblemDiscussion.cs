@@ -34,7 +34,7 @@ namespace studyBuddy.programComponents.forumNeeds
             this.upvoteButton.Name = "upvoteButton";
             this.upvoteButton.Location = new System.Drawing.Point(7, 39);
             this.upvoteButton.Click += (o,e) => UpdateVotesLabel(); //^lambda
-            this.votesGroupBox.Controls.Add(this.upvoteButton); //^events standard
+            this.votesGroupBox.Controls.Add(this.upvoteButton); //^events custom
             comments = new CommentsManager(forumPost, commentsPanel);
             comments.SuccessfullyAddedCommentEvent += SuccessfullyAddedCommentEventHandler;
             

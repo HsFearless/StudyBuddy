@@ -28,41 +28,20 @@ namespace studyBuddy.programComponents.forumNeeds
 
         private void ForumForm_Load(object sender, EventArgs e)
         {
-            var forumContent = subjects.GroupJoin(forum, //^query //^groupjoin
-                su => su.id,
-                fo => fo.subjectId,
-                (su, fo) => new
-                {
-                    su.name,
-                    forumPosts = fo
-                });
+            var forumContent = forum.GetPostsBySubjects();
             foreach (var subject in forumContent)
             {
                 foreach (var forumRow in subject.forumPosts)
                 {
-                    problemsGridView.Rows.Add(0, forumRow.name, subject.name, forumRow.description, forumRow.id);
+                    problemsGridView.Rows.Add(forumRow.votes, forumRow.name, subject.name, forumRow.description, forumRow.id);
                     CommentsManager.AddNewFile(forumRow.name + ".txt");
                 }
             }
-
-            //problemsGridView.Rows.Add("Lietuviu", "Foreign language", "Kas tas yr, renesansas???");
-            //CommentsManager.AddNewFile("Lietuviu.txt");
 
             foreach (var subject in subjects)
             {
                 filterSubjectsComboBox.Items.Add(subject);
             }
-            //var forumContent = forum.GroupJoin(this.subjects, //change to users
-            //    forumRow => forumRow.subjectId,
-            //    subj => subj.id,
-            //    (forumRow, subj) => new
-            //    {
-            //        forumRow.name,
-            //        subject = subj,
-            //        forumRow.description
-            //        //subj.name,
-            //        //forumRow.description
-            //    }) ;
 
         }
 
@@ -138,28 +117,12 @@ namespace studyBuddy.programComponents.forumNeeds
         {
             if (filterSubjectsComboBox.SelectedIndex < 0)
                 return;
-            int selectedInd = ((Subjects.Subject)filterSubjectsComboBox.SelectedItem).id;
-            //filtruoti
-            var matchedForumContent = forum.Where(
-                fo => fo.subjectId == selectedInd
-                );
-                
-            var forumContent = matchedForumContent.Join(subjects, //^query
-                 fo => fo.subjectId,
-                 su => su.id,
-                 (fo, su) => new
-                 {
-                     fo.id,
-                     fo.name,
-                     subject = su.name,
-                     fo.description
-                 });
+            Subjects.Subject subject = (Subjects.Subject)filterSubjectsComboBox.SelectedItem;
+            var forumContent = forum.GetPostsWhereSubjectIs(subject);
 
             problemsGridView.Rows.Clear();
-
             foreach (var forumRow in forumContent)
             {
-
                 problemsGridView.Rows.Add(forumRow.name, forumRow.subject, forumRow.description);
                 CommentsManager.AddNewFile(forumRow.name + ".txt");
             }
@@ -171,20 +134,7 @@ namespace studyBuddy.programComponents.forumNeeds
             string text = textBoxSearch.Text;
             //filtruoti
 
-            var matchedForumContent = forum.Where(
-                fo => fo.description.Contains(text)
-                );
-
-            var forumContent = matchedForumContent.Join(subjects, //^query
-                 fo => fo.subjectId,
-                 su => su.id,
-                 (fo, su) => new
-                 {
-                     fo.id,
-                     fo.name,
-                     subject = su.name,
-                     fo.description
-                 });
+            var forumContent = forum.GetPostsWhereContains(text);
 
             problemsGridView.Rows.Clear();
 

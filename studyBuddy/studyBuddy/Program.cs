@@ -1,5 +1,7 @@
-﻿using System;
+﻿//using MySql.Data.Entity;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,21 +19,22 @@ namespace studyBuddy
 
 
             //^thread
-        private static Thread SessionCheckerThread = null;
-        private static bool threadCreated = false;
-        public static int mainThreadId;
-        public static bool ThreadSaysYes = true;
+            //private static Thread SessionCheckerThread = null;
+            //private static bool threadCreated = false;
+            //public static int mainThreadId;
+            //public static bool ThreadSaysYes = true;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            //DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            mainThreadId = Thread.CurrentThread.ManagedThreadId;
+                //mainThreadId = Thread.CurrentThread.ManagedThreadId;
             //_blockThread2.Set();
 
             //session login attempt
@@ -47,7 +50,7 @@ namespace studyBuddy
 
                 try
                 {
-                    threadCreated = false;
+                        //threadCreated = false;
                     Console.WriteLine("tryBlock");
 
 
@@ -79,8 +82,8 @@ namespace studyBuddy
                 }
                 catch (studyBuddy.exceptions.InvalidSession exis) //^exception
                 {
-                    if (threadCreated)
-                        SessionCheckerThread.Abort();
+                        //if (threadCreated)
+                            //SessionCheckerThread.Abort();
                     Console.WriteLine($" exception: {System.Threading.Thread.CurrentThread.ManagedThreadId}");
                     if (exis.wasNotLogged)
                         MessageBox.Show("Your session seems to be corrupted");
@@ -89,8 +92,8 @@ namespace studyBuddy
                 }
                 finally
                 {
-                    if (threadCreated)
-                        SessionCheckerThread.Abort();
+                        //if (threadCreated)
+                            //SessionCheckerThread.Abort();
                     Console.WriteLine("finallyBlock");
                 }
             } // while
@@ -99,12 +102,12 @@ namespace studyBuddy
 
         private static void YouAreIn(Form loginOrSessionLoginForm)
         {
-            SessionCheckerThread = new Thread(
-                       () => programComponents.loginNeeds.Auth.DoCheckSessionOverTakenLoopForThread()
-                   );
-            threadCreated = true;
-            ThreadSaysYes = false;//^thread
-            SessionCheckerThread.Start();
+                //SessionCheckerThread = new Thread(
+                //           () => programComponents.loginNeeds.Auth.DoCheckSessionOverTakenLoopForThread()
+                //       );
+                //threadCreated = true;
+                //ThreadSaysYes = false;//^thread
+                //SessionCheckerThread.Start();
             programComponents.NavigationHelper.SwitchToProfileFrom(loginOrSessionLoginForm);
             
         }

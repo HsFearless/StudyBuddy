@@ -41,7 +41,7 @@ namespace studyBuddy.programComponents.loginNeeds
                 MessageBox.Show($"error:  {Auth.error.Message()}");
             }
             var mysql = new dataNeeds.MysqlHandler();
-            mysql.TestSelectAllUsers();
+            //mysql.TestSelectAllUsers();
             MessageBox.Show(mysql.messageToOutterWorld + mysql.lastError);
 
             //MessageBox.Show(passwordHasher.newSalt());
@@ -65,6 +65,10 @@ namespace studyBuddy.programComponents.loginNeeds
         private void LabelTest_Click(object sender, EventArgs e)
         {
             labelTest.Text = DataFetcher.GetServerTimeStamp().ToString();
+            var UDF = new UserDataFetcherEntity();
+            var mail = new System.Net.Mail.MailAddress("user@user.user");
+            string text = UDF.GetSalt(mail);
+            MessageBox.Show(text);
         }
     }
 }

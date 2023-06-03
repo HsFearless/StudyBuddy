@@ -86,7 +86,7 @@ namespace studyBuddy.programComponents.loginNeeds
 
         private static void SetCurrentUser(string username, UserDataFetcher UDF)
         {
-            List<User> users = DataFetcher.GetUsersAsList();
+            List<profileNeeds.User> users = DataFetcher.GetUsersAsList();
             int id = UDF.GetId();
             List<string> interests = new List<string>();
             DataFetcher.GetInterestsOfCurrentUserAsList(interests, id);
@@ -107,14 +107,16 @@ namespace studyBuddy.programComponents.loginNeeds
             //find user in db with same id and set CurrentUser's fields
             void findUser()
             {
-                for (var i = 0; i < users.Count; i++)
+                /*for (var i = 0; i < users.Count; i++)
                 {
                     if (id == users[i].id)
                     {
                         CurrentUser.SetUserInfo(users[i].name, users[i].id, users[i].karma, users[i].rating, users[i].profileInfo, interests);
                         break;
                     }
-                }
+                }*/
+                DataFetcherDA dfDA = new DataFetcherDA(UDF.source);
+                dfDA.SetUser(id, interests);     
             }
         }
 
@@ -269,19 +271,23 @@ namespace studyBuddy.programComponents.loginNeeds
                 Console.WriteLine("thread is alive");
 
                 //Program._blockThread1.WaitOne();
-                Program.ThreadSaysYes = false;
-                Thread.Sleep(250);
+                    //Program.ThreadSaysYes = false;
+                    //Thread.Sleep(250);
                 //Program.ThreadSaysYes = false;
-                if (!IsThisTheLastSessionTimestamp(UDF))
+                lock(MysqlHandler.locker)
                 {
+                    if (!IsThisTheLastSessionTimestamp(UDF))
+                    {
 
-                    //Program._blockThread1.Set();
-                    Program.ThreadSaysYes = true;
-                    LogOut(throwNowException: false);
-                    return;
+                        //Program._blockThread1.Set();
+                        //Program.ThreadSaysYes = true;
+                        LogOut(throwNowException: false);
+                        return;
+                    }
                 }
-                Program.ThreadSaysYes = true;
-                Thread.Sleep(3000);
+                
+                    //Program.ThreadSaysYes = true;
+                    //Thread.Sleep(3000);
                 //Program._blockThread1.Set();
                 //System.Threading.Thread.Sleep(5000);
             }

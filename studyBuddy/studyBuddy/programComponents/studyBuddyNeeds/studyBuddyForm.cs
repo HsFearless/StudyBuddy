@@ -40,7 +40,7 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
             availableBuddiesLabel.Visible = true;
             availableBuddiesFlowLayoutPanel.Controls.Clear(); //clearing what was in panel before
 
-            List<User>  users = DataFetcher.GetUsersAsList();
+            List<profileNeeds.User>  users = DataFetcher.GetUsersAsList();
             var userInterests = DataFetcher.GetUserInterestsAsStringList();
 
 
@@ -87,7 +87,28 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
 
         private void StudyBuddyForm_Load(object sender, EventArgs e)
         {
+            string[] userNames = DataFetcher.GetUserNamesAsArray();  //^Aggregate
+            var users = userNames.Aggregate((a, b) => a + ", " + b);
+            allUsersBox.Text = users;
 
+            var usersToRecommend = userNames.Take(6).Skip(4);
+            var recommendUsers = usersToRecommend.Aggregate((a, b) => a + System.Environment.NewLine + b);
+            recommendedUsersBox.Text = recommendUsers;
+
+            var sb = new System.Text.StringBuilder();
+            var userList = DataFetcher.GetUsersAsList();
+            var groupedUsers =
+                       from userFromList in userList
+                       group userFromList by userFromList.upForTeaching;
+            foreach (var groupedUser in groupedUsers)
+            {
+                Console.WriteLine(groupedUser.Key == 1 ? sb.AppendLine("Up for teaching: ") : sb.AppendLine(Environment.NewLine + Environment.NewLine + "Not up for teaching: "));
+                foreach (var user in groupedUser)
+                {
+                    sb.Append(user.name + " ");
+                }
+            }
+            availableBuddiesBox.Text = sb.ToString();
         }
 
         private void StudyBuddyForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -95,6 +116,11 @@ namespace studyBuddy.programComponents.studyBuddyNeeds
         }
 
         private void ToolBarHelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RecommendedUsersBox_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "studyBuddy", "studyBuddy\st
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyBuddyApp.Android", "StudyBuddyApp\StudyBuddyApp.Android\StudyBuddyApp.Android.csproj", "{3A9FB163-6972-44CD-96C0-9AF86288C065}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyBuddyApp", "StudyBuddyApp\StudyBuddyApp\StudyBuddyApp.csproj", "{9D5FD713-58A3-4EE1-BFFE-AB3A24244585}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyBuddyApp", "StudyBuddyApp\StudyBuddyApp\StudyBuddyApp.csproj", "{9D5FD713-58A3-4EE1-BFFE-AB3A24244585}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

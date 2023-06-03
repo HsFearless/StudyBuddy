@@ -37,10 +37,7 @@ namespace studyBuddy.programComponents.loginNeeds
             else
             {
                 var pressedButton = MessageBox.Show("No hello for you.\n" +
-                    $" {Auth.error.Message()}\n\n" +
-                    "Want to skip login next time?", "skip?", MessageBoxButtons.YesNoCancel);
-                if (pressedButton == DialogResult.Yes)
-                    skipLogin = true;
+                    $" {Auth.error.Message()}\n\n");
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using studyBuddy.dataNeeds;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,52 @@ namespace studyBuddy.programComponents.forumNeeds
         long maxId = 0;
 
         public ForumPost[] post;
+
+        public IEnumerable<SubjectKnowsPosts> GetPostsBySubjects()
+        {
+            return DataFetcher.GetSubjects().GroupJoin<Subjects.Subject, ForumPost, int, SubjectKnowsPosts>(this, //^query //^groupjoin
+                su => su.id,
+                fo => fo.subjectId,
+                (su, fo) => new SubjectKnowsPosts()
+                {
+                    name = su.name,
+                    forumPosts = fo
+                }).ToList();
+        } 
+
+        public List<ForumPost> GetPostsWhereSubjectIs(Subjects.Subject subject)
+        {
+            int selectedInd = subject.id;
+            //filtruoti
+            var matchedForumContent = this.Where(
+                foru => foru.subjectId == selectedInd
+                );
+
+            return GetPostsLinkedToSubjects(matchedForumContent);
+
+        }
+
+        public List<ForumPost> GetPostsWhereContains(string text)
+        {
+            var matchedForumContent = this.Where(
+                fo => fo.description.Contains(text)
+                );
+
+            return GetPostsLinkedToSubjects(matchedForumContent);
+        }
+
+        public List<ForumPost> GetPostsLinkedToSubjects(IEnumerable<ForumPost> enumerableSource)
+        {
+            return
+                (from fo in enumerableSource
+                 join su in DataFetcher.GetSubjects() //^query//^join
+                 on fo.subjectId equals su.id
+                 select new ForumPost(fo.id, su.id, fo.name, fo.description, fo.ownerId, fo.votes)
+                 {
+                     subject = su
+                 }
+                ).ToList();
+        }
 
         public void Add(ForumPost onePost)
         {

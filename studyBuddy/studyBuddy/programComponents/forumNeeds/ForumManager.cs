@@ -52,8 +52,8 @@ namespace studyBuddy.programComponents.forumNeeds
             if (CurrentUser.isLoggedIn == false)
                 return error.SetErrorAndReturnFalse(ErrorCode.INVALID_SESSION);
             bool upVoted = false; //so far
-            try
-            {
+            /*try
+            {*/ //!#
                 upVoted = UserDataPusher.UpvoteForumProblem(forumPost); //exception root
                 if (!upVoted)
                     return error.SetErrorAndReturnFalse(ErrorCode.PUSH_ERROR | ErrorCode.UNKNOWN);
@@ -65,14 +65,14 @@ namespace studyBuddy.programComponents.forumNeeds
                 if (!DataPusher.SetForumPostVotes(forumPost, votes))
                     return error.SetErrorAndReturnFalse(ErrorCode.PUSH_ERROR);
                 return true;
-            }
-            catch(MySql.Data.MySqlClient.MySqlException myEx)
+            //!#}
+            /*catch(MySql.Data.MySqlClient.MySqlException myEx)
             { //^exception handling
                 if (myEx.Number == (uint)MySql.Data.MySqlClient.MySqlErrorCode.DuplicateKeyEntry)
                     throw new exceptions.DoneBefore();
                 else
                     throw myEx;
-            }
+            }*/ //!#
         }
 
         public static bool TakeBackUpvoteProblem(ForumPost forumPost)
@@ -91,4 +91,7 @@ namespace studyBuddy.programComponents.forumNeeds
         }
 
     }
+
+
+
 }

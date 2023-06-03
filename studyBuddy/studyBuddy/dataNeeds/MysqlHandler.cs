@@ -22,6 +22,64 @@ using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using System.Threading;
 
+/*namespace studyBuddy.dataNeeds
+{
+    class MysqlHandler
+    {
+        public static string tblUsers = "Users";
+        public static string tblSubjects = "Subjects";
+        public static string tblForum = "ForumPosts";
+        public static string tblUserInterests = "UserInterests";
+        public static string tblInterests = "Interests";
+        public static string tblForumComments = "ForumComments";
+        public static string tblForumVotes = "ForumVotes";
+        public static string tblForumCommentsVotes = "CommentVotes";
+        private string host;
+        private string username;
+        private string password;
+        private string database;
+        private int port;
+        private string con;
+        private string cmdCon;
+        public bool ready { get; private set; } //= false;//^auto
+        public string messageToOutterWorld = "";
+        public string lastError = "";
+        public static object locker = new object();
+        //private Data.MySqlClient a;
+
+        public List<string[]> Select(string sqlWithoutSelect)
+        {
+            return null;
+        }
+
+        public string[] SelectOneRow(string sqlWithoutSelect)
+        {
+            return null;
+        }
+
+        public bool InsertInto(string sqlWithoutInsertInto, KeyValuePair<string, string>[] escapePair = null)
+        {
+            return false;
+        }
+
+        public bool Update(string sqlWithoutUpdate, KeyValuePair<string, string>[] escapePair = null)
+        {
+            return false;
+        }
+
+        public bool DeleteFrom(string sqlWithoutDeleteFrom, bool fullDeleteAllowed = false)
+        {
+            return false;
+        }
+
+        public static KeyValuePair<string, string>[] ConstructQueryParams(string[] keys, string[] values)
+        {
+            return null;
+        }
+    }
+}*/
+
+
 namespace studyBuddy.dataNeeds
 {
     class MysqlHandler
@@ -44,6 +102,7 @@ namespace studyBuddy.dataNeeds
         public bool ready { get; private set; } //= false;//^auto
         public string messageToOutterWorld = "";
         public string lastError = "";
+        public static object locker = new object();
         //private Data.MySqlClient a;
 
         private void Initialize()
@@ -89,10 +148,20 @@ namespace studyBuddy.dataNeeds
             messageToOutterWorld = this.con.ToString();
         }
 
+        public MySqlConnection GetMySqlConnection()
+        {
+            return this.con;
+        }
+
         private bool OpenConnection()
         {
             try
             {
+                //for(int i= 0; i< 20; i++)
+                //{
+                //    Task.Run(() => con.Open());
+                //}
+
                 if (con.State == System.Data.ConnectionState.Open)
                     return true;
                 con.Open();
@@ -134,14 +203,37 @@ namespace studyBuddy.dataNeeds
             //}
             //return opened;
 
-            while (true)
+            //while (true)
+            //{
+            //    if (!Program.ThreadSaysYes && Program.mainThreadId == Thread.CurrentThread.ManagedThreadId) //^thread fake lock
+            //        continue;
+            //    con.Close();
+            //    return OpenConnection();
+            //}
+
+            //Monitor.TryEnter(locker);
+            lock (locker)
             {
-                if (!Program.ThreadSaysYes && Program.mainThreadId == Thread.CurrentThread.ManagedThreadId) //^thread fake lock
-                    continue;
+                con.Close();
+            }
+
+            return OpenConnection();
+
+            try
+            {
                 con.Close();
                 return OpenConnection();
             }
-                
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                Monitor.Exit(locker);
+            }
+
+
         }
 
         private void PrepareSql(ref string given)
@@ -170,6 +262,7 @@ namespace studyBuddy.dataNeeds
                     row = new string[result.FieldCount];
                     for (item = 0; item < result.FieldCount; item++)
                     {
+                        //System.Windows.Forms.MessageBox.Show(result[item] + "");
                         row[item] = result[item] + "";
                     }
                     toReturn.Add(row);
@@ -198,6 +291,12 @@ namespace studyBuddy.dataNeeds
                     for (int i = 0; i < result.FieldCount; i++)
                         toReturn[i] = result[i] + "";
                     //break after 1st iteration
+                        //string temp = "";
+                        //for (int ii = 0; ii < result.FieldCount; ii++)
+                        //    temp = temp + '\n' + toReturn[ii];
+                        //System.Windows.Forms.MessageBox.Show("query: " + fullSql + "\nresult: " + temp) ;
+                    
+
                     result.Close();
                     con.Close();
                     return toReturn;
@@ -206,7 +305,7 @@ namespace studyBuddy.dataNeeds
             return toReturn;
         }
 
-        public bool InsertInto(string sqlWithoutInsertInto, KeyValuePair<string, string>[] escapePair=null)
+        public bool InsertInto(string sqlWithoutInsertInto, KeyValuePair<string, string>[] escapePair = null)
         {
             PrepareSql(ref sqlWithoutInsertInto);
             string fullSql = "INSERT INTO";
@@ -217,13 +316,13 @@ namespace studyBuddy.dataNeeds
                 fullSql = EscapeString(fullSql, escapePair);
             cmdCon = new MySqlCommand(fullSql, this.con);
             int affectedRows = cmdCon.ExecuteNonQuery();
-            bool queryOk = (affectedRows > 0);
+            bool queryOk =  (affectedRows > 0);
 
             con.Close();
             return queryOk; //probably?
         }
 
-        public bool Update(string sqlWithoutUpdate, KeyValuePair<string, string>[] escapePair= null)
+        public bool Update(string sqlWithoutUpdate, KeyValuePair<string, string>[] escapePair = null)
         {
             PrepareSql(ref sqlWithoutUpdate);
             string fullSql = "UPDATE";
@@ -290,7 +389,7 @@ namespace studyBuddy.dataNeeds
             if (keys.Length != values.Length)
                 throw new Exception();//#
             KeyValuePair<string, string>[] toReturn = new KeyValuePair<string, string>[keys.Length];
-            for(int i = 0; i<keys.Length; i++)
+            for (int i = 0; i < keys.Length; i++)
             {
                 toReturn[i] = new KeyValuePair<string, string>(keys[i], values[i]);
             }
@@ -306,13 +405,23 @@ namespace studyBuddy.dataNeeds
                 {
                     //#cmdCon.Parameters.Add(qParam.Key, qParam.Value);
                     toReturn = toReturn.Replace(qParam.Key,
-                        MySql.Data.MySqlClient.MySqlHelper.EscapeString(qParam.Value) + "");
+                        //MySqlHelper.EscapeString(qParam.Value) + "");
+                        MySqlHelperEscape(qParam.Value) + "");
+
                     //System.Windows.Forms.MessageBox.Show("key: " + qParam.Key +
-                        //"\nval: " + qParam.Value);
+                    //"\nval: " + qParam.Value);
                     //escape bad symbols
                 }
                 //System.Windows.Forms.MessageBox.Show(toReturn);
             }
+            return toReturn;
+        }
+
+        private static string MySqlHelperEscape(string org)
+        {
+            string toReturn = "";
+            toReturn = org.Replace(@"\", @"\\").Replace("'", @"\'").Replace("\"", "\\\"").Replace("`", @"\`");
+            System.Windows.Forms.MessageBox.Show("Here is escpaed thing.\n org:\"" + org + "\"\nesc:\"" + toReturn + "\"");
             return toReturn;
         }
 

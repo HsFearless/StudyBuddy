@@ -117,14 +117,18 @@ namespace studyBuddy.programComponents.profileNeeds
 
         private void UserProfileUpForTeachingCheckbox_CheckedChanged(object sender, EventArgs e)
         {
+            MysqlHandler handler = new MysqlHandler();
+            
             if (userProfileUpForTeachingCheckbox.Checked)
             {
-                UserDataPusher.UpdateIfUserUpForTeaching(1);
+                DataFetcherDA dfDA = new DataFetcherDA(handler);
+                dfDA.UpdateIfUserIsUpForTeaching(1);
                 CurrentUser.upForTeaching = 1;
             }
             else
             {
-                UserDataPusher.UpdateIfUserUpForTeaching(0);
+                DataFetcherDA dfDA = new DataFetcherDA(handler);
+                dfDA.UpdateIfUserIsUpForTeaching(0);
                 CurrentUser.upForTeaching = 0;
             }
                 
@@ -133,6 +137,11 @@ namespace studyBuddy.programComponents.profileNeeds
         private void UserProfileForm_FormClosing(object sender, FormClosingEventArgs e)
         {
            // FormConfig.FormClosingEventHandler(this);
+        }
+
+        private void UserProfilePicture_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
